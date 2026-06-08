@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Works — 제39회 졸업전시</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="works">
+
+  <!-- ===== HEADER (전 페이지 동일) ===== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__logo">39th</span>
+        <span class="brand__text">
+          <strong>상명대학교</strong><br />
+          커뮤니케이션디자인학과<br />
+          제 39회 졸업전시회
+        </span>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html" data-nav="home">Home</a>
+        <a href="works.html" data-nav="works">Works</a>
+        <a href="designer.html" data-nav="designer">Designer</a>
+        <a href="archive.html" data-nav="archive">Archive</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container page-head">
+      <p class="eyebrow">Works</p>
+      <h1 class="page-title">작품</h1>
+      <p class="lead">두 스튜디오의 작품을 함께 둘러보거나, 스튜디오를 선택해 담당 교수님별로 살펴보세요.</p>
+    </div>
+
+    <!-- ===== (B) 스튜디오 선택 상세 (기본 숨김) ===== -->
+    <div class="container">
+      <section id="studio-detail" class="studio-detail">
+        <div class="studio-detail__head">
+          <div>
+            <h2 class="studio-detail__ko"></h2>
+            <p class="studio-detail__en"></p>
+            <p class="studio-detail__desc"></p>
+          </div>
+          <button class="btn-back-split" type="button">← 두 스튜디오 보기</button>
+        </div>
+        <div class="prof-filter"></div>
+        <div class="grid grid--works"></div>
+      </section>
+    </div>
+
+    <!-- ===== (A) 두 스튜디오 병렬 (기본) ===== -->
+    <section id="studio-split" class="studio-split">
+      <div class="studio-col" data-studio="convergence">
+        <div class="studio-head" data-studio="convergence">
+          <h2 class="studio-head__ko">융합디자인스튜디오</h2>
+          <p class="studio-head__en">Convergence Design studio</p>
+        </div>
+        <div class="grid grid--works"></div>
+      </div>
+      <div class="studio-col" data-studio="innovation">
+        <div class="studio-head" data-studio="innovation">
+          <h2 class="studio-head__ko">혁신디자인스튜디오</h2>
+          <p class="studio-head__en">Innovation Design studio</p>
+        </div>
+        <div class="grid grid--works"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER (전 페이지 동일) ===== -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="footer-brand">
+        <p>2026 상명대학교<br />커뮤니케이션디자인전공 졸업전시</p>
+        <p class="footer-brand__theme">지우고, 다시 쓰고, 반복하는</p>
+      </div>
+      <div class="footer-info">
+        <dl>
+          <dt>전시 기간</dt>
+          <dd>2026. 10. 21 ~ 2026. 10. 27 10:00 ~ 19:00</dd>
+        </dl>
+        <dl>
+          <dt>전시장 위치</dt>
+          <dd>마루아트센터 - 서울 종로구 인사동길 35-6<br />1관, 2관, 3관, 그랜드관, 5관</dd>
+        </dl>
+        <dl>
+          <dt>인스타그램</dt>
+          <dd><a href="https://instagram.com/smucd2026" target="_blank" rel="noopener">@smucd2026</a></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <div class="container">© 2026 SMU Communication Design · 제39회 졸업전시</div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
