@@ -29,26 +29,28 @@
   </header>
 
   <main>
-    <div class="container">
+    <div class="works-shell">
       <section id="work-detail" class="work-detail">
-        <!-- 좌: 작품 이미지 갤러리 (다중 스크롤) -->
+        <!-- 좌: 작품 대표 이미지 (다중 스크롤) -->
         <div class="work-gallery"></div>
 
         <!-- 우: 정보 패널 -->
         <div class="work-info">
           <a class="back-link" href="javascript:history.back()">← 뒤로가기</a>
-          <p class="work-info__designer"></p>
-          <p class="work-info__studio"></p>
-          <h1 class="work-info__title"></h1>
-          <p class="work-info__desc"></p>
-          <span class="ai-badge" hidden>✦ 이 작업은 AI를 사용했습니다.</span>
+          <p class="work-detail__name"></p>
+          <div class="work-meta">
+            <p class="work-meta__studio"></p>
+            <h1 class="work-meta__title"></h1>
+            <p class="work-meta__desc"></p>
+            <p class="work-meta__ai" hidden>이 작업은 AI를 사용했습니다.</p>
+          </div>
         </div>
       </section>
 
       <!-- 다른 작품 둘러보기 -->
       <section class="related-block">
-        <h2>다른 작품 둘러보기</h2>
-        <div class="grid grid--related"></div>
+        <h2 class="related-block__title">다른 작품 둘러보기</h2>
+        <div class="works-grid related-grid"></div>
       </section>
     </div>
   </main>

@@ -12,7 +12,7 @@
   <header class="site-header">
     <div class="container site-header__inner">
       <a class="brand" href="index.html">
-        <span class="brand__logo">39th</span>
+        <span class="brand__logo">logo</span>
         <span class="brand__text">
           <strong>상명대학교</strong><br />
           커뮤니케이션디자인학과<br />
@@ -29,45 +29,32 @@
   </header>
 
   <main>
-    <div class="container page-head">
-      <p class="eyebrow">Works</p>
-      <h1 class="page-title">작품</h1>
-      <p class="lead">두 스튜디오의 작품을 함께 둘러보거나, 스튜디오를 선택해 담당 교수님별로 살펴보세요.</p>
-    </div>
-
-    <!-- ===== (B) 스튜디오 선택 상세 (기본 숨김) ===== -->
-    <div class="container">
-      <section id="studio-detail" class="studio-detail">
-        <div class="studio-detail__head">
-          <div>
-            <h2 class="studio-detail__ko"></h2>
-            <p class="studio-detail__en"></p>
-            <p class="studio-detail__desc"></p>
-          </div>
-          <button class="btn-back-split" type="button">← 두 스튜디오 보기</button>
-        </div>
-        <div class="prof-filter"></div>
-        <div class="grid grid--works"></div>
-      </section>
-    </div>
-
-    <!-- ===== (A) 두 스튜디오 병렬 (기본) ===== -->
-    <section id="studio-split" class="studio-split">
-      <div class="studio-col" data-studio="convergence">
-        <div class="studio-head" data-studio="convergence">
-          <h2 class="studio-head__ko">융합디자인스튜디오</h2>
-          <p class="studio-head__en">Convergence Design studio</p>
-        </div>
-        <div class="grid grid--works"></div>
-      </div>
-      <div class="studio-col" data-studio="innovation">
-        <div class="studio-head" data-studio="innovation">
-          <h2 class="studio-head__ko">혁신디자인스튜디오</h2>
-          <p class="studio-head__en">Innovation Design studio</p>
-        </div>
-        <div class="grid grid--works"></div>
-      </div>
+    <!-- 스튜디오 카테고리 탭 (클릭 시 해당 스튜디오로 필터) -->
+    <section class="works-cat" id="works-cat">
+      <button class="works-tab is-active" type="button" data-studio="convergence">
+        <span class="works-tab__ko">융합디자인스튜디오</span>
+        <span class="works-tab__en">Convergence Design studio</span>
+      </button>
+      <button class="works-tab is-active" type="button" data-studio="innovation">
+        <span class="works-tab__ko">혁신디자인스튜디오</span>
+        <span class="works-tab__en">Innovation Design studio</span>
+      </button>
     </section>
+
+    <div class="works-shell">
+      <!-- 스튜디오 선택 시 노출 (상태 B) -->
+      <section class="studio-intro" id="studio-intro" hidden>
+        <h2 class="studio-intro__ko"></h2>
+        <p class="studio-intro__en"></p>
+        <p class="studio-intro__desc"></p>
+      </section>
+
+      <!-- 담당 교수님 필터 (상태 B) -->
+      <div class="prof-filter" id="prof-filter" hidden></div>
+
+      <!-- 작품 그리드 (4열) -->
+      <div id="works-grid" class="works-grid"></div>
+    </div>
   </main>
 
   <!-- ===== FOOTER (전 페이지 동일) ===== -->

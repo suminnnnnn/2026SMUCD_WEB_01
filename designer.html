@@ -29,34 +29,28 @@
   </header>
 
   <main>
-    <div class="container page-head">
-      <p class="eyebrow">Designer</p>
-      <h1 class="page-title">디자이너</h1>
-      <p class="lead">제39회 졸업전시에 참여한 디자이너들을 소개합니다. 이름 초성으로 필터링할 수 있습니다.</p>
-    </div>
-
-    <div class="container">
+    <div class="works-shell">
       <!-- ㄱㄴㄷ 초성 필터 -->
       <div id="initial-filter" class="initial-filter">
-        <button class="chip is-active" data-initial="all">All</button>
-        <button class="chip" data-initial="ㄱ">ㄱ</button>
-        <button class="chip" data-initial="ㄴ">ㄴ</button>
-        <button class="chip" data-initial="ㄷ">ㄷ</button>
-        <button class="chip" data-initial="ㄹ">ㄹ</button>
-        <button class="chip" data-initial="ㅁ">ㅁ</button>
-        <button class="chip" data-initial="ㅂ">ㅂ</button>
-        <button class="chip" data-initial="ㅅ">ㅅ</button>
-        <button class="chip" data-initial="ㅇ">ㅇ</button>
-        <button class="chip" data-initial="ㅈ">ㅈ</button>
-        <button class="chip" data-initial="ㅊ">ㅊ</button>
-        <button class="chip" data-initial="ㅋ">ㅋ</button>
-        <button class="chip" data-initial="ㅌ">ㅌ</button>
-        <button class="chip" data-initial="ㅍ">ㅍ</button>
-        <button class="chip" data-initial="ㅎ">ㅎ</button>
+        <button class="ifc ifc--all is-active" type="button" data-initial="all">All</button>
+        <button class="ifc" type="button" data-initial="ㄱ">ㄱ</button>
+        <button class="ifc" type="button" data-initial="ㄴ">ㄴ</button>
+        <button class="ifc" type="button" data-initial="ㄷ">ㄷ</button>
+        <button class="ifc" type="button" data-initial="ㄹ">ㄹ</button>
+        <button class="ifc" type="button" data-initial="ㅁ">ㅁ</button>
+        <button class="ifc" type="button" data-initial="ㅂ">ㅂ</button>
+        <button class="ifc" type="button" data-initial="ㅅ">ㅅ</button>
+        <button class="ifc" type="button" data-initial="ㅇ">ㅇ</button>
+        <button class="ifc" type="button" data-initial="ㅈ">ㅈ</button>
+        <button class="ifc" type="button" data-initial="ㅊ">ㅊ</button>
+        <button class="ifc" type="button" data-initial="ㅋ">ㅋ</button>
+        <button class="ifc" type="button" data-initial="ㅌ">ㅌ</button>
+        <button class="ifc" type="button" data-initial="ㅍ">ㅍ</button>
+        <button class="ifc" type="button" data-initial="ㅎ">ㅎ</button>
       </div>
 
       <!-- 학생 카드 그리드 (5열) -->
-      <div id="designer-grid" class="grid grid--designers section--tight"></div>
+      <div id="designer-grid" class="designer-grid"></div>
     </div>
   </main>
 

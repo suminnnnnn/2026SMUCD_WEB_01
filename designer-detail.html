@@ -29,47 +29,56 @@
   </header>
 
   <main>
-    <div class="container">
-      <a class="back-link" href="designer.html" style="margin-top:32px;display:inline-flex">← 디자이너 목록</a>
+    <div class="works-shell">
+      <div id="designer-detail-root" class="designer-detail">
 
-      <section id="designer-detail-root">
-        <div class="designer-detail">
-          <!-- 좌: 정사각형 프로필 -->
-          <div class="designer-photo-wrap"></div>
-
-          <!-- 우: 정보 -->
-          <div class="designer-info">
-            <h1 class="designer-name"></h1>
-            <p class="designer-roman"></p>
-            <div class="designer-contact">
-              <div><span class="k">instagram</span><span class="js-instagram"></span></div>
-              <div><span class="k">E-mail</span><span class="js-email"></span></div>
+        <!-- 프로필 -->
+        <section class="dd-profile">
+          <div class="dd-profile__photo-wrap"></div>
+          <div class="dd-profile__info">
+            <div class="dd-name">
+              <h1 class="dd-name__ko"></h1>
+              <p class="dd-name__roman"></p>
             </div>
-            <p class="designer-intro"></p>
+            <div class="dd-contact">
+              <div class="dd-contact__labels"><span>instagram</span><span>E-mail</span></div>
+              <div class="dd-contact__values">
+                <a class="js-instagram" target="_blank" rel="noopener"></a>
+                <a class="js-email"></a>
+              </div>
+            </div>
+            <p class="dd-intro"></p>
           </div>
-        </div>
+        </section>
 
         <!-- Interview -->
-        <section class="interview">
-          <h2>Interview</h2>
-          <div class="interview__grid">
-            <div>
-              <p class="interview__q">이번 작품을 통해 스스로에게 새롭게 발견한 점은?</p>
-              <p class="interview__a js-interview1"></p>
+        <section class="dd-interview">
+          <h2 class="dd-section-title">Interview</h2>
+          <div class="dd-interview__grid">
+            <div class="dd-iv">
+              <div class="dd-iv__q">
+                <p class="dd-iv__num">【 1 】</p>
+                <p class="dd-iv__question">이번 작품을 통해 스스로에게 새롭게 발견한 점은?</p>
+              </div>
+              <p class="dd-iv__answer js-interview1"></p>
             </div>
-            <div>
-              <p class="interview__q">절대 놓치고 싶지 않은 나만의 디자인 기준은?</p>
-              <p class="interview__a js-interview2"></p>
+            <div class="dd-iv">
+              <div class="dd-iv__q">
+                <p class="dd-iv__num">【 2 】</p>
+                <p class="dd-iv__question">절대 놓치고 싶지 않은 나만의 디자인 기준은?</p>
+              </div>
+              <p class="dd-iv__answer js-interview2"></p>
             </div>
           </div>
         </section>
 
         <!-- Projects -->
-        <section class="projects">
-          <h2>Projects</h2>
-          <div class="grid grid--works"></div>
+        <section class="dd-projects">
+          <h2 class="dd-section-title">Projects</h2>
+          <div class="dd-projects__grid"></div>
         </section>
-      </section>
+
+      </div>
     </div>
   </main>
 

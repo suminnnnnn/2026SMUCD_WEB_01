@@ -33,10 +33,12 @@ function workCard(work) {
 }
 
 function designerCard(d) {
-  return `<a class="card card--designer" href="designer-detail.html?id=${d.id}" data-initial="${d.initial}">
-    ${phImage(d.profileImage, d.name)}
-    <p class="card__title">${d.name}</p>
-    <p class="card__meta">${d.nameRoman}</p>
+  return `<a class="designer-card" href="designer-detail.html?id=${d.id}" data-initial="${d.initial}">
+    ${phImage(d.profileImage, d.name, "designer-card__thumb")}
+    <div class="designer-card__info">
+      <p class="designer-card__name">${d.name}</p>
+      <p class="designer-card__roman">${d.nameRoman}</p>
+    </div>
   </a>`;
 }
 
@@ -53,82 +55,103 @@ function getInitial(name) {
 /* ---------- 네비게이션 활성 표시 ---------- */
 function initNav() {
   const page = document.body.dataset.page;
+  // 상세 페이지는 상위 메뉴에 매핑
+  const navKey = { "work-detail": "works", "designer-detail": "designer" }[page] || page;
   document.querySelectorAll(".main-nav a").forEach((a) => {
-    if (a.dataset.nav === page) a.classList.add("is-active");
+    if (a.dataset.nav === navKey) a.classList.add("is-active");
   });
 }
 
 /* ============================================================
-   WORKS 페이지
+   WORKS 목록 페이지 (Figma 2314:2505)
+   상단 스튜디오 탭(융합/혁신) + 4열 작품 그리드
    ============================================================ */
+function worksListCard(w) {
+  return `<a class="work-card" href="work-detail.html?id=${w.id}">
+    ${phImage(w.thumbnail, w.title, "work-card__thumb")}
+    <div class="work-card__info">
+      <p class="work-card__title">${w.title}</p>
+      <p class="work-card__designer">${w.designer}</p>
+    </div>
+  </a>`;
+}
+
 async function initWorks() {
   const [works, site] = await Promise.all([loadJSON("works"), loadJSON("site")]);
-  const splitEl = document.getElementById("studio-split");
-  const detailEl = document.getElementById("studio-detail");
+  const gridEl = document.getElementById("works-grid");
+  const introEl = document.getElementById("studio-intro");
+  const profEl = document.getElementById("prof-filter");
+  const tabs = Array.from(document.querySelectorAll(".works-tab"));
 
-  const byStudio = (s) => works.filter((w) => w.studio === s);
+  // 딥링크: works.html?studio=convergence|innovation 로 상태 B 바로 진입
+  const qStudio = new URLSearchParams(location.search).get("studio");
+  let activeStudio = site.studios[qStudio] ? qStudio : "all"; // all | convergence | innovation
+  let activeProf = "all";
 
-  // (A) 좌우 분할 그리드 채우기
-  document.querySelectorAll(".studio-col").forEach((col) => {
-    const studio = col.dataset.studio;
-    col.querySelector(".grid--works").innerHTML =
-      byStudio(studio).map(workCard).join("");
-  });
-
-  // 스튜디오 헤더 클릭 → (B) 상세 진입
-  document.querySelectorAll(".studio-head").forEach((head) => {
-    head.addEventListener("click", () => openStudio(head.dataset.studio));
-  });
-
-  function openStudio(studio) {
-    const meta = site.studios[studio];
-    // split 흐림 처리
-    splitEl.classList.add("has-selection");
-    document.querySelectorAll(".studio-col").forEach((col) => {
-      col.classList.toggle("is-dimmed", col.dataset.studio !== studio);
-    });
-
-    // 상세 패널 구성
-    detailEl.querySelector(".studio-detail__ko").textContent = meta.ko;
-    detailEl.querySelector(".studio-detail__en").textContent = meta.en;
-    detailEl.querySelector(".studio-detail__desc").textContent = meta.description;
-
-    // 교수 필터 chip
-    const filterEl = detailEl.querySelector(".prof-filter");
-    filterEl.innerHTML =
-      `<button class="chip is-active" data-prof="all">전체</button>` +
-      meta.professors.map((p) => `<button class="chip" data-prof="${p}">${p}</button>`).join("");
-
-    const gridEl = detailEl.querySelector(".grid--works");
-    renderStudioWorks(studio, "all", gridEl);
-
-    filterEl.querySelectorAll(".chip").forEach((chip) => {
-      chip.addEventListener("click", () => {
-        filterEl.querySelectorAll(".chip").forEach((c) => c.classList.remove("is-active"));
-        chip.classList.add("is-active");
-        renderStudioWorks(studio, chip.dataset.prof, gridEl);
-      });
-    });
-
-    detailEl.classList.add("is-open");
-    detailEl.scrollIntoView({ behavior: "smooth", block: "start" });
+  function currentList() {
+    let list = activeStudio === "all" ? works : works.filter((w) => w.studio === activeStudio);
+    if (activeStudio !== "all" && activeProf !== "all") {
+      list = list.filter((w) => w.professor.startsWith(activeProf));
+    }
+    return list;
   }
 
-  function renderStudioWorks(studio, prof, gridEl) {
-    let list = byStudio(studio);
-    if (prof !== "all") list = list.filter((w) => w.professor.startsWith(prof));
+  function renderGrid() {
+    const list = currentList();
     gridEl.innerHTML = list.length
-      ? list.map(workCard).join("")
+      ? list.map(worksListCard).join("")
       : `<p class="empty-msg">해당 교수님의 작품이 아직 없습니다.</p>`;
   }
 
-  // 뒤로(분할 보기로 복귀)
-  detailEl.querySelector(".btn-back-split").addEventListener("click", () => {
-    detailEl.classList.remove("is-open");
-    splitEl.classList.remove("has-selection");
-    document.querySelectorAll(".studio-col").forEach((c) => c.classList.remove("is-dimmed"));
-    splitEl.scrollIntoView({ behavior: "smooth", block: "start" });
+  function renderState() {
+    // 탭 활성: 전체면 둘 다, 선택 시 해당 탭만
+    tabs.forEach((t) =>
+      t.classList.toggle("is-active", activeStudio === "all" || t.dataset.studio === activeStudio)
+    );
+
+    if (activeStudio === "all") {
+      introEl.hidden = true;
+      profEl.hidden = true;
+      profEl.innerHTML = "";
+    } else {
+      const meta = site.studios[activeStudio];
+      introEl.querySelector(".studio-intro__ko").textContent = meta.ko;
+      introEl.querySelector(".studio-intro__en").textContent = meta.en;
+      introEl.querySelector(".studio-intro__desc").textContent = meta.description;
+      introEl.hidden = false;
+
+      // 담당 교수님 필터 (해당 스튜디오 교수진)
+      profEl.hidden = false;
+      profEl.innerHTML = meta.professors
+        .map(
+          (p) =>
+            `<button class="prof-chip${activeProf === p ? " is-active" : ""}" type="button" data-prof="${p}">${p} 교수님</button>`
+        )
+        .join("");
+      profEl.querySelectorAll(".prof-chip").forEach((chip) => {
+        chip.addEventListener("click", () => {
+          // 같은 교수 재클릭 시 전체(해당 스튜디오)로 토글
+          activeProf = activeProf === chip.dataset.prof ? "all" : chip.dataset.prof;
+          profEl.querySelectorAll(".prof-chip").forEach((c) =>
+            c.classList.toggle("is-active", c.dataset.prof === activeProf)
+          );
+          renderGrid();
+        });
+      });
+    }
+    renderGrid();
+  }
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const s = tab.dataset.studio;
+      activeStudio = activeStudio === s ? "all" : s; // 같은 탭 재클릭 시 전체로
+      activeProf = "all";
+      renderState();
+    });
   });
+
+  renderState();
 }
 
 /* ============================================================
@@ -140,26 +163,25 @@ async function initWorkDetail() {
   const work = works.find((w) => w.id === id) || works[0];
   const root = document.getElementById("work-detail");
 
-  // 갤러리
-  const imgs = (work.images && work.images.length ? work.images : [work.thumbnail]);
+  // 좌측 대표 이미지 (다중 스크롤)
+  const imgs = work.images && work.images.length ? work.images : [work.thumbnail];
   root.querySelector(".work-gallery").innerHTML =
     imgs.map((src) => phImage(src, work.title)).join("");
 
-  // 정보 패널
-  root.querySelector(".work-info__designer").innerHTML =
-    `${work.designer} <small>${work.designerRoman}</small>`;
-  root.querySelector(".work-info__studio").textContent =
-    `${work.studioName} | ${work.professor}`;
-  root.querySelector(".work-info__title").textContent = work.title;
-  root.querySelector(".work-info__desc").textContent = work.description;
+  // 우측 정보 패널
+  root.querySelector(".work-detail__name").textContent =
+    `${work.designer}  ${work.designerRoman}`;
+  root.querySelector(".work-meta__studio").innerHTML =
+    `<span>${work.studioName}</span><span>|</span><span>${work.professor}</span>`;
+  root.querySelector(".work-meta__title").textContent = work.title;
+  root.querySelector(".work-meta__desc").textContent = work.description;
 
-  const aiEl = root.querySelector(".ai-badge");
-  if (work.aiUsed) aiEl.hidden = false;
+  if (work.aiUsed) root.querySelector(".work-meta__ai").hidden = false;
 
   // 다른 작품 둘러보기 (현재 제외 4개)
   const related = works.filter((w) => w.id !== work.id).slice(0, 4);
-  document.querySelector(".related-block .grid--related").innerHTML =
-    related.map(workCard).join("");
+  document.querySelector(".related-block .related-grid").innerHTML =
+    related.map(worksListCard).join("");
 }
 
 /* ============================================================
@@ -175,12 +197,12 @@ async function initDesigners() {
 
   gridEl.innerHTML = designers.map(designerCard).join("");
 
-  filterEl.querySelectorAll(".chip").forEach((chip) => {
+  filterEl.querySelectorAll(".ifc").forEach((chip) => {
     chip.addEventListener("click", () => {
-      filterEl.querySelectorAll(".chip").forEach((c) => c.classList.remove("is-active"));
+      filterEl.querySelectorAll(".ifc").forEach((c) => c.classList.remove("is-active"));
       chip.classList.add("is-active");
       const init = chip.dataset.initial;
-      gridEl.querySelectorAll(".card--designer").forEach((card) => {
+      gridEl.querySelectorAll(".designer-card").forEach((card) => {
         const show = init === "all" || card.dataset.initial === init;
         card.style.display = show ? "" : "none";
       });
@@ -200,28 +222,35 @@ async function initDesignerDetail() {
   const d = designers.find((x) => x.id === id) || designers[0];
   const root = document.getElementById("designer-detail-root");
 
-  root.querySelector(".designer-photo-wrap").innerHTML =
-    phImage(d.profileImage, d.name, "designer-photo");
-  root.querySelector(".designer-name").textContent = d.name;
-  root.querySelector(".designer-roman").textContent = d.nameRoman;
-  root.querySelector(".js-instagram").innerHTML =
-    `<a href="https://instagram.com/${d.instagram.replace("@", "")}" target="_blank" rel="noopener">${d.instagram}</a>`;
-  root.querySelector(".js-email").innerHTML =
-    `<a href="mailto:${d.email}">${d.email}</a>`;
-  root.querySelector(".designer-intro").textContent = d.intro;
+  // 프로필
+  root.querySelector(".dd-profile__photo-wrap").innerHTML =
+    phImage(d.profileImage, d.name, "dd-profile__photo");
+  root.querySelector(".dd-name__ko").textContent = d.name;
+  root.querySelector(".dd-name__roman").textContent = d.nameRoman;
+
+  const igEl = root.querySelector(".js-instagram");
+  igEl.href = `https://instagram.com/${d.instagram.replace("@", "")}`;
+  igEl.textContent = d.instagram;
+  const mailEl = root.querySelector(".js-email");
+  mailEl.href = `mailto:${d.email}`;
+  mailEl.textContent = d.email;
+
+  root.querySelector(".dd-intro").textContent = d.intro;
   root.querySelector(".js-interview1").textContent = d.interview1;
   root.querySelector(".js-interview2").textContent = d.interview2;
 
-  // 학생 작품
+  // Projects (학생 작품)
   const myWorks = (d.workIds || [])
     .map((wid) => works.find((w) => w.id === wid))
     .filter(Boolean);
-  document.querySelector(".projects .grid--works").innerHTML = myWorks
+  root.querySelector(".dd-projects__grid").innerHTML = myWorks
     .map(
-      (w) => `<a class="card" href="work-detail.html?id=${w.id}">
-        ${phImage(w.thumbnail, w.title)}
-        <p class="card__title">${w.title}</p>
-        <p class="card__meta">${w.studioName}</p>
+      (w) => `<a class="project-card" href="work-detail.html?id=${w.id}">
+        ${phImage(w.thumbnail, w.title, "project-card__thumb")}
+        <div class="project-card__info">
+          <p class="project-card__title">${w.title}</p>
+          <p class="project-card__studio">${w.studioName}</p>
+        </div>
       </a>`
     )
     .join("");
