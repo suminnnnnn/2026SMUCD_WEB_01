@@ -79,79 +79,87 @@ function worksListCard(w) {
 async function initWorks() {
   const [works, site] = await Promise.all([loadJSON("works"), loadJSON("site")]);
   const gridEl = document.getElementById("works-grid");
-  const introEl = document.getElementById("studio-intro");
   const profEl = document.getElementById("prof-filter");
+  const descEl = document.getElementById("studio-desc");
   const tabs = Array.from(document.querySelectorAll(".works-tab"));
 
-  // 딥링크: works.html?studio=convergence|innovation 로 상태 B 바로 진입
-  const qStudio = new URLSearchParams(location.search).get("studio");
-  let activeStudio = site.studios[qStudio] ? qStudio : "all"; // all | convergence | innovation
-  let activeProf = "all";
+  // 좌측 필터: 전체 + 양 스튜디오 교수 전원(융합 5 + 혁신 5)
+  const allProfs = [
+    ...site.studios.convergence.professors,
+    ...site.studios.innovation.professors,
+  ];
+  let activeStudio = null; // null(미선택) | convergence | innovation
+  let activeProf = "all"; // all | 교수명
+  let showDesc = false; // 탭 클릭 시에만 설명 노출 (works_상세 3243:3992)
 
   function currentList() {
-    let list = activeStudio === "all" ? works : works.filter((w) => w.studio === activeStudio);
-    if (activeStudio !== "all" && activeProf !== "all") {
-      list = list.filter((w) => w.professor.startsWith(activeProf));
-    }
+    let list = works;
+    if (activeStudio) list = list.filter((w) => w.studio === activeStudio);
+    if (activeProf !== "all") list = list.filter((w) => w.professor.startsWith(activeProf));
     return list;
   }
-
   function renderGrid() {
     const list = currentList();
     gridEl.innerHTML = list.length
       ? list.map(worksListCard).join("")
-      : `<p class="empty-msg">해당 교수님의 작품이 아직 없습니다.</p>`;
+      : `<p class="empty-msg">표시할 작품이 없습니다.</p>`;
   }
-
-  function renderState() {
-    // 탭 활성: 전체면 둘 다, 선택 시 해당 탭만
-    tabs.forEach((t) =>
-      t.classList.toggle("is-active", activeStudio === "all" || t.dataset.studio === activeStudio)
+  function syncProf() {
+    profEl.querySelectorAll(".prof-side__item").forEach((c) =>
+      c.classList.toggle("is-active", c.dataset.prof === activeProf)
     );
-
-    if (activeStudio === "all") {
-      introEl.hidden = true;
-      profEl.hidden = true;
-      profEl.innerHTML = "";
+  }
+  function syncTabs() {
+    // 미선택(null)이면 둘 다 진하게, 선택 시 해당 탭만
+    tabs.forEach((t) =>
+      t.classList.toggle("is-active", activeStudio === null || t.dataset.studio === activeStudio)
+    );
+  }
+  function syncDesc() {
+    if (showDesc && activeStudio) {
+      descEl.textContent = site.studios[activeStudio].description;
+      descEl.hidden = false;
     } else {
-      const meta = site.studios[activeStudio];
-      introEl.querySelector(".studio-intro__ko").textContent = meta.ko;
-      introEl.querySelector(".studio-intro__en").textContent = meta.en;
-      introEl.querySelector(".studio-intro__desc").textContent = meta.description;
-      introEl.hidden = false;
-
-      // 담당 교수님 필터 (해당 스튜디오 교수진)
-      profEl.hidden = false;
-      profEl.innerHTML = meta.professors
-        .map(
-          (p) =>
-            `<button class="prof-chip${activeProf === p ? " is-active" : ""}" type="button" data-prof="${p}">${p} 교수님</button>`
-        )
-        .join("");
-      profEl.querySelectorAll(".prof-chip").forEach((chip) => {
-        chip.addEventListener("click", () => {
-          // 같은 교수 재클릭 시 전체(해당 스튜디오)로 토글
-          activeProf = activeProf === chip.dataset.prof ? "all" : chip.dataset.prof;
-          profEl.querySelectorAll(".prof-chip").forEach((c) =>
-            c.classList.toggle("is-active", c.dataset.prof === activeProf)
-          );
-          renderGrid();
-        });
-      });
+      descEl.hidden = true;
     }
-    renderGrid();
   }
 
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      const s = tab.dataset.studio;
-      activeStudio = activeStudio === s ? "all" : s; // 같은 탭 재클릭 시 전체로
-      activeProf = "all";
-      renderState();
+  // 좌측 교수 필터 1회 생성 (전체 + 교수 10)
+  profEl.innerHTML = [{ key: "all", label: "전체" }]
+    .concat(allProfs.map((p) => ({ key: p, label: `${p} 교수님` })))
+    .map(
+      (it) =>
+        `<button class="prof-side__item" type="button" data-prof="${it.key}">${it.label}</button>`
+    )
+    .join("");
+  profEl.querySelectorAll(".prof-side__item").forEach((item) => {
+    item.addEventListener("click", () => {
+      activeProf = item.dataset.prof;
+      activeStudio = null; // 교수 선택 시 스튜디오/설명 해제
+      showDesc = false;
+      syncProf();
+      syncTabs();
+      syncDesc();
+      renderGrid();
     });
   });
 
-  renderState();
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      activeStudio = tab.dataset.studio;
+      activeProf = "all"; // 스튜디오 선택 시 교수 필터 초기화
+      showDesc = true; // 탭 클릭 시 설명 노출
+      syncProf();
+      syncTabs();
+      syncDesc();
+      renderGrid();
+    });
+  });
+
+  syncProf();
+  syncTabs();
+  syncDesc();
+  renderGrid();
 }
 
 /* ============================================================
@@ -197,15 +205,17 @@ async function initDesigners() {
 
   gridEl.innerHTML = designers.map(designerCard).join("");
 
-  filterEl.querySelectorAll(".ifc").forEach((chip) => {
+  filterEl.querySelectorAll(".prof-side__item").forEach((chip) => {
     chip.addEventListener("click", () => {
-      filterEl.querySelectorAll(".ifc").forEach((c) => c.classList.remove("is-active"));
+      filterEl.querySelectorAll(".prof-side__item").forEach((c) => c.classList.remove("is-active"));
       chip.classList.add("is-active");
       const init = chip.dataset.initial;
       gridEl.querySelectorAll(".designer-card").forEach((card) => {
         const show = init === "all" || card.dataset.initial === init;
         card.style.display = show ? "" : "none";
       });
+      // 초성 클릭 시 맨 위로
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   });
 }

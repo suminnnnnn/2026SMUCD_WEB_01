@@ -22,7 +22,7 @@
   --container: 1280px;
   --gutter: 40px;
   --wide: 1440px;                /* Figma 프레임 폭 */
-  --wide-pad: 120px;             /* Figma 좌우 여백 */
+  --wide-pad: 80px;              /* 전 페이지 통일 좌우 여백 */
 
   --font: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
     system-ui, sans-serif;
@@ -106,7 +106,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* 헤더/푸터는 Figma 1440 프레임(좌우 120px)에 맞춰 더 넓게 */
 .site-header .container,
 .site-footer .container {
-  max-width: var(--wide);
+  max-width: none;
   padding-left: var(--wide-pad);
   padding-right: var(--wide-pad);
 }
@@ -143,7 +143,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 .main-nav { display: flex; gap: 47px; align-items: center; }
 .main-nav a {
-  font-size: clamp(18px, 2.3vw, 34px);
+  font-size: clamp(18px, 2.3vw, 28px);
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--color-nav-off);
@@ -271,21 +271,21 @@ ul { margin: 0; padding: 0; list-style: none; }
    HOME  (Figma node 2314:2313)
    ============================================================ */
 .home-shell {
-  max-width: var(--wide);
-  margin: 0 auto;
-  padding: 60px var(--wide-pad) 40px;
+  max-width: none;
+  margin: 0;
+  padding: 60px var(--wide-pad) 80px;
 }
 .home-layout {
   display: grid;
-  grid-template-columns: 448px minmax(0, 1fr);
-  gap: 62px;
+  grid-template-columns: 512px minmax(0, 1fr);
+  gap: 63px;
   align-items: stretch;
 }
 
 /* 좌측 세로 이미지 레일 */
 .home-rail { display: flex; flex-direction: column; gap: 40px; }
 .home-rail .ph { width: 100%; border-radius: 0; }
-.home-rail .ph:first-child { aspect-ratio: 448 / 598; }
+.home-rail .ph:first-child { aspect-ratio: 512 / 600; }
 .home-rail .ph:last-child { flex: 1 1 auto; min-height: 900px; }
 
 /* 우측 콘텐츠 컬럼 */
@@ -299,29 +299,21 @@ ul { margin: 0; padding: 0; list-style: none; }
   gap: 24px;
 }
 .hero-title {
-  font-size: 48px;
-  font-weight: 900;
-  line-height: 1.27;
-  letter-spacing: -0.02em;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
   color: #000;
   margin: 0;
 }
-.hero-en {
-  font-size: 24px;
-  font-weight: 800;
-  line-height: 1.5;
-  color: var(--color-muted);
-  margin: 4px 0 0;
-  white-space: nowrap;
-}
 .hero-desc {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 32px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
   letter-spacing: -0.02em;
   color: #333;
   margin: 40px 0 0;
-  max-width: 690px;
+  max-width: 785px;
 }
 
 /* 정보 행: [회색 라벨] [본문] */
@@ -332,14 +324,15 @@ ul { margin: 0; padding: 0; list-style: none; }
   margin-top: 92px;
 }
 .info-label {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
   line-height: 1.5;
+  letter-spacing: -0.02em;
   color: var(--color-muted);
   margin: 0;
 }
 .info-value {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 1.5;
   letter-spacing: -0.02em;
@@ -349,9 +342,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 /* 전시 장소 */
 .place-addr {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
-  line-height: 36px;
+  line-height: 1.5;
   letter-spacing: -0.02em;
   color: var(--color-ink);
   margin: 0 0 28px;
@@ -362,7 +355,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   align-items: center;
   gap: 12px;
   margin-bottom: 28px;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -372,7 +365,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   border-radius: 50%;
   background: var(--color-line3);
   color: #fff;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   display: grid;
   place-items: center;
@@ -389,14 +382,14 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .advisor-group + .advisor-group { margin-top: 56px; }
 .advisor-studio {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
   line-height: 50px;
   color: var(--color-ink);
   margin: 0;
 }
 .advisor-names li {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   line-height: 50px;
   letter-spacing: -0.02em;
@@ -412,7 +405,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   align-items: baseline;
 }
 .committee-role {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 800;
   color: var(--color-ink);
   margin: 0;
@@ -423,7 +416,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   gap: 14px 26px;
 }
 .committee-names span {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--color-ink);
@@ -442,14 +435,12 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* ============================================================
    WORKS 목록  (Figma node 2314:2505)
    ============================================================ */
-/* 상단 스튜디오 카테고리 탭 (중앙 정렬) */
+/* 스튜디오 카테고리 탭 (메인 컬럼 상단, 좌측 정렬) */
 .works-cat {
   display: flex;
-  justify-content: space-between;
+  gap: 166px;
   align-items: flex-start;
-  max-width: 846px;
-  margin: 0 auto;
-  padding: 56px var(--gutter) 0;
+  margin: 0 0 55px;
 }
 .works-tab {
   display: flex;
@@ -482,8 +473,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 /* 작품 그리드 (4열) */
 .works-shell {
-  max-width: var(--wide);
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   padding: 64px var(--wide-pad) 0;
 }
 .works-grid {
@@ -521,53 +512,53 @@ ul { margin: 0; padding: 0; list-style: none; }
   margin: 0;
 }
 
-/* 스튜디오 선택 상태(B): 대제목 + 설명 */
-.studio-intro { margin-top: 8px; }
-.studio-intro__ko {
-  font-size: 42px;
-  font-weight: 900;
-  line-height: 1.27;
-  color: #000;
-  margin: 0;
-}
-.studio-intro__en {
-  font-size: 18px;
-  font-weight: 900;
-  line-height: 22px;
-  color: var(--color-brand);
-  margin: 5px 0 0;
-}
-.studio-intro__desc {
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 30px;
-  letter-spacing: -0.02em;
-  color: #333;
-  max-width: 1020px;
-  margin: 26px 0 0;
-}
+/* 스튜디오 선택 상태(B): 좌측 교수 필터 + 5열 그리드 (Figma 3242:2636) */
+.works-body { display: flex; gap: 57px; align-items: flex-start; }
+.works-main { flex: 1 1 auto; min-width: 0; }
 
-/* 담당 교수님 필터 */
-.prof-filter {
+/* 좌측 세로 교수님 필터 (그리드가 left 297에서 시작하도록 폭 고정, 스티키) */
+.prof-side {
+  flex: 0 0 160px;
+  width: 160px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 18px 40px;
-  margin: 48px 0 36px;
+  flex-direction: column;
+  gap: 35px;
+  padding-top: 4px;
+  position: sticky;
+  top: calc(var(--header-h) + 24px);
+  align-self: flex-start;
 }
-.prof-chip {
+.prof-side__item {
   background: none;
   border: none;
   padding: 0;
+  text-align: left;
   cursor: pointer;
   font-size: 22px;
-  font-weight: 900;
-  line-height: 32px;
+  font-weight: 700;
+  line-height: 23px;
   letter-spacing: -0.02em;
-  color: var(--color-nav-off);
+  color: var(--color-sub);
+  white-space: nowrap;
   transition: color 0.15s ease;
 }
-.prof-chip:hover,
-.prof-chip.is-active { color: var(--color-ink); }
+.prof-side__item:hover,
+.prof-side__item.is-active { color: #121212; }
+
+/* 스튜디오 설명 (탭 클릭 시 노출 · works_상세 3225) */
+.studio-desc {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: -0.02em;
+  color: #484848;
+  max-width: 792px;
+  margin: 0 0 40px;
+}
+
+/* 선택 상태 그리드: 5열 + 정사각 썸네일 */
+.works-grid--studio { grid-template-columns: repeat(5, 1fr); column-gap: 24px; row-gap: 32px; }
+.works-grid--studio .work-card__thumb { aspect-ratio: 1 / 1; }
 
 .empty-msg { color: var(--color-sub); padding: 40px 0; font-size: 14px; grid-column: 1 / -1; }
 
@@ -700,8 +691,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 .designer-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  column-gap: 37px;
-  row-gap: 64px;
+  column-gap: 24px;
+  row-gap: 30px;
 }
 .designer-card { display: flex; flex-direction: column; gap: 20px; cursor: pointer; }
 .designer-card__thumb {
@@ -869,9 +860,6 @@ ul { margin: 0; padding: 0; list-style: none; }
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-@media (max-width: 1400px) {
-  :root { --wide-pad: 60px; }
-}
 @media (max-width: 1024px) {
   :root { --gutter: 28px; --wide-pad: 40px; }
   .grid--works, .grid--related { grid-template-columns: repeat(3, 1fr); }
@@ -884,6 +872,8 @@ ul { margin: 0; padding: 0; list-style: none; }
   .dd-section-title, .dd-name__ko { font-size: 30px; }
   /* WORKS */
   .works-grid { grid-template-columns: repeat(3, 1fr); }
+  .works-grid--studio { grid-template-columns: repeat(4, 1fr); }
+  .works-body { gap: 36px; }
   /* DESIGNER */
   .designer-grid { grid-template-columns: repeat(4, 1fr); column-gap: 24px; row-gap: 48px; }
   /* HOME */
@@ -902,14 +892,16 @@ ul { margin: 0; padding: 0; list-style: none; }
   .grid--works, .grid--related { grid-template-columns: repeat(2, 1fr); }
   .grid--designers { grid-template-columns: repeat(2, 1fr); }
   .works-grid { grid-template-columns: repeat(2, 1fr); column-gap: 16px; }
+  .works-grid--studio { grid-template-columns: repeat(3, 1fr); }
   .designer-grid { grid-template-columns: repeat(2, 1fr); column-gap: 16px; row-gap: 36px; }
-  .works-cat { padding-left: 20px; padding-right: 20px; }
+  .works-cat { gap: 40px; flex-wrap: wrap; margin-bottom: 32px; }
   .works-tab__ko { font-size: 22px; }
   .works-tab__en { font-size: 13px; }
-  .studio-intro__ko { font-size: 30px; }
-  .studio-intro__en, .studio-intro__desc { font-size: 16px; }
-  .prof-chip { font-size: 18px; }
-  .prof-filter { gap: 14px 24px; margin: 32px 0 24px; }
+  /* 좌측 교수 필터 → 가로 배치 (스티키 해제) */
+  .works-body { flex-direction: column; gap: 24px; }
+  .prof-side { position: static; flex: none; width: 100%; flex-direction: row; flex-wrap: wrap; gap: 14px 24px; }
+  .prof-side__item { font-size: 18px; }
+  .studio-desc { font-size: 16px; line-height: 28px; margin-bottom: 28px; }
   /* DESIGNER DETAIL */
   .dd-profile { flex-direction: column; align-items: flex-start; gap: 32px; }
   .dd-profile__photo-wrap { flex: none; width: 100%; max-width: 384px; }
