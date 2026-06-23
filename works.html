@@ -31,26 +31,14 @@
   <main>
     <div class="works-shell">
       <div class="works-body">
-        <!-- 좌측 세로 교수님 필터 (전체 + 교수 전원, 스티키) -->
-        <aside class="prof-side" id="prof-filter"></aside>
+        <!-- 좌측 세로 스튜디오 카테고리 (선택 시 교수 목록 펼침, 스티키) -->
+        <aside class="studio-side" id="studio-side"></aside>
 
         <div class="works-main">
-          <!-- 스튜디오 카테고리 탭 -->
-          <section class="works-cat" id="works-cat">
-            <button class="works-tab" type="button" data-studio="convergence">
-              <span class="works-tab__ko">융합디자인스튜디오</span>
-              <span class="works-tab__en">Convergence Design studio</span>
-            </button>
-            <button class="works-tab" type="button" data-studio="innovation">
-              <span class="works-tab__ko">혁신디자인스튜디오</span>
-              <span class="works-tab__en">Innovation Design studio</span>
-            </button>
-          </section>
-
-          <!-- 스튜디오 설명 (탭 클릭 시 노출 · works_상세 3225) -->
+          <!-- 스튜디오 설명 (스튜디오 선택 시 노출) -->
           <p class="studio-desc" id="studio-desc" hidden></p>
 
-          <!-- 작품 그리드 (5열 정사각) -->
+          <!-- 작품 그리드 (4열 정사각) -->
           <div id="works-grid" class="works-grid works-grid--studio"></div>
         </div>
       </div>

@@ -79,44 +79,80 @@ function worksListCard(w) {
 async function initWorks() {
   const [works, site] = await Promise.all([loadJSON("works"), loadJSON("site")]);
   const gridEl = document.getElementById("works-grid");
-  const profEl = document.getElementById("prof-filter");
+  const sideEl = document.getElementById("studio-side");
   const descEl = document.getElementById("studio-desc");
-  const tabs = Array.from(document.querySelectorAll(".works-tab"));
 
-  // 좌측 필터: 전체 + 양 스튜디오 교수 전원(융합 5 + 혁신 5)
-  const allProfs = [
-    ...site.studios.convergence.professors,
-    ...site.studios.innovation.professors,
-  ];
+  // 스튜디오 순서: 융합 → 혁신 고정 (선택해도 순서 유지)
+  const STUDIO_ORDER = ["convergence", "innovation"];
+
   let activeStudio = null; // null(미선택) | convergence | innovation
-  let activeProf = "all"; // all | 교수명
-  let showDesc = false; // 탭 클릭 시에만 설명 노출 (works_상세 3243:3992)
+  let activeProf = null; // null | 교수명(성)
 
   function currentList() {
     let list = works;
     if (activeStudio) list = list.filter((w) => w.studio === activeStudio);
-    if (activeProf !== "all") list = list.filter((w) => w.professor.startsWith(activeProf));
+    if (activeProf) list = list.filter((w) => w.professor.startsWith(activeProf));
     return list;
   }
+
   function renderGrid() {
     const list = currentList();
     gridEl.innerHTML = list.length
       ? list.map(worksListCard).join("")
       : `<p class="empty-msg">표시할 작품이 없습니다.</p>`;
   }
-  function syncProf() {
-    profEl.querySelectorAll(".prof-side__item").forEach((c) =>
-      c.classList.toggle("is-active", c.dataset.prof === activeProf)
-    );
+
+  function renderSide() {
+    // 순서 고정: 융합 → 혁신
+    sideEl.innerHTML = STUDIO_ORDER
+      .map((key) => {
+        const st = site.studios[key];
+        const isActive = activeStudio === key;
+        const isDim = activeStudio && !isActive;
+        const profs = isActive
+          ? `<ul class="prof-list">${st.professors
+              .map(
+                (p) =>
+                  `<li><button class="prof-item${
+                    activeProf === p ? " is-active" : ""
+                  }" type="button" data-prof="${p}">${p} 교수님</button></li>`
+              )
+              .join("")}</ul>`
+          : "";
+        return `<div class="studio-block${isDim ? " is-dim" : ""}" data-studio="${key}">
+          <button class="studio-cat" type="button" data-studio="${key}">
+            <span class="studio-cat__ko">${st.ko}</span>
+            <span class="studio-cat__en">${st.en}</span>
+          </button>
+          ${profs}
+        </div>`;
+      })
+      .join("");
+
+    // 스튜디오 카테고리 클릭 → 선택/필터
+    sideEl.querySelectorAll(".studio-cat").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const key = btn.dataset.studio;
+        activeStudio = key;
+        activeProf = null; // 스튜디오 변경 시 교수 필터 초기화
+        renderSide();
+        syncDesc();
+        renderGrid();
+      });
+    });
+    // 교수 클릭 → 해당 교수 작품으로 필터
+    sideEl.querySelectorAll(".prof-item").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const p = btn.dataset.prof;
+        activeProf = activeProf === p ? null : p; // 재클릭 시 해제
+        renderSide();
+        renderGrid();
+      });
+    });
   }
-  function syncTabs() {
-    // 미선택(null)이면 둘 다 진하게, 선택 시 해당 탭만
-    tabs.forEach((t) =>
-      t.classList.toggle("is-active", activeStudio === null || t.dataset.studio === activeStudio)
-    );
-  }
+
   function syncDesc() {
-    if (showDesc && activeStudio) {
+    if (activeStudio) {
       descEl.textContent = site.studios[activeStudio].description;
       descEl.hidden = false;
     } else {
@@ -124,40 +160,7 @@ async function initWorks() {
     }
   }
 
-  // 좌측 교수 필터 1회 생성 (전체 + 교수 10)
-  profEl.innerHTML = [{ key: "all", label: "전체" }]
-    .concat(allProfs.map((p) => ({ key: p, label: `${p} 교수님` })))
-    .map(
-      (it) =>
-        `<button class="prof-side__item" type="button" data-prof="${it.key}">${it.label}</button>`
-    )
-    .join("");
-  profEl.querySelectorAll(".prof-side__item").forEach((item) => {
-    item.addEventListener("click", () => {
-      activeProf = item.dataset.prof;
-      activeStudio = null; // 교수 선택 시 스튜디오/설명 해제
-      showDesc = false;
-      syncProf();
-      syncTabs();
-      syncDesc();
-      renderGrid();
-    });
-  });
-
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      activeStudio = tab.dataset.studio;
-      activeProf = "all"; // 스튜디오 선택 시 교수 필터 초기화
-      showDesc = true; // 탭 클릭 시 설명 노출
-      syncProf();
-      syncTabs();
-      syncDesc();
-      renderGrid();
-    });
-  });
-
-  syncProf();
-  syncTabs();
+  renderSide();
   syncDesc();
   renderGrid();
 }
