@@ -208,9 +208,9 @@ async function initDesigners() {
 
   gridEl.innerHTML = designers.map(designerCard).join("");
 
-  filterEl.querySelectorAll(".prof-side__item").forEach((chip) => {
+  filterEl.querySelectorAll(".initial-item").forEach((chip) => {
     chip.addEventListener("click", () => {
-      filterEl.querySelectorAll(".prof-side__item").forEach((c) => c.classList.remove("is-active"));
+      filterEl.querySelectorAll(".initial-item").forEach((c) => c.classList.remove("is-active"));
       chip.classList.add("is-active");
       const init = chip.dataset.initial;
       gridEl.querySelectorAll(".designer-card").forEach((card) => {

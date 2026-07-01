@@ -654,39 +654,35 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 /* ============================================================
-   DESIGNER LIST  (Figma node 2314:2563)
+   DESIGNER LIST  (Figma node 3208:3187)
+   좌측 세로 초성 필터 + 5열 카드 그리드
    ============================================================ */
-/* 초성 필터 칩 */
-.initial-filter {
+/* 좌측 세로 초성 필터 (스티키) */
+.initial-side {
+  flex: 0 0 160px;
+  width: 160px;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  padding: 40px 0 36px;
+  flex-direction: column;
+  gap: 25px;
+  position: sticky;
+  top: calc(var(--header-h) + 24px);
+  align-self: flex-start;
 }
-.ifc {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
+.initial-item {
+  background: none;
+  border: none;
   padding: 0;
-  border: 2px solid #efefef;
-  background: #fff;
-  color: var(--color-muted);
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  text-align: left;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: -0.02em;
+  color: #c4c4c4;
+  transition: color 0.15s ease;
 }
-.ifc--all { width: auto; padding: 0 16px; font-size: 18px; }
-.ifc:hover { border-color: #333; color: #333; }
-.ifc.is-active {
-  background: #333;
-  border-color: #333;
-  color: var(--color-accent);
-}
+.initial-item:hover,
+.initial-item.is-active { color: #121212; }
 
 /* 디자이너 카드 그리드 (5열) */
 .designer-grid {
@@ -695,10 +691,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   column-gap: 24px;
   row-gap: 30px;
 }
-.designer-card { display: flex; flex-direction: column; gap: 20px; cursor: pointer; }
+.designer-card { display: flex; flex-direction: column; gap: 10px; cursor: pointer; }
 .designer-card__thumb {
   width: 100%;
-  aspect-ratio: 210 / 256;
+  aspect-ratio: 193.419 / 235.786;
   border-radius: 0;
   transition: opacity 0.2s ease;
 }
@@ -903,6 +899,9 @@ ul { margin: 0; padding: 0; list-style: none; }
   .studio-cat__en { font-size: 14px; }
   .prof-item { font-size: 18px; }
   .studio-desc { font-size: 16px; line-height: 1.5; margin-bottom: 28px; }
+  /* 초성 필터 → 가로 배치 (스티키 해제) */
+  .initial-side { position: static; flex: none; width: 100%; flex-direction: row; flex-wrap: wrap; gap: 14px 22px; }
+  .initial-item { font-size: 18px; }
   /* DESIGNER DETAIL */
   .dd-profile { flex-direction: column; align-items: flex-start; gap: 32px; }
   .dd-profile__photo-wrap { flex: none; width: 100%; max-width: 384px; }
