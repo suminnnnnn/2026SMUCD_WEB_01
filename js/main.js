@@ -241,12 +241,36 @@ async function initDesignerDetail() {
   root.querySelector(".dd-name__ko").textContent = d.name;
   root.querySelector(".dd-name__roman").textContent = d.nameRoman;
 
-  const igEl = root.querySelector(".js-instagram");
-  igEl.href = `https://instagram.com/${d.instagram.replace("@", "")}`;
-  igEl.textContent = d.instagram;
-  const mailEl = root.querySelector(".js-email");
-  mailEl.href = `mailto:${d.email}`;
-  mailEl.textContent = d.email;
+  // 연락처: instagram / email 은 각각 키 이름으로 읽어오고,
+  // 라벨 + 값을 한 줄씩 짝지어 렌더링한다. instagram 이 비면 그 줄 자체를 그리지 않는다.
+  const labelsEl = root.querySelector(".dd-contact__labels");
+  const valuesEl = root.querySelector(".dd-contact__values");
+  labelsEl.innerHTML = "";
+  valuesEl.innerHTML = "";
+
+  const instagram = (d.instagram || "").trim();
+  if (instagram) {
+    const igLabel = document.createElement("span");
+    igLabel.textContent = "instagram";
+    labelsEl.appendChild(igLabel);
+
+    const igEl = document.createElement("a");
+    igEl.target = "_blank";
+    igEl.rel = "noopener";
+    igEl.href = `https://instagram.com/${instagram.replace("@", "")}`;
+    igEl.textContent = instagram;
+    valuesEl.appendChild(igEl);
+  }
+
+  const email = (d.email || "").trim();
+  const mailLabel = document.createElement("span");
+  mailLabel.textContent = "E-mail";
+  labelsEl.appendChild(mailLabel);
+
+  const mailEl = document.createElement("a");
+  mailEl.href = `mailto:${email}`;
+  mailEl.textContent = email;
+  valuesEl.appendChild(mailEl);
 
   root.querySelector(".dd-intro").textContent = d.intro;
   root.querySelector(".js-interview1").textContent = d.interview1;

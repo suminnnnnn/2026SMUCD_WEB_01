@@ -1,6 +1,7 @@
 [
   {
     "id": "designer-001",
+    "studentId": "202220194",
     "name": "강소현",
     "nameRoman": "Kang Sohyeon",
     "initial": "ㄱ",
@@ -15,6 +16,7 @@
   },
   {
     "id": "designer-002",
+    "studentId": "202320198",
     "name": "강유주",
     "nameRoman": "Kang yuju",
     "initial": "ㄱ",
@@ -29,6 +31,7 @@
   },
   {
     "id": "designer-003",
+    "studentId": "202020183",
     "name": "강제헌",
     "nameRoman": "Jaehun Kang",
     "initial": "ㄱ",
@@ -43,6 +46,7 @@
   },
   {
     "id": "designer-004",
+    "studentId": "202220197",
     "name": "고다은",
     "nameRoman": "Koh Daeun",
     "initial": "ㄱ",
@@ -57,6 +61,7 @@
   },
   {
     "id": "designer-005",
+    "studentId": "202220200",
     "name": "구나영",
     "nameRoman": "Goo Nayoung",
     "initial": "ㄱ",
@@ -71,6 +76,7 @@
   },
   {
     "id": "designer-006",
+    "studentId": "202220201",
     "name": "권가영",
     "nameRoman": "Kwon Gayoung",
     "initial": "ㄱ",
@@ -85,6 +91,7 @@
   },
   {
     "id": "designer-007",
+    "studentId": "202220203",
     "name": "권유선",
     "nameRoman": "Kwon Yuseon",
     "initial": "ㄱ",
@@ -99,6 +106,22 @@
   },
   {
     "id": "designer-008",
+    "studentId": "202220205",
+    "name": "김가연",
+    "nameRoman": "Kim Gayeon",
+    "initial": "ㄱ",
+    "studio": "both",
+    "profileImage": "",
+    "instagram": "@g__rin_",
+    "email": "kkytto44@gmail.com",
+    "intro": "",
+    "interview1": "",
+    "interview2": "",
+    "workIds": []
+  },
+  {
+    "id": "designer-009",
+    "studentId": "202220210",
     "name": "김경우",
     "nameRoman": "Kim gyeong woo",
     "initial": "ㄱ",
@@ -112,7 +135,8 @@
     "workIds": []
   },
   {
-    "id": "designer-009",
+    "id": "designer-010",
+    "studentId": "202320214",
     "name": "김나현",
     "nameRoman": "Kim Na Hyeon",
     "initial": "ㄱ",
@@ -126,7 +150,23 @@
     "workIds": []
   },
   {
-    "id": "designer-010",
+    "id": "designer-011",
+    "studentId": "202220218",
+    "name": "김민지",
+    "nameRoman": "Kim Minji",
+    "initial": "ㄱ",
+    "studio": "both",
+    "profileImage": "",
+    "instagram": "@keemeenzee",
+    "email": "keemeenzee@gmail.com",
+    "intro": "",
+    "interview1": "",
+    "interview2": "",
+    "workIds": []
+  },
+  {
+    "id": "designer-012",
+    "studentId": "202320219",
     "name": "김서영",
     "nameRoman": "Kim Seoyeong",
     "initial": "ㄱ",
@@ -140,7 +180,8 @@
     "workIds": []
   },
   {
-    "id": "designer-011",
+    "id": "designer-013",
+    "studentId": "202120226",
     "name": "김서윤",
     "nameRoman": "Kim Seoyun",
     "initial": "ㄱ",
@@ -154,7 +195,8 @@
     "workIds": []
   },
   {
-    "id": "designer-012",
+    "id": "designer-014",
+    "studentId": "202220222",
     "name": "김수연",
     "nameRoman": "Kim Suyeon",
     "initial": "ㄱ",
@@ -168,7 +210,8 @@
     "workIds": []
   },
   {
-    "id": "designer-013",
+    "id": "designer-015",
+    "studentId": "202220223",
     "name": "김수연",
     "nameRoman": "Kim Suyeon",
     "initial": "ㄱ",
@@ -182,7 +225,8 @@
     "workIds": []
   },
   {
-    "id": "designer-014",
+    "id": "designer-016",
+    "studentId": "202320230",
     "name": "김예원",
     "nameRoman": "Kim Yewon",
     "initial": "ㄱ",
@@ -196,7 +240,8 @@
     "workIds": []
   },
   {
-    "id": "designer-015",
+    "id": "designer-017",
+    "studentId": "202320033",
     "name": "김예원",
     "nameRoman": "Kim yewon",
     "initial": "ㄱ",
@@ -210,7 +255,8 @@
     "workIds": []
   },
   {
-    "id": "designer-016",
+    "id": "designer-018",
+    "studentId": "202121457",
     "name": "김유빈",
     "nameRoman": "Kim Yoobin",
     "initial": "ㄱ",
@@ -224,7 +270,8 @@
     "workIds": []
   },
   {
-    "id": "designer-017",
+    "id": "designer-019",
+    "studentId": "202220231",
     "name": "김윤지",
     "nameRoman": "Kim Yunji",
     "initial": "ㄱ",
@@ -238,7 +285,8 @@
     "workIds": []
   },
   {
-    "id": "designer-018",
+    "id": "designer-020",
+    "studentId": "202220232",
     "name": "김은빈",
     "nameRoman": "Kim Eunbin",
     "initial": "ㄱ",
@@ -252,7 +300,8 @@
     "workIds": []
   },
   {
-    "id": "designer-019",
+    "id": "designer-021",
+    "studentId": "202020408",
     "name": "김채연",
     "nameRoman": "Kim Chaeyeon",
     "initial": "ㄱ",
@@ -266,7 +315,8 @@
     "workIds": []
   },
   {
-    "id": "designer-020",
+    "id": "designer-022",
+    "studentId": "202120243",
     "name": "김태운",
     "nameRoman": "Kim Tae Un",
     "initial": "ㄱ",
@@ -280,7 +330,8 @@
     "workIds": []
   },
   {
-    "id": "designer-021",
+    "id": "designer-023",
+    "studentId": "202220242",
     "name": "김하은",
     "nameRoman": "Kim Haeun",
     "initial": "ㄱ",
@@ -294,7 +345,8 @@
     "workIds": []
   },
   {
-    "id": "designer-022",
+    "id": "designer-024",
+    "studentId": "202220253",
     "name": "남예빈",
     "nameRoman": "Nam Yebin",
     "initial": "ㄴ",
@@ -308,7 +360,8 @@
     "workIds": []
   },
   {
-    "id": "designer-023",
+    "id": "designer-025",
+    "studentId": "202220255",
     "name": "남현지",
     "nameRoman": "Nam Hyeonji",
     "initial": "ㄴ",
@@ -322,7 +375,8 @@
     "workIds": []
   },
   {
-    "id": "designer-024",
+    "id": "designer-026",
+    "studentId": "202320253",
     "name": "노성은",
     "nameRoman": "Noh Seongeun",
     "initial": "ㄴ",
@@ -336,7 +390,8 @@
     "workIds": []
   },
   {
-    "id": "designer-025",
+    "id": "designer-027",
+    "studentId": "202321452",
     "name": "노은서",
     "nameRoman": "Noh Eunseo",
     "initial": "ㄴ",
@@ -350,7 +405,8 @@
     "workIds": []
   },
   {
-    "id": "designer-026",
+    "id": "designer-028",
+    "studentId": "202120253",
     "name": "도미래",
     "nameRoman": "Do Mi Rae",
     "initial": "ㄷ",
@@ -364,7 +420,8 @@
     "workIds": []
   },
   {
-    "id": "designer-027",
+    "id": "designer-029",
+    "studentId": "202120257",
     "name": "류정서",
     "nameRoman": "Ryu Jeongseo",
     "initial": "ㄹ",
@@ -378,7 +435,8 @@
     "workIds": []
   },
   {
-    "id": "designer-028",
+    "id": "designer-030",
+    "studentId": "202220261",
     "name": "박신영",
     "nameRoman": "Park Shinyoung",
     "initial": "ㅂ",
@@ -392,7 +450,8 @@
     "workIds": []
   },
   {
-    "id": "designer-029",
+    "id": "designer-031",
+    "studentId": "202221446",
     "name": "박정현",
     "nameRoman": "Park Jeonghyun",
     "initial": "ㅂ",
@@ -406,7 +465,8 @@
     "workIds": []
   },
   {
-    "id": "designer-030",
+    "id": "designer-032",
+    "studentId": "202220266",
     "name": "박지원",
     "nameRoman": "Park jiwon",
     "initial": "ㅂ",
@@ -420,7 +480,8 @@
     "workIds": []
   },
   {
-    "id": "designer-031",
+    "id": "designer-033",
+    "studentId": "202220267",
     "name": "박진슬",
     "nameRoman": "Park Jinsle",
     "initial": "ㅂ",
@@ -434,7 +495,8 @@
     "workIds": []
   },
   {
-    "id": "designer-032",
+    "id": "designer-034",
+    "studentId": "202020259",
     "name": "박찬민",
     "nameRoman": "Park Chanmin",
     "initial": "ㅂ",
@@ -448,7 +510,8 @@
     "workIds": []
   },
   {
-    "id": "designer-033",
+    "id": "designer-035",
+    "studentId": "202120285",
     "name": "박창선",
     "nameRoman": "Park Changsun",
     "initial": "ㅂ",
@@ -462,7 +525,8 @@
     "workIds": []
   },
   {
-    "id": "designer-034",
+    "id": "designer-036",
+    "studentId": "202220269",
     "name": "박향은",
     "nameRoman": "Park Hyangeun",
     "initial": "ㅂ",
@@ -476,7 +540,8 @@
     "workIds": []
   },
   {
-    "id": "designer-035",
+    "id": "designer-037",
+    "studentId": "202220272",
     "name": "배세은",
     "nameRoman": "Bae Seeun",
     "initial": "ㅂ",
@@ -490,7 +555,8 @@
     "workIds": []
   },
   {
-    "id": "designer-036",
+    "id": "designer-038",
+    "studentId": "202120294",
     "name": "백진우",
     "nameRoman": "Baek Jinwoo",
     "initial": "ㅂ",
@@ -504,7 +570,8 @@
     "workIds": []
   },
   {
-    "id": "designer-037",
+    "id": "designer-039",
+    "studentId": "202220275",
     "name": "변유경",
     "nameRoman": "Byeon Yoogyung",
     "initial": "ㅂ",
@@ -518,7 +585,8 @@
     "workIds": []
   },
   {
-    "id": "designer-038",
+    "id": "designer-040",
+    "studentId": "202320287",
     "name": "성혜지",
     "nameRoman": "Seong Hyeji",
     "initial": "ㅅ",
@@ -532,7 +600,8 @@
     "workIds": []
   },
   {
-    "id": "designer-039",
+    "id": "designer-041",
+    "studentId": "202220280",
     "name": "손예진",
     "nameRoman": "Son Yeajin",
     "initial": "ㅅ",
@@ -546,7 +615,23 @@
     "workIds": []
   },
   {
-    "id": "designer-040",
+    "id": "designer-042",
+    "studentId": "202320290",
+    "name": "송지영",
+    "nameRoman": "Song Jiyeong",
+    "initial": "ㅅ",
+    "studio": "both",
+    "profileImage": "",
+    "instagram": "",
+    "email": "jiyeong-song@naver.com",
+    "intro": "",
+    "interview1": "",
+    "interview2": "",
+    "workIds": []
+  },
+  {
+    "id": "designer-043",
+    "studentId": "202321453",
     "name": "신지호",
     "nameRoman": "Shin Jiho",
     "initial": "ㅅ",
@@ -560,7 +645,8 @@
     "workIds": []
   },
   {
-    "id": "designer-041",
+    "id": "designer-044",
+    "studentId": "202220291",
     "name": "신지희",
     "nameRoman": "Shin Jihee",
     "initial": "ㅅ",
@@ -574,7 +660,8 @@
     "workIds": []
   },
   {
-    "id": "designer-042",
+    "id": "designer-045",
+    "studentId": "202220293",
     "name": "심소희",
     "nameRoman": "Sim Sohee",
     "initial": "ㅅ",
@@ -588,7 +675,8 @@
     "workIds": []
   },
   {
-    "id": "designer-043",
+    "id": "designer-046",
+    "studentId": "202220295",
     "name": "안수연",
     "nameRoman": "Ann Sueyeon",
     "initial": "ㅇ",
@@ -602,7 +690,8 @@
     "workIds": []
   },
   {
-    "id": "designer-044",
+    "id": "designer-047",
+    "studentId": "202321582",
     "name": "양다희",
     "nameRoman": "Yang Dahee",
     "initial": "ㅇ",
@@ -616,7 +705,8 @@
     "workIds": []
   },
   {
-    "id": "designer-045",
+    "id": "designer-048",
+    "studentId": "202220299",
     "name": "양서윤",
     "nameRoman": "Yang Seoyun",
     "initial": "ㅇ",
@@ -630,7 +720,8 @@
     "workIds": []
   },
   {
-    "id": "designer-046",
+    "id": "designer-049",
+    "studentId": "202220300",
     "name": "양유정",
     "nameRoman": "Yang Yujeong",
     "initial": "ㅇ",
@@ -644,13 +735,14 @@
     "workIds": []
   },
   {
-    "id": "designer-047",
+    "id": "designer-050",
+    "studentId": "202220301",
     "name": "엄연진",
     "nameRoman": "Eom Yeonjin",
     "initial": "ㅇ",
     "studio": "both",
     "profileImage": "",
-    "instagram": "@없음",
+    "instagram": "",
     "email": "anna020809@naver.com",
     "intro": "",
     "interview1": "",
@@ -658,7 +750,8 @@
     "workIds": []
   },
   {
-    "id": "designer-048",
+    "id": "designer-051",
+    "studentId": "202321454",
     "name": "오가인",
     "nameRoman": "Oh Gain",
     "initial": "ㅇ",
@@ -672,7 +765,8 @@
     "workIds": []
   },
   {
-    "id": "designer-049",
+    "id": "designer-052",
+    "studentId": "202120315",
     "name": "오다윤",
     "nameRoman": "Oh Dayun",
     "initial": "ㅇ",
@@ -686,7 +780,8 @@
     "workIds": []
   },
   {
-    "id": "designer-050",
+    "id": "designer-053",
+    "studentId": "202320310",
     "name": "오다인",
     "nameRoman": "Oh Dain",
     "initial": "ㅇ",
@@ -700,7 +795,8 @@
     "workIds": []
   },
   {
-    "id": "designer-051",
+    "id": "designer-054",
+    "studentId": "202320312",
     "name": "오아윤",
     "nameRoman": "O Ayun",
     "initial": "ㅇ",
@@ -714,7 +810,8 @@
     "workIds": []
   },
   {
-    "id": "designer-052",
+    "id": "designer-055",
+    "studentId": "202220305",
     "name": "오채은",
     "nameRoman": "Oh Chaeeun",
     "initial": "ㅇ",
@@ -728,7 +825,8 @@
     "workIds": []
   },
   {
-    "id": "designer-053",
+    "id": "designer-056",
+    "studentId": "202120316",
     "name": "용희원",
     "nameRoman": "Yong Heewon",
     "initial": "ㅇ",
@@ -742,7 +840,8 @@
     "workIds": []
   },
   {
-    "id": "designer-054",
+    "id": "designer-057",
+    "studentId": "202220315",
     "name": "윤수정",
     "nameRoman": "Yun Sujeong",
     "initial": "ㅇ",
@@ -756,7 +855,8 @@
     "workIds": []
   },
   {
-    "id": "designer-055",
+    "id": "designer-058",
+    "studentId": "202120324",
     "name": "윤지선",
     "nameRoman": "Yoon Jiseon",
     "initial": "ㅇ",
@@ -770,7 +870,23 @@
     "workIds": []
   },
   {
-    "id": "designer-056",
+    "id": "designer-059",
+    "studentId": "202120328",
+    "name": "이다빈",
+    "nameRoman": "Lee Dabin",
+    "initial": "ㅇ",
+    "studio": "both",
+    "profileImage": "",
+    "instagram": "@treefrogiin",
+    "email": "0000008f15@gmail.com",
+    "intro": "",
+    "interview1": "",
+    "interview2": "",
+    "workIds": []
+  },
+  {
+    "id": "designer-060",
+    "studentId": "202220324",
     "name": "이수연",
     "nameRoman": "Lee Suyeon",
     "initial": "ㅇ",
@@ -784,7 +900,8 @@
     "workIds": []
   },
   {
-    "id": "designer-057",
+    "id": "designer-061",
+    "studentId": "202221495",
     "name": "이수현",
     "nameRoman": "Lee Suhyun",
     "initial": "ㅇ",
@@ -798,7 +915,8 @@
     "workIds": []
   },
   {
-    "id": "designer-058",
+    "id": "designer-062",
+    "studentId": "202321455",
     "name": "이승은",
     "nameRoman": "Lee Seungeun",
     "initial": "ㅇ",
@@ -812,13 +930,14 @@
     "workIds": []
   },
   {
-    "id": "designer-059",
+    "id": "designer-063",
+    "studentId": "202020309",
     "name": "이승주",
     "nameRoman": "Lee Seung Ju",
     "initial": "ㅇ",
     "studio": "both",
     "profileImage": "",
-    "instagram": "@없습니다",
+    "instagram": "",
     "email": "wndi135@naver.com",
     "intro": "",
     "interview1": "",
@@ -826,7 +945,8 @@
     "workIds": []
   },
   {
-    "id": "designer-060",
+    "id": "designer-064",
+    "studentId": "202220325",
     "name": "이아린",
     "nameRoman": "Lee A Rin",
     "initial": "ㅇ",
@@ -840,7 +960,23 @@
     "workIds": []
   },
   {
-    "id": "designer-061",
+    "id": "designer-065",
+    "studentId": "202321456",
+    "name": "이예리",
+    "nameRoman": "Lee Yeri",
+    "initial": "ㅇ",
+    "studio": "both",
+    "profileImage": "",
+    "instagram": "@iroun_daisy",
+    "email": "ydesignstudio@naver.com",
+    "intro": "",
+    "interview1": "",
+    "interview2": "",
+    "workIds": []
+  },
+  {
+    "id": "designer-066",
+    "studentId": "202221496",
     "name": "이원우",
     "nameRoman": "Lee Wonwoo",
     "initial": "ㅇ",
@@ -854,7 +990,8 @@
     "workIds": []
   },
   {
-    "id": "designer-062",
+    "id": "designer-067",
+    "studentId": "202120335",
     "name": "이유리",
     "nameRoman": "Lee Youlee",
     "initial": "ㅇ",
@@ -868,7 +1005,8 @@
     "workIds": []
   },
   {
-    "id": "designer-063",
+    "id": "designer-068",
+    "studentId": "202120336",
     "name": "이유미",
     "nameRoman": "Lee Yumi",
     "initial": "ㅇ",
@@ -882,7 +1020,8 @@
     "workIds": []
   },
   {
-    "id": "designer-064",
+    "id": "designer-069",
+    "studentId": "202220329",
     "name": "이유진",
     "nameRoman": "Lee Yujin",
     "initial": "ㅇ",
@@ -896,13 +1035,29 @@
     "workIds": []
   },
   {
-    "id": "designer-065",
+    "id": "designer-070",
+    "studentId": "201990028",
+    "name": "이이몽",
+    "nameRoman": "Li Yimeng",
+    "initial": "ㅇ",
+    "studio": "both",
+    "profileImage": "",
+    "instagram": "@Meng",
+    "email": "2647299089@qq.com",
+    "intro": "",
+    "interview1": "",
+    "interview2": "",
+    "workIds": []
+  },
+  {
+    "id": "designer-071",
+    "studentId": "202120342",
     "name": "이재훈",
     "nameRoman": "Lee jaehun",
     "initial": "ㅇ",
     "studio": "both",
     "profileImage": "",
-    "instagram": "@X",
+    "instagram": "",
     "email": "hun235678@gmail.com",
     "intro": "",
     "interview1": "",
@@ -910,7 +1065,8 @@
     "workIds": []
   },
   {
-    "id": "designer-066",
+    "id": "designer-072",
+    "studentId": "202320343",
     "name": "이지원",
     "nameRoman": "Lee Jiwon",
     "initial": "ㅇ",
@@ -924,7 +1080,8 @@
     "workIds": []
   },
   {
-    "id": "designer-067",
+    "id": "designer-073",
+    "studentId": "202220336",
     "name": "이채민",
     "nameRoman": "Lee Chemin",
     "initial": "ㅇ",
@@ -938,7 +1095,8 @@
     "workIds": []
   },
   {
-    "id": "designer-068",
+    "id": "designer-074",
+    "studentId": "202220337",
     "name": "이채연",
     "nameRoman": "Lee Chaeyeon",
     "initial": "ㅇ",
@@ -952,7 +1110,23 @@
     "workIds": []
   },
   {
-    "id": "designer-069",
+    "id": "designer-075",
+    "studentId": "202320347",
+    "name": "이채현",
+    "nameRoman": "Lee Chae Hyun",
+    "initial": "ㅇ",
+    "studio": "both",
+    "profileImage": "",
+    "instagram": "@chaen.__.ee",
+    "email": "lch06068501@gmail.com",
+    "intro": "",
+    "interview1": "",
+    "interview2": "",
+    "workIds": []
+  },
+  {
+    "id": "designer-076",
+    "studentId": "202320357",
     "name": "임현아",
     "nameRoman": "Lim Hyuna",
     "initial": "ㅇ",
@@ -966,7 +1140,8 @@
     "workIds": []
   },
   {
-    "id": "designer-070",
+    "id": "designer-077",
+    "studentId": "202320359",
     "name": "임효령",
     "nameRoman": "Lim Hyolyeong",
     "initial": "ㅇ",
@@ -980,7 +1155,8 @@
     "workIds": []
   },
   {
-    "id": "designer-071",
+    "id": "designer-078",
+    "studentId": "202320365",
     "name": "전가현",
     "nameRoman": "Jeon Gahyeon",
     "initial": "ㅈ",
@@ -994,7 +1170,8 @@
     "workIds": []
   },
   {
-    "id": "designer-072",
+    "id": "designer-079",
+    "studentId": "202320367",
     "name": "전아현",
     "nameRoman": "Jeon A Hyun",
     "initial": "ㅈ",
@@ -1008,7 +1185,8 @@
     "workIds": []
   },
   {
-    "id": "designer-073",
+    "id": "designer-080",
+    "studentId": "202220353",
     "name": "정수민",
     "nameRoman": "Jeong Sumin",
     "initial": "ㅈ",
@@ -1022,7 +1200,8 @@
     "workIds": []
   },
   {
-    "id": "designer-074",
+    "id": "designer-081",
+    "studentId": "202120376",
     "name": "정준영",
     "nameRoman": "Jeong Junyeong",
     "initial": "ㅈ",
@@ -1036,7 +1215,8 @@
     "workIds": []
   },
   {
-    "id": "designer-075",
+    "id": "designer-082",
+    "studentId": "202220364",
     "name": "조세령",
     "nameRoman": "Cho Seryeong",
     "initial": "ㅈ",
@@ -1050,7 +1230,8 @@
     "workIds": []
   },
   {
-    "id": "designer-076",
+    "id": "designer-083",
+    "studentId": "202220366",
     "name": "조예은",
     "nameRoman": "Cho Yeeun",
     "initial": "ㅈ",
@@ -1064,7 +1245,8 @@
     "workIds": []
   },
   {
-    "id": "designer-077",
+    "id": "designer-084",
+    "studentId": "202220373",
     "name": "조창완",
     "nameRoman": "Cho Chang Wan",
     "initial": "ㅈ",
@@ -1078,7 +1260,8 @@
     "workIds": []
   },
   {
-    "id": "designer-078",
+    "id": "designer-085",
+    "studentId": "202320382",
     "name": "조하란",
     "nameRoman": "Jo Haran",
     "initial": "ㅈ",
@@ -1092,7 +1275,23 @@
     "workIds": []
   },
   {
-    "id": "designer-079",
+    "id": "designer-086",
+    "studentId": "20220375",
+    "name": "조현진",
+    "nameRoman": "Jo Hyeonjin",
+    "initial": "ㅈ",
+    "studio": "both",
+    "profileImage": "",
+    "instagram": "@hx9raphic",
+    "email": "hjo24877@gmail.com",
+    "intro": "",
+    "interview1": "",
+    "interview2": "",
+    "workIds": []
+  },
+  {
+    "id": "designer-087",
+    "studentId": "202220382",
     "name": "최경원",
     "nameRoman": "Choi Kyoungwon",
     "initial": "ㅊ",
@@ -1106,7 +1305,8 @@
     "workIds": []
   },
   {
-    "id": "designer-080",
+    "id": "designer-088",
+    "studentId": "202220384",
     "name": "최다솜",
     "nameRoman": "Choi Dasom",
     "initial": "ㅊ",
@@ -1120,7 +1320,8 @@
     "workIds": []
   },
   {
-    "id": "designer-081",
+    "id": "designer-089",
+    "studentId": "202120391",
     "name": "최동환",
     "nameRoman": "Choi Donghwan",
     "initial": "ㅊ",
@@ -1134,7 +1335,8 @@
     "workIds": []
   },
   {
-    "id": "designer-082",
+    "id": "designer-090",
+    "studentId": "202220385",
     "name": "최민서",
     "nameRoman": "Choi MinSeo",
     "initial": "ㅊ",
@@ -1148,7 +1350,8 @@
     "workIds": []
   },
   {
-    "id": "designer-083",
+    "id": "designer-091",
+    "studentId": "202220386",
     "name": "최서연",
     "nameRoman": "Seoyeon Choi",
     "initial": "ㅊ",
@@ -1162,7 +1365,8 @@
     "workIds": []
   },
   {
-    "id": "designer-084",
+    "id": "designer-092",
+    "studentId": "202220389",
     "name": "최수빈",
     "nameRoman": "Choi Soobin",
     "initial": "ㅊ",
@@ -1176,7 +1380,8 @@
     "workIds": []
   },
   {
-    "id": "designer-085",
+    "id": "designer-093",
+    "studentId": "202220391",
     "name": "최어진",
     "nameRoman": "Choe Eojin",
     "initial": "ㅊ",
@@ -1190,7 +1395,8 @@
     "workIds": []
   },
   {
-    "id": "designer-086",
+    "id": "designer-094",
+    "studentId": "202220392",
     "name": "최연정",
     "nameRoman": "Choi Yeonjeong",
     "initial": "ㅊ",
@@ -1204,7 +1410,8 @@
     "workIds": []
   },
   {
-    "id": "designer-087",
+    "id": "designer-095",
+    "studentId": "202320397",
     "name": "최은서",
     "nameRoman": "Choi Eunseo",
     "initial": "ㅊ",
@@ -1218,7 +1425,8 @@
     "workIds": []
   },
   {
-    "id": "designer-088",
+    "id": "designer-096",
+    "studentId": "202320401",
     "name": "최정혜",
     "nameRoman": "Choi Junghye",
     "initial": "ㅊ",
@@ -1232,7 +1440,8 @@
     "workIds": []
   },
   {
-    "id": "designer-089",
+    "id": "designer-097",
+    "studentId": "202220398",
     "name": "최지이",
     "nameRoman": "Choi Jii",
     "initial": "ㅊ",
@@ -1246,7 +1455,23 @@
     "workIds": []
   },
   {
-    "id": "designer-090",
+    "id": "designer-098",
+    "studentId": "202220403",
+    "name": "한은지",
+    "nameRoman": "Han Eunji",
+    "initial": "ㅎ",
+    "studio": "both",
+    "profileImage": "",
+    "instagram": "@haxexxji_",
+    "email": "eun100475@gmail.com",
+    "intro": "",
+    "interview1": "",
+    "interview2": "",
+    "workIds": []
+  },
+  {
+    "id": "designer-099",
+    "studentId": "202220405",
     "name": "허정아",
     "nameRoman": "Heo Jeong A",
     "initial": "ㅎ",
@@ -1260,7 +1485,8 @@
     "workIds": []
   },
   {
-    "id": "designer-091",
+    "id": "designer-100",
+    "studentId": "202320413",
     "name": "황지은",
     "nameRoman": "Hwang Jieun",
     "initial": "ㅎ",
