@@ -3,88 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Designer — 제39회 졸업전시</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>2026 상명대학교 커뮤니케이션디자인전공 졸업전시 — Designer</title>
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/designer.css" />
 </head>
 <body data-page="designer">
+  <div class="hp">
 
-  <!-- ===== HEADER (전 페이지 동일) ===== -->
-  <header class="site-header">
-    <div class="container site-header__inner">
-      <a class="brand" href="index.html">
-        <span class="brand__logo">39th</span>
-        <span class="brand__text">
-          <strong>상명대학교</strong><br />
-          커뮤니케이션디자인학과<br />
-          제 39회 졸업전시회
+    <!-- ================= HEADER (홈과 동일) ================= -->
+    <header class="hp-header">
+      <a class="hp-brand" href="index.html">
+        <span class="hp-brand__logo" aria-hidden="true"></span>
+        <span class="hp-brand__text">
+          상명대학교<br />커뮤니케이션디자인학과<br />제 39회 졸업전시회
         </span>
       </a>
-      <nav class="main-nav">
-        <a href="index.html" data-nav="home">Home</a>
-        <a href="works.html" data-nav="works">Works</a>
-        <a href="designer.html" data-nav="designer">Designer</a>
-        <a href="archive.html" data-nav="archive">Archive</a>
+      <nav class="hp-nav main-nav" id="hp-nav">
+        <a data-nav="home" href="index.html">Home</a>
+        <a data-nav="works" href="works.html">Works</a>
+        <a data-nav="designer" class="is-active" href="designer.html">Designer</a>
+        <a data-nav="archive" href="archive.html">Archive</a>
       </nav>
-    </div>
-  </header>
+      <button class="hp-hamburger hide-d hide-t" id="hp-menu-btn" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
 
-  <main>
-    <div class="works-shell">
-      <div class="works-body">
-        <!-- 좌측 세로 초성 필터 (스티키) -->
-        <aside class="initial-side" id="initial-filter">
-          <button class="initial-item is-active" type="button" data-initial="all">전체</button>
-          <button class="initial-item" type="button" data-initial="ㄱ">ㄱ</button>
-          <button class="initial-item" type="button" data-initial="ㄴ">ㄴ</button>
-          <button class="initial-item" type="button" data-initial="ㄷ">ㄷ</button>
-          <button class="initial-item" type="button" data-initial="ㄹ">ㄹ</button>
-          <button class="initial-item" type="button" data-initial="ㅁ">ㅁ</button>
-          <button class="initial-item" type="button" data-initial="ㅂ">ㅂ</button>
-          <button class="initial-item" type="button" data-initial="ㅅ">ㅅ</button>
-          <button class="initial-item" type="button" data-initial="ㅇ">ㅇ</button>
-          <button class="initial-item" type="button" data-initial="ㅈ">ㅈ</button>
-          <button class="initial-item" type="button" data-initial="ㅊ">ㅊ</button>
-          <button class="initial-item" type="button" data-initial="ㅋ">ㅋ</button>
-          <button class="initial-item" type="button" data-initial="ㅌ">ㅌ</button>
-          <button class="initial-item" type="button" data-initial="ㅍ">ㅍ</button>
-          <button class="initial-item" type="button" data-initial="ㅎ">ㅎ</button>
-        </aside>
+    <!-- ================= BODY ================= -->
+    <div class="dz-body">
 
-        <!-- 학생 카드 그리드 (5열) -->
-        <div class="works-main">
-          <div id="designer-grid" class="designer-grid"></div>
+      <!-- 초성 필터 (데스크탑: 좌측 세로 · 태블릿/모바일: 상단 chips) -->
+      <aside class="dz-side">
+        <p class="dz-side__title hide-d hide-t">DESIGNER</p>
+        <div class="dz-filter" id="dz-filter">
+          <button class="dz-chip is-active" type="button" data-initial="all">전체</button>
+          <button class="dz-chip" type="button" data-initial="ㄱ">ㄱ</button>
+          <button class="dz-chip" type="button" data-initial="ㄴ">ㄴ</button>
+          <button class="dz-chip" type="button" data-initial="ㄷ">ㄷ</button>
+          <button class="dz-chip" type="button" data-initial="ㄹ">ㄹ</button>
+          <button class="dz-chip" type="button" data-initial="ㅁ">ㅁ</button>
+          <button class="dz-chip" type="button" data-initial="ㅂ">ㅂ</button>
+          <button class="dz-chip" type="button" data-initial="ㅅ">ㅅ</button>
+          <button class="dz-chip" type="button" data-initial="ㅇ">ㅇ</button>
+          <button class="dz-chip" type="button" data-initial="ㅈ">ㅈ</button>
+          <button class="dz-chip" type="button" data-initial="ㅊ">ㅊ</button>
+          <button class="dz-chip" type="button" data-initial="ㅋ">ㅋ</button>
+          <button class="dz-chip" type="button" data-initial="ㅌ">ㅌ</button>
+          <button class="dz-chip" type="button" data-initial="ㅍ">ㅍ</button>
+          <button class="dz-chip" type="button" data-initial="ㅎ">ㅎ</button>
         </div>
-      </div>
-    </div>
-  </main>
+      </aside>
 
-  <!-- ===== FOOTER (전 페이지 동일) ===== -->
-  <footer class="site-footer">
-    <div class="container site-footer__inner">
-      <div class="footer-brand">
-        <p>2026 상명대학교<br />커뮤니케이션디자인전공 졸업전시</p>
-        <p class="footer-brand__theme">지우고, 다시 쓰고, 반복하는</p>
+      <!-- 디자이너 카드 그리드 -->
+      <div class="dz-grid" id="dz-grid"></div>
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER (홈과 동일) ================= -->
+  <footer class="hp-footer">
+    <div class="hp-footer__inner">
+      <div class="hp-footer__brand">
+        <p>2026 상명대학교</p>
+        <p>커뮤니케이션디자인전공 졸업전시</p>
+        <p class="hide-t hide-m">경험을 저장하다 : 나만의 플레이리스트</p>
+        <p class="hide-d hide-m">지우고, 다시 쓰고, 반복하는</p>
+        <p class="hide-d hide-t">경험을 저장하다 - 나만의 플레이리스트</p>
       </div>
-      <div class="footer-info">
-        <dl>
-          <dt>전시 기간</dt>
+      <dl class="hp-footer__info">
+        <div class="hp-footer__row">
+          <dt><span class="hide-m">전시 기간</span><span class="hide-d hide-t">전시오프닝</span></dt>
           <dd>2026. 10. 21 ~ 2026. 10. 27 10:00 ~ 19:00</dd>
-        </dl>
-        <dl>
+        </div>
+        <div class="hp-footer__row">
           <dt>전시장 위치</dt>
           <dd>마루아트센터 - 서울 종로구 인사동길 35-6<br />1관, 2관, 3관, 그랜드관, 5관</dd>
-        </dl>
-        <dl>
+        </div>
+        <div class="hp-footer__row">
           <dt>인스타그램</dt>
           <dd><a href="https://instagram.com/smucd2026" target="_blank" rel="noopener">@smucd2026</a></dd>
-        </dl>
-      </div>
-    </div>
-    <div class="site-footer__bottom">
-      <div class="container">© 2026 SMU Communication Design · 제39회 졸업전시</div>
+        </div>
+      </dl>
+      <a class="hp-footer__prev hide-d hide-t" href="#">이전 졸업전시 사이트</a>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      var grid = document.getElementById("dz-grid");
+      var chips = document.querySelectorAll(".dz-chip");
+      var all = [];
+      var active = "all";
+
+      function thumb(src, alt) {
+        var safe = (alt || "").replace(/"/g, "&quot;");
+        var img = src
+          ? '<img src="' + src + '" alt="' + safe + '" loading="lazy" onerror="this.remove()">'
+          : "";
+        return '<span class="dz-card__thumb hp-ph">' + img + "</span>";
+      }
+      function card(d) {
+        return (
+          '<a class="dz-card" href="designer-detail.html?id=' + d.id + '" data-initial="' + (d.initial || "") + '">' +
+          thumb(d.profileImage, d.name) +
+          '<span class="dz-card__info">' +
+          '<span class="dz-card__name">' + d.name + "</span>" +
+          '<span class="dz-card__roman">' + (d.nameRoman || "") + "</span>" +
+          "</span></a>"
+        );
+      }
+      function render() {
+        var list = active === "all" ? all : all.filter(function (d) { return d.initial === active; });
+        grid.innerHTML = list.length
+          ? list.map(card).join("")
+          : '<p class="dz-empty">표시할 디자이너가 없습니다.</p>';
+      }
+
+      fetch("data/designers.json")
+        .then(function (r) { return r.json(); })
+        .then(function (data) { all = data; render(); })
+        .catch(function () { grid.innerHTML = '<p class="dz-empty">데이터를 불러오지 못했습니다.</p>'; });
+
+      chips.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          chips.forEach(function (b) { b.classList.remove("is-active"); });
+          btn.classList.add("is-active");
+          active = btn.dataset.initial || "all";
+          render();
+        });
+      });
+
+      var hb = document.getElementById("hp-menu-btn");
+      var nav = document.getElementById("hp-nav");
+      if (hb && nav) {
+        hb.addEventListener("click", function () {
+          var open = nav.classList.toggle("is-open");
+          hb.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

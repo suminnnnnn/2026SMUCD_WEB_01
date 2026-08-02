@@ -7,15 +7,17 @@
 
 /* ---------- Design tokens ---------- */
 :root {
-  --color-ink: #111111;          /* 본문 먹색 */
+  /* Figma Grayscale 시스템 (G3~G12) */
+  --color-ink: #171717;          /* 본문/값 (Grayscale-12) */
+  --color-g10: #333333;          /* 본문 보조 (Grayscale-10) */
   --color-sub: #b3b3b3;          /* 비활성/보조 */
   --color-line: #e5e5e5;         /* 구분선 */
   --color-bg: #ffffff;
   --color-dark: #171717;         /* 푸터 배경 (Figma) */
   --color-accent: #ddff8e;       /* 라임 강조 (포스터 color1) */
-  --color-placeholder: #d9d9d9;  /* 이미지 자리 (Figma #D9D9D9) */
-  --color-brand: #242424;        /* 헤더 브랜드 텍스트 */
-  --color-muted: #8b8b8b;        /* 라벨/영문 보조 (Figma) */
+  --color-placeholder: #dfdfdf;  /* 이미지 자리 (Figma Grayscale-3 #DFDFDF) */
+  --color-brand: #242424;        /* 헤더 브랜드 텍스트 (Grayscale-11) */
+  --color-muted: #8b8b8b;        /* 라벨/영문 보조 (Grayscale-6) */
   --color-nav-off: #d9d9d9;      /* 비활성 내비 */
   --color-line3: #ef6d01;        /* 3호선 배지 */
 
@@ -277,16 +279,16 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .home-layout {
   display: grid;
-  grid-template-columns: 512px minmax(0, 1fr);
-  gap: 63px;
-  align-items: stretch;
+  grid-template-columns: 433px minmax(0, 1fr);
+  gap: 107px;
+  align-items: start;
 }
 
-/* 좌측 세로 이미지 레일 */
+/* 좌측 상단 포스터 1장 (Figma Rectangle 3026 · 433×646) */
 .home-rail { display: flex; flex-direction: column; gap: 40px; }
 .home-rail .ph { width: 100%; border-radius: 0; }
-.home-rail .ph:first-child { aspect-ratio: 512 / 600; }
-.home-rail .ph:last-child { flex: 1 1 auto; min-height: 900px; }
+.home-rail .ph:first-child { aspect-ratio: 433 / 646; }
+.home-rail .ph:last-child { display: none; }
 
 /* 우측 콘텐츠 컬럼 */
 .home-content { min-width: 0; }
@@ -299,42 +301,42 @@ ul { margin: 0; padding: 0; list-style: none; }
   gap: 24px;
 }
 .hero-title {
-  font-size: 36px;
-  font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  font-size: 38px;            /* Desktop/D-D2 */
+  font-weight: 700;
+  line-height: 48px;
+  letter-spacing: -0.02em;
   color: #000;
   margin: 0;
 }
 .hero-desc {
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.5;
+  font-size: 24px;            /* Desktop/D-H1 */
+  font-weight: 500;
+  line-height: 34px;
   letter-spacing: -0.02em;
-  color: #333;
-  margin: 40px 0 0;
-  max-width: 785px;
+  color: var(--color-g10);
+  margin: 30px 0 0;
+  max-width: 740px;
 }
 
-/* 정보 행: [회색 라벨] [본문] */
+/* 정보 행: [회색 라벨] ─305px─ [본문] */
 .info-row {
   display: grid;
-  grid-template-columns: 190px minmax(0, 1fr);
-  gap: 24px;
+  grid-template-columns: 305px minmax(0, 1fr);
+  gap: 0;
   margin-top: 92px;
 }
 .info-label {
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 1.5;
+  font-size: 24px;            /* Desktop/D-H2 */
+  font-weight: 700;
+  line-height: 34px;
   letter-spacing: -0.02em;
   color: var(--color-muted);
   margin: 0;
 }
 .info-value {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 34px;
   letter-spacing: -0.02em;
   color: var(--color-ink);
   margin: 0;
@@ -342,12 +344,12 @@ ul { margin: 0; padding: 0; list-style: none; }
 
 /* 전시 장소 */
 .place-addr {
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.5;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 34px;
   letter-spacing: -0.02em;
-  color: var(--color-ink);
-  margin: 0 0 28px;
+  color: var(--color-brand);
+  margin: 0 0 44px;
 }
 .place-addr .en { color: var(--color-muted); }
 .subway {
@@ -355,9 +357,10 @@ ul { margin: 0; padding: 0; list-style: none; }
   align-items: center;
   gap: 12px;
   margin-bottom: 28px;
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 500;
   letter-spacing: -0.02em;
+  color: var(--color-brand);
 }
 .subway__badge {
   width: 28px;
@@ -365,72 +368,77 @@ ul { margin: 0; padding: 0; list-style: none; }
   border-radius: 50%;
   background: var(--color-line3);
   color: #fff;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   display: grid;
   place-items: center;
   flex: 0 0 auto;
 }
-.home-figure { width: 100%; aspect-ratio: 690 / 448; }
+.home-figure { width: 100%; aspect-ratio: 740 / 448; }
 
-/* 지도 교수 */
+/* 지도 교수 : 스튜디오명 ─124px─ 교수명 (Desktop D-H2/D-H1 24/34) */
 .advisor-group {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) max-content;
-  gap: 40px;
+  grid-template-columns: 183px max-content;
+  gap: 124px;
   align-items: start;
 }
-.advisor-group + .advisor-group { margin-top: 56px; }
+.advisor-group + .advisor-group { margin-top: 44px; }
 .advisor-studio {
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 50px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: -0.02em;
   color: var(--color-ink);
   margin: 0;
 }
+.advisor-names { display: flex; flex-direction: column; gap: 15px; }
 .advisor-names li {
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 50px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 34px;
   letter-spacing: -0.02em;
   color: var(--color-ink);
 }
 
-/* 졸업준비위원회 */
+/* 졸업준비위원회 : 역할 ─55px─ 이름 */
 .committee-list { display: grid; gap: 16px; }
 .committee-row {
   display: grid;
-  grid-template-columns: 130px minmax(0, 1fr);
-  gap: 30px;
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 55px;
   align-items: baseline;
 }
 .committee-role {
-  font-size: 22px;
-  font-weight: 800;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 34px;
   color: var(--color-ink);
   margin: 0;
+  white-space: nowrap;
 }
 .committee-names {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px 26px;
+  gap: 12px 16px;
 }
 .committee-names span {
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 34px;
   letter-spacing: -0.02em;
   color: var(--color-ink);
-  min-width: 60px;
+  min-width: 62px;
 }
 
-/* 후원・협력 로고 */
+/* 후원・협력 로고 : 2열 × 3행 (Figma 206×61) */
 .sponsor-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  max-width: 560px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 21px;
+  max-width: 433px;
 }
-.sponsor-grid .ph { aspect-ratio: 149 / 40; }
+.sponsor-grid .ph { aspect-ratio: 206 / 61; }
 
 /* ============================================================
    WORKS 목록  (Figma node 3273:8418 / 8188)
@@ -444,16 +452,21 @@ ul { margin: 0; padding: 0; list-style: none; }
 .works-body { display: flex; gap: 70px; align-items: flex-start; }
 .works-main { flex: 1 1 auto; min-width: 0; }
 
-/* 좌측 세로 스튜디오 카테고리 (스티키) */
-.studio-side {
-  flex: 0 0 240px;
-  width: 240px;
-  display: flex;
+/* Works 목록: 상단 가로 스튜디오 바 + 하단 그리드 (태블릿 레이아웃을 데스크탑에도 적용) */
+body[data-page="works"] .works-body {
   flex-direction: column;
-  gap: 42px;
-  position: sticky;
-  top: calc(var(--header-h) + 24px);
-  align-self: flex-start;
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* 스튜디오 카테고리: 가로 배치 (KO 위 · EN 아래로 스택) */
+.studio-side {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 40px;
 }
 .studio-block { display: flex; flex-direction: column; }
 
@@ -858,35 +871,86 @@ ul { margin: 0; padding: 0; list-style: none; }
    RESPONSIVE
    ============================================================ */
 @media (max-width: 1024px) {
-  :root { --gutter: 28px; --wide-pad: 40px; }
+  :root { --gutter: 28px; --wide-pad: 40px; --header-h: 90px; }
   .grid--works, .grid--related { grid-template-columns: repeat(3, 1fr); }
   .grid--designers { grid-template-columns: repeat(4, 1fr); }
   .work-detail { grid-template-columns: 1fr; gap: 40px; }
   .work-info { position: static; }
+  /* HEADER / NAV (Tablet 960 · Figma NavigationBar 4955:4642) */
+  .brand { gap: 12px; }
+  .brand__text { font-size: 16px; line-height: 1.3; }
+  .main-nav { gap: 32px; }
+  .main-nav a { font-size: 26px; }
+  /* FOOTER (Tablet · Figma footer 4955:4260) */
+  .site-footer { margin-top: 80px; }
+  .site-footer__inner { padding: 40px 0; gap: 40px; }
+  .footer-info { min-width: 0; }
   /* DESIGNER DETAIL */
   .designer-detail { gap: 64px; }
   .dd-interview__grid, .dd-projects__grid { gap: 40px; }
   .dd-section-title, .dd-name__ko { font-size: 30px; }
-  /* WORKS */
-  .works-grid { grid-template-columns: repeat(3, 1fr); }
-  .works-grid--studio { grid-template-columns: repeat(3, 1fr); }
-  .works-body { gap: 44px; }
-  .studio-side { flex: 0 0 200px; width: 200px; }
+  /* WORKS (Tablet 960 · Figma node 4955:3458) — 레이아웃은 데스크탑과 동일, 타이포만 축소 */
+  .works-shell { padding: 40px var(--wide-pad) 0; }
+  .works-body { gap: 32px; }
+  .studio-side { gap: 32px; }
+  .studio-cat__ko { font-size: 26px; line-height: 36px; }
+  .studio-cat__en { font-size: 14px; line-height: 20px; }
+  .prof-item { font-size: 20px; line-height: 26px; }
+  .studio-desc { font-size: 16px; line-height: 1.625; }
+  /* 작품 그리드: Figma 202px 카드 · col 24 / row 35 */
+  .works-grid,
+  .works-grid--studio {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 24px;
+    row-gap: 35px;
+  }
   /* DESIGNER */
   .designer-grid { grid-template-columns: repeat(4, 1fr); column-gap: 24px; row-gap: 48px; }
-  /* HOME */
-  .home-layout { grid-template-columns: 320px minmax(0, 1fr); gap: 40px; }
-  .home-rail .ph:last-child { min-height: 600px; }
-  .hero-title { font-size: 40px; }
-  .info-row { grid-template-columns: 150px minmax(0, 1fr); margin-top: 72px; }
-  .info-label, .info-value, .place-addr, .subway,
-  .advisor-studio, .advisor-names li, .committee-role, .committee-names span { font-size: 20px; }
+  /* HOME (Tablet 960 · Figma node 4955:4163) */
+  /* 좌 이미지 레일(424) + 32px + 우 콘텐츠(424) = 880 */
+  .home-shell { padding: 40px var(--wide-pad) 80px; }
+  .home-layout { grid-template-columns: 1fr 1fr; gap: 32px; align-items: stretch; }
+  /* 좌 레일: 풀하이트 단일 이미지 (Figma 424 세로 이미지) */
+  .home-rail { gap: 32px; }
+  .home-rail .ph:first-child { aspect-ratio: auto; flex: 1 1 auto; min-height: 560px; }
+  /* 히어로: 세로 스택 (Figma T-D3 34 / T-Body1 16) */
+  .hero-head { display: block; }
+  .hero-title { font-size: 34px; line-height: 1.235; }
+  .hero-desc {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.625;
+    margin-top: 28px;
+    max-width: none;
+  }
+  /* 정보 행: 라벨 위 · 값 아래로 세로 스택 */
+  .info-row { grid-template-columns: 1fr; gap: 10px; margin-top: 60px; }
+  .info-label, .info-value, .place-addr, .subway { font-size: 20px; }
+  .subway__badge { font-size: 20px; }
+  .home-figure { aspect-ratio: 424 / 238; }
+  /* 지도 교수: 스튜디오명 | 교수명 2열 유지, 행간 축소 */
+  .advisor-group { gap: 24px; }
+  .advisor-group + .advisor-group { margin-top: 28px; }
+  .advisor-studio { font-size: 20px; line-height: 30px; }
+  .advisor-names { display: flex; flex-direction: column; gap: 20px; }
+  .advisor-names li { font-size: 20px; line-height: 30px; }
+  /* 졸업준비위원회: 역할 위 · 이름 아래로 세로 스택 */
+  .committee-list { gap: 28px; }
+  .committee-row { grid-template-columns: 1fr; gap: 12px; }
+  .committee-role { font-size: 20px; }
+  .committee-names { gap: 14px 28px; }
+  .committee-names span { font-size: 20px; }
+  /* 후원・협력: 콘텐츠 폭 꽉 채워 3열 */
+  .sponsor-grid { grid-template-columns: repeat(3, 1fr); max-width: none; gap: 17px; }
+  .sponsor-grid .ph { aspect-ratio: 130 / 39; }
 }
 
 @media (max-width: 720px) {
-  :root { --gutter: 20px; --header-h: 70px; }
+  :root { --gutter: 20px; --header-h: 70px; --wide-pad: 20px; }
   .brand__text { display: none; }
-  .main-nav { gap: 18px; }
+  .brand__logo { width: 44px; height: 44px; }
+  .main-nav { gap: 14px; }
+  .main-nav a { font-size: 16px; }
   .grid--works, .grid--related { grid-template-columns: repeat(2, 1fr); }
   .grid--designers { grid-template-columns: repeat(2, 1fr); }
   .works-grid { grid-template-columns: repeat(2, 1fr); column-gap: 16px; }
@@ -894,7 +958,7 @@ ul { margin: 0; padding: 0; list-style: none; }
   .designer-grid { grid-template-columns: repeat(2, 1fr); column-gap: 16px; row-gap: 36px; }
   /* 좌측 스튜디오 카테고리 → 세로 유지하되 스티키 해제 */
   .works-body { flex-direction: column; gap: 28px; }
-  .studio-side { position: static; flex: none; width: 100%; gap: 28px; }
+  .studio-side { position: static; flex: none; width: 100%; flex-direction: column; gap: 28px; }
   .studio-cat__ko { font-size: 24px; }
   .studio-cat__en { font-size: 14px; }
   .prof-item { font-size: 18px; }
@@ -911,16 +975,38 @@ ul { margin: 0; padding: 0; list-style: none; }
   .footer-info { min-width: 0; }
   .footer-info dl { gap: 24px; }
   .studio-detail__head { flex-direction: column; }
-  /* HOME */
-  .home-layout { grid-template-columns: 1fr; gap: 28px; }
-  .home-rail { flex-direction: row; }
-  .home-rail .ph:first-child { aspect-ratio: 3 / 4; }
-  .home-rail .ph:last-child { min-height: 0; aspect-ratio: 3 / 4; }
+  /* HOME (Mobile 390 · Figma node 4926:3274) */
+  .home-shell { padding: 20px var(--wide-pad) 60px; }
+  .home-layout { grid-template-columns: 1fr; gap: 40px; }
+  /* 상단 포스터(세로 1장) — Figma 모바일엔 포스터 1장만 노출 */
+  .home-rail { flex-direction: column; gap: 20px; }
+  .home-rail .ph:first-child { aspect-ratio: 350 / 466; flex: 0 0 auto; min-height: 0; }
+  .home-rail .ph:last-child { display: none; }
+  /* 본문 중간 단독 전시 이미지(추후기재)는 모바일 디자인에 없음 → 숨김 */
+  .home-content > .home-figure { display: none; }
+  /* 히어로: 제목 26 / 본문 16 */
   .hero-head { flex-direction: column; gap: 8px; }
-  .hero-title { font-size: 34px; }
-  .hero-en { font-size: 18px; }
-  .info-row { grid-template-columns: 1fr; gap: 10px; margin-top: 56px; }
-  .advisor-group { grid-template-columns: 1fr; gap: 8px; }
-  .committee-row { grid-template-columns: 90px 1fr; gap: 16px; }
-  .sponsor-grid { max-width: none; }
+  .hero-title { font-size: 26px; line-height: 34px; }
+  .hero-desc { margin-top: 24px; }
+  /* 정보 행: 섹션 라벨 20(M-H2) · 값 16~18 */
+  .info-row { grid-template-columns: 1fr; gap: 12px; margin-top: 56px; }
+  .info-label { font-size: 20px; }
+  .info-value { font-size: 18px; }
+  .place-addr, .subway { font-size: 16px; }
+  .subway__badge { font-size: 14px; width: 24px; height: 24px; }
+  .home-figure { aspect-ratio: 350 / 239; }
+  /* 지도 교수: 두 스튜디오 가로 2열 (각 열은 스튜디오명 위·이름 아래) */
+  .advisor-groups { display: flex; gap: 18px; align-items: flex-start; }
+  .advisor-groups .advisor-group { flex: 1 1 0; grid-template-columns: 1fr; gap: 12px; }
+  .advisor-group + .advisor-group { margin-top: 0; }
+  .advisor-studio { font-size: 16px; line-height: 26px; }
+  .advisor-names { gap: 10px; }
+  .advisor-names li { font-size: 16px; line-height: 26px; }
+  /* 졸업준비위원회: 역할 | 이름 2열 */
+  .committee-row { grid-template-columns: 68px 1fr; gap: 24px; }
+  .committee-role, .committee-names span { font-size: 16px; }
+  .committee-names { gap: 12px 20px; }
+  /* 협찬업체 로고: 3열 × 2행 (100×62) */
+  .sponsor-grid { max-width: none; grid-template-columns: repeat(3, 1fr); gap: 30px 25px; }
+  .sponsor-grid .ph { aspect-ratio: 100 / 62; }
 }

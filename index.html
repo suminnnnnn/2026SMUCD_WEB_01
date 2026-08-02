@@ -3,160 +3,206 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>상명대 커뮤니케이션디자인학과 제39회 졸업전시 — 지우고, 다시 쓰고, 반복하는</title>
-  <meta name="description" content="2026 상명대학교 커뮤니케이션디자인전공 제39회 졸업전시 '지우고, 다시 쓰고, 반복하는'" />
-  <link rel="stylesheet" href="css/style.css" />
+  <title>2026 상명대학교 커뮤니케이션디자인전공 졸업전시 — Home</title>
+  <link rel="stylesheet" href="css/home.css" />
 </head>
 <body data-page="home">
+  <div class="hp">
 
-  <!-- ===== HEADER (전 페이지 동일) ===== -->
-  <header class="site-header">
-    <div class="container site-header__inner">
-      <a class="brand" href="index.html">
-        <span class="brand__logo">logo</span>
-        <span class="brand__text">
-          <strong>상명대학교</strong><br />
-          커뮤니케이션디자인학과<br />
-          제 39회 졸업전시회
+    <!-- ================= HEADER ================= -->
+    <header class="hp-header">
+      <a class="hp-brand" href="index.html">
+        <span class="hp-brand__logo" aria-hidden="true"></span>
+        <span class="hp-brand__text">
+          상명대학교<br />커뮤니케이션디자인학과<br />제 39회 졸업전시회
         </span>
       </a>
-      <nav class="main-nav">
-        <a href="index.html" data-nav="home">Home</a>
-        <a href="works.html" data-nav="works">Works</a>
-        <a href="designer.html" data-nav="designer">Designer</a>
-        <a href="archive.html" data-nav="archive">Archive</a>
+
+      <!-- 데스크탑·태블릿: 텍스트 내비 -->
+      <nav class="hp-nav main-nav" id="hp-nav">
+        <a data-nav="home" class="is-active" href="index.html">Home</a>
+        <a data-nav="works" href="works.html">Works</a>
+        <a data-nav="designer" href="designer.html">Designer</a>
+        <a data-nav="archive" href="archive.html">Archive</a>
       </nav>
-    </div>
-  </header>
 
-  <main>
-    <div class="home-shell">
-      <div class="home-layout">
+      <!-- 모바일: 햄버거 -->
+      <button class="hp-hamburger hide-d hide-t" id="hp-menu-btn" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
 
-        <!-- 좌측 세로 이미지 레일 -->
-        <aside class="home-rail">
-          <div class="ph" data-label="대표 이미지 (추후기재)"></div>
-          <div class="ph" data-label="전시 이미지 (추후기재)"></div>
-        </aside>
+    <!-- ================= BODY ================= -->
+    <div class="hp-body">
+      <!-- 포스터 -->
+      <div class="hp-poster hp-ph"></div>
 
-        <!-- 우측 콘텐츠 -->
-        <div class="home-content">
+      <!-- 콘텐츠 컬럼 -->
+      <div class="hp-content">
 
-          <!-- 히어로 -->
-          <section class="hero-head">
-            <h1 class="hero-title">2026 상명대학교<br />커뮤니케이션디자인학과<br />졸업 전시</h1>
-          </section>
-          <p class="hero-desc">〈지우고, 다시 쓰고, 반복하는〉은 커뮤니케이션디자인을 전공한 학생들이 지난 학업의 시간을 정리하고, 앞으로의 가능성을 탐구하는 과정에서 탄생한 전시입니다. 우리는 수많은 시도와 거듭된 수정을 반복하며 더 단단한 완성에 다가가고자 했습니다. 초안을 내고, 지우고, 다시 고쳐 쓰는 반복 속에서 우리는 결과물뿐 아니라 표현의 확장과 깊이를 함께 익히게 되었습니다. 이번 전시는 과정 속에서 축적된 흔적과 고민을 함께 공유하는 무대가 되고자 합니다. 관람객은 작품과 더불어 그 안에 쌓여 있는 시도와 흔적, 질문과 응답의 반복을 발견할 수 있습니다.</p>
+        <!-- ABOUT / 소개 -->
+        <section class="hp-about hp-block hp-block--about">
+          <h2 class="hp-seclabel hp-about__label hide-d hide-t">소개</h2>
+          <div class="hp-hero">
+            <h1 class="hp-hero__title">
+              <span>PLAYLIST</span>
+              <span>경험을 저장하다</span>
+              <span>: 나만의 플레이리스트</span>
+            </h1>
+          </div>
+          <p class="hp-desc hide-t hide-m">〈지우고, 다시 쓰고, 반복하는〉은 커뮤니케이션디자인을 전공한 학생들이 지난 학업의 시간을 정리하고, 앞으로의 가능성을 탐구하는 과정에서 탄생한 전시입니다. 우리는 수많은 시도와 거듭된 수정을 반복하며 더 단단한 완성에 다가가고자 했습니다. 초안을 내고, 지우고, 다시 고쳐 쓰는 반복 속에서 우리는 결과물뿐 아니라 표현의 확장과 깊이를 함께 익히게 되었습니다. 이번 전시는 과정 속에서 축적된 흔적과 고민을 함께 공유하는 무대가 되고자 합니다. 관람객은 작품과 더불어 그 안에 쌓여 있는 시도와 흔적, 질문과 응답의 반복을 발견할 수 있습니다.</p>
+          <p class="hp-desc hide-d hide-m">〈지우고, 다시 쓰고, 반복하는〉은 커뮤니케이션디자인을 전공한 학생들이 지난 학업의 시간을 정리하고, 앞으로의 가능성을 탐구하는 과정에서 탄생한 전시이다. 우리는 수많은 시도와 거듭된 수정을 반복하며 더 단단한 완성에 다가가고자 하였다. 초안을 내고, 지우고, 다시 고쳐 쓰는 반복 속에서 우리는 결과물뿐 아니라 표현의 확장과 깊이를 함께 익히게 되었다. 이번 전시는 과정 속에서 축적된 흔적과 고민을 함께 공유하는 무대가 되고자 한다. 관람객은 작품과 더불어 그 안에 쌓여 있는 시도와 흔적, 질문과 응답의 반복을 발견할 수 있을 것이다.</p>
+          <p class="hp-desc hide-d hide-t">〈지우고, 다시 쓰고, 반복하는〉은 상명대학교 커뮤니케이션디자인전공의 제38회 졸업전시로 학생들이 4년간의 여정을 마무리하며, 그동안의 학업을 성찰하고 앞으로의 가능성을 모색하는 과정의 결과물입니다. 우리는 수많은 시도와 끊임없는 수정을 거듭하며, 더 단단한 완성과 깊이 있는 표현에 다가가고자 했습니다. 초안을 내고, 지우고, 다시 써 내려가는 그 반복의 시간 속에서 우리는 결과물을 넘어 ‘생각하는 디자이너’로 성장해 왔습니다.<br /><br />이번 전시는 그 치열한 과정 속에 쌓인 고민과 흔적을 담은 무대이자, 질문과 응답, 시행과 성찰이 교차한 여정의 기록입니다. 95명 학생의 190여점의 작품에 스며 있는 미래 디자이너들의 새로운 가능성과 노력에 많은 응원을 부탁드립니다.</p>
+        </section>
 
-          <!-- 전시 일정 -->
-          <section class="info-row">
-            <h2 class="info-label">전시 일정</h2>
-            <p class="info-value">2026.10.21(수) 17:00- 10.27(화) 11:00-19:00</p>
-          </section>
-
-          <!-- 전시 장소 -->
-          <section class="info-row">
-            <h2 class="info-label">전시 장소</h2>
-            <div>
-              <p class="place-addr">
-                마루아트센터 <span class="en">MARUARTCENTER</span><br />
-                서울 종로구 인사동길 35-6<br />
-                마루아트센터 1관, 2관, 3관, 그랜드관, 5관
-              </p>
-              <p class="subway"><span class="subway__badge">3</span>안국역 6번 출구에서 353m</p>
-              <div class="ph home-figure" data-label="찾아오는 길 / 약도 (추후기재)"></div>
-            </div>
-          </section>
-
-          <!-- 지도 교수 -->
-          <section class="info-row">
-            <h2 class="info-label">지도 교수</h2>
-            <div>
-              <div class="advisor-group">
-                <h3 class="advisor-studio">혁신디자인스튜디오</h3>
-                <ul class="advisor-names">
-                  <li>방경란 교수님</li>
-                  <li>남정 교수님</li>
-                  <li>김한솔 교수님</li>
-                  <li>안혜선 교수님</li>
-                  <li>박소연 교수님</li>
-                </ul>
-              </div>
-              <div class="advisor-group">
-                <h3 class="advisor-studio">융합디자인스튜디오</h3>
-                <ul class="advisor-names">
-                  <li>이원제 교수님</li>
-                  <li>신윤진 교수님</li>
-                  <li>김석진 교수님</li>
-                  <li>서승연 교수님</li>
-                  <li>손우성 교수님</li>
-                </ul>
+        <!-- 전시 일정 / 오프라인 전시 -->
+        <section class="hp-block hp-row hp-schedule">
+          <h2 class="hp-label">
+            <span class="hide-m">전시 일정</span>
+            <span class="hide-d hide-t">오프라인 전시</span>
+          </h2>
+          <div class="hp-row__body">
+            <p class="hp-value hp-date hide-t hide-m">2026.10.21 (수) 17:00-19:00<br />--10.27(화) 11:00-19:00</p>
+            <p class="hp-value hp-date hide-d hide-m">2026.10.21(수) 17:00 ~<br />10.27(화) 11:00-19:00</p>
+            <div class="hp-date hp-date--m hide-d hide-t">
+              <p class="hp-value">2026.10.21(수) - 10.27(화)</p>
+              <div class="hp-opening">
+                <span class="hp-opening__k">오프닝<br />시간</span>
+                <span class="hp-opening__v">10.21(수) 17:00<br />11:00-19:00</span>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <!-- 전시 이미지 -->
-          <div class="ph home-figure" data-label="전시 이미지 (추후기재)" style="margin-top:64px"></div>
+        <!-- 전시 장소 -->
+        <section class="hp-block hp-row hp-place">
+          <h2 class="hp-label hide-m">전시 장소</h2>
+          <div class="hp-row__body">
+            <p class="hp-venue">마루아트센터 <span class="en">MARUARTCENTER</span></p>
+            <p class="hp-addr">서울 종로구 인사동길 35-6<br />마루아트센터 1관, 2관, 3관, 그랜드관, 5관</p>
+            <p class="hp-subway"><span class="hp-subway__badge">3</span><span class="hp-subway__txt">안국역 6번 출구에서 353m</span></p>
+          </div>
+        </section>
 
-          <!-- 졸업준비위원회 -->
-          <section class="info-row">
-            <h2 class="info-label">졸업준비위원회</h2>
-            <div class="committee-list">
-              <div class="committee-row">
-                <h3 class="committee-role">위원장</h3>
-                <div class="committee-names"><span>구나영</span></div>
-              </div>
-              <div class="committee-row">
-                <h3 class="committee-role">부위원장</h3>
-                <div class="committee-names"><span>신지호</span><span>오다인</span></div>
-              </div>
-              <div class="committee-row">
-                <h3 class="committee-role">홍보</h3>
-                <div class="committee-names"><span>김민지</span><span>최수빈</span><span>최다솜</span></div>
-              </div>
-              <div class="committee-row">
-                <h3 class="committee-role">디자인</h3>
-                <div class="committee-names"><span>박진슬</span></div>
-              </div>
-              <div class="committee-row">
-                <h3 class="committee-role">웹</h3>
-                <div class="committee-names"><span>배세은</span><span>정수민</span><span>이유진</span></div>
-              </div>
-              <div class="committee-row">
-                <h3 class="committee-role">기획</h3>
-                <div class="committee-names"><span>최정혜</span><span>강유주</span><span>최지이</span><span>김예원</span></div>
-              </div>
-              <div class="committee-row">
-                <h3 class="committee-role">총무</h3>
-                <div class="committee-names"><span>박찬민</span><span>이지원</span></div>
-              </div>
+        <!-- 전시 이미지 (모바일=약도) -->
+        <figure class="hp-figure hp-figure--place hp-ph"></figure>
+
+        <!-- 지도 교수 -->
+        <section class="hp-block hp-row hp-advisors-row">
+          <h2 class="hp-label hp-label--advisor">지도 교수</h2>
+          <div class="hp-row__body hp-advisors">
+            <div class="hp-advisor">
+              <h3 class="hp-advisor__studio">혁신디자인스튜디오</h3>
+              <ul class="hp-advisor__names">
+                <li>방경란 교수님</li>
+                <li>남정 교수님</li>
+                <li>김한솔 교수님</li>
+                <li>안혜선 교수님</li>
+                <li>박소연 교수님</li>
+              </ul>
             </div>
-          </section>
-
-          <!-- 후원・협력 -->
-          <section class="info-row">
-            <h2 class="info-label">후원・협력</h2>
-            <div class="sponsor-grid">
-              <div class="ph" data-label="로고"></div>
-              <div class="ph" data-label="로고"></div>
-              <div class="ph" data-label="로고"></div>
-              <div class="ph" data-label="로고"></div>
-              <div class="ph" data-label="로고"></div>
-              <div class="ph" data-label="로고"></div>
+            <div class="hp-advisor">
+              <h3 class="hp-advisor__studio">융합디자인스튜디오</h3>
+              <ul class="hp-advisor__names">
+                <li>이원제 교수님</li>
+                <li>신윤진 교수님</li>
+                <li>김석진 교수님</li>
+                <li>서승연 교수님</li>
+                <li>손우성 교수님</li>
+              </ul>
             </div>
-          </section>
+          </div>
+        </section>
 
-          <!-- 인스타그램 -->
-          <section class="info-row">
-            <h2 class="info-label">인스타그램</h2>
-            <p class="info-value">@smucd2026</p>
-          </section>
+        <!-- 졸준위 사진 (데스크탑: 위원회 블록 위) -->
+        <figure class="hp-figure hp-figure--committee hide-t hide-m hp-ph"></figure>
 
-        </div>
+        <!-- 졸업(준비/전시)위원회 -->
+        <section class="hp-block hp-row hp-committee-row">
+          <h2 class="hp-label">
+            <span class="hide-t hide-m">졸업준비위원회</span>
+            <span class="hide-d">졸업전시위원회</span>
+          </h2>
+          <!-- 졸준위 사진 (태블릿·모바일: 부제목과 명단 사이) -->
+          <figure class="hp-figure hp-figure--committee hp-figure--committee-inline hide-d hp-ph"></figure>
+          <dl class="hp-row__body hp-committee">
+            <div class="hp-com"><dt>위원장</dt><dd><span>구나영</span></dd></div>
+            <div class="hp-com"><dt>부위원장</dt><dd><span>신지호</span><span>오다인</span></dd></div>
+            <div class="hp-com"><dt>홍보</dt><dd><span>김민지</span><span>최수빈</span><span>최다솜</span></dd></div>
+            <div class="hp-com"><dt>디자인</dt><dd><span>박진슬</span></dd></div>
+            <div class="hp-com"><dt>웹</dt><dd><span>배세은</span><span>정수민</span><span>이유진</span></dd></div>
+            <div class="hp-com"><dt>기획</dt><dd><span>최정혜</span><span>강유주</span><span>최지이</span><span>김예원</span></dd></div>
+            <div class="hp-com"><dt>총무</dt><dd><span>박찬민</span><span>이지원</span></dd></div>
+          </dl>
+        </section>
+
+        <!-- 후원・협력 / 협찬업체 -->
+        <section class="hp-block hp-row hp-sponsors-row">
+          <h2 class="hp-label">
+            <span class="hide-m">후원・협력</span>
+            <span class="hide-d hide-t">협찬업체</span>
+          </h2>
+          <div class="hp-row__body hp-sponsors">
+            <span class="hp-logo hp-ph"></span>
+            <span class="hp-logo hp-ph"></span>
+            <span class="hp-logo hp-ph"></span>
+            <span class="hp-logo hp-ph"></span>
+            <span class="hp-logo hp-ph"></span>
+            <span class="hp-logo hp-ph"></span>
+          </div>
+        </section>
+
+        <!-- 인스타그램 (데스크탑 전용) -->
+        <section class="hp-block hp-row hp-insta-row hide-t hide-m">
+          <h2 class="hp-label">인스타그램</h2>
+          <div class="hp-row__body">
+            <a class="hp-value hp-insta" href="https://instagram.com/smucd2026" target="_blank" rel="noopener">@SMUCD2026</a>
+          </div>
+        </section>
+
       </div>
     </div>
-  </main>
 
-  <script src="js/main.js"></script>
+  </div>
+  <!-- ========= FOOTER (배경 풀와이드 · 내용은 컨테이너 폭) ========= -->
+  <footer class="hp-footer">
+      <div class="hp-footer__inner">
+        <div class="hp-footer__brand">
+          <p>2026 상명대학교</p>
+          <p>커뮤니케이션디자인전공 졸업전시</p>
+          <p class="hide-t hide-m">경험을 저장하다 : 나만의 플레이리스트</p>
+          <p class="hide-d hide-m">지우고, 다시 쓰고, 반복하는</p>
+          <p class="hide-d hide-t">경험을 저장하다 - 나만의 플레이리스트</p>
+        </div>
+        <dl class="hp-footer__info">
+          <div class="hp-footer__row">
+            <dt><span class="hide-m">전시 기간</span><span class="hide-d hide-t">전시오프닝</span></dt>
+            <dd>2026. 10. 21 ~ 2026. 10. 27 10:00 ~ 19:00</dd>
+          </div>
+          <div class="hp-footer__row">
+            <dt>전시장 위치</dt>
+            <dd>마루아트센터 - 서울 종로구 인사동길 35-6<br />1관, 2관, 3관, 그랜드관, 5관</dd>
+          </div>
+          <div class="hp-footer__row">
+            <dt>인스타그램</dt>
+            <dd><a href="https://instagram.com/smucd2026" target="_blank" rel="noopener">@smucd2026</a></dd>
+          </div>
+        </dl>
+        <a class="hp-footer__prev hide-d hide-t" href="#">이전 졸업전시 사이트</a>
+      </div>
+  </footer>
+
+  <script>
+    // 모바일 햄버거 → 내비 토글
+    (function () {
+      var btn = document.getElementById("hp-menu-btn");
+      var nav = document.getElementById("hp-nav");
+      if (!btn || !nav) return;
+      btn.addEventListener("click", function () {
+        var open = nav.classList.toggle("is-open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+    })();
+  </script>
 </body>
 </html>

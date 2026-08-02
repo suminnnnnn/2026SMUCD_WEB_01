@@ -3,85 +3,123 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>작품 상세 — 제39회 졸업전시</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>2026 상명대학교 커뮤니케이션디자인전공 졸업전시 — Works 상세</title>
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/work-detail.css" />
 </head>
 <body data-page="work-detail">
+  <div class="hp">
 
-  <!-- ===== HEADER (전 페이지 동일) ===== -->
-  <header class="site-header">
-    <div class="container site-header__inner">
-      <a class="brand" href="index.html">
-        <span class="brand__logo">39th</span>
-        <span class="brand__text">
-          <strong>상명대학교</strong><br />
-          커뮤니케이션디자인학과<br />
-          제 39회 졸업전시회
+    <!-- ================= HEADER (홈과 동일) ================= -->
+    <header class="hp-header">
+      <a class="hp-brand" href="index.html">
+        <span class="hp-brand__logo" aria-hidden="true"></span>
+        <span class="hp-brand__text">
+          상명대학교<br />커뮤니케이션디자인학과<br />제 39회 졸업전시회
         </span>
       </a>
-      <nav class="main-nav">
-        <a href="index.html" data-nav="home">Home</a>
-        <a href="works.html" data-nav="works">Works</a>
-        <a href="designer.html" data-nav="designer">Designer</a>
-        <a href="archive.html" data-nav="archive">Archive</a>
+      <nav class="hp-nav main-nav" id="hp-nav">
+        <a data-nav="home" href="index.html">Home</a>
+        <a data-nav="works" class="is-active" href="works.html">Works</a>
+        <a data-nav="designer" href="designer.html">Designer</a>
+        <a data-nav="archive" href="archive.html">Archive</a>
       </nav>
-    </div>
-  </header>
+      <button class="hp-hamburger hide-d hide-t" id="hp-menu-btn" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
 
-  <main>
-    <div class="works-shell">
-      <section id="work-detail" class="work-detail">
-        <!-- 좌: 작품 대표 이미지 (다중 스크롤) -->
-        <div class="work-gallery"></div>
+    <!-- ================= BODY ================= -->
+    <div class="wd-body">
 
-        <!-- 우: 정보 패널 -->
-        <div class="work-info">
-          <a class="back-link" href="javascript:history.back()">← 뒤로가기</a>
-          <p class="work-detail__name"></p>
-          <div class="work-meta">
-            <p class="work-meta__studio"></p>
-            <h1 class="work-meta__title"></h1>
-            <p class="work-meta__desc"></p>
-            <p class="work-meta__ai" hidden>이 작업은 AI를 사용했습니다.</p>
+      <!-- 작품 이미지 (데스크탑: 좌측 대형 · 태블릿/모바일: 세로 스택) -->
+      <div class="wd-gallery">
+        <span class="wd-shot hp-ph"></span>
+        <span class="wd-shot hp-ph"></span>
+        <span class="wd-shot hp-ph"></span>
+        <span class="wd-shot hp-ph"></span>
+      </div>
+
+      <!-- 정보 -->
+      <div class="wd-info">
+        <div class="wd-head">
+          <a class="wd-back" href="works.html"><img class="wd-back__icon" src="assets/icons/back.svg" alt="" /><span>뒤로가기</span></a>
+          <p class="wd-name">김혜림 <span>Kim Hyerim</span></p>
+        </div>
+        <div class="wd-about">
+          <div class="wd-titlewrap">
+            <p class="wd-meta">융합디자인스튜디오 <span class="wd-meta__bar">|</span> 신윤진 교수님</p>
+            <h1 class="wd-title">조건과 결과, 디지털 사고</h1>
+          </div>
+          <div class="wd-descwrap">
+            <p class="wd-desc">조건의 결과 디지털 사고는 아픈 언니를 돕기 위해 분주히 움직이는 주인공 페르의 좌충우돌 소동을 담았습니다. 집은 점점 어질러지지만, 그 모든 행동에는 언니를 향한 따뜻한 마음이 스며 있습니다. 흔치 않은 반려동물인 페럿을 주인공으로 내세워 아이와 어른 모두가 공감할 수 있는 유쾌하면서도 따뜻한 이야기를 전하며, 반려동물이 일상 속에서 전해주는 소중한 웃음과 감동을 보여줍니다.</p>
+            <p class="wd-ai">이 작업은 AI를 사용했습니다.</p>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- 다른 작품 둘러보기 -->
-      <section class="related-block">
-        <h2 class="related-block__title">다른 작품 둘러보기</h2>
-        <div class="works-grid related-grid"></div>
+      <!-- 다른 작품 둘러보기 (데스크탑 숨김 · 태블릿/모바일 노출) -->
+      <section class="wd-related">
+        <h2 class="wd-related__title">다른 작품 둘러보기</h2>
+        <div class="wd-related__grid" id="wd-related-grid"></div>
       </section>
     </div>
-  </main>
 
-  <!-- ===== FOOTER (전 페이지 동일) ===== -->
-  <footer class="site-footer">
-    <div class="container site-footer__inner">
-      <div class="footer-brand">
-        <p>2026 상명대학교<br />커뮤니케이션디자인전공 졸업전시</p>
-        <p class="footer-brand__theme">지우고, 다시 쓰고, 반복하는</p>
+  </div>
+
+  <!-- ================= FOOTER (홈과 동일) ================= -->
+  <footer class="hp-footer">
+    <div class="hp-footer__inner">
+      <div class="hp-footer__brand">
+        <p>2026 상명대학교</p>
+        <p>커뮤니케이션디자인전공 졸업전시</p>
+        <p class="hide-t hide-m">경험을 저장하다 : 나만의 플레이리스트</p>
+        <p class="hide-d hide-m">지우고, 다시 쓰고, 반복하는</p>
+        <p class="hide-d hide-t">경험을 저장하다 - 나만의 플레이리스트</p>
       </div>
-      <div class="footer-info">
-        <dl>
-          <dt>전시 기간</dt>
+      <dl class="hp-footer__info">
+        <div class="hp-footer__row">
+          <dt><span class="hide-m">전시 기간</span><span class="hide-d hide-t">전시오프닝</span></dt>
           <dd>2026. 10. 21 ~ 2026. 10. 27 10:00 ~ 19:00</dd>
-        </dl>
-        <dl>
+        </div>
+        <div class="hp-footer__row">
           <dt>전시장 위치</dt>
           <dd>마루아트센터 - 서울 종로구 인사동길 35-6<br />1관, 2관, 3관, 그랜드관, 5관</dd>
-        </dl>
-        <dl>
+        </div>
+        <div class="hp-footer__row">
           <dt>인스타그램</dt>
           <dd><a href="https://instagram.com/smucd2026" target="_blank" rel="noopener">@smucd2026</a></dd>
-        </dl>
-      </div>
-    </div>
-    <div class="site-footer__bottom">
-      <div class="container">© 2026 SMU Communication Design · 제39회 졸업전시</div>
+        </div>
+      </dl>
+      <a class="hp-footer__prev hide-d hide-t" href="#">이전 졸업전시 사이트</a>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      // 다른 작품 placeholder 카드 (실제 데이터 연동 전)
+      var grid = document.getElementById("wd-related-grid");
+      var html = "";
+      for (var i = 0; i < 4; i++) {
+        html +=
+          '<a class="wd-rel-card" href="work-detail.html">' +
+          '<span class="wd-rel-card__thumb hp-ph"></span>' +
+          '<span class="wd-rel-card__info">' +
+          '<span class="wd-rel-card__title">조건과 결과, 디지털 사고</span>' +
+          '<span class="wd-rel-card__designer">김혜림</span>' +
+          "</span></a>";
+      }
+      grid.innerHTML = html;
+
+      var hb = document.getElementById("hp-menu-btn");
+      var nav = document.getElementById("hp-nav");
+      if (hb && nav) {
+        hb.addEventListener("click", function () {
+          var open = nav.classList.toggle("is-open");
+          hb.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

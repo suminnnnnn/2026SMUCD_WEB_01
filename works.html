@@ -3,75 +3,215 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Works — 제39회 졸업전시</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <title>2026 상명대학교 커뮤니케이션디자인전공 졸업전시 — Works</title>
+  <!-- 공용(리셋·토큰·헤더·푸터·내비)은 home.css 재사용 + works 전용 레이아웃 -->
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/works.css" />
 </head>
 <body data-page="works">
+  <div class="hp">
 
-  <!-- ===== HEADER (전 페이지 동일) ===== -->
-  <header class="site-header">
-    <div class="container site-header__inner">
-      <a class="brand" href="index.html">
-        <span class="brand__logo">logo</span>
-        <span class="brand__text">
-          <strong>상명대학교</strong><br />
-          커뮤니케이션디자인학과<br />
-          제 39회 졸업전시회
+    <!-- ================= HEADER (홈과 동일) ================= -->
+    <header class="hp-header">
+      <a class="hp-brand" href="index.html">
+        <span class="hp-brand__logo" aria-hidden="true"></span>
+        <span class="hp-brand__text">
+          상명대학교<br />커뮤니케이션디자인학과<br />제 39회 졸업전시회
         </span>
       </a>
-      <nav class="main-nav">
-        <a href="index.html" data-nav="home">Home</a>
-        <a href="works.html" data-nav="works">Works</a>
-        <a href="designer.html" data-nav="designer">Designer</a>
-        <a href="archive.html" data-nav="archive">Archive</a>
+      <nav class="hp-nav main-nav" id="hp-nav">
+        <a data-nav="home" href="index.html">Home</a>
+        <a data-nav="works" class="is-active" href="works.html">Works</a>
+        <a data-nav="designer" href="designer.html">Designer</a>
+        <a data-nav="archive" href="archive.html">Archive</a>
       </nav>
-    </div>
-  </header>
+      <button class="hp-hamburger hide-d hide-t" id="hp-menu-btn" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
 
-  <main>
-    <div class="works-shell">
-      <div class="works-body">
-        <!-- 좌측 세로 스튜디오 카테고리 (선택 시 교수 목록 펼침, 스티키) -->
-        <aside class="studio-side" id="studio-side"></aside>
+    <!-- ================= BODY ================= -->
+    <div class="wk-body">
 
-        <div class="works-main">
-          <!-- 스튜디오 설명 (스튜디오 선택 시 노출) -->
-          <p class="studio-desc" id="studio-desc" hidden></p>
+      <!-- 테마 카테고리 (데스크탑/태블릿: 좌측 세로 · 모바일: 펼침 오버레이) -->
+      <aside class="wk-cats" id="wk-cats">
+        <button class="wk-cat is-active" type="button" data-cat="0">
+          <span class="wk-cat__arrow" aria-hidden="true"></span>
+          <span class="wk-cat__text">
+            <span class="wk-cat__ko">첫발의 진동</span>
+            <span class="wk-cat__en">Package Design</span>
+          </span>
+        </button>
+        <button class="wk-cat" type="button" data-cat="1">
+          <span class="wk-cat__arrow" aria-hidden="true"></span>
+          <span class="wk-cat__text">
+            <span class="wk-cat__ko">흐르는 프레임</span>
+            <span class="wk-cat__en">Interactive Design</span>
+          </span>
+        </button>
+        <button class="wk-cat" type="button" data-cat="2">
+          <span class="wk-cat__arrow" aria-hidden="true"></span>
+          <span class="wk-cat__text">
+            <span class="wk-cat__ko">시각적 독백</span>
+            <span class="wk-cat__en">Innovative Design</span>
+          </span>
+        </button>
+        <button class="wk-cat" type="button" data-cat="3">
+          <span class="wk-cat__arrow" aria-hidden="true"></span>
+          <span class="wk-cat__text">
+            <span class="wk-cat__ko">정제된 하모니</span>
+            <span class="wk-cat__en">Video Design</span>
+          </span>
+        </button>
+        <button class="wk-cat" type="button" data-cat="4">
+          <span class="wk-cat__arrow" aria-hidden="true"></span>
+          <span class="wk-cat__text">
+            <span class="wk-cat__ko">만져지는 질감</span>
+            <span class="wk-cat__en">Book Design</span>
+          </span>
+        </button>
+        <button class="wk-cat" type="button" data-cat="5">
+          <span class="wk-cat__arrow" aria-hidden="true"></span>
+          <span class="wk-cat__text">
+            <span class="wk-cat__ko">다이내믹 심포니</span>
+            <span class="wk-cat__en">Package Design</span>
+          </span>
+        </button>
+      </aside>
 
-          <!-- 작품 그리드 (4열 정사각) -->
-          <div id="works-grid" class="works-grid works-grid--studio"></div>
+      <!-- 우측 콘텐츠 -->
+      <div class="wk-main">
+        <div class="wk-mhead">
+          <!-- 모바일 전용: 뒤로가기 -->
+          <a class="wk-back hide-d hide-t" href="#" id="wk-back"><img class="wk-back__icon" src="assets/icons/back.svg" alt="" /><span>뒤로가기</span></a>
+          <!-- 모바일 전용: 현재 카테고리(제목) · 탭 시 카테고리 오버레이 -->
+          <button class="wk-mtitle hide-d hide-t" id="wk-mtitle" type="button" aria-expanded="false"></button>
+          <p class="wk-desc" id="wk-desc">‘첫발의 진동’은 커뮤니케이션디자인을 전공한 학생들이 지난 학업의 시간을 정리하고, 앞으로의 가능성을 탐구하는 과정에서 탄생한 전시입니다. 우리는 수많은 시도와 거듭된 수정을 반복하며 더 단단한 완성에 다가가고자 했습니다. 초안을 내고, 지우고, 다시 고쳐 쓰는 반복 속에서 우리는 결과물뿐 아니라 표현의 확장과 깊이를 함께 익히게 되었습니다. 이번 전시는 과정 속에서 축적된 흔적과 고민을 함께 공유하는 무대가 되고자 합니다. 관람객은 작품과 더불어 그 안에 쌓여 있는 시도와 흔적, 질문과 응답의 반복을 발견할 수 있습니다.</p>
         </div>
+        <div class="wk-grid" id="wk-grid"></div>
       </div>
     </div>
-  </main>
 
-  <!-- ===== FOOTER (전 페이지 동일) ===== -->
-  <footer class="site-footer">
-    <div class="container site-footer__inner">
-      <div class="footer-brand">
-        <p>2026 상명대학교<br />커뮤니케이션디자인전공 졸업전시</p>
-        <p class="footer-brand__theme">지우고, 다시 쓰고, 반복하는</p>
+  </div>
+
+  <!-- ================= FOOTER (홈과 동일) ================= -->
+  <footer class="hp-footer">
+    <div class="hp-footer__inner">
+      <div class="hp-footer__brand">
+        <p>2026 상명대학교</p>
+        <p>커뮤니케이션디자인전공 졸업전시</p>
+        <p class="hide-t hide-m">경험을 저장하다 : 나만의 플레이리스트</p>
+        <p class="hide-d hide-m">지우고, 다시 쓰고, 반복하는</p>
+        <p class="hide-d hide-t">경험을 저장하다 - 나만의 플레이리스트</p>
       </div>
-      <div class="footer-info">
-        <dl>
-          <dt>전시 기간</dt>
+      <dl class="hp-footer__info">
+        <div class="hp-footer__row">
+          <dt><span class="hide-m">전시 기간</span><span class="hide-d hide-t">전시오프닝</span></dt>
           <dd>2026. 10. 21 ~ 2026. 10. 27 10:00 ~ 19:00</dd>
-        </dl>
-        <dl>
+        </div>
+        <div class="hp-footer__row">
           <dt>전시장 위치</dt>
           <dd>마루아트센터 - 서울 종로구 인사동길 35-6<br />1관, 2관, 3관, 그랜드관, 5관</dd>
-        </dl>
-        <dl>
+        </div>
+        <div class="hp-footer__row">
           <dt>인스타그램</dt>
           <dd><a href="https://instagram.com/smucd2026" target="_blank" rel="noopener">@smucd2026</a></dd>
-        </dl>
-      </div>
-    </div>
-    <div class="site-footer__bottom">
-      <div class="container">© 2026 SMU Communication Design · 제39회 졸업전시</div>
+        </div>
+      </dl>
+      <a class="hp-footer__prev hide-d hide-t" href="#">이전 졸업전시 사이트</a>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      var PLACEHOLDER_DESC = document.getElementById("wk-desc").textContent;
+      var cats = document.querySelectorAll(".wk-cat");
+      var catsWrap = document.getElementById("wk-cats");
+      var descEl = document.getElementById("wk-desc");
+      var mtitle = document.getElementById("wk-mtitle");
+
+      // 모바일 제목(현재 카테고리 KO/EN) 갱신
+      function syncMobileTitle() {
+        var a = document.querySelector(".wk-cat.is-active");
+        if (!a || !mtitle) return;
+        var ko = a.querySelector(".wk-cat__ko").textContent;
+        var en = a.querySelector(".wk-cat__en").textContent;
+        mtitle.innerHTML =
+          '<span class="wk-mtitle__ko">' + ko + "</span>" +
+          '<span class="wk-mtitle__en">' + en + "</span>";
+      }
+
+      // 작품 그리드: 실제 데이터(works.json) 렌더
+      var grid = document.getElementById("wk-grid");
+      function thumb(src, alt) {
+        var safe = (alt || "").replace(/"/g, "&quot;");
+        var img = src
+          ? '<img src="' + src + '" alt="' + safe + '" loading="lazy" onerror="this.remove()">'
+          : "";
+        return '<span class="wk-card__thumb hp-ph">' + img + "</span>";
+      }
+      function card(w) {
+        return (
+          '<a class="wk-card" href="work-detail.html?id=' + w.id + '">' +
+          thumb(w.thumbnail, w.title) +
+          '<span class="wk-card__info">' +
+          '<span class="wk-card__title">' + w.title + "</span>" +
+          '<span class="wk-card__designer">' + w.designer + "</span>" +
+          "</span></a>"
+        );
+      }
+      fetch("data/works.json")
+        .then(function (r) { return r.json(); })
+        .then(function (data) { grid.innerHTML = data.map(card).join(""); })
+        .catch(function () { grid.innerHTML = '<p class="wk-empty">데이터를 불러오지 못했습니다.</p>'; });
+
+      cats.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          cats.forEach(function (b) { b.classList.remove("is-active"); });
+          btn.classList.add("is-active");
+          descEl.textContent = PLACEHOLDER_DESC; // 연동 시 카테고리별 문구로 교체
+          syncMobileTitle();
+          catsWrap.classList.remove("is-open"); // 모바일: 선택 후 오버레이 닫기
+          if (mtitle) mtitle.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      // 모바일: 제목 탭 → 카테고리 오버레이 토글
+      if (mtitle) {
+        syncMobileTitle();
+        mtitle.addEventListener("click", function () {
+          var open = catsWrap.classList.toggle("is-open");
+          mtitle.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+      }
+
+      // 모바일: Works 진입 시 카테고리 선택(works 목록) 화면을 먼저 노출
+      if (window.matchMedia("(max-width: 390px)").matches) {
+        catsWrap.classList.add("is-open");
+        if (mtitle) mtitle.setAttribute("aria-expanded", "true");
+      }
+
+      // 뒤로가기: 카테고리 선택 화면(works 목록)으로 이동 = 카테고리 오버레이 열기
+      var backBtn = document.getElementById("wk-back");
+      if (backBtn) {
+        backBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          catsWrap.classList.add("is-open");
+          if (mtitle) mtitle.setAttribute("aria-expanded", "true");
+          window.scrollTo(0, 0);
+        });
+      }
+
+      // 헤더 햄버거(홈과 동일: 사이트 내비 토글)
+      var hb = document.getElementById("hp-menu-btn");
+      var nav = document.getElementById("hp-nav");
+      if (hb && nav) {
+        hb.addEventListener("click", function () {
+          var open = nav.classList.toggle("is-open");
+          hb.setAttribute("aria-expanded", open ? "true" : "false");
+        });
+      }
+    })();
+  </script>
 </body>
 </html>

@@ -1,0 +1,129 @@
+/* ============================================================
+   2026 SMUCD 졸업전시 · Designer 상세
+   Figma: Desktop 5138:9254 · Tablet 4955:3407 · Mobile 4975:3404
+   공용(리셋·토큰·헤더·푸터·내비)은 home.css 재사용
+   Breakpoints: 기본=데스크탑(≥961) · ≤960=태블릿 · ≤390=모바일
+   ============================================================ */
+
+.dd-body { display: flex; flex-direction: column; gap: 120px; padding: 81px 80px; }
+
+/* ---------- 공통 이미지 채움 ---------- */
+.dd-photo, .dd-proj__thumb { position: relative; overflow: hidden; }
+.dd-photo img, .dd-proj__thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* ============================================================
+   PROFILE (Desktop: 사진 | 정보)
+   ============================================================ */
+.dd-profile { display: flex; align-items: flex-start; gap: clamp(40px, 8.5%, 109px); }
+.dd-photo { flex: 0 1 384px; width: auto; min-width: 0; aspect-ratio: 384 / 468; }
+.dd-info { flex: 0 1 553px; width: auto; min-width: 0; display: flex; flex-direction: column; gap: 48px; }
+.dd-meta { display: flex; flex-direction: column; gap: 48px; }
+.dd-name { display: flex; flex-direction: column; color: #3d3d3d; }
+.dd-name__ko { font-weight: 800; font-size: 38px; line-height: 57px; letter-spacing: -0.02em; }  /* D-D3 */
+.dd-name__roman { font-weight: 700; font-size: 24px; line-height: 34px; letter-spacing: -0.02em; } /* D-H2 */
+.dd-contact {
+  display: flex; gap: 24px;
+  font-weight: 500; font-size: 18px; line-height: 28.8px; letter-spacing: -0.02em; color: var(--g12); /* D-Body1 */
+}
+.dd-contact__labels, .dd-contact__values { display: flex; flex-direction: column; }
+.dd-contact__values a:hover { text-decoration: underline; }
+.dd-intro {
+  font-weight: 500; font-size: 20px; line-height: 32px; letter-spacing: -0.02em; color: #555; /* D-S1 */
+}
+
+/* ============================================================
+   SECTION (Interview / Projects)
+   ============================================================ */
+.dd-sec-title {
+  font-weight: 800; font-size: 38px; line-height: 57px; letter-spacing: -0.02em; color: var(--g10); /* D-D3 */
+  margin: 0;
+}
+.dd-interview, .dd-projects { display: flex; flex-direction: column; gap: 40px; }
+
+/* Interview */
+.dd-iv-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
+.dd-iv { display: flex; flex-direction: column; gap: 40px; }
+.dd-iv__q { display: flex; flex-direction: column; gap: 16px; }
+.dd-iv__num { font-weight: 700; font-size: 24px; line-height: 34px; letter-spacing: -0.02em; color: var(--g12); margin: 0; }
+.dd-iv__question { font-weight: 700; font-size: 24px; line-height: 34px; letter-spacing: -0.02em; color: var(--g10); margin: 0; }
+.dd-iv__answer { font-weight: 500; font-size: 20px; line-height: 32px; letter-spacing: -0.02em; color: #555; margin: 0; }
+
+/* Projects */
+.dd-proj-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
+.dd-proj { display: flex; flex-direction: column; gap: 25px; cursor: pointer; }
+.dd-proj__thumb { width: 100%; aspect-ratio: 625 / 444; transition: opacity 0.2s ease; }
+.dd-proj:hover .dd-proj__thumb { opacity: 0.86; }
+.dd-proj__info { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.dd-proj__title {
+  font-weight: 700; font-size: 24px; line-height: 34px; letter-spacing: -0.02em; color: #3d3d3d; /* D-H2 */
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.dd-proj__studio {
+  font-weight: 500; font-size: 20px; line-height: 32px; letter-spacing: -0.02em; color: #3d3d3d; /* D-S1 */
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+/* ============================================================
+   ▍TABLET (≤960) · Figma 4955:3407
+   ============================================================ */
+@media (max-width: 960px) {
+  .dd-body { gap: 100px; padding: 60px 40px 100px; }
+  .dd-profile { gap: 65px; align-items: center; }
+  .dd-photo { flex: 1 1 200px; }
+  .dd-info { flex: 0 1 553px; width: auto; gap: 40px; }
+  .dd-meta { gap: 40px; }
+  .dd-name__ko { font-size: 34px; line-height: 42px; }        /* T-D3 */
+  .dd-name__roman { font-size: 20px; line-height: 30px; }     /* T-S2 */
+  .dd-contact { font-size: 16px; line-height: 26px; }         /* T-Body1 */
+  .dd-intro { font-size: 16px; line-height: 26px; max-width: 484px; }
+
+  .dd-sec-title { font-size: 30px; line-height: 42px; color: var(--g11); } /* T-D2 */
+  .dd-interview, .dd-projects { gap: 28px; }
+  .dd-iv-list { gap: 20px; }
+  .dd-iv { gap: 20px; }
+  .dd-iv__q { gap: 8px; }
+  .dd-iv__num { font-size: 22px; line-height: 32px; }         /* T-H2 */
+  .dd-iv__question { font-size: 20px; line-height: 30px; color: var(--g11); } /* T-S2 */
+  .dd-iv__answer { font-size: 16px; line-height: 26px; }      /* T-Body1 */
+
+  .dd-proj-list { gap: 20px; }
+  .dd-proj { gap: 24px; }
+  .dd-proj__thumb { aspect-ratio: 430 / 317; }
+  .dd-proj__title { font-size: 22px; line-height: 32px; }     /* T-H2 */
+  .dd-proj__studio { font-size: 16px; line-height: 26px; }    /* T-Body1 */
+}
+
+/* ============================================================
+   ▍MOBILE (≤390) · Figma 4975:3404
+   ============================================================ */
+@media (max-width: 390px) {
+  .dd-body { gap: 60px; padding: 60px 20px; }
+
+  /* 프로필: 사진 → (이름|연락처) → 소개 */
+  .dd-profile { flex-direction: column; align-items: stretch; gap: 30px; }
+  .dd-photo { flex: none; width: 100%; aspect-ratio: 169 / 206; }
+  .dd-info { flex: none; width: 100%; gap: 50px; }   /* column: flex-basis 553px가 높이로 새는 것 방지 */
+  .dd-meta { flex-direction: row; align-items: flex-end; gap: 15px; }
+  .dd-name { flex: 0 0 120px; width: 120px; color: var(--g11); }
+  .dd-name__ko { font-size: 20px; line-height: 1.4; }         /* M-H2 */
+  .dd-name__roman { font-weight: 500; font-size: 14px; line-height: 1.43; color: #555; } /* M-Sm3 */
+  .dd-contact { flex: 1 1 0; min-width: 0; gap: 0; }
+  .dd-contact__labels { display: none; }                      /* 모바일: 라벨 없이 값만 */
+  .dd-contact__values { gap: 5px; font-weight: 500; font-size: 14px; line-height: 1.43; color: #6f6f6f; }
+  .dd-intro { font-size: 16px; line-height: 1.5; color: var(--g10); max-width: none; }
+
+  .dd-sec-title { font-size: 24px; line-height: 1.33; color: #000; } /* M-H4 */
+  .dd-interview, .dd-projects { gap: 40px; }
+  .dd-iv-list { grid-template-columns: 1fr; gap: 40px; }
+  .dd-iv { gap: 20px; }
+  .dd-iv__q { gap: 5px; }
+  .dd-iv__num { font-weight: 800; font-size: 22px; line-height: 32px; }
+  .dd-iv__question { font-size: 20px; line-height: 1.4; color: #000; }
+  .dd-iv__answer { font-size: 16px; line-height: 1.5; }
+
+  .dd-proj-list { grid-template-columns: 1fr; gap: 32px; }
+  .dd-proj { gap: 16px; }
+  .dd-proj__thumb { aspect-ratio: 342 / 231; }
+  .dd-proj__title { font-size: 20px; line-height: 1.4; color: var(--g10); }
+  .dd-proj__studio { font-size: 16px; line-height: 1.5; color: var(--g10); }
+}

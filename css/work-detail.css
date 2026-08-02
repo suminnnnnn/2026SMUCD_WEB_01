@@ -1,0 +1,131 @@
+/* ============================================================
+   2026 SMUCD 졸업전시 · Works 상세
+   Figma: Desktop 5138:7697 · Tablet 4955:4090 · Mobile 4926:3380
+   공용(리셋·토큰·헤더·푸터·내비)은 home.css 재사용
+   Breakpoints: 기본=데스크탑(≥961) · ≤960=태블릿 · ≤390=모바일
+   DOM: gallery → info → related  (order 로 재배치)
+   ============================================================ */
+
+/* ============================================================
+   BODY (Desktop: 좌 이미지 + 우 정보, 관련작품 숨김)
+   ============================================================ */
+.wd-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 56px;
+  padding: 81px 80px;
+}
+
+/* ---------- 작품 이미지 ---------- */
+.wd-gallery {
+  order: 0;
+  flex: 682 1 0; min-width: 0;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.wd-shot { display: block; width: 100%; aspect-ratio: 16 / 9; }
+
+/* ---------- 정보 ---------- */
+.wd-info {
+  order: 1;
+  flex: 544 1 0; min-width: 0;
+  display: flex; flex-direction: column; gap: 68px;
+}
+.wd-head { display: flex; flex-direction: column; gap: 24px; }
+.wd-back {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: 24px; line-height: 34px;   /* D-H2 */
+  letter-spacing: -0.02em; color: var(--g12);
+}
+.wd-back__icon { flex: none; width: 27px; height: 20px; display: block; }
+.wd-name {
+  font-weight: 800; font-size: 28px; line-height: 38px;   /* D-H4 */
+  letter-spacing: -0.02em; color: var(--g12);
+}
+.wd-about { display: flex; flex-direction: column; gap: 24px; }
+.wd-titlewrap { display: flex; flex-direction: column; gap: 4px; }
+.wd-meta {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  font-weight: 500; font-size: 18px; line-height: 28.8px;  /* D-Body1 */
+  letter-spacing: -0.02em; color: #6f6f6f;                 /* Grayscale-7 */
+}
+.wd-title {
+  font-weight: 800; font-size: 38px; line-height: 57px;    /* D-D3 */
+  letter-spacing: -0.02em; color: var(--g12);
+}
+.wd-descwrap { display: flex; flex-direction: column; gap: 10px; }
+.wd-desc {
+  font-weight: 500; font-size: 18px; line-height: 28.8px;  /* D-Body1 */
+  letter-spacing: -0.02em; color: var(--g10); max-width: 485px;
+}
+.wd-ai {
+  font-weight: 500; font-size: 16px; line-height: 22px;    /* D-Small3 */
+  letter-spacing: -0.02em; color: #a5a5a5;                 /* Grayscale-5 */
+}
+
+/* ---------- 다른 작품 (데스크탑 숨김) ---------- */
+.wd-related { order: 2; display: none; }
+.wd-rel-card { display: flex; flex-direction: column; cursor: pointer; }
+.wd-rel-card__thumb { display: block; }
+.wd-rel-card:hover .wd-rel-card__thumb { opacity: 0.86; }
+.wd-rel-card__info { display: flex; flex-direction: column; min-width: 0; }
+.wd-rel-card__title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ============================================================
+   ▍TABLET (≤960) · Figma 4955:4090  (정보 → 이미지 → 관련작품)
+   ============================================================ */
+@media (max-width: 960px) {
+  .wd-body { flex-direction: column; gap: 60px; padding: 60px 40px 100px; }
+  .wd-info { order: 0; flex: none; width: 100%; gap: 36px; }
+  .wd-gallery { order: 1; flex: none; width: 100%; gap: 20px; }
+  .wd-related { order: 2; display: flex; flex-direction: column; gap: 28px; }
+
+  .wd-head { gap: 20px; }
+  .wd-back { font-size: 20px; line-height: 30px; }          /* T-S2 */
+  .wd-name { font-weight: 700; font-size: 22px; line-height: 32px; } /* T-H2 */
+  .wd-about { gap: 24px; }
+  .wd-meta { font-size: 16px; line-height: 26px; }          /* T-Body1 */
+  .wd-title { font-size: 30px; line-height: 42px; color: #000; } /* T-D2 */
+  .wd-descwrap { gap: 8px; }
+  .wd-desc { font-size: 16px; line-height: 26px; }
+  .wd-ai { font-size: 14px; line-height: 20px; color: #8b8b8b; } /* T-Small3 */
+
+  .wd-related__title {
+    font-weight: 700; font-size: 26px; line-height: 36px; color: var(--g12); /* T-H5 */
+  }
+  .wd-related__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+  .wd-rel-card { width: auto; gap: 15px; }
+  .wd-rel-card__thumb { width: 100%; aspect-ratio: 1 / 1; border-radius: 20px; }
+  .wd-rel-card__title { font-weight: 700; font-size: 20px; line-height: 30px; color: var(--g10); } /* T-S2 */
+  .wd-rel-card__designer { font-weight: 700; font-size: 16px; line-height: 26px; color: var(--g6); } /* T-Body2 */
+}
+
+/* ============================================================
+   ▍MOBILE (≤390) · Figma 4926:3380
+   ============================================================ */
+@media (max-width: 390px) {
+  .wd-body { flex-direction: column; gap: 85px; padding: 85px 20px; }
+  .wd-info { order: 0; flex: none; width: 100%; gap: 35px; }
+  .wd-gallery { order: 1; flex: none; width: 100%; gap: 12px; }
+  .wd-related { order: 2; display: flex; flex-direction: column; gap: 16px; }
+
+  .wd-head { gap: 48px; }
+  .wd-back { font-weight: 700; font-size: 14px; line-height: 1.43; color: #a5a5a5; } /* M-Sm4 · Grayscale-5 */
+  .wd-name { font-weight: 700; font-size: 16px; line-height: 1.5; color: var(--g12); }  /* M-B2 */
+  .wd-about { gap: 25px; }
+  .wd-titlewrap { gap: 5px; }
+  .wd-meta { gap: 6px; font-size: 14px; line-height: 1.43; }  /* M-Sm3 */
+  .wd-title { font-weight: 700; font-size: 24px; line-height: 1.33; color: #000; } /* M-H4 */
+  .wd-descwrap { gap: 15px; }
+  .wd-desc { font-size: 16px; line-height: 1.5; }             /* M-B1 */
+  .wd-ai { font-size: 14px; line-height: 1.43; color: #8b8b8b; } /* M-Sm3 */
+
+  .wd-related__title {
+    font-weight: 700; font-size: 24px; line-height: 1.33; color: var(--g12); /* M-H4 */
+  }
+  /* 관련작품: 가로 스크롤 (썸네일 165×112) */
+  .wd-related__grid { display: flex; gap: 12px; overflow-x: auto; }
+  .wd-rel-card { flex: 0 0 165px; width: 165px; gap: 10px; }
+  .wd-rel-card__thumb { width: 165px; height: 112px; border-radius: 0; }
+  .wd-rel-card__title { font-weight: 700; font-size: 16px; line-height: 1.5; color: var(--g11); } /* M-B2 */
+  .wd-rel-card__designer { font-weight: 500; font-size: 14px; line-height: 1.43; color: var(--g6); } /* M-Sm3 */
+}

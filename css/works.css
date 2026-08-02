@@ -1,0 +1,172 @@
+/* ============================================================
+   2026 SMUCD 졸업전시 · Works
+   Figma: Desktop 5138:4975/5787 · Tablet 4955:3664 · Mobile 4990:3373/3448
+   공용(리셋·토큰·헤더·푸터·내비)은 home.css 재사용 · 여기선 Works 레이아웃만
+   Breakpoints: 기본=데스크탑(≥961) · ≤960=태블릿 · ≤390=모바일
+   ============================================================ */
+
+/* ============================================================
+   BODY (Desktop: 좌 카테고리 + 우 그리드)
+   ============================================================ */
+.wk-body {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(40px, 12%, 153px);   /* 153/1280 ≈ 12% */
+  padding: 81px 80px;             /* 내비↔본문 81 (Figma) */
+}
+
+/* ---------- 좌측 테마 카테고리 ---------- */
+.wk-cats {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.wk-cat {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+/* 활성 카테고리 좌측 삼각형 마커 (20.5×52) */
+.wk-cat__arrow {
+  display: none;
+  flex: 0 0 auto;
+  width: 0;
+  height: 0;
+  margin-top: 2px;
+  border-top: 26px solid transparent;
+  border-bottom: 26px solid transparent;
+  border-left: 20.5px solid var(--g11);
+}
+.wk-cat.is-active .wk-cat__arrow { display: block; }
+.wk-cat__text { display: flex; flex-direction: column; }
+.wk-cat__ko {
+  font-weight: 800; font-size: 28px; line-height: 38px;   /* D-H4 */
+  letter-spacing: -0.02em; color: var(--g3);
+  transition: color 0.15s ease;
+}
+.wk-cat__en {
+  font-weight: 700; font-size: 16px; line-height: 22px;   /* D-Small4 */
+  letter-spacing: -0.02em; color: var(--g3);
+  transition: color 0.15s ease;
+}
+.wk-cat:hover .wk-cat__ko, .wk-cat:hover .wk-cat__en,
+.wk-cat.is-active .wk-cat__ko, .wk-cat.is-active .wk-cat__en { color: var(--g11); }
+
+/* ---------- 우측 콘텐츠 ---------- */
+.wk-main { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 100px; }
+.wk-mhead { display: flex; flex-direction: column; }
+.wk-desc {
+  font-weight: 700; font-size: 20px; line-height: 32px;   /* D-S2 */
+  letter-spacing: -0.02em; color: var(--g10);
+  max-width: 847px;
+}
+
+/* ---------- 작품 그리드 (4열) ---------- */
+.wk-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 28px;
+  row-gap: 35px;
+}
+.wk-card { display: flex; flex-direction: column; gap: 15px; cursor: pointer; }
+.wk-card__thumb {
+  display: block; width: 100%; aspect-ratio: 1 / 1; border-radius: 10px;
+  position: relative; overflow: hidden;
+  transition: opacity 0.2s ease;
+}
+.wk-card__thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.wk-card:hover .wk-card__thumb { opacity: 0.86; }
+.wk-empty { grid-column: 1 / -1; color: var(--g6); padding: 40px 0; font-size: 16px; }
+.wk-card__info { display: flex; flex-direction: column; min-width: 0; }
+.wk-card__title {
+  font-weight: 700; font-size: 18px; line-height: 23.4px;  /* D-Body2 */
+  letter-spacing: -0.02em; color: var(--g10);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.wk-card__designer {
+  font-weight: 700; font-size: 14px; line-height: 20px;    /* D-Small2 */
+  letter-spacing: -0.02em; color: var(--g6);
+}
+
+/* ============================================================
+   ▍TABLET (≤960) · Figma 4955:3664
+   ============================================================ */
+@media (max-width: 960px) {
+  .wk-body { gap: 0; padding: 60px 40px 100px; }
+  .wk-cats { flex: 0 0 226px; width: 226px; gap: 28px; }
+  .wk-cat__arrow {
+    border-top-width: 16px; border-bottom-width: 16px; border-left-width: 32px;
+  }
+  .wk-cat__ko { font-size: 22px; line-height: 32px; }        /* T-H2 */
+  .wk-cat__en { font-weight: 500; font-size: 14px; line-height: 20px; } /* T-Small3 */
+  .wk-main { gap: 60px; }
+  .wk-desc { font-weight: 500; font-size: 16px; line-height: 26px; }    /* T-Body1 */
+  .wk-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; row-gap: 36px; }
+  .wk-card__thumb { border-radius: 20px; }
+  .wk-card__title { font-size: 20px; line-height: 30px; }    /* T-S2 */
+  .wk-card__designer { font-size: 16px; line-height: 26px; } /* T-Body2 */
+}
+
+/* ============================================================
+   ▍MOBILE (≤390) · Figma 4990:3373(메뉴) / 4990:3448(목록)
+   ============================================================ */
+@media (max-width: 390px) {
+  .wk-body { flex-direction: column; gap: 85px; padding: 85px 20px; }
+
+  /* 카테고리: 기본 숨김 · 제목 탭 시 전체 오버레이 (Figma 4990:3373) */
+  .wk-cats {
+    display: none;
+    position: fixed; inset: 0; z-index: 45;   /* 헤더(50) 아래 → 로고·햄버거 노출 (Figma 4990:3373) */
+    width: auto; flex: none;        /* 태블릿 226px 폭 리셋 → 전체 오버레이 */
+    background: #fff;
+    flex-direction: column; align-items: center; justify-content: flex-start;
+    gap: 40px; padding: 152px 20px 40px;   /* 헤더(52) + gap100 = 152 → 카테고리 상단 정렬 */
+    overflow-y: auto;
+  }
+  .wk-cats.is-open { display: flex; }
+  .wk-cat { flex-direction: column; align-items: center; gap: 0; }
+  .wk-cat__arrow { display: none !important; }
+  .wk-cat__text { align-items: center; text-align: center; }
+  .wk-cat__ko { font-size: 24px; line-height: 1.33; color: var(--g11); }   /* M-H4 */
+  .wk-cat__en { font-weight: 700; font-size: 16px; line-height: 1.5; color: #3d3d3d; } /* M-B2 */
+  .wk-cat.is-active .wk-cat__ko, .wk-cat.is-active .wk-cat__en { color: var(--g11); }
+
+  /* 콘텐츠 : 뒤로가기 + 제목(현재 카테고리) + 설명 + 1열 그리드 (Figma 4990:3448) */
+  .wk-main { gap: 85px; }
+  .wk-mhead { align-items: center; gap: 35px; }
+  /* 뒤로가기 (라임 화살표 + 회색 텍스트) : 좌측 정렬, 제목까지 55px */
+  .wk-back {
+    display: inline-flex; align-items: center; gap: 10px;
+    align-self: flex-start; margin-bottom: 20px;
+    font-weight: 700; font-size: 14px; line-height: 1.43; color: #a5a5a5;  /* M-Sm4 · Grayscale-5 */
+  }
+  .wk-back__icon { flex: none; width: 27px; height: 20px; display: block; }
+  .wk-mtitle {
+    display: flex; flex-direction: column; align-items: center; gap: 0;
+    background: none; border: 0; padding: 0; cursor: pointer; text-align: center;
+  }
+  .wk-mtitle__ko {
+    font-weight: 700; font-size: 24px; line-height: 1.33;
+    letter-spacing: -0.02em; color: var(--g11);
+  }
+  .wk-mtitle__en {
+    font-weight: 700; font-size: 16px; line-height: 1.5;
+    letter-spacing: -0.02em; color: #3d3d3d;
+  }
+  .wk-desc {
+    width: 100%; max-width: none; text-align: left;
+    font-weight: 500; font-size: 16px; line-height: 1.5; color: var(--g10);
+  }
+  .wk-grid { grid-template-columns: 1fr; row-gap: 16px; }
+  .wk-card { gap: 16px; }
+  .wk-card__thumb { border-radius: 10px; }
+  .wk-card__info { gap: 4px; }
+  .wk-card__title { font-size: 20px; line-height: 1.4; }     /* M-H2 */
+  .wk-card__designer { font-weight: 500; font-size: 16px; line-height: 1.5; } /* M-B1 */
+}
