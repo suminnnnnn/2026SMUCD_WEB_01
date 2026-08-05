@@ -71,61 +71,34 @@
 .wd-rel-card__title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* ============================================================
-   ▍TABLET (≤960) · Figma 4955:4090  (정보 → 이미지 → 관련작품)
+   ▍ < 880px  · Figma 5395:7740 (880 - Work 상세)
+   단일 컬럼: 뒤로가기 → About → 이미지 스택 → 다른작품(3열) → 푸터
    ============================================================ */
-@media (max-width: 960px) {
-  .wd-body { flex-direction: column; gap: 60px; padding: 60px 40px 100px; }
-  .wd-info { order: 0; flex: none; width: 100%; gap: 36px; }
-  .wd-gallery { order: 1; flex: none; width: 100%; gap: 20px; }
-  .wd-related { order: 2; display: flex; flex-direction: column; gap: 28px; }
-
-  .wd-head { gap: 20px; }
-  .wd-back { font-size: 20px; line-height: 30px; }          /* T-S2 */
-  .wd-name { font-weight: 700; font-size: 22px; line-height: 32px; } /* T-H2 */
-  .wd-about { gap: 24px; }
-  .wd-meta { font-size: 16px; line-height: 26px; }          /* T-Body1 */
-  .wd-title { font-size: 30px; line-height: 42px; color: #000; } /* T-D2 */
-  .wd-descwrap { gap: 8px; }
-  .wd-desc { font-size: 16px; line-height: 26px; }
-  .wd-ai { font-size: 14px; line-height: 20px; color: #8b8b8b; } /* T-Small3 */
-
-  .wd-related__title {
-    font-weight: 700; font-size: 26px; line-height: 36px; color: var(--g12); /* T-H5 */
-  }
-  .wd-related__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
-  .wd-rel-card { width: auto; gap: 15px; }
-  .wd-rel-card__thumb { width: 100%; aspect-ratio: 1 / 1; border-radius: 20px; }
-  .wd-rel-card__title { font-weight: 700; font-size: 20px; line-height: 30px; color: var(--g10); } /* T-S2 */
-  .wd-rel-card__designer { font-weight: 700; font-size: 16px; line-height: 26px; color: var(--g6); } /* T-Body2 */
-}
-
-/* ============================================================
-   ▍MOBILE (≤390) · Figma 4926:3380
-   ============================================================ */
-@media (max-width: 390px) {
-  .wd-body { flex-direction: column; gap: 85px; padding: 85px 20px; }
+@media (max-width: 879.98px) {
+  .wd-body { flex-direction: column; align-items: stretch; gap: 60px; padding: 60px 20px; }
   .wd-info { order: 0; flex: none; width: 100%; gap: 35px; }
   .wd-gallery { order: 1; flex: none; width: 100%; gap: 12px; }
   .wd-related { order: 2; display: flex; flex-direction: column; gap: 16px; }
 
-  .wd-head { gap: 48px; }
-  .wd-back { font-weight: 700; font-size: 14px; line-height: 1.43; color: #a5a5a5; } /* M-Sm4 · Grayscale-5 */
+  .wd-head { gap: 54px; }                          /* 뒤로가기 → 이름 */
+  .wd-back { font-weight: 700; font-size: 14px; line-height: 1.43; color: #a5a5a5; } /* M-Sm4 */
+  .wd-back__icon { width: 34px; height: 20px; }
   .wd-name { font-weight: 700; font-size: 16px; line-height: 1.5; color: var(--g12); }  /* M-B2 */
   .wd-about { gap: 25px; }
   .wd-titlewrap { gap: 5px; }
-  .wd-meta { gap: 6px; font-size: 14px; line-height: 1.43; }  /* M-Sm3 */
+  .wd-meta { gap: 6px; font-size: 14px; line-height: 1.43; color: #6f6f6f; }  /* M-Sm3 */
   .wd-title { font-weight: 700; font-size: 24px; line-height: 1.33; color: #000; } /* M-H4 */
-  .wd-descwrap { gap: 15px; }
-  .wd-desc { font-size: 16px; line-height: 1.5; }             /* M-B1 */
-  .wd-ai { font-size: 14px; line-height: 1.43; color: #8b8b8b; } /* M-Sm3 */
+  .wd-descwrap { gap: 10px; }
+  .wd-desc { font-weight: 500; font-size: 16px; line-height: 1.5; color: var(--g10); max-width: none; } /* M-B1 */
+  .wd-ai { font-weight: 500; font-size: 14px; line-height: 1.43; color: #8b8b8b; } /* M-Sm3 */
 
-  .wd-related__title {
-    font-weight: 700; font-size: 24px; line-height: 1.33; color: var(--g12); /* M-H4 */
-  }
-  /* 관련작품: 가로 스크롤 (썸네일 165×112) */
-  .wd-related__grid { display: flex; gap: 12px; overflow-x: auto; }
-  .wd-rel-card { flex: 0 0 165px; width: 165px; gap: 10px; }
-  .wd-rel-card__thumb { width: 165px; height: 112px; border-radius: 0; }
+  .wd-shot { aspect-ratio: 1440 / 810; }
+
+  /* 다른 작품 둘러보기 : 3열 */
+  .wd-related__title { font-weight: 700; font-size: 24px; line-height: 1.33; color: var(--g12); } /* M-H4 */
+  .wd-related__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .wd-rel-card { width: auto; gap: 10px; }
+  .wd-rel-card__thumb { width: 100%; aspect-ratio: 1 / 1; border-radius: 10px; }
   .wd-rel-card__title { font-weight: 700; font-size: 16px; line-height: 1.5; color: var(--g11); } /* M-B2 */
   .wd-rel-card__designer { font-weight: 500; font-size: 14px; line-height: 1.43; color: var(--g6); } /* M-Sm3 */
 }

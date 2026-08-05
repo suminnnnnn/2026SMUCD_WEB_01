@@ -95,78 +95,54 @@
 }
 
 /* ============================================================
-   ▍TABLET (≤960) · Figma 4955:3664
+   ▍ < 880px  · Figma 5397:3737(카테고리 선택) · 5395:7584(작품 리스트)
+   Mode A(.is-cat) : 카테고리 선택 풀페이지 · Mode B : 칩 + 2열 그리드
    ============================================================ */
-@media (max-width: 960px) {
-  .wk-body { gap: 0; padding: 60px 40px 100px; }
-  .wk-cats { flex: 0 0 226px; width: 226px; gap: 28px; }
-  .wk-cat__arrow {
-    border-top-width: 16px; border-bottom-width: 16px; border-left-width: 32px;
-  }
-  .wk-cat__ko { font-size: 22px; line-height: 32px; }        /* T-H2 */
-  .wk-cat__en { font-weight: 500; font-size: 14px; line-height: 20px; } /* T-Small3 */
-  .wk-main { gap: 60px; }
-  .wk-desc { font-weight: 500; font-size: 16px; line-height: 26px; }    /* T-Body1 */
-  .wk-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; row-gap: 36px; }
-  .wk-card__thumb { border-radius: 20px; }
-  .wk-card__title { font-size: 20px; line-height: 30px; }    /* T-S2 */
-  .wk-card__designer { font-size: 16px; line-height: 26px; } /* T-Body2 */
-}
+@media (max-width: 879.98px) {
+  .wk-body { flex-direction: column; align-items: stretch; gap: 60px; padding: 60px 20px; }
 
-/* ============================================================
-   ▍MOBILE (≤390) · Figma 4990:3373(메뉴) / 4990:3448(목록)
-   ============================================================ */
-@media (max-width: 390px) {
-  .wk-body { flex-direction: column; gap: 85px; padding: 85px 20px; }
+  /* ---------- 모드 전환 ---------- */
+  .wk-body.is-cat .wk-cats { display: flex; }
+  .wk-body.is-cat .wk-main { display: none; }
+  .wk-body:not(.is-cat) .wk-cats { display: none; }
 
-  /* 카테고리: 기본 숨김 · 제목 탭 시 전체 오버레이 (Figma 4990:3373) */
+  /* ---------- Mode A : 카테고리 선택 (센터 정렬) ---------- */
   .wk-cats {
-    display: none;
-    position: fixed; inset: 0; z-index: 45;   /* 헤더(50) 아래 → 로고·햄버거 노출 (Figma 4990:3373) */
-    width: auto; flex: none;        /* 태블릿 226px 폭 리셋 → 전체 오버레이 */
-    background: #fff;
+    flex: none; width: 100%;
     flex-direction: column; align-items: center; justify-content: flex-start;
-    gap: 40px; padding: 152px 20px 40px;   /* 헤더(52) + gap100 = 152 → 카테고리 상단 정렬 */
-    overflow-y: auto;
+    gap: 40px; padding: 92px 0;
   }
-  .wk-cats.is-open { display: flex; }
-  .wk-cat { flex-direction: column; align-items: center; gap: 0; }
+  .wk-cat { flex-direction: column; align-items: center; gap: 0; text-align: center; }
   .wk-cat__arrow { display: none !important; }
   .wk-cat__text { align-items: center; text-align: center; }
-  .wk-cat__ko { font-size: 24px; line-height: 1.33; color: var(--g11); }   /* M-H4 */
-  .wk-cat__en { font-weight: 700; font-size: 16px; line-height: 1.5; color: #3d3d3d; } /* M-B2 */
+  .wk-cat__ko { font-weight: 700; font-size: 24px; line-height: 1.33; color: var(--g11); }  /* M-H4 */
+  .wk-cat__en { font-weight: 700; font-size: 16px; line-height: 1.5; color: #3d3d3d; }        /* M-B2 */
+  .wk-cat:hover .wk-cat__ko, .wk-cat:hover .wk-cat__en,
   .wk-cat.is-active .wk-cat__ko, .wk-cat.is-active .wk-cat__en { color: var(--g11); }
 
-  /* 콘텐츠 : 뒤로가기 + 제목(현재 카테고리) + 설명 + 1열 그리드 (Figma 4990:3448) */
-  .wk-main { gap: 85px; }
-  .wk-mhead { align-items: center; gap: 35px; }
-  /* 뒤로가기 (라임 화살표 + 회색 텍스트) : 좌측 정렬, 제목까지 55px */
-  .wk-back {
-    display: inline-flex; align-items: center; gap: 10px;
-    align-self: flex-start; margin-bottom: 20px;
-    font-weight: 700; font-size: 14px; line-height: 1.43; color: #a5a5a5;  /* M-Sm4 · Grayscale-5 */
+  /* ---------- Mode B : 작품 리스트 ---------- */
+  .wk-main { flex: none; width: 100%; gap: 60px; }
+  .wk-mhead { gap: 25px; align-items: flex-start; }
+
+  /* 카테고리 칩 (활성 = 보라) */
+  .wk-chips { display: flex; flex-wrap: wrap; gap: 10px; max-width: 620px; width: 100%; }
+  .wk-chip {
+    flex: 0 0 auto; width: 110px; height: 48px;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 10px; background: #efefef; border: 0; cursor: pointer; text-align: left;
   }
-  .wk-back__icon { flex: none; width: 27px; height: 20px; display: block; }
-  .wk-mtitle {
-    display: flex; flex-direction: column; align-items: center; gap: 0;
-    background: none; border: 0; padding: 0; cursor: pointer; text-align: center;
-  }
-  .wk-mtitle__ko {
-    font-weight: 700; font-size: 24px; line-height: 1.33;
-    letter-spacing: -0.02em; color: var(--g11);
-  }
-  .wk-mtitle__en {
-    font-weight: 700; font-size: 16px; line-height: 1.5;
-    letter-spacing: -0.02em; color: #3d3d3d;
-  }
-  .wk-desc {
-    width: 100%; max-width: none; text-align: left;
-    font-weight: 500; font-size: 16px; line-height: 1.5; color: var(--g10);
-  }
-  .wk-grid { grid-template-columns: 1fr; row-gap: 16px; }
+  .wk-chip__ko { font-weight: 700; font-size: 14px; line-height: 1.43; letter-spacing: -0.02em; color: var(--g11); }  /* M-Sm4 */
+  .wk-chip__en { font-weight: 500; font-size: 12px; line-height: 1.33; letter-spacing: -0.02em; color: #8b8b8b; }      /* M-Sm2 */
+  .wk-chip.is-active { background: #734efc; }               /* KeyColor-2 */
+  .wk-chip.is-active .wk-chip__ko { color: #fff; }
+  .wk-chip.is-active .wk-chip__en { color: #dfdfdf; }
+
+  .wk-desc { width: 100%; max-width: none; font-weight: 500; font-size: 16px; line-height: 1.5; color: var(--g10); }  /* M-B1 */
+
+  /* 2열 그리드 */
+  .wk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; row-gap: 40px; }
   .wk-card { gap: 16px; }
-  .wk-card__thumb { border-radius: 10px; }
-  .wk-card__info { gap: 4px; }
-  .wk-card__title { font-size: 20px; line-height: 1.4; }     /* M-H2 */
-  .wk-card__designer { font-weight: 500; font-size: 16px; line-height: 1.5; } /* M-B1 */
+  .wk-card__thumb { aspect-ratio: 1 / 1; border-radius: 10px; }
+  .wk-card__title { font-size: 20px; line-height: 1.4; color: var(--g10); }        /* M-H2 */
+  .wk-card__designer { font-weight: 500; font-size: 16px; line-height: 1.5; color: var(--g6); } /* M-B1 */
 }

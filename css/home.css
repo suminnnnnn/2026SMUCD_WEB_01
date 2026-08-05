@@ -41,10 +41,13 @@ ul, dl { margin: 0; padding: 0; list-style: none; }
 p, h1, h2, h3, figure, dd { margin: 0; }
 button { font-family: inherit; cursor: pointer; background: none; border: 0; padding: 0; }
 
-/* ---------- Breakpoint visibility utilities ---------- */
-@media (min-width: 961px) { .hide-d { display: none !important; } }
-@media (min-width: 391px) and (max-width: 960px) { .hide-t { display: none !important; } }
-@media (max-width: 390px) { .hide-m { display: none !important; } }
+/* ---------- Breakpoint visibility utilities (단일 기준: 880px) ----------
+   ≥880  = 데스크탑     → .hide-d 숨김
+   <880  = 새 코드 구간 → .hide-m 숨김
+   .hide-t 는 구 3단(태블릿) 잔재 — 단일 기준에선 어떤 화면에서도 숨기지 않음(무효).
+   (마크업의 hide-* 조합: 데스크탑전용 .hide-t.hide-m / 소형전용 .hide-d.hide-t) */
+@media (min-width: 880px) { .hide-d { display: none !important; } }
+@media (max-width: 879.98px) { .hide-m { display: none !important; } }
 
 /* placeholder 박스 */
 .hp-ph { background: var(--ph); }
@@ -329,178 +332,90 @@ button { font-family: inherit; cursor: pointer; background: none; border: 0; pad
 }
 
 /* ============================================================
-   ▍TABLET  (≤960)  · Figma 4955:4163
+   ▍ < 880px  · Figma 5397:4115 (880 - Home)
+   단일 컬럼 · 컴팩트 헤더 · 유동(clamp/flex-wrap)로 폰~880 대응
    ============================================================ */
-@media (max-width: 960px) {
-  /* HEADER (한 줄 유지: 학교명·로고는 고정, 부족하면 네비 gap·폰트만 축소) */
-  .hp-header { height: auto; padding: 12px clamp(12px, 3vw, 40px) 0; gap: clamp(8px, 1.5vw, 24px); }
-  .hp-brand { gap: clamp(6px, 1.2vw, 12px); }
-  .hp-brand__logo { width: 72px; height: 72px; }   /* 로고 고정 */
-  .hp-brand__text { font-size: 16px; }              /* 학교명 고정 */
-  .hp-nav { gap: clamp(6px, 1.8vw, 24px); }
-  .hp-nav a { font-size: clamp(12px, 2.7vw, 26px); line-height: 1.3; font-weight: 700; }
-
-  /* BODY : 좌 레일 + 우 콘텐츠 (424:424 비율로 유동) */
-  .hp-body { gap: clamp(20px, 3.6%, 32px); padding: 60px 40px 100px; align-items: flex-start; }
-  .hp-poster { flex: 424 1 0; aspect-ratio: 424 / 586; }
-  .hp-content { flex: 424 1 0; min-width: 0; gap: 60px; }
-
-  /* figure: 스케줄 앞으로 이동 · 데스크탑 음수마진 리셋 */
-  .hp-figure--place { order: 15; margin-top: 0; }
-  .hp-committee-row { margin-top: 0; }   /* 데스크탑 음수마진 리셋 (사진은 명단 안쪽으로) */
-
-  /* 히어로 */
-  .hp-hero { gap: 12px; }
-  .hp-hero__title { font-weight: 800; font-size: 34px; line-height: 42px; }
-  .hp-hero__sub { font-weight: 700; font-size: 16px; line-height: 26px; color: var(--g12); }
-  .hp-about { gap: 28px; }
-  .hp-desc { font-weight: 500; font-size: 16px; line-height: 26px; }
-
-  /* 정보 행 : 라벨 위 · 값 아래로 세로 스택 */
-  .hp-row { display: flex; flex-direction: column; gap: 28px; }
-  .hp-label { font-size: 20px; line-height: 30px; }
-  .hp-label--advisor { font-weight: 700; font-size: 20px; line-height: 30px; }
-  .hp-value { font-size: 20px; line-height: 30px; }
-  .hp-venue, .hp-addr, .hp-subway { font-size: 20px; line-height: 30px; font-weight: 700; }
-  .hp-addr { font-weight: 700; margin-top: 0; }
-  .hp-subway { margin-top: 0; }
-  .hp-place .hp-row__body { gap: 28px; }
-  .hp-schedule .hp-row__body, .hp-place .hp-row__body { }
-
-  /* 전시 이미지 */
-  .hp-figure { aspect-ratio: 424 / 238; }
-
-  /* 지도교수 : 두 스튜디오 가로 2열 (좁으면 래핑) */
-  .hp-advisors { flex-direction: row; flex-wrap: wrap; gap: 32px; }
-  .hp-advisor {
-    flex: 1 1 160px; min-width: 0;
-    display: flex; flex-direction: column; gap: 20px;
-  }
-  .hp-advisor__studio { font-size: 20px; line-height: 30px; }
-  .hp-advisor__names { gap: 12px; }
-  .hp-advisor__names li { font-size: 20px; line-height: 30px; }
-
-  /* 졸업위원회 : 역할열 | 이름열 (데스크탑 4열 그리드 리셋) */
-  .hp-committee { column-gap: 48px; row-gap: 20px; }
-  .hp-com dt { font-size: 20px; line-height: 30px; }
-  .hp-com dd { display: flex; flex-wrap: wrap; gap: 20px; grid-template-columns: none; }
-  .hp-com dd span { font-size: 20px; line-height: 30px; min-width: 0; }
-
-  /* 후원·협력 : 3열 */
-  .hp-sponsors { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; width: 100%; }
-  .hp-logo { aspect-ratio: 130 / 54; }
-
-  /* FOOTER (데스크탑 갱신값이 태블릿에 새지 않게 이전 상태로 리셋) */
-  .hp-footer__inner { padding: 27px 40px; gap: 24px; }
-  .hp-footer__brand { font-weight: 800; line-height: 30px; flex-basis: 324px; }
-  .hp-footer__info { gap: 11px; flex-basis: auto; max-width: 353px; }
-  .hp-footer__row { justify-content: flex-start; }
-  .hp-footer__row dt { font-weight: 800; line-height: 26px; }
-  .hp-footer__row dd { line-height: 26px; text-align: left; }
-}
-
-/* ============================================================
-   ▍MOBILE  (≤390)  · Figma 4926:3274
-   ============================================================ */
-@media (max-width: 390px) {
-  :root { --ph: #d9d9d9; }
-
-  /* HEADER : 로고 + 브랜드 + 햄버거 */
+@media (max-width: 879.98px) {
+  /* ---------- HEADER : 컴팩트(로고36·브랜드10·햄버거) ---------- */
   .hp-header { height: 44px; padding: 8px 20px 0; position: relative; }
   .hp-brand { gap: 10px; }
   .hp-brand__logo { width: 36px; height: 36px; }
   .hp-brand__text { font-weight: 800; font-size: 10px; line-height: 1.35; }
-
-  /* 내비 : 기본 숨김, 햄버거로 토글 */
   .hp-nav {
-    display: none;
-    position: absolute;
-    top: 44px; right: 20px;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 14px;
-    background: #fff;
-    padding: 16px 18px;
-    border: 1px solid var(--g3);
-    z-index: 60;
+    display: none; position: absolute; top: 44px; right: 20px;
+    flex-direction: column; align-items: flex-end; gap: 14px;
+    background: #fff; padding: 16px 18px; border: 1px solid var(--g3); z-index: 60;
   }
   .hp-nav.is-open { display: flex; }
   .hp-nav a { font-size: 18px; line-height: 1.2; font-weight: 700; }
 
-  /* BODY : 전부 세로 스택 (헤더↔포스터·콘텐츠↔푸터 간격 85 — Figma gap-85) */
-  .hp-body { flex-direction: column; gap: 85px; padding: 85px 20px 85px; }
-  .hp-poster { width: 100%; height: auto; aspect-ratio: 350 / 466; }
-  .hp-content { width: 100%; gap: 85px; }
-  /* 데스크탑 음수마진 리셋 */
-  .hp-figure--place { margin-top: 0; }
+  /* ---------- BODY : 단일 컬럼 ---------- */
+  .hp-body { flex-direction: column; align-items: stretch; gap: 60px; padding: 60px 20px; }
+  .hp-poster { width: 100%; aspect-ratio: 840 / 1194; }
+  .hp-content { width: 100%; gap: 60px; }
+
+  /* 데스크탑 음수마진·2단 잔재 리셋 */
+  .hp-figure--place { margin-top: 0; order: 40; }
   .hp-committee-row { margin-top: 0; }
+  .hp-figure { aspect-ratio: 840 / 519; }
 
-  /* figure(약도)는 전시장소 뒤 유지 (order 40) */
+  /* 섹션 라벨(소개/오프라인 전시/지도교수/…) : #8b8b8b 20px */
+  .hp-label, .hp-about__label { font-weight: 700; font-size: 20px; line-height: 1.4; color: var(--g6); }
 
-  /* 히어로 */
-  .hp-hero__title { font-weight: 700; font-size: 26px; line-height: 34px; }
-  .hp-hero__sub { font-size: 18px; line-height: 1.44; color: var(--g11); }
+  /* ---------- ABOUT ---------- */
   .hp-about { gap: 35px; }
-  .hp-about__label {
-    font-weight: 700; font-size: 20px; line-height: 1.4; color: var(--g6);
-  }
-  .hp-hero, .hp-desc { }
-  .hp-about { display: flex; flex-direction: column; gap: 35px; }
-  .hp-hero { gap: 10px; }
-  .hp-desc { font-weight: 500; font-size: 16px; line-height: 1.5; }
+  .hp-hero { gap: 30px; }
+  .hp-hero__title { font-weight: 700; font-size: 24px; line-height: 1.33; color: var(--black); }
+  .hp-desc { font-weight: 500; font-size: 16px; line-height: 1.5; color: var(--g10); }
 
-  /* 정보 행 : 라벨 + 본문 세로 스택 (gap 35) */
-  .hp-row { gap: 35px; }
-  .hp-label { font-size: 20px; line-height: 1.4; }
+  /* ---------- 정보 행 : 라벨 위 + 본문(단일 컬럼) ---------- */
+  .hp-row { display: flex; flex-direction: column; gap: 35px; }
   .hp-value { font-weight: 700; font-size: 20px; line-height: 1.4; color: var(--g12); }
-  .hp-venue { font-size: 20px; line-height: 1.4; }
-  .hp-venue .en { color: #a5a5a5; }
-  .hp-addr, .hp-subway { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); }
-  .hp-addr { margin-top: 35px; }
-  .hp-subway { margin-top: 35px; }
+
+  /* 오프라인 : 날짜 + 오프닝/시간 */
+  .hp-date--m .hp-value { font-weight: 700; font-size: 20px; line-height: 1.4; color: var(--g12); }
+  .hp-opening { gap: clamp(24px, 12vw, 130px); margin-top: 34px; font-size: 18px; line-height: 1.44; }
+  .hp-opening__k { font-weight: 700; color: var(--g10); }
+  .hp-opening__v { font-weight: 500; color: var(--g10); }
+
+  /* 전시장소 : 값 18px */
   .hp-place .hp-row__body { gap: 0; }
+  .hp-venue { font-weight: 700; font-size: 20px; line-height: 1.4; color: var(--g12); }
+  .hp-venue .en { color: #a5a5a5; }
+  .hp-addr { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); margin-top: 35px; }
+  .hp-subway { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); margin-top: 35px; }
+  .hp-subway__badge { width: 29px; height: 28px; font-size: 22px; }
 
-  /* 오프라인 : 날짜/오프닝 */
-  .hp-date--m .hp-value { font-size: 20px; line-height: 1.4; color: var(--g12); }
-  .hp-opening { gap: 24px; margin-top: 34px; font-size: 18px; line-height: 1.44; }
-  .hp-opening__k { color: var(--g10); }
-  .hp-opening__v { color: var(--g10); }
-
-  /* 약도 */
-  .hp-figure { aspect-ratio: 350 / 239; }
-  .hp-figure--place { order: 40; }   /* 약도: 전시장소 뒤 (태블릿 order:15 리셋) */
-
-  /* 지도교수 : 2열 */
-  /* 지도교수: 혁신 | 융합 2열 (grid 로 확정) */
-  .hp-advisors { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; width: 100%; }
-  .hp-advisor { display: flex; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; gap: 22px; }
-  .hp-advisor__studio { font-weight: 700; font-size: 18px; line-height: 1.44; color: var(--g12); }
+  /* ---------- 지도교수 : 스튜디오 2개(각 [스튜디오명 | 명단]) ---------- */
+  .hp-advisors { display: flex; flex-direction: row; flex-wrap: wrap; gap: 35px clamp(40px, 9vw, 100px); }
+  .hp-advisor {
+    flex: 0 1 auto; display: flex; flex-direction: row; align-items: flex-start;
+    flex-wrap: nowrap; gap: clamp(24px, 6vw, 78px);
+  }
+  .hp-advisor__studio { font-weight: 700; font-size: 18px; line-height: 1.44; color: var(--g12); white-space: nowrap; }
   .hp-advisor__names { gap: 10px; }
-  .hp-advisor__names li { font-size: 18px; line-height: 1.44; }
+  .hp-advisor__names li { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); white-space: nowrap; }
 
-  /* 졸업전시위원회 (데스크탑 4열 그리드 리셋) */
-  .hp-committee { column-gap: 25px; row-gap: 20px; }
-  .hp-com dt { font-size: 18px; line-height: 1.44; }
-  .hp-com dd { display: flex; flex-wrap: wrap; gap: 20px; grid-template-columns: none; }
-  .hp-com dd span { font-size: 18px; line-height: 1.44; }
+  /* ---------- 졸업전시위원회 : 라벨 → 이미지 → (역할 | 명단) ---------- */
+  .hp-committee { grid-template-columns: max-content minmax(0, 1fr); column-gap: clamp(30px, 14vw, 149px); row-gap: 20px; }
+  .hp-com dt { font-weight: 700; font-size: 18px; line-height: 1.44; }
+  .hp-com dd { display: flex; flex-wrap: wrap; gap: 20px clamp(20px, 5vw, 45px); grid-template-columns: none; }
+  .hp-com dd span { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); }
 
-  /* 협찬업체 : 3열 (100×62) */
-  .hp-sponsors { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 25px; width: 100%; }
-  .hp-logo { aspect-ratio: 100 / 62; }
+  /* ---------- 협찬업체 : 로고 100×62 가로 나열(줄바꿈) ---------- */
+  .hp-sponsors { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px 17px; width: 100%; max-width: none; }
+  .hp-logo { flex: 0 0 auto; width: 100px; aspect-ratio: 100 / 62; }
 
-  /* FOOTER */
-  .hp-footer { height: 377px; }
+  /* ---------- FOOTER : 2열 그리드 ---------- */
+  .hp-footer { height: auto; }
   .hp-footer__inner {
-    flex-direction: column; align-items: flex-start;
-    gap: 0; padding: 40px 20px 0; min-height: 0;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px clamp(24px, 9vw, 86px);
+    padding: 40px 20px; min-height: 0;
   }
-  .hp-footer__brand { flex: none; width: auto; font-size: 16px; line-height: 1.5; }
-  .hp-footer__info { width: 100%; gap: 15px; margin-top: 22px; flex-basis: auto; }
+  .hp-footer__brand { grid-column: 1; grid-row: 1; flex: none; font-size: 16px; line-height: 1.5; }
+  .hp-footer__info { grid-column: 2; grid-row: 1; flex: none; gap: 15px; }
   .hp-footer__row { justify-content: flex-start; gap: 12px; }
-  .hp-footer__row dt {
-    font-weight: 700; font-size: 14px; line-height: 1.43; color: var(--g3);
-    flex: 0 0 92px;
-  }
+  .hp-footer__row dt { font-weight: 700; font-size: 14px; line-height: 1.43; color: var(--g3); flex: 0 0 92px; }
   .hp-footer__row dd { font-weight: 500; font-size: 14px; line-height: 1.43; color: var(--g1); text-align: left; }
-  .hp-footer__prev { display: block; margin-top: 28px; }
+  .hp-footer__prev { grid-column: 2; grid-row: 2; display: block; }
 }

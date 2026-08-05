@@ -54,52 +54,34 @@
 }
 
 /* ============================================================
-   ▍TABLET (≤960) · Figma 4955:3263  (상단 chips + 4열)
+   ▍ < 880px  · Figma 5391:3896 (880 - Designer)
+   DESIGNER 제목 + 초성 칩(전체=보라) + 4열(유동) 그리드
    ============================================================ */
-@media (max-width: 960px) {
-  .dz-body { flex-direction: column; align-items: stretch; gap: 36px; padding: 60px 40px 100px; }
-  .dz-side { flex: none; width: 100%; align-items: flex-start; }
-  .dz-filter { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 4px; }
-  .dz-chip {
-    display: flex; align-items: center; justify-content: center;
-    height: 30px; padding: 8px 10px;
-    border: 1.495px solid #efefef;                          /* Grayscale-2 */
-    font-weight: 700; font-size: 12px; line-height: 18px;   /* T-Small2 */
-    color: #8b8b8b;
-  }
-  .dz-chip.is-active { background: #734efc; color: #fff; border: none; padding: 6px 12px; } /* KeyColor-2 */
+@media (max-width: 879.98px) {
+  .dz-body { flex-direction: column; align-items: stretch; gap: 40px; padding: 60px 20px; }
 
-  .dz-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 20px; row-gap: 36px; }
-  .dz-card { gap: 13px; }
-  .dz-card__thumb { aspect-ratio: 205 / 250; }
-  .dz-card__name { font-size: 20px; line-height: 30px; color: var(--g10); }   /* T-S2 */
-  .dz-card__roman { font-weight: 500; font-size: 14px; line-height: 20px; color: #555; } /* T-Small3 */
-}
-
-/* ============================================================
-   ▍MOBILE (≤390) · Figma 4975:3264  (DESIGNER 제목 + chips + 2열)
-   ============================================================ */
-@media (max-width: 390px) {
-  .dz-body { flex-direction: column; align-items: stretch; gap: 85px; padding: 85px 20px; }
-  .dz-side { gap: 11px; align-items: flex-start; }
+  /* 초성 필터 : 상단 가로 칩 */
+  .dz-side { flex: none; width: 100%; align-items: flex-start; gap: 11px; }
   .dz-side__title {
     display: block;
-    font-weight: 700; font-size: 20px; line-height: 1.4;    /* M-H2 */
+    font-weight: 700; font-size: 20px; line-height: 1.4;   /* M-H2 */
     letter-spacing: -0.03em; color: #000;
   }
-  .dz-filter { flex-direction: row; flex-wrap: wrap; gap: 10px; }
+  .dz-filter { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px; }
   .dz-chip {
     display: flex; align-items: center; justify-content: center;
     height: 32px; padding: 8px 10px;
-    border: 1px solid #a5a5a5;                              /* Grayscale-5 */
-    font-weight: 700; font-size: 14px; line-height: 1.43;   /* M-Sm4 */
+    border: 1px solid #a5a5a5;                               /* Grayscale-5 */
+    font-weight: 700; font-size: 14px; line-height: 1.43;    /* M-Sm4 */
     color: #8b8b8b;
   }
-  .dz-chip.is-active { background: #734efc; color: #fff; border: none; padding: 8px; }
+  .dz-chip.is-active { background: #734efc; color: #fff; border: none; padding: 8px; }  /* KeyColor-2 */
 
-  .dz-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 12px; row-gap: 40px; }
-  .dz-card { gap: 16px; }
-  .dz-card__thumb { aspect-ratio: 169 / 206; }
-  .dz-card__name { font-size: 20px; line-height: 1.4; color: var(--g11); }
-  .dz-card__roman { font-weight: 500; font-size: 14px; line-height: 1.43; color: #555; }
+  /* 그리드 : 유동 4열(폰에선 2열까지 축소) */
+  .dz-grid { display: flex; flex-wrap: wrap; row-gap: 18px; column-gap: 12px; }
+  .dz-card { flex: 1 1 160px; max-width: 197px; gap: 16px; }
+  .dz-empty { flex: 1 0 100%; }
+  .dz-card__thumb { aspect-ratio: 170 / 208; }
+  .dz-card__name { font-size: 20px; line-height: 1.4; color: var(--g11); }   /* M-H2 */
+  .dz-card__roman { font-weight: 500; font-size: 14px; line-height: 1.43; color: #555; } /* M-Sm3 */
 }

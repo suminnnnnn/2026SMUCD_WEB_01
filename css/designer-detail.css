@@ -64,66 +64,41 @@
 }
 
 /* ============================================================
-   ▍TABLET (≤960) · Figma 4955:3407
+   ▍ < 880px  · Figma 5397:3994 (880 - Designer 상세)
+   사진 | 정보 2단 · Interview 2열 · Projects 2열 (좁으면 세로 스택)
    ============================================================ */
-@media (max-width: 960px) {
-  .dd-body { gap: 100px; padding: 60px 40px 100px; }
-  .dd-profile { gap: 65px; align-items: center; }
-  .dd-photo { flex: 1 1 200px; }
-  .dd-info { flex: 0 1 553px; width: auto; gap: 40px; }
-  .dd-meta { gap: 40px; }
-  .dd-name__ko { font-size: 34px; line-height: 42px; }        /* T-D3 */
-  .dd-name__roman { font-size: 20px; line-height: 30px; }     /* T-S2 */
-  .dd-contact { font-size: 16px; line-height: 26px; }         /* T-Body1 */
-  .dd-intro { font-size: 16px; line-height: 26px; max-width: 484px; }
-
-  .dd-sec-title { font-size: 30px; line-height: 42px; color: var(--g11); } /* T-D2 */
-  .dd-interview, .dd-projects { gap: 28px; }
-  .dd-iv-list { gap: 20px; }
-  .dd-iv { gap: 20px; }
-  .dd-iv__q { gap: 8px; }
-  .dd-iv__num { font-size: 22px; line-height: 32px; }         /* T-H2 */
-  .dd-iv__question { font-size: 20px; line-height: 30px; color: var(--g11); } /* T-S2 */
-  .dd-iv__answer { font-size: 16px; line-height: 26px; }      /* T-Body1 */
-
-  .dd-proj-list { gap: 20px; }
-  .dd-proj { gap: 24px; }
-  .dd-proj__thumb { aspect-ratio: 430 / 317; }
-  .dd-proj__title { font-size: 22px; line-height: 32px; }     /* T-H2 */
-  .dd-proj__studio { font-size: 16px; line-height: 26px; }    /* T-Body1 */
-}
-
-/* ============================================================
-   ▍MOBILE (≤390) · Figma 4975:3404
-   ============================================================ */
-@media (max-width: 390px) {
+@media (max-width: 879.98px) {
   .dd-body { gap: 60px; padding: 60px 20px; }
 
-  /* 프로필: 사진 → (이름|연락처) → 소개 */
-  .dd-profile { flex-direction: column; align-items: stretch; gap: 30px; }
-  .dd-photo { flex: none; width: 100%; aspect-ratio: 169 / 206; }
-  .dd-info { flex: none; width: 100%; gap: 50px; }   /* column: flex-basis 553px가 높이로 새는 것 방지 */
+  /* PROFILE : 사진 | 정보 (좁으면 스택) */
+  .dd-profile { flex-wrap: wrap; align-items: flex-start; gap: 24px; }
+  .dd-photo { flex: 1 1 320px; width: auto; min-width: 0; aspect-ratio: 411 / 501; }
+  .dd-info { flex: 1 1 320px; width: auto; min-width: 0; gap: 24px; padding: 20px 0; }
   .dd-meta { flex-direction: row; align-items: flex-end; gap: 15px; }
   .dd-name { flex: 0 0 120px; width: 120px; color: var(--g11); }
-  .dd-name__ko { font-size: 20px; line-height: 1.4; }         /* M-H2 */
-  .dd-name__roman { font-weight: 500; font-size: 14px; line-height: 1.43; color: #555; } /* M-Sm3 */
+  .dd-name__ko { font-size: 20px; line-height: 1.4; }          /* M-H2 */
+  .dd-name__roman { font-weight: 500; font-size: 14px; line-height: 1.43; color: #555; }  /* M-Sm3 */
   .dd-contact { flex: 1 1 0; min-width: 0; gap: 0; }
-  .dd-contact__labels { display: none; }                      /* 모바일: 라벨 없이 값만 */
+  .dd-contact__labels { display: none; }                        /* 모바일: 값만 */
   .dd-contact__values { gap: 5px; font-weight: 500; font-size: 14px; line-height: 1.43; color: #6f6f6f; }
-  .dd-intro { font-size: 16px; line-height: 1.5; color: var(--g10); max-width: none; }
+  .dd-intro { font-size: 16px; line-height: 1.5; color: var(--g10); max-width: none; }  /* M-B1 */
 
-  .dd-sec-title { font-size: 24px; line-height: 1.33; color: #000; } /* M-H4 */
+  /* 섹션 제목 */
+  .dd-sec-title { font-size: 24px; line-height: 1.33; color: #000; }  /* M-H4 */
   .dd-interview, .dd-projects { gap: 40px; }
-  .dd-iv-list { grid-template-columns: 1fr; gap: 40px; }
+
+  /* Interview : 2열(≤~620 → 1열) */
+  .dd-iv-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; }
   .dd-iv { gap: 20px; }
   .dd-iv__q { gap: 5px; }
   .dd-iv__num { font-weight: 800; font-size: 22px; line-height: 32px; }
-  .dd-iv__question { font-size: 20px; line-height: 1.4; color: #000; }
-  .dd-iv__answer { font-size: 16px; line-height: 1.5; }
+  .dd-iv__question { font-size: 20px; line-height: 1.4; color: #000; }  /* M-H2 */
+  .dd-iv__answer { font-size: 16px; line-height: 1.5; }                 /* M-B1 */
 
-  .dd-proj-list { grid-template-columns: 1fr; gap: 32px; }
+  /* Projects : 2열(≤~620 → 1열) */
+  .dd-proj-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; }
   .dd-proj { gap: 16px; }
-  .dd-proj__thumb { aspect-ratio: 342 / 231; }
-  .dd-proj__title { font-size: 20px; line-height: 1.4; color: var(--g10); }
-  .dd-proj__studio { font-size: 16px; line-height: 1.5; color: var(--g10); }
+  .dd-proj__thumb { aspect-ratio: 1 / 1; border-radius: 10px; }
+  .dd-proj__title { font-size: 20px; line-height: 1.4; color: #333; }    /* M-H2 */
+  .dd-proj__studio { font-size: 16px; line-height: 1.5; color: #8b8b8b; } /* M-B1 */
 }
