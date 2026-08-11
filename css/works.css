@@ -17,7 +17,9 @@
 
 /* ---------- 좌측 테마 카테고리 ---------- */
 .wk-cats {
-  flex: 0 0 auto;
+  flex: 0 0 172px;          /* 폭 고정 → 선택에 따라 우측 콘텐츠 위치 안 흔들림 */
+  width: 172px;
+  overflow: visible;        /* 긴 카테고리명은 gap 영역으로 넘침 (Figma와 동일) */
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -25,38 +27,41 @@
 .wk-cat {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 16px;
   background: none;
   border: 0;
   padding: 0;
   cursor: pointer;
   text-align: left;
 }
-/* 활성 카테고리 좌측 삼각형 마커 (20.5×52) */
+/* 활성 카테고리 좌측 삼각형 마커 (라임그린 21×34, Figma Polygon) */
 .wk-cat__arrow {
   display: none;
   flex: 0 0 auto;
   width: 0;
   height: 0;
   margin-top: 2px;
-  border-top: 26px solid transparent;
-  border-bottom: 26px solid transparent;
-  border-left: 20.5px solid var(--g11);
+  border-top: 17px solid transparent;
+  border-bottom: 17px solid transparent;
+  border-left: 21px solid #C7FC4D;
 }
 .wk-cat.is-active .wk-cat__arrow { display: block; }
 .wk-cat__text { display: flex; flex-direction: column; }
 .wk-cat__ko {
   font-weight: 800; font-size: 28px; line-height: 38px;   /* D-H4 */
-  letter-spacing: -0.02em; color: var(--g3);
+  letter-spacing: -0.02em; color: var(--g11);             /* 기본: 진함(클릭 가능) */
+  white-space: nowrap;
   transition: color 0.15s ease;
 }
 .wk-cat__en {
   font-weight: 700; font-size: 16px; line-height: 22px;   /* D-Small4 */
-  letter-spacing: -0.02em; color: var(--g3);
+  letter-spacing: -0.02em; color: var(--g11);
+  white-space: nowrap;
   transition: color 0.15s ease;
 }
-.wk-cat:hover .wk-cat__ko, .wk-cat:hover .wk-cat__en,
-.wk-cat.is-active .wk-cat__ko, .wk-cat.is-active .wk-cat__en { color: var(--g11); }
+/* 선택 전(has-active 없음): 전부 진함 · 선택 후: 활성 아닌 것만 연하게(호버 시 진함) */
+.wk-cats.has-active .wk-cat:not(.is-active):not(:hover) .wk-cat__ko,
+.wk-cats.has-active .wk-cat:not(.is-active):not(:hover) .wk-cat__en { color: var(--g3); }
 
 /* ---------- 우측 콘텐츠 ---------- */
 .wk-main { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 100px; }

@@ -1,0 +1,12 @@
+<!doctype html><meta charset=utf-8><body style="margin:0">
+<iframe id="f" style="width:320px;height:3200px;border:0;display:block"></iframe>
+<script>
+var pages=["index.html","works.html","designer.html","designer-detail.html?id=designer-080","work-detail.html?id=work-01"];
+var i=0,out=[],f=document.getElementById("f");
+function scan(doc){var el=doc.querySelectorAll("*");var res=[];for(var j=0;j<el.length;j++){var r=el[j].getBoundingClientRect();if(r.right>321){var c=(el[j].className&&el[j].className.baseVal!==undefined?el[j].className.baseVal:el[j].className||el[j].tagName);res.push(c+"~"+Math.round(r.right));}}return res.slice(0,5).join(",");}
+function next(){ if(i>=pages.length){document.title=out.join(" | ");return;}
+  f.onload=function(){ setTimeout(function(){ try{var d=f.contentDocument.documentElement;var of=d.scrollWidth>d.clientWidth;out.push(pages[i].split(".")[0]+":"+(of?("OF sw"+d.scrollWidth+"["+scan(f.contentDocument)+"]"):"ok"));}catch(e){out.push("err");} i++; next(); },700); };
+  f.src="http://localhost:8765/"+pages[i];
+}
+window.onload=function(){setTimeout(next,300);};
+</script></body>

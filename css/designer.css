@@ -55,7 +55,7 @@
 
 /* ============================================================
    ▍ < 880px  · Figma 5391:3896 (880 - Designer)
-   DESIGNER 제목 + 초성 칩(전체=보라) + 4열(유동) 그리드
+   DESIGNER 제목 + 초성 칩(전체=보라) + 2열 그리드
    ============================================================ */
 @media (max-width: 879.98px) {
   .dz-body { flex-direction: column; align-items: stretch; gap: 40px; padding: 60px 20px; }
@@ -75,12 +75,13 @@
     font-weight: 700; font-size: 14px; line-height: 1.43;    /* M-Sm4 */
     color: #8b8b8b;
   }
-  .dz-chip.is-active { background: #734efc; color: #fff; border: none; padding: 8px; }  /* KeyColor-2 */
+  /* 활성: 색만 변경 · 테두리(1px)·패딩 유지해 크기 고정 */
+  .dz-chip.is-active { background: #734efc; color: #fff; border-color: #734efc; }  /* KeyColor-2 */
 
-  /* 그리드 : 유동 4열(폰에선 2열까지 축소) */
-  .dz-grid { display: flex; flex-wrap: wrap; row-gap: 18px; column-gap: 12px; }
-  .dz-card { flex: 1 1 160px; max-width: 197px; gap: 16px; }
-  .dz-empty { flex: 1 0 100%; }
+  /* 그리드 : 2열 */
+  .dz-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .dz-card { max-width: 411px; gap: 16px; }
+  .dz-empty { grid-column: 1 / -1; }
   .dz-card__thumb { aspect-ratio: 170 / 208; }
   .dz-card__name { font-size: 20px; line-height: 1.4; color: var(--g11); }   /* M-H2 */
   .dz-card__roman { font-weight: 500; font-size: 14px; line-height: 1.43; color: #555; } /* M-Sm3 */

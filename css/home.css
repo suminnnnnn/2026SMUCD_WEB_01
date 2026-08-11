@@ -392,9 +392,9 @@ button { font-family: inherit; cursor: pointer; background: none; border: 0; pad
     flex: 0 1 auto; display: flex; flex-direction: row; align-items: flex-start;
     flex-wrap: nowrap; gap: clamp(24px, 6vw, 78px);
   }
-  .hp-advisor__studio { font-weight: 700; font-size: 18px; line-height: 1.44; color: var(--g12); white-space: nowrap; }
-  .hp-advisor__names { gap: 10px; }
-  .hp-advisor__names li { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); white-space: nowrap; }
+  .hp-advisor__studio { font-weight: 700; font-size: 18px; line-height: 1.44; color: var(--g12); }
+  .hp-advisor__names { gap: 10px; min-width: 0; }
+  .hp-advisor__names li { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); }
 
   /* ---------- 졸업전시위원회 : 라벨 → 이미지 → (역할 | 명단) ---------- */
   .hp-committee { grid-template-columns: max-content minmax(0, 1fr); column-gap: clamp(30px, 14vw, 149px); row-gap: 20px; }
@@ -414,8 +414,9 @@ button { font-family: inherit; cursor: pointer; background: none; border: 0; pad
   }
   .hp-footer__brand { grid-column: 1; grid-row: 1; flex: none; font-size: 16px; line-height: 1.5; }
   .hp-footer__info { grid-column: 2; grid-row: 1; flex: none; gap: 15px; }
-  .hp-footer__row { justify-content: flex-start; gap: 12px; }
-  .hp-footer__row dt { font-weight: 700; font-size: 14px; line-height: 1.43; color: var(--g3); flex: 0 0 92px; }
-  .hp-footer__row dd { font-weight: 500; font-size: 14px; line-height: 1.43; color: var(--g1); text-align: left; }
+  .hp-footer__row { justify-content: flex-start; gap: 12px; min-width: 0; }
+  .hp-footer__row dt { font-weight: 700; font-size: 14px; line-height: 1.43; color: var(--g3); flex: 0 0 auto; }
+  .hp-footer__row dd { font-weight: 500; font-size: 14px; line-height: 1.43; color: var(--g1); text-align: left; min-width: 0; overflow-wrap: anywhere; }
+  .hp-footer__row dd a { overflow-wrap: anywhere; word-break: break-word; }
   .hp-footer__prev { grid-column: 2; grid-row: 2; display: block; }
 }

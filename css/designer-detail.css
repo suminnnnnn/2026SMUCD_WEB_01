@@ -65,38 +65,39 @@
 
 /* ============================================================
    ▍ < 880px  · Figma 5397:3994 (880 - Designer 상세)
-   사진 | 정보 2단 · Interview 2열 · Projects 2열 (좁으면 세로 스택)
+   사진(411, 상단) → 정보(스택) · Interview 1열 · Projects 2열
    ============================================================ */
 @media (max-width: 879.98px) {
   .dd-body { gap: 60px; padding: 60px 20px; }
 
-  /* PROFILE : 사진 | 정보 (좁으면 스택) */
-  .dd-profile { flex-wrap: wrap; align-items: flex-start; gap: 24px; }
-  .dd-photo { flex: 1 1 320px; width: auto; min-width: 0; aspect-ratio: 411 / 501; }
-  .dd-info { flex: 1 1 320px; width: auto; min-width: 0; gap: 24px; padding: 20px 0; }
+  /* PROFILE : 사진 위(411) → 정보 아래 (세로 스택) */
+  .dd-profile { flex-direction: column; align-items: flex-start; gap: 30px; }
+  .dd-photo { flex: none; width: 100%; max-width: 411px; min-width: 0; aspect-ratio: 411 / 501; }
+  .dd-info { flex: none; width: 100%; gap: 30px; }
   .dd-meta { flex-direction: row; align-items: flex-end; gap: 15px; }
   .dd-name { flex: 0 0 120px; width: 120px; color: var(--g11); }
   .dd-name__ko { font-size: 20px; line-height: 1.4; }          /* M-H2 */
   .dd-name__roman { font-weight: 500; font-size: 14px; line-height: 1.43; color: #555; }  /* M-Sm3 */
   .dd-contact { flex: 1 1 0; min-width: 0; gap: 0; }
   .dd-contact__labels { display: none; }                        /* 모바일: 값만 */
-  .dd-contact__values { gap: 5px; font-weight: 500; font-size: 14px; line-height: 1.43; color: #6f6f6f; }
+  .dd-contact__values { gap: 5px; min-width: 0; font-weight: 500; font-size: 14px; line-height: 1.43; color: #6f6f6f; overflow-wrap: anywhere; }
+  .dd-contact__values a { overflow-wrap: anywhere; word-break: break-word; }
   .dd-intro { font-size: 16px; line-height: 1.5; color: var(--g10); max-width: none; }  /* M-B1 */
 
   /* 섹션 제목 */
   .dd-sec-title { font-size: 24px; line-height: 1.33; color: #000; }  /* M-H4 */
-  .dd-interview, .dd-projects { gap: 40px; }
+  .dd-interview, .dd-projects { gap: 50px; }
 
-  /* Interview : 2열(≤~620 → 1열) */
-  .dd-iv-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; }
-  .dd-iv { gap: 20px; }
+  /* Interview : 1열 */
+  .dd-iv-list { grid-template-columns: 1fr; gap: 20px; }
+  .dd-iv { gap: 20px; max-width: 615px; }
   .dd-iv__q { gap: 5px; }
   .dd-iv__num { font-weight: 800; font-size: 22px; line-height: 32px; }
   .dd-iv__question { font-size: 20px; line-height: 1.4; color: #000; }  /* M-H2 */
   .dd-iv__answer { font-size: 16px; line-height: 1.5; }                 /* M-B1 */
 
-  /* Projects : 2열(≤~620 → 1열) */
-  .dd-proj-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; }
+  /* Projects : 2열(좁으면 1열) */
+  .dd-proj-list { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px; }
   .dd-proj { gap: 16px; }
   .dd-proj__thumb { aspect-ratio: 1 / 1; border-radius: 10px; }
   .dd-proj__title { font-size: 20px; line-height: 1.4; color: #333; }    /* M-H2 */

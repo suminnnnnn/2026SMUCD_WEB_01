@@ -1,0 +1,10 @@
+<!doctype html><meta charset=utf-8><body style="margin:0;background:#eee">
+<iframe src="http://localhost:8765/designer-detail.html?id=designer-080" style="width:320px;height:2600px;border:0;display:block"></iframe>
+</body>HTML
+"$CHROME" --headless=new --disable-gpu --hide-scrollbars --window-size=340,2600 --virtual-time-budget=3500 --screenshot=/tmp/v320-dd.png "http://localhost:8765/__v.html" >/dev/null 2>&1
+cat > __v2.html <<'HTML'
+<!doctype html><meta charset=utf-8><body style="margin:0;background:#eee">
+<iframe src="http://localhost:8765/index.html" style="width:320px;height:5200px;border:0;display:block"></iframe>
+</body>HTML
+"$CHROME" --headless=new --disable-gpu --hide-scrollbars --window-size=340,5200 --virtual-time-budget=4000 --screenshot=/tmp/v320-home.png "http://localhost:8765/__v2.html" >/dev/null 2>&1
+rm -f __v.html __v2.html; echo done

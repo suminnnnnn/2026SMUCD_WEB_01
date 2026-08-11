@@ -36,7 +36,7 @@
 
       <!-- 테마 카테고리 (데스크탑/태블릿: 좌측 세로 · 모바일: 펼침 오버레이) -->
       <aside class="wk-cats" id="wk-cats">
-        <button class="wk-cat is-active" type="button" data-cat="0">
+        <button class="wk-cat" type="button" data-cat="0">
           <span class="wk-cat__arrow" aria-hidden="true"></span>
           <span class="wk-cat__text">
             <span class="wk-cat__ko">첫발의 진동</span>
@@ -126,6 +126,7 @@
       var PLACEHOLDER_DESC = document.getElementById("wk-desc").textContent;
       var cats = Array.prototype.slice.call(document.querySelectorAll(".wk-cat"));
       var body = document.querySelector(".wk-body");
+      var catsWrap = document.getElementById("wk-cats");
       var descEl = document.getElementById("wk-desc");
       var chipsWrap = document.getElementById("wk-chips");
 
@@ -171,6 +172,7 @@
       function selectCat(index) {
         cats.forEach(function (b, i) { b.classList.toggle("is-active", i === index); });
         chips.forEach(function (c, i) { c.classList.toggle("is-active", i === index); });
+        catsWrap.classList.add("has-active");    // 선택 후: 나머지 카테고리 연하게
         descEl.textContent = PLACEHOLDER_DESC;   // 연동 시 카테고리별 문구로 교체
         body.classList.remove("is-cat");         // 카테고리 선택 → 작품 리스트
         window.scrollTo(0, 0);
