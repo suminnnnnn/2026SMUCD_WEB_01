@@ -21,9 +21,7 @@
       <nav class="hp-nav main-nav" id="hp-nav">
         <a data-nav="home" href="index.html">Home</a>
         <a data-nav="works" class="is-active" href="works.html">Works</a>
-        <a data-nav="designer" href="designer.html">Designer</a>
-        <a data-nav="archive" href="archive.html">Archive</a>
-      </nav>
+        <a data-nav="designer" href="designer.html">Designer</a>      </nav>
       <button class="hp-hamburger hide-d hide-t" id="hp-menu-btn" aria-label="메뉴 열기" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -44,16 +42,15 @@
       <div class="wd-info">
         <div class="wd-head">
           <a class="wd-back" href="works.html"><img class="wd-back__icon" src="assets/icons/back.svg" alt="" /><span>뒤로가기</span></a>
-          <p class="wd-name">김혜림 <span>Kim Hyerim</span></p>
+          <p class="wd-name" id="wd-name"></p>
         </div>
         <div class="wd-about">
           <div class="wd-titlewrap">
-            <p class="wd-meta">융합디자인스튜디오 <span class="wd-meta__bar">|</span> 신윤진 교수님</p>
-            <h1 class="wd-title">조건과 결과, 디지털 사고</h1>
+            <p class="wd-meta" id="wd-meta"></p>
+            <h1 class="wd-title" id="wd-title"></h1>
           </div>
           <div class="wd-descwrap">
-            <p class="wd-desc">조건의 결과 디지털 사고는 아픈 언니를 돕기 위해 분주히 움직이는 주인공 페르의 좌충우돌 소동을 담았습니다. 집은 점점 어질러지지만, 그 모든 행동에는 언니를 향한 따뜻한 마음이 스며 있습니다. 흔치 않은 반려동물인 페럿을 주인공으로 내세워 아이와 어른 모두가 공감할 수 있는 유쾌하면서도 따뜻한 이야기를 전하며, 반려동물이 일상 속에서 전해주는 소중한 웃음과 감동을 보여줍니다.</p>
-            <p class="wd-ai">이 작업은 AI를 사용했습니다.</p>
+            <p class="wd-desc" id="wd-desc"></p>
           </div>
         </div>
       </div>
@@ -97,29 +94,62 @@
 
   <script>
     (function () {
-      // 다른 작품 placeholder 카드 (실제 데이터 연동 전)
-      var grid = document.getElementById("wd-related-grid");
-      var html = "";
-      for (var i = 0; i < 3; i++) {
-        html +=
-          '<a class="wd-rel-card" href="work-detail.html">' +
+      function h(s) { return (s == null ? "" : String(s)).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+      function esc(s) { return (s == null ? "" : String(s)).replace(/"/g, "&quot;"); }
+      function qs(id) { return document.getElementById(id); }
+
+      // 전체 작품 목록(융합·혁신) — studentId 로 연결
+      function buildWorks(designers) {
+        var out = [];
+        designers.forEach(function (d) {
+          var sid = d.studentId || d.id;
+          if (d.convergence && d.convergence.title)
+            out.push({ id: sid + "-c", type: "convergence", studio: "융합디자인스튜디오", work: d.convergence, designer: d });
+          if (d.innovation && d.innovation.title)
+            out.push({ id: sid + "-i", type: "innovation", studio: "혁신디자인스튜디오", work: d.innovation, designer: d });
+        });
+        return out;
+      }
+
+      function relCard(w) {
+        return (
+          '<a class="wd-rel-card" href="work-detail.html?id=' + encodeURIComponent(w.id) + '">' +
           '<span class="wd-rel-card__thumb hp-ph"></span>' +
           '<span class="wd-rel-card__info">' +
-          '<span class="wd-rel-card__title">조건과 결과, 디지털 사고</span>' +
-          '<span class="wd-rel-card__designer">김혜림</span>' +
-          "</span></a>";
+          '<span class="wd-rel-card__title">' + h(w.work.title) + "</span>" +
+          '<span class="wd-rel-card__designer">' + h(w.designer.name) + "</span>" +
+          "</span></a>"
+        );
       }
-      grid.innerHTML = html;
 
-      var hb = document.getElementById("hp-menu-btn");
-      var nav = document.getElementById("hp-nav");
-      if (hb && nav) {
-        hb.addEventListener("click", function () {
-          var open = nav.classList.toggle("is-open");
-          hb.setAttribute("aria-expanded", open ? "true" : "false");
-        });
+      function render(cur, works) {
+        var d = cur.designer, w = cur.work;
+        // 디자이너 이름 (한글 + 영문)
+        qs("wd-name").innerHTML = h(d.name) + " <span>" + h(d.nameRoman || "") + "</span>";
+        // 융합/혁신 스튜디오 | 담당 교수님
+        qs("wd-meta").innerHTML =
+          h(cur.studio) +
+          (w.professor ? ' <span class="wd-meta__bar">|</span> ' + h(w.professor) : "");
+        // 작품 제목 · 설명
+        qs("wd-title").textContent = w.title || "";
+        qs("wd-desc").textContent = w.description || "";
+
+        // 다른 작품 둘러보기 : 현재 작품 제외 3개
+        var others = works.filter(function (x) { return x.id !== cur.id; }).slice(0, 3);
+        qs("wd-related-grid").innerHTML = others.map(relCard).join("");
       }
+
+      var id = new URLSearchParams(location.search).get("id");
+      fetch("data/designers_full.json")
+        .then(function (r) { return r.json(); })
+        .then(function (designers) {
+          var works = buildWorks(designers);
+          var cur = works.filter(function (x) { return x.id === id; })[0] || works[0];
+          if (cur) render(cur, works);
+        });
+
     })();
   </script>
+  <script src="js/nav.js"></script>
 </body>
 </html>

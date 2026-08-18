@@ -21,9 +21,7 @@
       <nav class="hp-nav main-nav" id="hp-nav">
         <a data-nav="home" href="index.html">Home</a>
         <a data-nav="works" href="works.html">Works</a>
-        <a data-nav="designer" class="is-active" href="designer.html">Designer</a>
-        <a data-nav="archive" href="archive.html">Archive</a>
-      </nav>
+        <a data-nav="designer" class="is-active" href="designer.html">Designer</a>      </nav>
       <button class="hp-hamburger hide-d hide-t" id="hp-menu-btn" aria-label="메뉴 열기" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -50,7 +48,7 @@
         <div class="dd-iv-list" id="dd-iv-list"></div>
       </section>
 
-      <!-- Projects -->
+      <!-- Projects : 융합·혁신 썸네일 카드 2개 -->
       <section class="dd-projects">
         <h2 class="dd-sec-title">Projects</h2>
         <div class="dd-proj-list" id="dd-proj-list"></div>
@@ -93,91 +91,81 @@
         "이번 작품을 통해 스스로에게 새롭게 발견한 점은?",
         "절대 놓치고 싶지 않은 나만의 디자인 기준은?",
       ];
-      var SAMPLE =
-        "이번 졸업 전시는 저에게 배움의 여정이자 도전의 기록이며, 일상 속 새로운 가능성을 탐구하며 공감을 이끌고자 했습니다. 여러분의 시선과 해석이 더해질 때 저의 작업은 비로소 완성된다고 생각합니다. 바쁜 시간 내어 와 주신 모든 분들께 깊이 감사드립니다.";
 
       function esc(s) { return (s || "").replace(/"/g, "&quot;"); }
-      function imgTag(src, alt) {
-        return src ? '<img src="' + src + '" alt="' + esc(alt) + '" loading="lazy" onerror="this.remove()">' : "";
+      // innerHTML 텍스트 삽입용 HTML 이스케이프
+      function h(s) {
+        return (s == null ? "" : String(s))
+          .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
       }
       function qs(id) { return document.getElementById(id); }
 
-      function render(d, works) {
-        // 사진
-        qs("dd-photo").innerHTML = imgTag(d.profileImage, d.name);
+      function render(d) {
+        // 사진 (아직 없음 → 회색 placeholder 유지)
+        qs("dd-photo").innerHTML = "";
         // 이름
         qs("dd-name").innerHTML =
-          '<span class="dd-name__ko">' + d.name + "</span>" +
-          '<span class="dd-name__roman">' + (d.nameRoman || "") + "</span>";
-        // 연락처 (instagram 없으면 그 줄은 생략, E-mail 은 항상)
+          '<span class="dd-name__ko">' + h(d.name) + "</span>" +
+          '<span class="dd-name__roman">' + h(d.nameRoman || "") + "</span>";
+        // 연락처 : instagram 비어있으면 라벨·줄 모두 숨김 · E-mail 은 값 있으면 표시
         var labels = [], values = [];
         if (d.instagram) {
           labels.push("instagram");
           var handle = d.instagram.replace(/^@/, "");
-          values.push('<a href="https://instagram.com/' + esc(handle) + '" target="_blank" rel="noopener">' + d.instagram + "</a>");
+          values.push('<a href="https://instagram.com/' + esc(handle) + '" target="_blank" rel="noopener">' + h(d.instagram) + "</a>");
         }
         if (d.email) {
           labels.push("E-mail");
-          values.push('<a href="mailto:' + esc(d.email) + '">' + d.email + "</a>");
+          values.push('<a href="mailto:' + esc(d.email) + '">' + h(d.email) + "</a>");
         }
         qs("dd-contact").innerHTML =
           '<div class="dd-contact__labels">' + labels.map(function (l) { return "<span>" + l + "</span>"; }).join("") + "</div>" +
           '<div class="dd-contact__values">' + values.map(function (v) { return "<span>" + v + "</span>"; }).join("") + "</div>";
         // 소개
-        qs("dd-intro").textContent = d.intro || SAMPLE;
-        // Interview
-        var answers = [d.interview1 || SAMPLE, d.interview2 || SAMPLE];
+        qs("dd-intro").textContent = d.intro || "";
+
+        // Interview (고정 질문 + interview1/2)
+        var answers = [d.interview1 || "", d.interview2 || ""];
         qs("dd-iv-list").innerHTML = QUESTIONS.map(function (q, i) {
           return (
             '<div class="dd-iv">' +
             '<div class="dd-iv__q"><p class="dd-iv__num">(' + (i + 1) + ")</p>" +
-            '<p class="dd-iv__question">' + q + "</p></div>" +
-            '<p class="dd-iv__answer">' + answers[i] + "</p></div>"
+            '<p class="dd-iv__question">' + h(q) + "</p></div>" +
+            '<p class="dd-iv__answer">' + h(answers[i]) + "</p></div>"
           );
         }).join("");
-        // Projects
-        var myWorks = (d.workIds || [])
-          .map(function (wid) { return works.find(function (w) { return w.id === wid; }); })
-          .filter(Boolean);
-        if (!myWorks.length) {
-          // 연결된 작품이 없으면 시안대로 예시 2개
-          myWorks = [
-            { title: "조건과 결과, 디지털 사고", studioName: "융합디자인스튜디오", thumbnail: "", id: "" },
-            { title: "조건과 결과, 디지털 사고", studioName: "혁신디자인스튜디오", thumbnail: "", id: "" },
-          ];
-        }
-        qs("dd-proj-list").innerHTML = myWorks.map(function (w) {
-          var href = w.id ? "work-detail.html?id=" + w.id : "#";
+
+        // Projects : 융합·혁신 썸네일 카드 2개 (이미지 + 제목 + 스튜디오명)
+        // 교수님·설명 전문은 Works 상세용 → 여기선 표시하지 않음. 카드 클릭 시 해당 작품 Works 상세로 이동
+        var sid = d.studentId || d.id;
+        function projCard(studioName, w, workId) {
+          if (!w || !w.title) return "";
           return (
-            '<a class="dd-proj" href="' + href + '">' +
-            '<span class="dd-proj__thumb hp-ph">' + imgTag(w.thumbnail, w.title) + "</span>" +
+            '<a class="dd-proj" href="work-detail.html?id=' + encodeURIComponent(workId) + '">' +
+            '<span class="dd-proj__thumb hp-ph" aria-hidden="true"></span>' +
             '<span class="dd-proj__info">' +
-            '<span class="dd-proj__title">' + w.title + "</span>" +
-            '<span class="dd-proj__studio">' + (w.studioName || "") + "</span>" +
+            '<span class="dd-proj__title">' + h(w.title) + "</span>" +
+            '<span class="dd-proj__studio">' + h(studioName) + "</span>" +
             "</span></a>"
           );
-        }).join("");
+        }
+        qs("dd-proj-list").innerHTML =
+          projCard("융합디자인스튜디오", d.convergence, sid + "-c") +
+          projCard("혁신디자인스튜디오", d.innovation, sid + "-i");
       }
 
       var id = new URLSearchParams(location.search).get("id");
-      Promise.all([
-        fetch("data/designers.json").then(function (r) { return r.json(); }),
-        fetch("data/works.json").then(function (r) { return r.json(); }).catch(function () { return []; }),
-      ]).then(function (res) {
-        var designers = res[0], works = res[1] || [];
-        var d = designers.find(function (x) { return x.id === id; }) || designers[0];
-        if (d) render(d, works);
-      });
-
-      var hb = document.getElementById("hp-menu-btn");
-      var nav = document.getElementById("hp-nav");
-      if (hb && nav) {
-        hb.addEventListener("click", function () {
-          var open = nav.classList.toggle("is-open");
-          hb.setAttribute("aria-expanded", open ? "true" : "false");
+      fetch("data/designers_full.json")
+        .then(function (r) { return r.json(); })
+        .then(function (designers) {
+          var d = designers.find(function (x) {
+            return x.id === id || x.studentId === id;
+          }) || designers[0];
+          if (d) render(d);
         });
-      }
+
     })();
   </script>
+  <script src="js/nav.js"></script>
 </body>
 </html>

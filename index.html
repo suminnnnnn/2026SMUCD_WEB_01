@@ -22,9 +22,7 @@
       <nav class="hp-nav main-nav" id="hp-nav">
         <a data-nav="home" class="is-active" href="index.html">Home</a>
         <a data-nav="works" href="works.html">Works</a>
-        <a data-nav="designer" href="designer.html">Designer</a>
-        <a data-nav="archive" href="archive.html">Archive</a>
-      </nav>
+        <a data-nav="designer" href="designer.html">Designer</a>      </nav>
 
       <!-- 모바일: 햄버거 -->
       <button class="hp-hamburger hide-d hide-t" id="hp-menu-btn" aria-label="메뉴 열기" aria-expanded="false">
@@ -128,10 +126,10 @@
           <dl class="hp-row__body hp-committee">
             <div class="hp-com"><dt>위원장</dt><dd><span>구나영</span></dd></div>
             <div class="hp-com"><dt>부위원장</dt><dd><span>신지호</span><span>오다인</span></dd></div>
-            <div class="hp-com"><dt>홍보</dt><dd><span>김민지</span><span>최수빈</span><span>최다솜</span></dd></div>
+            <div class="hp-com"><dt>홍보</dt><dd><span>김민지</span><span>최다솜</span><span>최수빈</span></dd></div>
             <div class="hp-com"><dt>디자인</dt><dd><span>박진슬</span></dd></div>
-            <div class="hp-com"><dt>웹</dt><dd><span>배세은</span><span>정수민</span><span>이유진</span></dd></div>
-            <div class="hp-com"><dt>기획</dt><dd><span>최정혜</span><span>강유주</span><span>최지이</span><span>김예원</span></dd></div>
+            <div class="hp-com"><dt>웹</dt><dd><span>배세은</span><span>이유진</span><span>정수민</span></dd></div>
+            <div class="hp-com"><dt>기획</dt><dd><span>최정혜</span><span>강유주</span><span>김예원</span><span>최지이</span></dd></div>
             <div class="hp-com"><dt>총무</dt><dd><span>박찬민</span><span>이지원</span></dd></div>
           </dl>
         </section>
@@ -192,17 +190,6 @@
       </div>
   </footer>
 
-  <script>
-    // 모바일 햄버거 → 내비 토글
-    (function () {
-      var btn = document.getElementById("hp-menu-btn");
-      var nav = document.getElementById("hp-nav");
-      if (!btn || !nav) return;
-      btn.addEventListener("click", function () {
-        var open = nav.classList.toggle("is-open");
-        btn.setAttribute("aria-expanded", open ? "true" : "false");
-      });
-    })();
-  </script>
+  <script src="js/nav.js"></script>
 </body>
 </html>

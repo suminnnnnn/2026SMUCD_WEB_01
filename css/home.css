@@ -35,6 +35,8 @@ body {
   background: #fff;
   letter-spacing: -0.02em;
   -webkit-font-smoothing: antialiased;
+  word-break: keep-all;        /* 한글을 어절(띄어쓰기) 단위로만 줄바꿈 */
+  overflow-wrap: break-word;   /* 단어가 너무 길어 넘칠 때만 예외적으로 자름 */
 }
 a { color: inherit; text-decoration: none; }
 ul, dl { margin: 0; padding: 0; list-style: none; }
@@ -52,6 +54,19 @@ button { font-family: inherit; cursor: pointer; background: none; border: 0; pad
 /* placeholder 박스 */
 .hp-ph { background: var(--ph); }
 
+/* 모바일 메뉴 딤 오버레이 + 우측 패널 (JS로 생성, body 레벨) */
+.hp-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+  z-index: 110;   /* 헤더(100) 위 → 메뉴 열리면 헤더도 딤 */
+}
+.hp-overlay.is-open { opacity: 1; visibility: visible; }
+.hp-menu { display: none; }                     /* 기본 숨김(데스크탑) · <880 에서만 패널로 */
+body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스크롤 잠금 */
+@media (min-width: 880px) { .hp-overlay, .hp-menu { display: none; } }  /* 데스크탑 미사용 */
+
 /* ============================================================
    ROOT
    ============================================================ */
@@ -67,16 +82,18 @@ button { font-family: inherit; cursor: pointer; background: none; border: 0; pad
 .hp-header {
   position: sticky;
   top: 0;
-  z-index: 50;
-  background: #fff;
+  z-index: 100;                      /* 콘텐츠·오버레이 위 (스크롤 시 비침 방지) */
+  background: #fff;                  /* 불투명 흰색 */
   display: flex;
   flex-wrap: nowrap;                 /* 헤더는 절대 줄바꿈하지 않음 */
   align-items: center;
   justify-content: space-between;
   gap: clamp(12px, 1.6vw, 24px);
   height: auto;
-  padding: 32px clamp(24px, 5.5vw, 80px) 0;   /* 상단 32 · 내비 72 (Figma) */
+  padding: 30px clamp(24px, 5.5vw, 80px);   /* 상·하 30 (스크롤해도 유지되는 헤더↔콘텐츠 여백) */
 }
+/* 헤더 바로 아래 콘텐츠 : 헤더↔콘텐츠 추가 여백 15px (880 이상·이하 공통) */
+.hp-header + div { padding-top: 15px; }
 .hp-brand { display: flex; align-items: center; gap: clamp(12px, 2vw, 30px); flex: 0 0 auto; }
 .hp-brand__text { white-space: nowrap; }   /* 각 줄이 음절 단위로 쪼개지지 않게 */
 .hp-brand__logo {
@@ -265,22 +282,23 @@ button { font-family: inherit; cursor: pointer; background: none; border: 0; pad
   display: grid;
   grid-template-columns: max-content minmax(0, 1fr);
   column-gap: 50px;
-  row-gap: 16px;
+  row-gap: 20px;             /* 팀(직책)과 팀 사이 여백 — 팀 안 이름 간격(8)보다 크게 → 팀별 구분 */
 }
 .hp-com { display: contents; }
 .hp-com dt {
   font-weight: 700; font-size: 24px; line-height: 34px; color: var(--g12);
   white-space: nowrap;
 }
-/* 이름은 4열 그리드로 정렬 (행마다 같은 열에 정렬) */
+/* 이름은 이름 단위로만 줄바꿈 (좁아지면 이름 통째로 다음 줄로) · 같은 팀 이름 사이 8px */
 .hp-com dd {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   column-gap: 8px;
-  row-gap: 16px;
+  row-gap: 8px;
 }
 .hp-com dd span {
   font-weight: 500; font-size: 24px; line-height: 34px; color: var(--g10);
+  white-space: nowrap;   /* 이름 안에서 글자가 세로로 쪼개지지 않게 */
 }
 
 /* ---------- 후원·협력 ---------- */
@@ -336,18 +354,33 @@ button { font-family: inherit; cursor: pointer; background: none; border: 0; pad
    단일 컬럼 · 컴팩트 헤더 · 유동(clamp/flex-wrap)로 폰~880 대응
    ============================================================ */
 @media (max-width: 879.98px) {
-  /* ---------- HEADER : 컴팩트(로고36·브랜드10·햄버거) ---------- */
-  .hp-header { height: 44px; padding: 8px 20px 0; position: relative; }
+  /* ---------- HEADER : 컴팩트(로고36·브랜드10·햄버거) ----------
+     sticky 고정 · 상하 여백 10 · z-100(스크롤 시 콘텐츠 위). 메뉴 열리면 오버레이(110)에 덮여 딤됨 */
+  .hp-header { padding: 10px 20px; position: sticky; top: 0; z-index: 100; }
   .hp-brand { gap: 10px; }
   .hp-brand__logo { width: 36px; height: 36px; }
   .hp-brand__text { font-weight: 800; font-size: 10px; line-height: 1.35; }
-  .hp-nav {
-    display: none; position: absolute; top: 44px; right: 20px;
-    flex-direction: column; align-items: flex-end; gap: 14px;
-    background: #fff; padding: 16px 18px; border: 1px solid var(--g3); z-index: 60;
+
+  /* 인헤더 데스크탑 내비는 모바일에서 숨김 (메뉴는 아래 body 레벨 .hp-menu 가 담당) */
+  .hp-nav { display: none; }
+
+  /* 우측 슬라이드 메뉴 패널 (헤더 밖 body 레벨 → 헤더가 딤돼도 패널만 흰색 유지) */
+  .hp-menu {
+    display: flex; position: fixed; top: 0; right: 0; bottom: 0;
+    width: min(80vw, 300px);
+    flex-direction: column; align-items: flex-start; justify-content: flex-start;
+    gap: 14px; padding: 96px 28px 40px;
+    background: #fff;
+    transform: translateX(100%); transition: transform 0.28s ease;
+    z-index: 120; overflow-y: auto;   /* 오버레이(110) 위 → 밝게 */
   }
-  .hp-nav.is-open { display: flex; }
-  .hp-nav a { font-size: 18px; line-height: 1.2; font-weight: 700; }
+  .hp-menu.is-open { transform: translateX(0); }
+  /* 메뉴 폰트 24px · black(900) · 활성=진함(g12) 나머지=#dfdfdf(g3) */
+  .hp-menu a {
+    font-weight: 900; font-size: 24px; line-height: 1.3; letter-spacing: -0.02em;
+    padding: 10px 0; color: var(--g3); white-space: nowrap; text-decoration: none;
+  }
+  .hp-menu a.is-active { color: var(--g12); }
 
   /* ---------- BODY : 단일 컬럼 ---------- */
   .hp-body { flex-direction: column; align-items: stretch; gap: 60px; padding: 60px 20px; }
@@ -396,10 +429,10 @@ button { font-family: inherit; cursor: pointer; background: none; border: 0; pad
   .hp-advisor__names { gap: 10px; min-width: 0; }
   .hp-advisor__names li { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); }
 
-  /* ---------- 졸업전시위원회 : 라벨 → 이미지 → (역할 | 명단) ---------- */
-  .hp-committee { grid-template-columns: max-content minmax(0, 1fr); column-gap: clamp(30px, 14vw, 149px); row-gap: 20px; }
+  /* ---------- 졸업전시위원회 : 라벨 → 이미지 → (역할 | 명단) · 팀 간 13 / 팀 안 8 ---------- */
+  .hp-committee { grid-template-columns: max-content minmax(0, 1fr); column-gap: clamp(30px, 14vw, 149px); row-gap: 13px; }
   .hp-com dt { font-weight: 700; font-size: 18px; line-height: 1.44; }
-  .hp-com dd { display: flex; flex-wrap: wrap; gap: 20px clamp(20px, 5vw, 45px); grid-template-columns: none; }
+  .hp-com dd { display: flex; flex-wrap: wrap; gap: 8px; grid-template-columns: none; }
   .hp-com dd span { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); }
 
   /* ---------- 협찬업체 : 로고 100×62 가로 나열(줄바꿈) ---------- */
