@@ -42,14 +42,14 @@
   letter-spacing: -0.02em; color: var(--g12);
 }
 .wd-about { display: flex; flex-direction: column; gap: 24px; }
-.wd-titlewrap { display: flex; flex-direction: column; gap: 4px; }
+.wd-titlewrap { display: flex; flex-direction: column; gap: 8px; }
 .wd-meta {
   display: flex; gap: 10px; flex-wrap: wrap;
   font-weight: 500; font-size: 18px; line-height: 28.8px;  /* D-Body1 */
   letter-spacing: -0.02em; color: #6f6f6f;                 /* Grayscale-7 */
 }
 .wd-title {
-  font-weight: 800; font-size: 38px; line-height: 57px;    /* D-D3 */
+  font-weight: 800; font-size: 38px; line-height: 52px;    /* D-D3 */
   letter-spacing: -0.02em; color: var(--g12);
 }
 .wd-descwrap { display: flex; flex-direction: column; gap: 10px; }

@@ -42,7 +42,7 @@
 }
 .dz-card__thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .dz-card:hover .dz-card__thumb { opacity: 0.86; }
-.dz-empty { grid-column: 1 / -1; color: var(--g6); padding: 40px 0; font-size: 16px; }
+.dz-empty { grid-column: 1 / -1; color: var(--g6); padding: 40px 0; font-size: 16px; font-weight: 700; }
 .dz-card__info { display: flex; flex-direction: column; min-width: 0; }
 .dz-card__name {
   font-weight: 700; font-size: 18px; line-height: 23.4px;   /* D-Body2 */

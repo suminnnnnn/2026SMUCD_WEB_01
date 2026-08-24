@@ -18,17 +18,20 @@
 .dd-photo { flex: 0 1 384px; width: auto; min-width: 0; aspect-ratio: 384 / 468; }
 .dd-info { flex: 0 1 553px; width: auto; min-width: 0; display: flex; flex-direction: column; gap: 48px; }
 .dd-meta { display: flex; flex-direction: column; gap: 48px; }
-.dd-name { display: flex; flex-direction: column; color: #3d3d3d; }
+.dd-name { display: flex; flex-direction: column; color: #171717; }
 .dd-name__ko { font-weight: 800; font-size: 38px; line-height: 57px; letter-spacing: -0.02em; }  /* D-D3 */
 .dd-name__roman { font-weight: 700; font-size: 24px; line-height: 34px; letter-spacing: -0.02em; } /* D-H2 */
+/* 연락처 : 라벨(왼) auto | 값(오) 1fr 2열 그리드 · 줄별 세로 정렬 */
 .dd-contact {
-  display: flex; gap: 24px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 24px; row-gap: 4px;
   font-weight: 500; font-size: 18px; line-height: 28.8px; letter-spacing: -0.02em; color: var(--g12); /* D-Body1 */
 }
-.dd-contact__labels, .dd-contact__values { display: flex; flex-direction: column; }
-.dd-contact__values a:hover { text-decoration: underline; }
+.dd-contact__value { min-width: 0; }
+.dd-contact__value:hover { text-decoration: underline; }
 .dd-intro {
-  font-weight: 500; font-size: 20px; line-height: 32px; letter-spacing: -0.02em; color: #555; /* D-S1 */
+  font-weight: 500; font-size: 20px; line-height: 32px; letter-spacing: -0.02em; color: #333333; /* D-S1 */
 }
 
 /* ============================================================
@@ -44,9 +47,9 @@
 .dd-iv-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
 .dd-iv { display: flex; flex-direction: column; gap: 40px; }
 .dd-iv__q { display: flex; flex-direction: column; gap: 16px; }
-.dd-iv__num { font-weight: 700; font-size: 24px; line-height: 34px; letter-spacing: -0.02em; color: var(--g12); margin: 0; }
+.dd-iv__num { font-weight: 700; font-size: 24px; line-height: 34px; letter-spacing: -0.02em; color: #333333; margin: 0; }
 .dd-iv__question { font-weight: 700; font-size: 24px; line-height: 34px; letter-spacing: -0.02em; color: var(--g10); margin: 0; }
-.dd-iv__answer { font-weight: 500; font-size: 20px; line-height: 32px; letter-spacing: -0.02em; color: #555; margin: 0; }
+.dd-iv__answer { font-weight: 500; font-size: 20px; line-height: 32px; letter-spacing: -0.02em; color: #333333; margin: 0; }
 
 /* Projects */
 .dd-proj-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
@@ -70,19 +73,20 @@
 @media (max-width: 879.98px) {
   .dd-body { gap: 60px; padding: 60px 20px; }
 
-  /* PROFILE : 사진 위(411) → 정보 아래 (세로 스택) */
-  .dd-profile { flex-direction: column; align-items: flex-start; gap: 30px; }
-  .dd-photo { flex: none; width: 100%; max-width: 411px; min-width: 0; aspect-ratio: 411 / 501; }
-  .dd-info { flex: none; width: 100%; gap: 30px; }
-  .dd-meta { flex-direction: row; align-items: flex-end; gap: 15px; }
-  .dd-name { flex: 0 0 120px; width: 120px; color: var(--g11); }
-  .dd-name__ko { font-size: 20px; line-height: 1.4; }          /* M-H2 */
-  .dd-name__roman { font-weight: 500; font-size: 14px; line-height: 1.43; color: #555; }  /* M-Sm3 */
-  .dd-contact { flex: 1 1 0; min-width: 0; gap: 0; }
-  .dd-contact__labels { display: none; }                        /* 모바일: 값만 */
-  .dd-contact__values { gap: 5px; min-width: 0; font-weight: 500; font-size: 14px; line-height: 1.43; color: #6f6f6f; overflow-wrap: anywhere; }
-  .dd-contact__values a { overflow-wrap: anywhere; word-break: break-word; }
-  .dd-intro { font-size: 16px; line-height: 1.5; color: var(--g10); max-width: none; }  /* M-B1 */
+  /* PROFILE : 모바일 순서 = 이름(영문) → 사진 → 인스타·이메일 → 자기소개, 전부 중앙정렬 */
+  .dd-profile { flex-direction: column; align-items: center; gap: 30px; }
+  /* 래퍼 해제 → 이름·사진·연락처·소개를 프로필의 직접 flex 항목으로(order 재배치용) */
+  .dd-info { display: contents; }
+  .dd-meta { display: contents; }
+  .dd-photo { order: 3; flex: none; width: 100%; max-width: 411px; min-width: 0; aspect-ratio: 411 / 501; }
+  .dd-name { order: 1; flex: none; width: auto; align-items: center; text-align: center; color: #171717; }
+  .dd-name__ko { font-size: 24px; line-height: 1.4; }
+  .dd-name__roman { font-weight: 700; font-size: 18px; line-height: 1.43; color: #171717; }
+  /* 연락처 : 라벨|값 2열 그리드(블록 자체는 중앙) */
+  .dd-contact { order: 2; justify-content: center; column-gap: 16px; row-gap: 5px; font-size: 14px; line-height: 1.43; color: #171717; }
+  .dd-contact__value { overflow-wrap: anywhere; word-break: break-word; }
+  /* 자기소개 : 박스는 전체 폭(중앙 레이아웃 유지) · 글은 왼쪽정렬 */
+  .dd-intro { order: 4; width: 100%; font-size: 16px; line-height: 1.5; color: var(--g10); max-width: 411px; text-align: left; }  /* 사진과 동일 폭(411) 유지 */
 
   /* 섹션 제목 */
   .dd-sec-title { font-size: 24px; line-height: 1.33; color: #000; }  /* M-H4 */
@@ -93,7 +97,7 @@
   .dd-iv { gap: 20px; max-width: 615px; }
   .dd-iv__q { gap: 5px; }
   .dd-iv__num { font-weight: 800; font-size: 22px; line-height: 32px; }
-  .dd-iv__question { font-size: 20px; line-height: 1.4; color: #000; }  /* M-H2 */
+  .dd-iv__question { font-size: 20px; line-height: 1.4; color: #333333; }  /* M-H2 */
   .dd-iv__answer { font-size: 16px; line-height: 1.5; }                 /* M-B1 */
 
   /* Projects : 2열(좁으면 1열) */

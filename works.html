@@ -16,7 +16,7 @@
       <a class="hp-brand" href="index.html">
         <span class="hp-brand__logo" aria-hidden="true"></span>
         <span class="hp-brand__text">
-          상명대학교<br />커뮤니케이션디자인학과<br />제 39회 졸업전시회
+          상명대학교<br />커뮤니케이션디자인전공<br />제 39회 졸업전시회
         </span>
       </a>
       <nav class="hp-nav main-nav" id="hp-nav">
@@ -128,6 +128,8 @@
       var descEl = document.getElementById("wk-desc");
       var chipsWrap = document.getElementById("wk-chips");
 
+      descEl.textContent = "";   // 첫 진입(전체 작품 보기): 관 설명 없음
+
       // 작품 그리드 : designers_full 의 융합(convergence)·혁신(innovation)을 각각 카드로 (96×2=192)
       var grid = document.getElementById("wk-grid");
       function h(s) { return (s == null ? "" : String(s)).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
@@ -176,6 +178,7 @@
         cats.forEach(function (b, i) { b.classList.toggle("is-active", i === index); });
         chips.forEach(function (c, i) { c.classList.toggle("is-active", i === index); });
         catsWrap.classList.add("has-active");    // 선택 후: 나머지 카테고리 연하게
+        body.classList.add("cat-selected");      // 관 선택 → 설명 표시
         descEl.textContent = PLACEHOLDER_DESC;   // 연동 시 카테고리별 문구로 교체
         body.classList.remove("is-cat");         // 카테고리 선택 → 작품 리스트
         window.scrollTo(0, 0);

@@ -15,7 +15,7 @@
       <a class="hp-brand" href="index.html">
         <span class="hp-brand__logo" aria-hidden="true"></span>
         <span class="hp-brand__text">
-          상명대학교<br />커뮤니케이션디자인학과<br />제 39회 졸업전시회
+          상명대학교<br />커뮤니케이션디자인전공<br />제 39회 졸업전시회
         </span>
       </a>
       <nav class="hp-nav main-nav" id="hp-nav">
@@ -107,20 +107,20 @@
         qs("dd-name").innerHTML =
           '<span class="dd-name__ko">' + h(d.name) + "</span>" +
           '<span class="dd-name__roman">' + h(d.nameRoman || "") + "</span>";
-        // 연락처 : instagram 비어있으면 라벨·줄 모두 숨김 · E-mail 은 값 있으면 표시
-        var labels = [], values = [];
+        // 연락처 : 라벨(왼) | 값(오) 2열 그리드. instagram 비어있으면 그 줄(라벨+값) 통째 숨김
+        var rows = "";
         if (d.instagram) {
-          labels.push("instagram");
           var handle = d.instagram.replace(/^@/, "");
-          values.push('<a href="https://instagram.com/' + esc(handle) + '" target="_blank" rel="noopener">' + h(d.instagram) + "</a>");
+          rows +=
+            '<span class="dd-contact__label">instagram</span>' +
+            '<a class="dd-contact__value" href="https://instagram.com/' + esc(handle) + '" target="_blank" rel="noopener">' + h(d.instagram) + "</a>";
         }
         if (d.email) {
-          labels.push("E-mail");
-          values.push('<a href="mailto:' + esc(d.email) + '">' + h(d.email) + "</a>");
+          rows +=
+            '<span class="dd-contact__label">E-mail</span>' +
+            '<a class="dd-contact__value" href="mailto:' + esc(d.email) + '">' + h(d.email) + "</a>";
         }
-        qs("dd-contact").innerHTML =
-          '<div class="dd-contact__labels">' + labels.map(function (l) { return "<span>" + l + "</span>"; }).join("") + "</div>" +
-          '<div class="dd-contact__values">' + values.map(function (v) { return "<span>" + v + "</span>"; }).join("") + "</div>";
+        qs("dd-contact").innerHTML = rows;
         // 소개
         qs("dd-intro").textContent = d.intro || "";
 

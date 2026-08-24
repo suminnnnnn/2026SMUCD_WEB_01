@@ -233,17 +233,22 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   font-weight: 700; font-size: 24px; line-height: 34px; color: var(--g12);
   margin-top: 0;
 }
+/* 주소 그룹: 그룹 내부는 안 쪼개지고(nowrap) 그룹 사이(공백)에서만 줄바꿈 */
+.hp-nb { white-space: nowrap; }
 .hp-subway {
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items:flex-start; gap: 8px;
   font-weight: 700; font-size: 24px; line-height: 34px; color: var(--g12);
   margin-top: 16px;
 }
 .hp-subway__badge {
   flex: 0 0 auto;
+  margin-top: 3px;   /* 첫 줄(line-height 34) 세로 중앙에 배지(28) 고정: (34-28)/2 */
   width: 28px; height: 28px; border-radius: 50%;
   background: var(--accent); color: #fff;
   font-weight: 700; font-size: 22px;
+  line-height: 1;
   display: grid; place-items: center;
+  padding-bottom: 1px;   /* '3' 글자 광학 중앙 보정(위로 살짝) */
 }
 
 /* 오프닝 시간 (모바일 전용 구조) */
@@ -301,15 +306,24 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   white-space: nowrap;   /* 이름 안에서 글자가 세로로 쪼개지지 않게 */
 }
 
-/* ---------- 후원·협력 ---------- */
+/* ---------- 후원·협력 (로고 세로 1열, 좌측정렬) ---------- */
 .hp-sponsors {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;                 /* Figma: 로고 간 약 40 */
   width: 100%;
   max-width: 413px;
 }
-.hp-logo { display: block; width: 100%; aspect-ratio: 198 / 60; }
+/* 각 로고는 Figma 원본 폭 · 높이는 비율 유지 · 좁아지면 축소 */
+.hp-logo { display: block; height: auto; max-width: 100%; }
+.hp-logo--maru    { width: 178px; }
+.hp-logo--sandoll { width: 183px; }
+.hp-logo--yoon    { width: 176px; }
+.hp-logo--vine    { width: 108px; }
+.hp-logo--typo    { width: 333px; }
+.hp-logo--akira   { width: 185px; }
+.hp-logo--stay    { width: 151px; }
 
 /* ---------- 인스타그램 ---------- */
 .hp-insta { font-weight: 700; font-size: 24px; line-height: 34px; color: var(--g11); }
@@ -417,7 +431,7 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   .hp-venue .en { color: #a5a5a5; }
   .hp-addr { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); margin-top: 35px; }
   .hp-subway { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); margin-top: 35px; }
-  .hp-subway__badge { width: 29px; height: 28px; font-size: 22px; }
+  .hp-subway__badge { width: 29px; height: 28px; font-size: 22px; margin-top: -1px; }  /* 첫 줄(line-height 18×1.44≈25.9) 중앙에 배지(28) 고정 */
 
   /* ---------- 지도교수 : 스튜디오 2개(각 [스튜디오명 | 명단]) ---------- */
   .hp-advisors { display: flex; flex-direction: row; flex-wrap: wrap; gap: 35px clamp(40px, 9vw, 100px); }
@@ -435,9 +449,8 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   .hp-com dd { display: flex; flex-wrap: wrap; gap: 8px; grid-template-columns: none; }
   .hp-com dd span { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); }
 
-  /* ---------- 협찬업체 : 로고 100×62 가로 나열(줄바꿈) ---------- */
-  .hp-sponsors { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px 17px; width: 100%; max-width: none; }
-  .hp-logo { flex: 0 0 auto; width: 100px; aspect-ratio: 100 / 62; }
+  /* ---------- 협찬업체 : 로고 세로 스택(좌측정렬) ---------- */
+  .hp-sponsors { gap: 32px; max-width: 100%; }
 
   /* ---------- FOOTER : 2열 그리드 ---------- */
   .hp-footer { height: auto; }

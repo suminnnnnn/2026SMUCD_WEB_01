@@ -66,8 +66,10 @@
 /* ---------- 우측 콘텐츠 ---------- */
 .wk-main { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 100px; }
 .wk-mhead { display: flex; flex-direction: column; }
+/* 첫 진입(관 미선택): 설명 영역 숨김 → 전체 작품만 · 관 선택 시 표시 */
+.wk-body:not(.cat-selected) .wk-mhead { display: none; }
 .wk-desc {
-  font-weight: 700; font-size: 20px; line-height: 32px;   /* D-S2 */
+  font-weight: 500; font-size: 20px; line-height: 32px;   /* D-S2 */
   letter-spacing: -0.02em; color: var(--g10);
   max-width: 847px;
 }
