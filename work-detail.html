@@ -30,6 +30,8 @@
     <!-- ================= BODY ================= -->
     <div class="wd-body">
 
+      <!-- 상단: 좌 이미지 + 우 정보(정보는 이미지 끝까지 sticky) -->
+      <div class="wd-top">
       <!-- 작품 이미지 (데스크탑: 좌측 대형 · 태블릿/모바일: 세로 스택) -->
       <div class="wd-gallery">
         <span class="wd-shot hp-ph"></span>
@@ -54,8 +56,9 @@
           </div>
         </div>
       </div>
+      </div><!-- /.wd-top -->
 
-      <!-- 다른 작품 둘러보기 (데스크탑 숨김 · 태블릿/모바일 노출) -->
+      <!-- 다른 작품 둘러보기 -->
       <section class="wd-related">
         <h2 class="wd-related__title">다른 작품 둘러보기</h2>
         <div class="wd-related__grid" id="wd-related-grid"></div>
@@ -134,8 +137,8 @@
         qs("wd-title").textContent = w.title || "";
         qs("wd-desc").textContent = w.description || "";
 
-        // 다른 작품 둘러보기 : 현재 작품 제외 3개
-        var others = works.filter(function (x) { return x.id !== cur.id; }).slice(0, 3);
+        // 다른 작품 둘러보기 : 현재 작품 제외 4개(데스크탑 4열 · 모바일은 4번째 CSS로 숨겨 3개)
+        var others = works.filter(function (x) { return x.id !== cur.id; }).slice(0, 4);
         qs("wd-related-grid").innerHTML = others.map(relCard).join("");
       }
 

@@ -410,7 +410,7 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   .hp-label, .hp-about__label { font-weight: 700; font-size: 20px; line-height: 1.4; color: var(--g6); }
 
   /* ---------- ABOUT ---------- */
-  .hp-about { gap: 35px; }
+  .hp-about { gap: 25px; }
   .hp-hero { gap: 30px; }
   .hp-hero__title { font-weight: 700; font-size: 24px; line-height: 1.33; color: var(--black); }
   .hp-desc { font-weight: 500; font-size: 16px; line-height: 1.5; color: var(--g10); }

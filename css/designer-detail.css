@@ -15,7 +15,7 @@
    PROFILE (Desktop: 사진 | 정보)
    ============================================================ */
 .dd-profile { display: flex; align-items: flex-start; gap: clamp(40px, 8.5%, 109px); }
-.dd-photo { flex: 0 1 384px; width: auto; min-width: 0; aspect-ratio: 384 / 468; }
+.dd-photo { flex: 0 1 384px; width: auto; min-width: 0; aspect-ratio: 384 / 468; border-radius: 15px; }
 .dd-info { flex: 0 1 553px; width: auto; min-width: 0; display: flex; flex-direction: column; gap: 48px; }
 .dd-meta { display: flex; flex-direction: column; gap: 48px; }
 .dd-name { display: flex; flex-direction: column; color: #171717; }
@@ -52,9 +52,10 @@
 .dd-iv__answer { font-weight: 500; font-size: 20px; line-height: 32px; letter-spacing: -0.02em; color: #333333; margin: 0; }
 
 /* Projects */
-.dd-proj-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
+/* 정사각 유지 · 고정 폭으로 작게 · 좌측정렬(폭 채우지 않음) */
+.dd-proj-list { display: grid; grid-template-columns: repeat(2, 300px); justify-content: start; gap: 30px; }
 .dd-proj { display: flex; flex-direction: column; gap: 25px; cursor: pointer; }
-.dd-proj__thumb { width: 100%; aspect-ratio: 625 / 444; transition: opacity 0.2s ease; }
+.dd-proj__thumb { width: 100%; aspect-ratio: 1 / 1; border-radius: 15px; transition: opacity 0.2s ease; }
 .dd-proj:hover .dd-proj__thumb { opacity: 0.86; }
 .dd-proj__info { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
 .dd-proj__title {

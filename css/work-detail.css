@@ -11,9 +11,15 @@
    ============================================================ */
 .wd-body {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;      /* 상단(이미지+정보) → 관련작품 세로 스택 */
   gap: 56px;
   padding: 81px 80px;
+}
+/* 상단: 좌 이미지 + 우 정보 (정보는 이미지 끝까지 sticky) */
+.wd-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 56px;
 }
 
 /* ---------- 작품 이미지 ---------- */
@@ -24,11 +30,14 @@
 }
 .wd-shot { display: block; width: 100%; aspect-ratio: 16 / 9; }
 
-/* ---------- 정보 ---------- */
+/* ---------- 정보 (이미지 끝까지 sticky) ---------- */
 .wd-info {
   order: 1;
   flex: 544 1 0; min-width: 0;
   display: flex; flex-direction: column; gap: 68px;
+  position: sticky;
+  top: 150px;                  /* 고정 헤더(132) 아래로 pin */
+  align-self: flex-start;      /* 스티키 동작 위해 높이 늘어나지 않게 */
 }
 .wd-head { display: flex; flex-direction: column; gap: 24px; }
 .wd-back {
@@ -62,13 +71,26 @@
   letter-spacing: -0.02em; color: #a5a5a5;                 /* Grayscale-5 */
 }
 
-/* ---------- 다른 작품 (데스크탑 숨김) ---------- */
-.wd-related { order: 2; display: none; }
-.wd-rel-card { display: flex; flex-direction: column; cursor: pointer; }
-.wd-rel-card__thumb { display: block; }
+/* ---------- 다른 작품 둘러보기 (데스크탑: 이미지+정보 아래 전체폭 3열) ---------- */
+.wd-related {
+  order: 2;
+  flex: 0 0 100%; width: 100%;    /* wrap 되어 아래 전체폭 행으로 */
+  display: flex; flex-direction: column; gap: 30px;
+}
+.wd-related__title {
+  font-weight: 800; font-size: 28px; line-height: 38px;   /* D-H4 */
+  letter-spacing: -0.02em; color: var(--g12);
+}
+.wd-related__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.wd-rel-card { display: flex; flex-direction: column; gap: 14px; cursor: pointer; }
+.wd-rel-card__thumb { display: block; width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; }
 .wd-rel-card:hover .wd-rel-card__thumb { opacity: 0.86; }
-.wd-rel-card__info { display: flex; flex-direction: column; min-width: 0; }
-.wd-rel-card__title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wd-rel-card__info { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.wd-rel-card__title {
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-weight: 700; font-size: 20px; line-height: 30px; color: var(--g11);
+}
+.wd-rel-card__designer { font-weight: 500; font-size: 16px; line-height: 24px; color: var(--g6); }
 
 /* ============================================================
    ▍ < 880px  · Figma 5395:7740 (880 - Work 상세)
@@ -76,7 +98,9 @@
    ============================================================ */
 @media (max-width: 879.98px) {
   .wd-body { flex-direction: column; align-items: stretch; gap: 60px; padding: 60px 20px; }
-  .wd-info { order: 0; flex: none; width: 100%; gap: 35px; }
+  /* 상단 래퍼: 세로 스택(정보 → 이미지), sticky 해제 */
+  .wd-top { flex-direction: column; align-items: stretch; gap: 60px; }
+  .wd-info { order: 0; flex: none; width: 100%; gap: 35px; position: static; top: auto; }
   .wd-gallery { order: 1; flex: none; width: 100%; gap: 12px; }
   .wd-related { order: 2; display: flex; flex-direction: column; gap: 16px; }
 
@@ -97,6 +121,7 @@
   /* 다른 작품 둘러보기 : 3열 */
   .wd-related__title { font-weight: 700; font-size: 24px; line-height: 1.33; color: var(--g12); } /* M-H4 */
   .wd-related__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+  .wd-related__grid .wd-rel-card:nth-child(4) { display: none; }  /* 모바일은 3개만 */
   .wd-rel-card { width: auto; gap: 10px; }
   .wd-rel-card__thumb { width: 100%; aspect-ratio: 1 / 1; border-radius: 10px; }
   .wd-rel-card__title { font-weight: 700; font-size: 16px; line-height: 1.5; color: var(--g11); } /* M-B2 */
