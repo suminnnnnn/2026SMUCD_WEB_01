@@ -34,7 +34,7 @@
     "profileImage": "",
     "instagram": "",
     "email": "kjw0662@naver.com",
-    "intro": "평범한 생각도 새로운 컨셉과 이야기를 만나면 특별해질 수 있다고 생각합니다. 캐릭터와 브랜딩을 통해 저만의 방식으로  디자인 영역을 넓혀가고 싶습니다.",
+    "intro": "평범한 생각도 새로운 컨셉과 이야기를 만나면 특별해질 수 있다고 생각합니다. 캐릭터와 브랜딩을 통해 저만의 방식으로  디자인 영역을 넓혀가고 싶습니다.ㄷ",
     "convergence": {
       "professor": "서승연 교수님",
       "title": "Beeyond",
@@ -551,6 +551,31 @@
   },
   {
     "id": "designer-023",
+    "studentId": "202220242",
+    "name": "김하은",
+    "nameRoman": "Kim Haeun",
+    "initial": "ㄱ",
+    "studio": "both",
+    "profileImage": "",
+    "instagram": "@mminguaehn",
+    "email": "allokfebfourteenth@naver.com",
+    "intro": "저에게 4년은 '커뮤니케이션 디자인이란 무엇인가'를 끊임없이 고민하고, 저만의 답을 찾아가는 시간이었습니다. 제 작업에 아낌없는 조언과 격려를 보내주신 교수님과 동기들 덕분에 4년을 잘 마무리할 수 있었습니다. 함께해 주신 모든 분들께 감사드립니다.",
+    "convergence": {
+      "professor": "서승연 교수님",
+      "title": "Mulitplicity",
+      "description": "오늘날 우리는 상황과 관계에 따라 서로 다른 모습으로 살아간다. Multiplicity는 이처럼 한 사람 안에서 다양한 모습이 나타나는 이유에 대한 궁금증에서 출발한다. 현대인의 다중적인 자아를 행동 패턴에 따라 여섯 가지 유형으로 나누고, 각 유형의 심리적 배경과 라이프스타일을 분석한다. 이를 통해 다중자아를 개인의 결함이 아닌, 시대와 환경의 변화에 적응하는 과정에서 자연스럽게 형성된 현대인의 생존 방식으로 바라보고자 한다."
+    },
+    "innovation": {
+      "professor": "안혜선 교수님",
+      "title": "Greening",
+      "description": "천만 관중 시대를 맞은 KBO 리그는 폭발적인 관중 증가와 함께 야구장 쓰레기도 빠르게 늘어나며, 여전히 해결되지 않은 과제로 남아 있다. Greening은 이러한 문제를 관중의 자발적인 참여로 해결하고자 기획한 KBO 환경 파트너 브랜드이다. 경기 당일 관중이 자연스럽게 실천에 참여할 수 있는 경험을 설계하여, 10개 구단과 관중이 함께 만들어가는 지속 가능한 야구 문화를 제안한다."
+    },
+    "interview1": "이번 졸전을 통해 생각보다 저의 섬세함이 항상 도움이 되는 것은 아니라는 걸 깨달았습니다. 사소한 부분까지 완벽하게 맞추려는 강박이 오히려 작업을 더디게 할 때도 있었습니다.",
+    "interview2": "'공감할 수 있는 디자인인가'를 가장 중요하게 생각합니다. 디자이너의 시선에만 머무르지 않고 소비자의 입장에서 바라보며, 그들이 납득할 수 있는 디자인인지를 끝까지 고민합니다.",
+    "workIds": []
+  },
+  {
+    "id": "designer-024",
     "studentId": "202220253",
     "name": "남예빈",
     "nameRoman": "Nam Yebin",
@@ -575,7 +600,7 @@
     "workIds": []
   },
   {
-    "id": "designer-024",
+    "id": "designer-025",
     "studentId": "202220255",
     "name": "남현지",
     "nameRoman": "Nam Hyeonji",
@@ -600,7 +625,7 @@
     "workIds": []
   },
   {
-    "id": "designer-025",
+    "id": "designer-026",
     "studentId": "202320253",
     "name": "노성은",
     "nameRoman": "Noh Seongeun",
@@ -625,7 +650,7 @@
     "workIds": []
   },
   {
-    "id": "designer-026",
+    "id": "designer-027",
     "studentId": "202321452",
     "name": "노은서",
     "nameRoman": "Noh Eunseo",
@@ -650,7 +675,7 @@
     "workIds": []
   },
   {
-    "id": "designer-027",
+    "id": "designer-028",
     "studentId": "202120253",
     "name": "도미래",
     "nameRoman": "Do Mi Rae",
@@ -675,7 +700,7 @@
     "workIds": []
   },
   {
-    "id": "designer-028",
+    "id": "designer-029",
     "studentId": "202120257",
     "name": "류정서",
     "nameRoman": "Ryu Jeongseo",
@@ -700,7 +725,7 @@
     "workIds": []
   },
   {
-    "id": "designer-029",
+    "id": "designer-030",
     "studentId": "202220261",
     "name": "박신영",
     "nameRoman": "Park Shinyoung",
@@ -725,7 +750,7 @@
     "workIds": []
   },
   {
-    "id": "designer-030",
+    "id": "designer-031",
     "studentId": "202221446",
     "name": "박정현",
     "nameRoman": "Park Jeonghyun",
@@ -750,7 +775,7 @@
     "workIds": []
   },
   {
-    "id": "designer-031",
+    "id": "designer-032",
     "studentId": "202220266",
     "name": "박지원",
     "nameRoman": "Park jiwon",
@@ -775,7 +800,7 @@
     "workIds": []
   },
   {
-    "id": "designer-032",
+    "id": "designer-033",
     "studentId": "202220267",
     "name": "박진슬",
     "nameRoman": "Park Jinsle",
@@ -800,7 +825,7 @@
     "workIds": []
   },
   {
-    "id": "designer-033",
+    "id": "designer-034",
     "studentId": "202020259",
     "name": "박찬민",
     "nameRoman": "Park Chanmin",
@@ -825,7 +850,7 @@
     "workIds": []
   },
   {
-    "id": "designer-034",
+    "id": "designer-035",
     "studentId": "202120285",
     "name": "박창선",
     "nameRoman": "Park Changsun",
@@ -850,7 +875,7 @@
     "workIds": []
   },
   {
-    "id": "designer-035",
+    "id": "designer-036",
     "studentId": "202220269",
     "name": "박향은",
     "nameRoman": "Park Hyangeun",
@@ -875,7 +900,7 @@
     "workIds": []
   },
   {
-    "id": "designer-036",
+    "id": "designer-037",
     "studentId": "202220272",
     "name": "배세은",
     "nameRoman": "Bae Seeun",
@@ -900,7 +925,7 @@
     "workIds": []
   },
   {
-    "id": "designer-037",
+    "id": "designer-038",
     "studentId": "202120294",
     "name": "백진우",
     "nameRoman": "Baek Jinwoo",
@@ -925,7 +950,7 @@
     "workIds": []
   },
   {
-    "id": "designer-038",
+    "id": "designer-039",
     "studentId": "202220275",
     "name": "변유경",
     "nameRoman": "Byeon Yoogyung",
@@ -950,7 +975,7 @@
     "workIds": []
   },
   {
-    "id": "designer-039",
+    "id": "designer-040",
     "studentId": "202320287",
     "name": "성혜지",
     "nameRoman": "Seong Hyeji",
@@ -975,7 +1000,7 @@
     "workIds": []
   },
   {
-    "id": "designer-040",
+    "id": "designer-041",
     "studentId": "202220280",
     "name": "손예진",
     "nameRoman": "Son Yeajin",
@@ -1000,7 +1025,7 @@
     "workIds": []
   },
   {
-    "id": "designer-041",
+    "id": "designer-042",
     "studentId": "202321453",
     "name": "신지호",
     "nameRoman": "Shin Jiho",
@@ -1025,7 +1050,7 @@
     "workIds": []
   },
   {
-    "id": "designer-042",
+    "id": "designer-043",
     "studentId": "202220291",
     "name": "신지희",
     "nameRoman": "Shin Jihee",
@@ -1050,7 +1075,7 @@
     "workIds": []
   },
   {
-    "id": "designer-043",
+    "id": "designer-044",
     "studentId": "202220293",
     "name": "심소희",
     "nameRoman": "Sim Sohee",
@@ -1075,7 +1100,7 @@
     "workIds": []
   },
   {
-    "id": "designer-044",
+    "id": "designer-045",
     "studentId": "202220295",
     "name": "안수연",
     "nameRoman": "Ann Sueyeon",
@@ -1100,7 +1125,7 @@
     "workIds": []
   },
   {
-    "id": "designer-045",
+    "id": "designer-046",
     "studentId": "202321582",
     "name": "양다희",
     "nameRoman": "Yang Dahee",
@@ -1125,7 +1150,7 @@
     "workIds": []
   },
   {
-    "id": "designer-046",
+    "id": "designer-047",
     "studentId": "202220299",
     "name": "양서윤",
     "nameRoman": "Yang Seoyun",
@@ -1150,7 +1175,7 @@
     "workIds": []
   },
   {
-    "id": "designer-047",
+    "id": "designer-048",
     "studentId": "202220300",
     "name": "양유정",
     "nameRoman": "Yang Yujeong",
@@ -1175,7 +1200,7 @@
     "workIds": []
   },
   {
-    "id": "designer-048",
+    "id": "designer-049",
     "studentId": "202220301",
     "name": "엄연진",
     "nameRoman": "Eom Yeonjin",
@@ -1200,7 +1225,7 @@
     "workIds": []
   },
   {
-    "id": "designer-049",
+    "id": "designer-050",
     "studentId": "202321454",
     "name": "오가인",
     "nameRoman": "Oh Gain",
@@ -1225,7 +1250,7 @@
     "workIds": []
   },
   {
-    "id": "designer-050",
+    "id": "designer-051",
     "studentId": "202120315",
     "name": "오다윤",
     "nameRoman": "Oh Dayun",
@@ -1250,7 +1275,7 @@
     "workIds": []
   },
   {
-    "id": "designer-051",
+    "id": "designer-052",
     "studentId": "202320310",
     "name": "오다인",
     "nameRoman": "Oh Dain",
@@ -1275,7 +1300,7 @@
     "workIds": []
   },
   {
-    "id": "designer-052",
+    "id": "designer-053",
     "studentId": "202320312",
     "name": "오아윤",
     "nameRoman": "O Ayun",
@@ -1300,7 +1325,7 @@
     "workIds": []
   },
   {
-    "id": "designer-053",
+    "id": "designer-054",
     "studentId": "202220305",
     "name": "오채은",
     "nameRoman": "Oh Chaeeun",
@@ -1325,7 +1350,7 @@
     "workIds": []
   },
   {
-    "id": "designer-054",
+    "id": "designer-055",
     "studentId": "202120316",
     "name": "용희원",
     "nameRoman": "Yong Heewon",
@@ -1350,7 +1375,7 @@
     "workIds": []
   },
   {
-    "id": "designer-055",
+    "id": "designer-056",
     "studentId": "202220315",
     "name": "윤수정",
     "nameRoman": "Yun Sujeong",
@@ -1375,7 +1400,7 @@
     "workIds": []
   },
   {
-    "id": "designer-056",
+    "id": "designer-057",
     "studentId": "202120324",
     "name": "윤지선",
     "nameRoman": "Yoon Jiseon",
@@ -1400,7 +1425,7 @@
     "workIds": []
   },
   {
-    "id": "designer-057",
+    "id": "designer-058",
     "studentId": "202120328",
     "name": "이다빈",
     "nameRoman": "Lee Dabin",
@@ -1425,7 +1450,7 @@
     "workIds": []
   },
   {
-    "id": "designer-058",
+    "id": "designer-059",
     "studentId": "202220324",
     "name": "이수연",
     "nameRoman": "Lee Suyeon",
@@ -1450,7 +1475,7 @@
     "workIds": []
   },
   {
-    "id": "designer-059",
+    "id": "designer-060",
     "studentId": "202221495",
     "name": "이수현",
     "nameRoman": "Lee Suhyun",
@@ -1475,7 +1500,7 @@
     "workIds": []
   },
   {
-    "id": "designer-060",
+    "id": "designer-061",
     "studentId": "202321455",
     "name": "이승은",
     "nameRoman": "Lee Seungeun",
@@ -1500,7 +1525,7 @@
     "workIds": []
   },
   {
-    "id": "designer-061",
+    "id": "designer-062",
     "studentId": "202020309",
     "name": "이승주",
     "nameRoman": "Lee Seung Ju",
@@ -1525,7 +1550,7 @@
     "workIds": []
   },
   {
-    "id": "designer-062",
+    "id": "designer-063",
     "studentId": "202220325",
     "name": "이아린",
     "nameRoman": "Lee A Rin",
@@ -1550,7 +1575,32 @@
     "workIds": []
   },
   {
-    "id": "designer-063",
+    "id": "designer-064",
+    "studentId": "202321456",
+    "name": "이예리",
+    "nameRoman": "Lee Yeri",
+    "initial": "ㅇ",
+    "studio": "both",
+    "profileImage": "",
+    "instagram": "@iroun_daisy",
+    "email": "ydesignstudio@naver.com",
+    "intro": "사람과 일상 속에 스며든 작은 이야기에 공감하고 이를 디자인으로 풀어내는 디자이너 이예리입니다. 익숙한 것들을 새로운 시선으로 바라보며 공감하고 사람과 자연스럽게 연결되는 디자인을 고민합니다.",
+    "convergence": {
+      "professor": "이원제 교수님",
+      "title": "FREITAG",
+      "description": "현대 소비는 제품을 구매를 넘어 자신의 가치관과 라이프스타일을 표현하는 수단으로 사용됩니다. 본 프로젝트는 프라이탁(FREITAG)이 6년 이상 사용된 버려진 트럭 방수천을 사용해 분리, 세척, 재단, 봉제 등의 과정을 거쳐 세상에 하나뿐인 디자인의 가방으로 재탄생하는 과정을 아이소메트릭으로 시각적으로 연출함으로 브랜드의 철학과 가치소비의 의미를 자연스럽게 이해하도록 하는 것을 목표로 하였습니다."
+    },
+    "innovation": {
+      "professor": "방경란 교수님",
+      "title": "Hugin&Munin",
+      "description": "오늘도 당신의 하루는 안녕하십니까? 1인 가구 천만 시대를 앞둔 오늘 날 공동체는 점점 느슨해지고 서로의 안부를 묻는 일도 줄어들었습니다. 이 프로젝트는 혼자 살지만 혼자이고 싶지는 않은 사람들을 위한 안부확인 서비스로 북유럽 신화 속 최고 신 '오딘'이 후긴과 무닌을 통해 세상의 소식을 전해 들었던 이야기에서 영감을 받아 당신의 안부를 확인하고 세상과 연결 통로를 제공합니다."
+    },
+    "interview1": "설명하지 않아도 보는 사람이 자연스럽게 느끼고 공감할 수 있어야 좋은 디자인임을 깨달았습니다. 이를 위해 본질을 바라보는 눈을 기르고 더하기보다 덜어내는 것이 가장 강력한 무기임을 배웠고 앞으로도 본질에 집중하고 공감하는 디자이너로 나아가고자 합니다.",
+    "interview2": "가장 중요하게 여기는 디자인 기준은 위계질서를 지키는 것입니다. 무엇을 먼저 보고 어떻게 이해할지 명확하게 설계하여 사용자가 자연스럽게 정보를 받아들이고 공감할 수 있는 디자인을 만들고 싶습니다.",
+    "workIds": []
+  },
+  {
+    "id": "designer-065",
     "studentId": "202221496",
     "name": "이원우",
     "nameRoman": "Lee Wonwoo",
@@ -1575,7 +1625,7 @@
     "workIds": []
   },
   {
-    "id": "designer-064",
+    "id": "designer-066",
     "studentId": "202120335",
     "name": "이유리",
     "nameRoman": "Lee Youlee",
@@ -1600,7 +1650,7 @@
     "workIds": []
   },
   {
-    "id": "designer-065",
+    "id": "designer-067",
     "studentId": "202120336",
     "name": "이유미",
     "nameRoman": "Lee Yumi",
@@ -1625,7 +1675,7 @@
     "workIds": []
   },
   {
-    "id": "designer-066",
+    "id": "designer-068",
     "studentId": "202220329",
     "name": "이유진",
     "nameRoman": "Lee Yujin",
@@ -1650,7 +1700,7 @@
     "workIds": []
   },
   {
-    "id": "designer-067",
+    "id": "designer-069",
     "studentId": "201990028",
     "name": "이이몽",
     "nameRoman": "Li Yimeng",
@@ -1675,7 +1725,7 @@
     "workIds": []
   },
   {
-    "id": "designer-068",
+    "id": "designer-070",
     "studentId": "202120342",
     "name": "이재훈",
     "nameRoman": "Lee jaehun",
@@ -1700,7 +1750,7 @@
     "workIds": []
   },
   {
-    "id": "designer-069",
+    "id": "designer-071",
     "studentId": "202320343",
     "name": "이지원",
     "nameRoman": "Lee Jiwon",
@@ -1725,7 +1775,7 @@
     "workIds": []
   },
   {
-    "id": "designer-070",
+    "id": "designer-072",
     "studentId": "202220336",
     "name": "이채민",
     "nameRoman": "Lee Chemin",
@@ -1750,7 +1800,7 @@
     "workIds": []
   },
   {
-    "id": "designer-071",
+    "id": "designer-073",
     "studentId": "202220337",
     "name": "이채연",
     "nameRoman": "Lee Chaeyeon",
@@ -1775,7 +1825,7 @@
     "workIds": []
   },
   {
-    "id": "designer-072",
+    "id": "designer-074",
     "studentId": "202320347",
     "name": "이채현",
     "nameRoman": "Lee Chae Hyun",
@@ -1800,7 +1850,7 @@
     "workIds": []
   },
   {
-    "id": "designer-073",
+    "id": "designer-075",
     "studentId": "202320357",
     "name": "임현아",
     "nameRoman": "Lim Hyuna",
@@ -1825,7 +1875,7 @@
     "workIds": []
   },
   {
-    "id": "designer-074",
+    "id": "designer-076",
     "studentId": "202320359",
     "name": "임효령",
     "nameRoman": "Lim Hyolyeong",
@@ -1850,7 +1900,7 @@
     "workIds": []
   },
   {
-    "id": "designer-075",
+    "id": "designer-077",
     "studentId": "202320365",
     "name": "전가현",
     "nameRoman": "Jeon Gahyeon",
@@ -1875,7 +1925,7 @@
     "workIds": []
   },
   {
-    "id": "designer-076",
+    "id": "designer-078",
     "studentId": "202320367",
     "name": "전아현",
     "nameRoman": "Jeon A Hyun",
@@ -1900,7 +1950,7 @@
     "workIds": []
   },
   {
-    "id": "designer-077",
+    "id": "designer-079",
     "studentId": "202220353",
     "name": "정수민",
     "nameRoman": "Jeong Sumin",
@@ -1925,7 +1975,32 @@
     "workIds": []
   },
   {
-    "id": "designer-078",
+    "id": "designer-080",
+    "studentId": "202120376",
+    "name": "정준영",
+    "nameRoman": "Jeong Junyeong",
+    "initial": "ㅈ",
+    "studio": "both",
+    "profileImage": "",
+    "instagram": "jjy030222@gmail.com",
+    "email": "",
+    "intro": "정준영입니다.\n안녕하세요?\n아직은 이게 전부입니다.\n그럼 또 뵙겠습니다.",
+    "convergence": {
+      "professor": "손우성 교수님",
+      "title": "네가 원하는 건 그 안에 있어",
+      "description": "어린왕자가 받은 것은 구멍 세 개가 뚫린 빈 상자와 네가 원하는 건 그 안에 있다는 한마디였다. 그는 그 말을 의심하지 않았고, 상자 안의 양을 보았다. 이 작업은 그 믿음을 관객의 손으로 옮긴 인터랙티브 설치다. 상자는 정말로 비어 있지만, 기울이면 화면 속 세계가 함께 기울며 양들이 굴러 내려간다. 손의 각도와 속도를 센서가 읽고 물리 시뮬레이션이 반응한다. 그 안에 있다는 말을 잠깐이라도 믿게 되는 순간을 건네고 싶었다."
+    },
+    "innovation": {
+      "professor": "박소연 교수님",
+      "title": "Read Me Wrong",
+      "description": "사람은 몇 개의 단어로 정의될 수 없지만, 사회는 사람을 쉽게 읽고 쉽게 오해한다. 이 작업은 그 오독되는 읽힘을 '종이'로 시각화한 애니메이션이다. 교실에서 시작된 한 단어가 주인공의 얼굴을 덮고, 종이와 시선이 그를 잠식한다. 무너지던 그는 손바닥의 종이를 다시 읽으며 그 말들이 자신의 본질이 아님을 깨닫는다. 마지막, 시선은 관객을 향해 돌아선다. 당신은 어떤 말들로 읽혀왔나요?"
+    },
+    "interview1": "제가 끈기 있는 사람인지는 아직 모르겠습니다. 다만 마음에 안 드는 걸 그냥 두고 보는 능력은 확실히 없다는 걸 이번 작품으로 한 번 더 알게 됐습니다.",
+    "interview2": "대충 봐도 괜찮고, 자세히 보면 더 괜찮아야 합니다. 멀리서는 궁금하게, 가까이서는 놀라게. 괜히 가까이 와보게 해놓고 별거 없으면 좀 미안하니까요.",
+    "workIds": []
+  },
+  {
+    "id": "designer-081",
     "studentId": "202220364",
     "name": "조세령",
     "nameRoman": "Cho Seryeong",
@@ -1950,7 +2025,7 @@
     "workIds": []
   },
   {
-    "id": "designer-079",
+    "id": "designer-082",
     "studentId": "202220366",
     "name": "조예은",
     "nameRoman": "Cho Yeeun",
@@ -1975,7 +2050,7 @@
     "workIds": []
   },
   {
-    "id": "designer-080",
+    "id": "designer-083",
     "studentId": "202220373",
     "name": "조창완",
     "nameRoman": "Cho Chang Wan",
@@ -2000,7 +2075,7 @@
     "workIds": []
   },
   {
-    "id": "designer-081",
+    "id": "designer-084",
     "studentId": "202320382",
     "name": "조하란",
     "nameRoman": "Jo Haran",
@@ -2025,7 +2100,7 @@
     "workIds": []
   },
   {
-    "id": "designer-082",
+    "id": "designer-085",
     "studentId": "202220375",
     "name": "조현진",
     "nameRoman": "Jo Hyeonjin",
@@ -2050,7 +2125,7 @@
     "workIds": []
   },
   {
-    "id": "designer-083",
+    "id": "designer-086",
     "studentId": "202220382",
     "name": "최경원",
     "nameRoman": "Choi Kyoungwon",
@@ -2075,7 +2150,7 @@
     "workIds": []
   },
   {
-    "id": "designer-084",
+    "id": "designer-087",
     "studentId": "202220384",
     "name": "최다솜",
     "nameRoman": "Choi Dasom",
@@ -2100,7 +2175,7 @@
     "workIds": []
   },
   {
-    "id": "designer-085",
+    "id": "designer-088",
     "studentId": "202120391",
     "name": "최동환",
     "nameRoman": "Choi Donghwan",
@@ -2125,7 +2200,7 @@
     "workIds": []
   },
   {
-    "id": "designer-086",
+    "id": "designer-089",
     "studentId": "202220385",
     "name": "최민서",
     "nameRoman": "Choi MinSeo",
@@ -2150,7 +2225,7 @@
     "workIds": []
   },
   {
-    "id": "designer-087",
+    "id": "designer-090",
     "studentId": "202220386",
     "name": "최서연",
     "nameRoman": "Seoyeon Choi",
@@ -2175,7 +2250,7 @@
     "workIds": []
   },
   {
-    "id": "designer-088",
+    "id": "designer-091",
     "studentId": "202220389",
     "name": "최수빈",
     "nameRoman": "Choi Soobin",
@@ -2200,7 +2275,7 @@
     "workIds": []
   },
   {
-    "id": "designer-089",
+    "id": "designer-092",
     "studentId": "202220391",
     "name": "최어진",
     "nameRoman": "Choe Eojin",
@@ -2225,7 +2300,7 @@
     "workIds": []
   },
   {
-    "id": "designer-090",
+    "id": "designer-093",
     "studentId": "202220392",
     "name": "최연정",
     "nameRoman": "Choi Yeonjeong",
@@ -2250,7 +2325,7 @@
     "workIds": []
   },
   {
-    "id": "designer-091",
+    "id": "designer-094",
     "studentId": "202320397",
     "name": "최은서",
     "nameRoman": "Choi Eunseo",
@@ -2275,7 +2350,7 @@
     "workIds": []
   },
   {
-    "id": "designer-092",
+    "id": "designer-095",
     "studentId": "202320401",
     "name": "최정혜",
     "nameRoman": "Choi Junghye",
@@ -2300,7 +2375,7 @@
     "workIds": []
   },
   {
-    "id": "designer-093",
+    "id": "designer-096",
     "studentId": "202220398",
     "name": "최지이",
     "nameRoman": "Choi Jii",
@@ -2325,7 +2400,7 @@
     "workIds": []
   },
   {
-    "id": "designer-094",
+    "id": "designer-097",
     "studentId": "202220403",
     "name": "한은지",
     "nameRoman": "Han Eunji",
@@ -2350,7 +2425,7 @@
     "workIds": []
   },
   {
-    "id": "designer-095",
+    "id": "designer-098",
     "studentId": "202220405",
     "name": "허정아",
     "nameRoman": "Heo Jeong A",
@@ -2375,7 +2450,7 @@
     "workIds": []
   },
   {
-    "id": "designer-096",
+    "id": "designer-099",
     "studentId": "202320413",
     "name": "황지은",
     "nameRoman": "Hwang Jieun",
