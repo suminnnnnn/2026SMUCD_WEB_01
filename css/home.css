@@ -147,7 +147,7 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   padding: 10px 0;
   transition: color 0.15s ease;
 }
-.hp-nav a:hover { color: #7F49FF; }
+.hp-nav a:hover { color: #9dfc00; }
 .hp-nav a.is-active { color: #7F49FF; }
 
 .hp-hamburger {

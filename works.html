@@ -115,7 +115,14 @@
 
   <script>
     (function () {
-      var PLACEHOLDER_DESC = document.getElementById("wk-desc").textContent;
+      // 관별 설명 (data-cat 0~4 : 리듬·하모니·심포니·클라이맥스·피날레)
+      var DESCS = [
+        "시간의 흐름과 프레임의 움직임 속에서 살아 숨 쉬는 모션과 영상을 선보입니다.\n화면 위에서 펼쳐지는 역동적인 템포와 리듬감을 통해 시각적 시너지를 경험할 수 있습니다.",
+        "종이가 주는 온기와 따뜻한 서사, 지류의 질감이 조화롭게 어우러지는 공간입니다.\n손끝으로 전해지는 상상력과 텍스트, 일러스트가 만들어내는 한 편의 하모니를 만나보세요.",
+        "컨셉, 비주얼, 그래픽 등 수많은 요소들이 유기적으로 결합하여 하나의 완성된 브랜드 아이덴티티를 구축합니다.\n정교하게 조율된 브랜드의 깊이 있는 이야기를 경험해 보세요.",
+        "가장 강렬한 몰입감과 독창성을 보여주는 완성도 높은 우수작들을 집중적으로 조명합니다.\n학생들의 밀도 높은 고민과 열정이 결실을 맺은 절정의 순간을 확인하실 수 있습니다.",
+        "다채로운 매체와 다양한 시선들이 모여 완성하는 대단원의 막입니다.\n경계를 넘어 한데 어우러진 작업들을 통해, ‘Playlist’ 전시가 선사하는 마지막 여운을 느껴보시기 바랍니다.",
+      ];
       var cats = Array.prototype.slice.call(document.querySelectorAll(".wk-cat"));
       var body = document.querySelector(".wk-body");
       var catsWrap = document.getElementById("wk-cats");
@@ -178,7 +185,7 @@
         catsWrap.classList.add("has-active");    // 선택 후: 나머지 카테고리 연하게
         chipsWrap.classList.add("has-active");   // 모바일 칩도 동일 처리
         body.classList.add("cat-selected");      // 관 선택 → 설명 표시
-        descEl.textContent = PLACEHOLDER_DESC;   // 연동 시 카테고리별 문구로 교체
+        descEl.textContent = DESCS[index] || "";  // 관별 설명
         body.classList.remove("is-cat");         // 카테고리 선택 → 작품 리스트
         window.scrollTo(0, 0);
       }

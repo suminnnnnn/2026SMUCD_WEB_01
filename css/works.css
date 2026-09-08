@@ -54,6 +54,8 @@
   transform: translateX(-50%) rotate(var(--hand, 0deg));
 }
 .wk-cat.is-active .wk-cat__arrow { display: block; }
+/* 호버(비활성): 클릭 시 나올 아이콘을 미리 블랙으로 표시 · 클릭하면 보라색으로 */
+.wk-cat:not(.is-active):hover .wk-cat__arrow { display: block; background: #9dfc00; }
 /* 카테고리별 바늘 각도 (리듬0 · 하모니30 · 심포니60 · 클라이맥스90 · 피날레120) — 데스크탑·모바일 공통 */
 .wk-cat[data-cat="0"], .wk-chip[data-cat="0"] { --hand: 0deg; }
 .wk-cat[data-cat="1"], .wk-chip[data-cat="1"] { --hand: 30deg; }
@@ -78,7 +80,7 @@
 .wk-cats.has-active .wk-cat:not(.is-active):not(:hover) .wk-cat__en { color: var(--g3); }
 
 /* ---------- 우측 콘텐츠 ---------- */
-.wk-main { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 100px; }
+.wk-main { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 60px; }
 .wk-mhead { display: flex; flex-direction: column; }
 /* 첫 진입(관 미선택): 설명 영역 숨김 → 전체 작품만 · 관 선택 시 표시 */
 .wk-body:not(.cat-selected) .wk-mhead { display: none; }
@@ -86,6 +88,7 @@
   font-weight: 500; font-size: 20px; line-height: 32px;   /* D-S2 */
   letter-spacing: -0.02em; color: var(--g10);
   max-width: 847px;
+  white-space: pre-line;   /* 문장 사이 \n 을 줄바꿈으로 */
 }
 
 /* ---------- 작품 그리드 (4열) ---------- */
