@@ -34,18 +34,32 @@
   cursor: pointer;
   text-align: left;
 }
-/* 활성 카테고리 좌측 삼각형 마커 (라임그린 21×34, Figma Polygon) */
+/* 활성 카테고리 좌측 마커 : 보라색 원 안에 회전하는 시계바늘(카테고리마다 각도 다름) */
 .wk-cat__arrow {
   display: none;
   flex: 0 0 auto;
-  width: 0;
-  height: 0;
-  margin-top: 2px;
-  border-top: 17px solid transparent;
-  border-bottom: 17px solid transparent;
-  border-left: 21px solid #C7FC4D;
+  position: relative;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: #8845FF;
+}
+/* 바늘 : 중심에서 위로 뻗는 반지름 선 · data-cat 별로 시계방향 회전 */
+.wk-cat__arrow::before {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: 50%;
+  width: 2px; height: 50%;         /* 중심 → 바깥(반지름) */
+  background: #fff;
+  transform-origin: bottom center; /* 회전축 = 원 중심 */
+  transform: translateX(-50%) rotate(var(--hand, 0deg));
 }
 .wk-cat.is-active .wk-cat__arrow { display: block; }
+/* 카테고리별 바늘 각도 (리듬0 · 하모니30 · 심포니60 · 클라이맥스90 · 피날레120) — 데스크탑·모바일 공통 */
+.wk-cat[data-cat="0"], .wk-chip[data-cat="0"] { --hand: 0deg; }
+.wk-cat[data-cat="1"], .wk-chip[data-cat="1"] { --hand: 30deg; }
+.wk-cat[data-cat="2"], .wk-chip[data-cat="2"] { --hand: 60deg; }
+.wk-cat[data-cat="3"], .wk-chip[data-cat="3"] { --hand: 90deg; }
+.wk-cat[data-cat="4"], .wk-chip[data-cat="4"] { --hand: 120deg; }
 .wk-cat__text { display: flex; flex-direction: column; }
 .wk-cat__ko {
   font-weight: 800; font-size: 28px; line-height: 38px;   /* D-H4 */
@@ -131,18 +145,35 @@
   .wk-main { flex: none; width: 100%; gap: 60px; }
   .wk-mhead { gap: 25px; align-items: flex-start; }
 
-  /* 카테고리 칩 (활성 = 보라) */
-  .wk-chips { display: flex; flex-wrap: wrap; gap: 10px; max-width: 620px; width: 100%; }
+  /* 카테고리 칩 : 활성 시 보라 원+회전 바늘(데스크탑과 동일) */
+  .wk-chips { display: flex; flex-wrap: wrap; gap: 14px 20px; width: 100%; }
   .wk-chip {
-    flex: 0 0 auto; width: 110px; height: 48px;
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 0 10px; background: #efefef; border: 0; cursor: pointer; text-align: left;
+    flex: 0 0 auto;
+    display: flex; flex-direction: row; align-items: center; gap: 10px;
+    padding: 0; background: none; border: 0; cursor: pointer; text-align: left;
   }
-  .wk-chip__ko { font-weight: 700; font-size: 14px; line-height: 1.43; letter-spacing: -0.02em; color: var(--g11); }  /* M-Sm4 */
-  .wk-chip__en { font-weight: 500; font-size: 12px; line-height: 1.33; letter-spacing: -0.02em; color: #8b8b8b; }      /* M-Sm2 */
-  .wk-chip.is-active { background: #734efc; }               /* KeyColor-2 */
-  .wk-chip.is-active .wk-chip__ko { color: #fff; }
-  .wk-chip.is-active .wk-chip__en { color: #dfdfdf; }
+  /* 활성 마커 : 보라 원 안 흰 시계바늘 (data-cat 별 각도) */
+  .wk-chip__arrow {
+    display: none;
+    flex: 0 0 auto; position: relative;
+    width: 34px; height: 34px; border-radius: 50%; background: #8845FF;
+  }
+  .wk-chip__arrow::before {
+    content: ""; position: absolute; left: 50%; bottom: 50%;
+    width: 2px; height: 50%; background: #fff;
+    transform-origin: bottom center;
+    transform: translateX(-50%) rotate(var(--hand, 0deg));
+  }
+  .wk-chip.is-active .wk-chip__arrow { display: block; }
+  .wk-chip__text { display: flex; flex-direction: column; }
+  .wk-chip__ko { font-weight: 700; font-size: 16px; line-height: 1.4; letter-spacing: -0.02em; color: var(--g3); }  /* 기본: 연함 */
+  .wk-chip__en { font-weight: 600; font-size: 12px; line-height: 1.33; letter-spacing: -0.02em; color: var(--g3); }
+  /* 색은 데스크탑(.wk-cat)과 동일: ko·en 모두 활성 g11 / 비활성 g3 */
+  .wk-chips.has-active .wk-chip.is-active .wk-chip__ko { color: var(--g11); }
+  .wk-chips.has-active .wk-chip.is-active .wk-chip__en { color: var(--g11); }
+  /* 선택 전(활성 없음): 전부 진하게 */
+  .wk-chips:not(.has-active) .wk-chip__ko { color: var(--g11); }
+  .wk-chips:not(.has-active) .wk-chip__en { color: var(--g11); }
 
   .wk-desc { width: 100%; max-width: none; font-weight: 500; font-size: 16px; line-height: 1.5; color: var(--g10); }  /* M-B1 */
 

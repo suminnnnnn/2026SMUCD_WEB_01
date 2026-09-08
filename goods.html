@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 상명대학교 커뮤니케이션디자인전공 졸업전시 — Goods</title>
+  <!-- 공용(리셋·토큰·헤더·푸터·내비)은 home.css 재사용 + goods 전용 레이아웃 -->
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/goods.css" />
+</head>
+<body data-page="goods">
+  <div class="hp">
+
+    <!-- ================= HEADER (홈과 동일) ================= -->
+    <header class="hp-header">
+      <a class="hp-brand" href="index.html">
+        <span class="hp-brand__logo" aria-hidden="true"></span>
+        <span class="hp-brand__text">
+          상명대학교<br />커뮤니케이션디자인전공<br />제 39회 졸업전시회
+        </span>
+      </a>
+      <nav class="hp-nav main-nav" id="hp-nav">
+        <a data-nav="home" href="index.html">Home</a>
+        <a data-nav="works" href="works.html">Works</a>
+        <a data-nav="designer" href="designer.html">Designer</a>
+        <a data-nav="goods" class="is-active" href="goods.html">Goods</a>      </nav>
+      <button class="hp-hamburger hide-d hide-t" id="hp-menu-btn" aria-label="메뉴 열기" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- ================= BODY ================= -->
+    <div class="gd-body">
+      <!-- 좌측 카테고리 (전시 전경 / 웨이브) -->
+      <aside class="gd-cats" id="gd-cats">
+        <button class="gd-cat" type="button" data-desc="off">
+          <span class="gd-cat__arrow" aria-hidden="true"></span>
+          <span class="gd-cat__text">
+            <span class="gd-cat__ko">전시 전경</span>
+            <span class="gd-cat__en">Exhibition view</span>
+          </span>
+        </button>
+        <button class="gd-cat" type="button" data-desc="on">
+          <span class="gd-cat__arrow" aria-hidden="true"></span>
+          <span class="gd-cat__text">
+            <span class="gd-cat__ko">웨이브</span>
+            <span class="gd-cat__en">Merchandise</span>
+          </span>
+        </button>
+      </aside>
+
+      <!-- 우측 본문 : 설명(웨이브만) + 이미지 스택 -->
+      <div class="gd-main">
+        <p class="gd-desc" id="gd-desc">잔잔하게 퍼져나가는 파동처럼, 전시의 시작점에서 잠시 숨을 고르는 휴식의 공간입니다. 관람에 몰입하기 전, 편안한 상태에서 작품이 전하는 소리 없는 울림을 미리 느껴보시기 바랍니다.</p>
+        <div class="gd-gallery">
+          <span class="gd-shot hp-ph"></span>
+          <span class="gd-shot hp-ph"></span>
+          <span class="gd-shot hp-ph"></span>
+          <span class="gd-shot hp-ph"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      var cats = Array.prototype.slice.call(document.querySelectorAll(".gd-cat"));
+      var descEl = document.getElementById("gd-desc");
+      function select(i) {
+        cats.forEach(function (b, j) { b.classList.toggle("is-active", j === i); });
+        descEl.hidden = cats[i].getAttribute("data-desc") !== "on";  // 전시 전경 = 설명 없음
+      }
+      cats.forEach(function (b, i) { b.addEventListener("click", function () { select(i); }); });
+      select(0);   // 기본: 전시 전경(설명 없음)
+    })();
+  </script>
+
+  <!-- ================= FOOTER (홈과 동일) ================= -->
+  <footer class="hp-footer">
+    <div class="hp-footer__inner">
+      <div class="hp-footer__brand">
+        <p>2026 상명대학교</p>
+        <p>커뮤니케이션디자인전공 졸업전시</p>
+        <p class="hide-t hide-m">경험을 저장하다 : 나만의 플레이리스트</p>
+        <p class="hide-d hide-m">지우고, 다시 쓰고, 반복하는</p>
+        <p class="hide-d hide-t">경험을 저장하다 - 나만의 플레이리스트</p>
+      </div>
+      <dl class="hp-footer__info">
+        <div class="hp-footer__row">
+          <dt><span class="hide-m">전시 기간</span><span class="hide-d hide-t">전시오프닝</span></dt>
+          <dd>2026. 10. 21 ~ 2026. 10. 27 10:00 ~ 19:00</dd>
+        </div>
+        <div class="hp-footer__row">
+          <dt>전시장 위치</dt>
+          <dd>마루아트센터 - 서울 종로구 인사동길 35-6<br />1관, 2관, 3관, 그랜드관, 5관</dd>
+        </div>
+        <div class="hp-footer__row">
+          <dt>인스타그램</dt>
+          <dd><a href="https://instagram.com/smucd2026" target="_blank" rel="noopener">@smucd2026</a></dd>
+        </div>
+      </dl>
+      <a class="hp-footer__prev hide-d hide-t" href="#">이전 졸업전시 사이트</a>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+</body>
+</html>

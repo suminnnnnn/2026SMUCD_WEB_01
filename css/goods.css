@@ -1,0 +1,79 @@
+/* ============================================================
+   2026 SMUCD 졸업전시 · Goods
+   Figma: 7446-8884
+   좌측 카테고리(전시 전경 / 웨이브) + 우측 설명 + 이미지 스택
+   · 전시 전경 = 설명글 없음 · 웨이브 = 설명글 있음
+   공용(리셋·토큰·헤더·푸터·내비)은 home.css 재사용
+   Breakpoint: 단일 기준 880px (≥880 데스크탑 · <880 모바일)
+   ============================================================ */
+
+/* ---------- 본문 (데스크탑: 좌 카테고리 | 우 본문) ---------- */
+.gd-body {
+  display: grid;
+  grid-template-columns: clamp(120px, 25%, 325px) minmax(0, 1fr);
+  align-items: start;
+  padding: 81px 80px;
+}
+
+/* 좌측 카테고리 (데스크탑: 텍스트만 · 아이콘 숨김) */
+.gd-cats { display: flex; flex-direction: column; gap: 28px; }
+.gd-cat {
+  display: flex; align-items: flex-start;
+  background: none; border: 0; padding: 0; cursor: pointer; text-align: left;
+}
+.gd-cat__arrow { display: none; }
+.gd-cat__text { display: flex; flex-direction: column; gap: 6px; }
+.gd-cat__ko {
+  font-weight: 800; font-size: 28px; line-height: 38px;   /* D-H4 */
+  letter-spacing: -0.02em; color: #C1C1C1; transition: color 0.15s ease;
+}
+.gd-cat__en {
+  font-weight: 700; font-size: 16px; line-height: 22px;   /* D-Small4 */
+  letter-spacing: -0.02em; color: #C1C1C1; transition: color 0.15s ease;
+}
+.gd-cat.is-active .gd-cat__ko,
+.gd-cat.is-active .gd-cat__en { color: var(--g12); }
+
+/* 우측 본문 : 설명 + 이미지 스택 */
+.gd-main { display: flex; flex-direction: column; gap: 60px; }
+.gd-desc {
+  font-weight: 500; font-size: 20px; line-height: 32px;   /* D-S2 (works .wk-desc 와 동일) */
+  letter-spacing: -0.02em; color: var(--g10); max-width: 847px;
+}
+.gd-gallery { display: flex; flex-direction: column; gap: 38px; }
+.gd-shot {
+  display: block; width: 100%; aspect-ratio: 955 / 513; border-radius: 10px;
+  position: relative; overflow: hidden;
+}
+.gd-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* ============================================================
+   ▍ < 880px  (모바일: 카테고리 가로 → 설명 → 이미지 세로 스택)
+   ============================================================ */
+@media (max-width: 879.98px) {
+  .gd-body { display: flex; flex-direction: column; align-items: stretch; gap: 30px; padding: 60px 20px; }
+  /* 모바일 카테고리 = works 칩과 동일(크기·굵기·색·활성 원형 아이콘) */
+  .gd-cats { flex-direction: row; flex-wrap: wrap; gap: 14px 20px; }
+  .gd-cat { flex-direction: row; align-items: center; gap: 10px; }
+  .gd-cat__arrow {
+    flex: 0 0 auto; position: relative;
+    width: 34px; height: 34px; border-radius: 50%; background: #8845FF;
+  }
+  .gd-cat__arrow::before {
+    content: ""; position: absolute; left: 50%; bottom: 50%;
+    width: 2px; height: 50%; background: #fff;
+    transform-origin: bottom center;
+    transform: translateX(-50%) rotate(var(--hand, 0deg));
+  }
+  .gd-cat.is-active .gd-cat__arrow { display: block; }
+  .gd-cat:nth-child(1) { --hand: 0deg; }
+  .gd-cat:nth-child(2) { --hand: 30deg; }
+  .gd-cat__text { gap: 0; }
+  .gd-cat__ko { font-weight: 700; font-size: 16px; line-height: 1.4; color: var(--g3); }   /* works .wk-chip__ko */
+  .gd-cat__en { font-weight: 600; font-size: 12px; line-height: 1.33; color: var(--g3); }   /* works .wk-chip__en */
+  .gd-cat.is-active .gd-cat__ko,
+  .gd-cat.is-active .gd-cat__en { color: var(--g11); }
+  .gd-main { gap: 30px; }
+  .gd-desc { font-weight: 500; font-size: 16px; line-height: 1.5; max-width: none; }
+  .gd-gallery { gap: 16px; }
+}

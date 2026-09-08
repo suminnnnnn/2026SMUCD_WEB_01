@@ -28,6 +28,24 @@
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
+
+/* ---------- 커스텀 커서 : #9DFC00 원 (DOM 요소, js/nav.js 에서 생성) ----------
+   네이티브 커서는 숨기고(모든 요소) JS로 원을 마우스에 따라다니게 → 레티나에서도 선명 */
+@media (hover: hover) and (pointer: fine) {
+  *, *::before, *::after { cursor: none !important; }
+}
+.hp-cursor {
+  position: fixed; top: 0; left: 0;
+  width: 24px; height: 24px;
+  margin: -12px 0 0 -12px;         /* 포인터 중심 정렬 */
+  border-radius: 50%;
+  background: #9DFC00;
+  pointer-events: none;
+  z-index: 2147483647;
+  opacity: 0;
+  transition: opacity 0.15s ease, width 0.12s ease, height 0.12s ease, margin 0.12s ease;
+}
+.hp-cursor.is-down { width: 18px; height: 18px; margin: -9px 0 0 -9px; }  /* 클릭 시 살짝 축소 */
 body {
   margin: 0;
   font-family: var(--font);
@@ -94,13 +112,14 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
 }
 /* 헤더 바로 아래 콘텐츠 : 헤더↔콘텐츠 추가 여백 15px (880 이상·이하 공통) */
 .hp-header + div { padding-top: 15px; }
+/* 데스크탑 홈: 네비게이션바 ↔ 포스터+제목 사이 여백 제거 */
+@media (min-width: 880px) { .hp-header + .hp-body { padding-top: 0; } }
 .hp-brand { display: flex; align-items: center; gap: clamp(12px, 2vw, 30px); flex: 0 0 auto; }
 .hp-brand__text { white-space: nowrap; }   /* 각 줄이 음절 단위로 쪼개지지 않게 */
 .hp-brand__logo {
   width: 72px;
   height: 72px;
-  border-radius: 50%;
-  background: var(--g3);
+  background: url("../assets/images/SMUCD26.webp") center / contain no-repeat;
   flex: 0 0 auto;
 }
 .hp-brand__text {
@@ -128,8 +147,8 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   padding: 10px 0;
   transition: color 0.15s ease;
 }
-.hp-nav a:hover { color: var(--g12); }
-.hp-nav a.is-active { color: var(--g12); }
+.hp-nav a:hover { color: #7F49FF; }
+.hp-nav a.is-active { color: #7F49FF; }
 
 .hp-hamburger {
   display: flex;
@@ -159,7 +178,12 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   flex: 433 1 0;
   min-width: 0;
   aspect-ratio: 433 / 646;
+  overflow: hidden;
+  position: sticky;            /* 스크롤 시 포스터가 따라오게 */
+  top: 132px;                  /* 고정 헤더 높이에 딱 맞춤 → 네비↔포스터 여백 0 */
+  align-self: flex-start;      /* 세로로 늘어나지 않게(스티키 동작 조건) */
 }
+.hp-poster img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .hp-content {
   flex: 739 1 0;
   min-width: 0;
@@ -180,7 +204,7 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
 .hp-insta-row      { order: 90; }
 
 /* ---------- ABOUT / HERO ---------- */
-.hp-about { display: flex; flex-direction: column; gap: 40px; }
+.hp-about { display: flex; flex-direction: column; gap: 30px; }
 .hp-hero { display: flex; flex-direction: column; gap: 30px; }
 .hp-hero__title {
   font-weight: 800;               /* D-D3 ExtraBold */
@@ -243,7 +267,7 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
 .hp-subway__badge {
   flex: 0 0 auto;
   margin-top: 3px;   /* 첫 줄(line-height 34) 세로 중앙에 배지(28) 고정: (34-28)/2 */
-  width: 28px; height: 28px; border-radius: 50%;
+  width: 28px; height: 28px; border-radius: 0;   /* 정사각 (각짐) */
   background: var(--accent); color: #fff;
   font-weight: 700; font-size: 22px;
   line-height: 1;
@@ -257,7 +281,8 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
 .hp-opening__v { font-weight: 500; }
 
 /* ---------- 전시 이미지 (figure) ---------- */
-.hp-figure { width: 100%; aspect-ratio: 739 / 448; }
+.hp-figure { width: 100%; aspect-ratio: 739 / 448; overflow: hidden; }
+.hp-figure img { display: block; width: 100%; height: 100%; object-fit: cover; }
 /* 전시장소↔약도, 졸준위 이미지↔명단 은 40px (섹션 gap 120 - 80) */
 .hp-figure--place { margin-top: -80px; }
 .hp-committee-row { margin-top: -80px; }   /* 데스크탑: 사진↔위원회 블록 40px */
@@ -394,15 +419,15 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
     font-weight: 900; font-size: 24px; line-height: 1.3; letter-spacing: -0.02em;
     padding: 10px 0; color: var(--g3); white-space: nowrap; text-decoration: none;
   }
-  .hp-menu a.is-active { color: var(--g12); }
+  .hp-menu a.is-active { color: #7F49FF; }
 
   /* ---------- BODY : 단일 컬럼 ---------- */
   .hp-body { flex-direction: column; align-items: stretch; gap: 60px; padding: 60px 20px; }
-  .hp-poster { width: 100%; aspect-ratio: 840 / 1194; }
+  .hp-poster { flex: none; width: 100%; aspect-ratio: 840 / 1194; position: static; top: auto; }  /* 세로 flex: basis:0 높이 0 방지 · 모바일은 sticky 해제 */
   .hp-content { width: 100%; gap: 60px; }
 
   /* 데스크탑 음수마진·2단 잔재 리셋 */
-  .hp-figure--place { margin-top: 0; order: 40; }
+  .hp-figure--place { margin-top: -40px; order: 40; }  /* 전시장소↔약도: content gap 60 - 40 = 20 */
   .hp-committee-row { margin-top: 0; }
   .hp-figure { aspect-ratio: 840 / 519; }
 
@@ -410,7 +435,7 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   .hp-label, .hp-about__label { font-weight: 700; font-size: 20px; line-height: 1.4; color: var(--g6); }
 
   /* ---------- ABOUT ---------- */
-  .hp-about { gap: 25px; }
+  .hp-about { gap: 10px; }
   .hp-hero { gap: 30px; }
   .hp-hero__title { font-weight: 700; font-size: 24px; line-height: 1.33; color: var(--black); }
   .hp-desc { font-weight: 500; font-size: 16px; line-height: 1.5; color: var(--g10); }
@@ -429,9 +454,9 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   .hp-place .hp-row__body { gap: 0; }
   .hp-venue { font-weight: 700; font-size: 20px; line-height: 1.4; color: var(--g12); }
   .hp-venue .en { color: #a5a5a5; }
-  .hp-addr { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); margin-top: 35px; }
-  .hp-subway { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); margin-top: 35px; }
-  .hp-subway__badge { width: 29px; height: 28px; font-size: 22px; margin-top: -1px; }  /* 첫 줄(line-height 18×1.44≈25.9) 중앙에 배지(28) 고정 */
+  .hp-addr { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); margin-top: 10px; }
+  .hp-subway { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); margin-top: 25px; }
+  .hp-subway__badge { width: 28px; height: 28px; font-size: 22px; margin-top: -1px; }  /* 정사각 · 첫 줄(line-height 18×1.44≈25.9) 중앙에 배지(28) 고정 */
 
   /* ---------- 지도교수 : 스튜디오 2개(각 [스튜디오명 | 명단]) ---------- */
   .hp-advisors { display: flex; flex-direction: row; flex-wrap: wrap; gap: 35px clamp(40px, 9vw, 100px); }

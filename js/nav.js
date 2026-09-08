@@ -36,3 +36,20 @@
     if (e.key === "Escape" || e.keyCode === 27) setOpen(false);
   });
 })();
+
+/* 커스텀 커서 : #9DFC00 원 (DOM 요소 → 어떤 화면(레티나 포함)에서도 선명)
+   네이티브 커서는 CSS(cursor:none)로 숨김 · 마우스 있는 환경에서만 표시 */
+(function () {
+  var dot = document.createElement("div");
+  dot.className = "hp-cursor";
+  dot.setAttribute("aria-hidden", "true");
+  var added = false;
+  window.addEventListener("mousemove", function (e) {
+    if (!added) { document.body.appendChild(dot); added = true; }
+    dot.style.transform = "translate(" + e.clientX + "px," + e.clientY + "px)";
+    dot.style.opacity = "1";
+  }, { passive: true });
+  document.addEventListener("mouseleave", function () { dot.style.opacity = "0"; });
+  window.addEventListener("mousedown", function () { dot.classList.add("is-down"); });
+  window.addEventListener("mouseup", function () { dot.classList.remove("is-down"); });
+})();

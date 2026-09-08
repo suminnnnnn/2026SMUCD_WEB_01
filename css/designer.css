@@ -22,7 +22,7 @@
 .dz-chip {
   background: none; border: 0; padding: 0; cursor: pointer; text-align: center;
   font-weight: 800; font-size: 28px; line-height: 38px;   /* D-H4 */
-  letter-spacing: -0.02em; color: var(--g3);
+  letter-spacing: -0.02em; color: #C1C1C1;
   transition: color 0.15s ease, background 0.15s ease;
 }
 .dz-chip:hover, .dz-chip.is-active { color: var(--g11); }
@@ -68,15 +68,19 @@
     letter-spacing: -0.03em; color: #000;
   }
   .dz-filter { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px; }
+  /* 초성 : 33×33 회색 원형 칩 */
   .dz-chip {
     display: flex; align-items: center; justify-content: center;
-    height: 32px; padding: 8px 10px;
-    border: 1px solid #a5a5a5;                               /* Grayscale-5 */
-    font-weight: 700; font-size: 14px; line-height: 1.43;    /* M-Sm4 */
-    color: #8b8b8b;
+    width: 33px; height: 33px; padding: 0;
+    border: 0; border-radius: 50%;
+    background: #efefef;
+    font-weight: 700; font-size: 14px; line-height: 1;       /* M-Sm4 */
+    color: #C1C1C1;
   }
-  /* 활성: 색만 변경 · 테두리(1px)·패딩 유지해 크기 고정 */
-  .dz-chip.is-active { background: #734efc; color: #fff; border-color: #734efc; }  /* KeyColor-2 */
+  /* '전체' : 넓은 pill */
+  .dz-chip[data-initial="all"] { width: auto; padding: 0 18px; border-radius: 999px; }
+  /* 활성: 보라색 배경 · 흰 글씨 (크기 유지) */
+  .dz-chip.is-active { background: #734efc; color: #fff; }   /* KeyColor-2 */
 
   /* 그리드 : 2열 */
   .dz-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }

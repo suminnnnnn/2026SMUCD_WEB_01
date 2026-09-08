@@ -1,0 +1,5 @@
+<!doctype html><meta charset=utf-8><body style="margin:0">
+<iframe id="f" src="designer.html" style="width:390px;height:200px;border:0;display:block"></iframe>
+</body>EOF
+"$CHROME" --headless=new --disable-gpu --window-size=390,220 --hide-scrollbars --screenshot="$SP/dzfilter.png" --virtual-time-budget=3000 "http://localhost:8765/__probe2.html" 2>/dev/null
+rm -f __probe2.html; echo done

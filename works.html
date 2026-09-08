@@ -22,7 +22,8 @@
       <nav class="hp-nav main-nav" id="hp-nav">
         <a data-nav="home" href="index.html">Home</a>
         <a data-nav="works" class="is-active" href="works.html">Works</a>
-        <a data-nav="designer" href="designer.html">Designer</a>      </nav>
+        <a data-nav="designer" href="designer.html">Designer</a>
+        <a data-nav="goods" href="goods.html">Goods</a>      </nav>
       <button class="hp-hamburger hide-d hide-t" id="hp-menu-btn" aria-label="메뉴 열기" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -37,43 +38,36 @@
         <button class="wk-cat" type="button" data-cat="0">
           <span class="wk-cat__arrow" aria-hidden="true"></span>
           <span class="wk-cat__text">
-            <span class="wk-cat__ko">첫발의 진동</span>
-            <span class="wk-cat__en">Package Design</span>
+            <span class="wk-cat__ko">리듬</span>
+            <span class="wk-cat__en">Video • Motion</span>
           </span>
         </button>
         <button class="wk-cat" type="button" data-cat="1">
           <span class="wk-cat__arrow" aria-hidden="true"></span>
           <span class="wk-cat__text">
-            <span class="wk-cat__ko">흐르는 프레임</span>
-            <span class="wk-cat__en">Interactive Design</span>
+            <span class="wk-cat__ko">하모니</span>
+            <span class="wk-cat__en">Print • Book</span>
           </span>
         </button>
         <button class="wk-cat" type="button" data-cat="2">
           <span class="wk-cat__arrow" aria-hidden="true"></span>
           <span class="wk-cat__text">
-            <span class="wk-cat__ko">시각적 독백</span>
-            <span class="wk-cat__en">Innovative Design</span>
+            <span class="wk-cat__ko">심포니</span>
+            <span class="wk-cat__en">Branding</span>
           </span>
         </button>
         <button class="wk-cat" type="button" data-cat="3">
           <span class="wk-cat__arrow" aria-hidden="true"></span>
           <span class="wk-cat__text">
-            <span class="wk-cat__ko">정제된 하모니</span>
-            <span class="wk-cat__en">Video Design</span>
+            <span class="wk-cat__ko">클라이맥스</span>
+            <span class="wk-cat__en">Outstanding Work</span>
           </span>
         </button>
         <button class="wk-cat" type="button" data-cat="4">
           <span class="wk-cat__arrow" aria-hidden="true"></span>
           <span class="wk-cat__text">
-            <span class="wk-cat__ko">만져지는 질감</span>
-            <span class="wk-cat__en">Book Design</span>
-          </span>
-        </button>
-        <button class="wk-cat" type="button" data-cat="5">
-          <span class="wk-cat__arrow" aria-hidden="true"></span>
-          <span class="wk-cat__text">
-            <span class="wk-cat__ko">다이내믹 심포니</span>
-            <span class="wk-cat__en">Package Design</span>
+            <span class="wk-cat__ko">피날레</span>
+            <span class="wk-cat__en">Various works</span>
           </span>
         </button>
       </aside>
@@ -166,8 +160,12 @@
         var chip = document.createElement("button");
         chip.type = "button";
         chip.className = "wk-chip" + (btn.classList.contains("is-active") ? " is-active" : "");
-        chip.innerHTML = '<span class="wk-chip__ko">' + ko + "</span>" +
-                         '<span class="wk-chip__en">' + en + "</span>";
+        chip.setAttribute("data-cat", i);   // 데스크탑과 동일한 바늘 각도(--hand) 매핑
+        chip.innerHTML = '<span class="wk-chip__arrow" aria-hidden="true"></span>' +
+                         '<span class="wk-chip__text">' +
+                         '<span class="wk-chip__ko">' + ko + "</span>" +
+                         '<span class="wk-chip__en">' + en + "</span>" +
+                         "</span>";
         chip.addEventListener("click", function () { selectCat(i); });
         chipsWrap.appendChild(chip);
         return chip;
@@ -178,6 +176,7 @@
         cats.forEach(function (b, i) { b.classList.toggle("is-active", i === index); });
         chips.forEach(function (c, i) { c.classList.toggle("is-active", i === index); });
         catsWrap.classList.add("has-active");    // 선택 후: 나머지 카테고리 연하게
+        chipsWrap.classList.add("has-active");   // 모바일 칩도 동일 처리
         body.classList.add("cat-selected");      // 관 선택 → 설명 표시
         descEl.textContent = PLACEHOLDER_DESC;   // 연동 시 카테고리별 문구로 교체
         body.classList.remove("is-cat");         // 카테고리 선택 → 작품 리스트

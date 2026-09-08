@@ -1,0 +1,4 @@
+<!doctype html><meta charset=utf-8><body style="margin:0"><iframe id="f" src="goods.html" style="width:390px;height:430px;border:0;display:block"></iframe>
+<script>var f=document.getElementById("f");f.addEventListener("load",function(){setTimeout(function(){try{f.contentDocument.querySelectorAll(".gd-cat")[1].click();}catch(e){}},500);});</script></body>EOF
+"$CHROME" --headless=new --disable-gpu --window-size=390,430 --hide-scrollbars --screenshot="$SP/goods_m.png" --virtual-time-budget=2800 "http://localhost:8765/__p2.html" 2>/dev/null
+rm -f __probe.html __p2.html; echo done
