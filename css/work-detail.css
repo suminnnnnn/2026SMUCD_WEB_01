@@ -45,7 +45,7 @@
   font-weight: 700; font-size: 24px; line-height: 34px;   /* D-H2 */
   letter-spacing: -0.02em; color: var(--g12);
 }
-.wd-back__icon { flex: none; width: 27px; height: 20px; display: block; }
+.wd-back__icon { flex: none; width: auto; height: 20px; display: block; }
 .wd-name {
   font-weight: 800; font-size: 28px; line-height: 38px;   /* D-H4 */
   letter-spacing: -0.02em; color: var(--g12);
@@ -106,7 +106,7 @@
 
   .wd-head { gap: 54px; }                          /* 뒤로가기 → 이름 */
   .wd-back { font-weight: 700; font-size: 14px; line-height: 1.43; color: #a5a5a5; } /* M-Sm4 */
-  .wd-back__icon { width: 34px; height: 20px; }
+  .wd-back__icon { width: auto; height: 20px; }
   .wd-name { font-weight: 700; font-size: 16px; line-height: 1.5; color: var(--g12); }  /* M-B2 */
   .wd-about { gap: 25px; }
   .wd-titlewrap { gap: 5px; }

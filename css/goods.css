@@ -10,7 +10,8 @@
 /* ---------- 본문 (데스크탑: 좌 카테고리 | 우 본문) ---------- */
 .gd-body {
   display: grid;
-  grid-template-columns: clamp(120px, 25%, 325px) minmax(0, 1fr);
+  /* 좌측 컬럼 = works 의 (사이드바 172 + gap) 과 동일 → 우측 콘텐츠 폭이 works 와 일치(955) */
+  grid-template-columns: calc(172px + clamp(40px, 12%, 153px)) minmax(0, 1fr);
   align-items: start;
   padding: 81px 80px;
 }

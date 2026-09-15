@@ -178,7 +178,7 @@
   .wk-chips:not(.has-active) .wk-chip__ko { color: var(--g11); }
   .wk-chips:not(.has-active) .wk-chip__en { color: var(--g11); }
 
-  .wk-desc { width: 100%; max-width: none; font-weight: 500; font-size: 16px; line-height: 1.5; color: var(--g10); }  /* M-B1 */
+  .wk-desc { width: 100%; max-width: none; font-weight: 500; font-size: 16px; line-height: 1.5; color: var(--g10); white-space: normal; }  /* M-B1 · 모바일은 문장 줄바꿈 없이 이어서 */
 
   /* 2열 그리드 */
   .wk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; row-gap: 40px; }
