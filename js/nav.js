@@ -40,6 +40,8 @@
 /* 커스텀 커서 : #9DFC00 원 (DOM 요소 → 어떤 화면(레티나 포함)에서도 선명)
    네이티브 커서는 CSS(cursor:none)로 숨김 · 마우스 있는 환경에서만 표시 */
 (function () {
+  // 마우스(정밀 포인터·호버 가능) 기기에서만 커스텀 커서 사용 → 터치 기기에선 미표시
+  if (!window.matchMedia || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
   var dot = document.createElement("div");
   dot.className = "hp-cursor";
   dot.setAttribute("aria-hidden", "true");
@@ -50,6 +52,8 @@
     dot.style.opacity = "1";
   }, { passive: true });
   document.addEventListener("mouseleave", function () { dot.style.opacity = "0"; });
+  // 터치 입력이 감지되면 커서 숨김(하이브리드 기기 대비)
+  window.addEventListener("touchstart", function () { dot.style.opacity = "0"; }, { passive: true });
   window.addEventListener("mousedown", function () { dot.classList.add("is-down"); });
   window.addEventListener("mouseup", function () { dot.classList.remove("is-down"); });
 })();
