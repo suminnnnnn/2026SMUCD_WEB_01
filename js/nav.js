@@ -40,20 +40,27 @@
 /* 커스텀 커서 : #9DFC00 원 (DOM 요소 → 어떤 화면(레티나 포함)에서도 선명)
    네이티브 커서는 CSS(cursor:none)로 숨김 · 마우스 있는 환경에서만 표시 */
 (function () {
-  // 마우스(정밀 포인터·호버 가능) 기기에서만 커스텀 커서 사용 → 터치 기기에선 미표시
-  if (!window.matchMedia || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
   var dot = document.createElement("div");
   dot.className = "hp-cursor";
   dot.setAttribute("aria-hidden", "true");
   var added = false;
-  window.addEventListener("mousemove", function (e) {
+  function place(x, y) {
     if (!added) { document.body.appendChild(dot); added = true; }
-    dot.style.transform = "translate(" + e.clientX + "px," + e.clientY + "px)";
+    dot.style.transform = "translate(" + x + "px," + y + "px)";
     dot.style.opacity = "1";
-  }, { passive: true });
-  document.addEventListener("mouseleave", function () { dot.style.opacity = "0"; });
-  // 터치 입력이 감지되면 커서 숨김(하이브리드 기기 대비)
-  window.addEventListener("touchstart", function () { dot.style.opacity = "0"; }, { passive: true });
+  }
+  function hide() { dot.style.opacity = "0"; }
+
+  // 마우스: 이동하면 따라오고, 화면 밖으로 나가면 숨김
+  window.addEventListener("mousemove", function (e) { place(e.clientX, e.clientY); }, { passive: true });
+  document.addEventListener("mouseleave", hide);
   window.addEventListener("mousedown", function () { dot.classList.add("is-down"); });
   window.addEventListener("mouseup", function () { dot.classList.remove("is-down"); });
+
+  // 터치: 손가락 따라 표시 · 떼면 사라짐(자리에 남지 않게)
+  function touch(e) { var t = e.touches && e.touches[0]; if (t) place(t.clientX, t.clientY); }
+  window.addEventListener("touchstart", function (e) { dot.classList.add("is-down"); touch(e); }, { passive: true });
+  window.addEventListener("touchmove", touch, { passive: true });
+  window.addEventListener("touchend", function () { dot.classList.remove("is-down"); hide(); }, { passive: true });
+  window.addEventListener("touchcancel", hide, { passive: true });
 })();
