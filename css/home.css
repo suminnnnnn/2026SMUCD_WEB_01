@@ -108,24 +108,24 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   justify-content: space-between;
   gap: clamp(12px, 1.6vw, 24px);
   height: auto;
-  padding: 30px clamp(24px, 5.5vw, 80px);   /* 상·하 30 (스크롤해도 유지되는 헤더↔콘텐츠 여백) */
+  padding: 20px clamp(24px, 5.5vw, 80px);   /* 상·하 20 */
 }
 /* 헤더 바로 아래 콘텐츠 : 헤더↔콘텐츠 추가 여백 15px (880 이상·이하 공통) */
 .hp-header + div { padding-top: 15px; }
 /* 데스크탑 홈: 네비게이션바 ↔ 포스터+제목 사이 여백 제거 */
 @media (min-width: 880px) { .hp-header + .hp-body { padding-top: 0; } }
-.hp-brand { display: flex; align-items: center; gap: clamp(12px, 2vw, 30px); flex: 0 0 auto; }
+.hp-brand { display: flex; align-items: center; gap: clamp(12px, 2vw, 24px); flex: 0 0 auto; }
 .hp-brand__text { white-space: nowrap; }   /* 각 줄이 음절 단위로 쪼개지지 않게 */
 .hp-brand__logo {
-  width: 72px;
-  height: 72px;
+  width: 64px;                     /* 글씨 16/18 비율만큼 로고도 축소(72→64) */
+  height: 64px;
   background: url("../assets/images/SMUCD26.webp") center / contain no-repeat;
   flex: 0 0 auto;
 }
 .hp-brand__text {
   font-weight: 700;
-  font-size: 18px;                 /* 학교명: 어느 폭에서도 고정 (절대 축소 안 함) */
-  line-height: 23.4px;             /* D-Body2 */
+  font-size: 16px;
+  line-height: 20.8px;
   color: var(--g11);
 }
 .hp-nav {
@@ -180,7 +180,7 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   aspect-ratio: 433 / 646;
   overflow: hidden;
   position: sticky;            /* 스크롤 시 포스터가 따라오게 */
-  top: 132px;                  /* 고정 헤더 높이에 딱 맞춤 → 네비↔포스터 여백 0 */
+  top: 104px;                  /* 고정 헤더 높이에 딱 맞춤 → 네비↔포스터 여백 0 */
   align-self: flex-start;      /* 세로로 늘어나지 않게(스티키 동작 조건) */
 }
 .hp-poster img { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -475,7 +475,7 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   .hp-com dd span { font-weight: 500; font-size: 18px; line-height: 1.44; color: var(--g10); }
 
   /* ---------- 협찬업체 : 로고 세로 스택(좌측정렬) ---------- */
-  .hp-sponsors { gap: 32px; max-width: 100%; }
+  .hp-sponsors { gap: 20px; max-width: 100%; }
   .hp-logo { width: calc(var(--w) * 0.765); }   /* 모바일: 로고 축소(15% → 추가 10% = 0.85×0.9) */
 
   /* ---------- FOOTER : 2열 그리드 ---------- */

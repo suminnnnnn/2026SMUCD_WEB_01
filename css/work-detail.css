@@ -36,7 +36,7 @@
   flex: 544 1 0; min-width: 0;
   display: flex; flex-direction: column; gap: 68px;
   position: sticky;
-  top: 150px;                  /* 고정 헤더(132) 아래로 pin */
+  top: 122px;                  /* 고정 헤더(104) 아래로 pin (+여백) */
   align-self: flex-start;      /* 스티키 동작 위해 높이 늘어나지 않게 */
 }
 .wd-head { display: flex; flex-direction: column; gap: 24px; }
