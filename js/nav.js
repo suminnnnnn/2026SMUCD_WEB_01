@@ -57,10 +57,10 @@
   window.addEventListener("mousedown", function () { dot.classList.add("is-down"); });
   window.addEventListener("mouseup", function () { dot.classList.remove("is-down"); });
 
-  // 터치: 손가락 따라 표시 · 떼면 사라짐(자리에 남지 않게)
+  // 터치: 손가락 따라 표시 · 떼면 사라짐
   function touch(e) { var t = e.touches && e.touches[0]; if (t) place(t.clientX, t.clientY); }
-  window.addEventListener("touchstart", function (e) { dot.classList.add("is-down"); touch(e); }, { passive: true });
+  window.addEventListener("touchstart", touch, { passive: true });
   window.addEventListener("touchmove", touch, { passive: true });
-  window.addEventListener("touchend", function () { dot.classList.remove("is-down"); hide(); }, { passive: true });
+  window.addEventListener("touchend", hide, { passive: true });
   window.addEventListener("touchcancel", hide, { passive: true });
 })();
