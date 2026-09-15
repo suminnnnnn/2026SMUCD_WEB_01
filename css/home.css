@@ -341,14 +341,14 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   max-width: 413px;
 }
 /* 각 로고는 Figma 원본 폭 · 높이는 비율 유지 · 좁아지면 축소 */
-.hp-logo { display: block; height: auto; max-width: 100%; }
-.hp-logo--maru    { width: 178px; }
-.hp-logo--sandoll { width: 183px; }
-.hp-logo--yoon    { width: 176px; }
-.hp-logo--vine    { width: 108px; }
-.hp-logo--typo    { width: 333px; }
-.hp-logo--akira   { width: 185px; }
-.hp-logo--stay    { width: 151px; }
+.hp-logo { display: block; height: auto; max-width: 100%; width: var(--w); }
+.hp-logo--maru    { --w: 178px; }
+.hp-logo--sandoll { --w: 183px; }
+.hp-logo--yoon    { --w: 176px; }
+.hp-logo--vine    { --w: 108px; }
+.hp-logo--typo    { --w: 333px; }
+.hp-logo--akira   { --w: 185px; }
+.hp-logo--stay    { --w: 151px; }
 
 /* ---------- 인스타그램 ---------- */
 .hp-insta { font-weight: 700; font-size: 24px; line-height: 34px; color: var(--g11); }
@@ -476,6 +476,7 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
 
   /* ---------- 협찬업체 : 로고 세로 스택(좌측정렬) ---------- */
   .hp-sponsors { gap: 32px; max-width: 100%; }
+  .hp-logo { width: calc(var(--w) * 0.85); }   /* 모바일: 로고 15% 작게 */
 
   /* ---------- FOOTER : 2열 그리드 ---------- */
   .hp-footer { height: auto; }
