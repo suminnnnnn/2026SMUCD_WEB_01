@@ -13,7 +13,7 @@
   /* 좌측 컬럼 = works 의 (사이드바 172 + gap) 과 동일 → 우측 콘텐츠 폭이 works 와 일치(955) */
   grid-template-columns: calc(172px + clamp(40px, 12%, 153px)) minmax(0, 1fr);
   align-items: start;
-  padding: 81px 80px;
+  padding: 81px clamp(24px, 5.5vw, 80px);
 }
 
 /* 좌측 카테고리 (데스크탑: 텍스트만 · 아이콘 숨김) */
@@ -29,7 +29,7 @@
   letter-spacing: -0.02em; color: #C1C1C1; transition: color 0.15s ease;
 }
 .gd-cat__en {
-  font-weight: 700; font-size: 16px; line-height: 22px;   /* D-Small4 */
+  font-weight: 700; font-size: 14px; line-height: 20px;   /* works .wk-studio__en 과 동일 */
   letter-spacing: -0.02em; color: #C1C1C1; transition: color 0.15s ease;
 }
 .gd-cat.is-active .gd-cat__ko,
@@ -71,7 +71,7 @@
   .gd-cat:nth-child(2) { --hand: 30deg; }
   .gd-cat__text { gap: 0; }
   .gd-cat__ko { font-weight: 700; font-size: 16px; line-height: 1.4; color: var(--g3); }   /* works .wk-chip__ko */
-  .gd-cat__en { font-weight: 600; font-size: 12px; line-height: 1.33; color: var(--g3); }   /* works .wk-chip__en */
+  .gd-cat__en { font-weight: 700; font-size: 13px; line-height: 1.4; color: var(--g3); }   /* works .wk-studio__en 과 동일 */
   .gd-cat.is-active .gd-cat__ko,
   .gd-cat.is-active .gd-cat__en { color: var(--g11); }
   .gd-main { gap: 30px; }

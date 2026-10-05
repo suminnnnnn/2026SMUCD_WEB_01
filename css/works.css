@@ -6,89 +6,84 @@
    ============================================================ */
 
 /* ============================================================
-   BODY (Desktop: 좌 카테고리 + 우 그리드)
+   BODY (Desktop: 좌 스튜디오/교수님 + 우 그리드)
    ============================================================ */
 .wk-body {
   display: flex;
   align-items: flex-start;
   gap: clamp(40px, 12%, 153px);   /* 153/1280 ≈ 12% */
-  padding: 81px 80px;             /* 내비↔본문 81 (Figma) */
+  padding: 81px clamp(24px, 5.5vw, 80px);             /* 내비↔본문 81 (Figma) */
 }
 
-/* ---------- 좌측 테마 카테고리 ---------- */
+/* ---------- 좌측 : 스튜디오(융합/혁신) → 교수님 ---------- */
 .wk-cats {
   flex: 0 0 172px;          /* 폭 고정 → 선택에 따라 우측 콘텐츠 위치 안 흔들림 */
   width: 172px;
-  overflow: visible;        /* 긴 카테고리명은 gap 영역으로 넘침 (Figma와 동일) */
+  overflow: visible;        /* 긴 스튜디오/교수명은 gap 영역으로 넘침 */
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 40px;
 }
-.wk-cat {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  background: none;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-  text-align: left;
+.wk-studio { display: flex; flex-direction: column; align-items: flex-start; }
+.wk-studio__head {
+  display: flex; flex-direction: row; align-items: flex-start; gap: 10px;
+  background: none; border: 0; padding: 0; cursor: pointer; text-align: left;
 }
-/* 활성 카테고리 좌측 마커 : 보라색 원 안에 회전하는 시계바늘(카테고리마다 각도 다름) */
-.wk-cat__arrow {
-  display: none;
-  flex: 0 0 auto;
-  position: relative;
-  width: 48px; height: 48px;
-  border-radius: 50%;
-  background: #8845FF;
+.wk-studio__text { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+/* 활성(클릭) 시 이름 앞 ▶ 폴리곤 (Figma 9478-6309) · 두 줄 높이에 맞춤 · 라운드 1.5px */
+.wk-studio.is-active .wk-studio__head::before {
+  content: ""; flex: 0 0 auto;
+  margin-top: 7.5px;   /* 한글 줄(line-height 34) 중앙: (34-19)/2 */
+  width: 16px; height: 19px;   /* 작게 (비율 21:25≈16:19) */
+  background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21 25'><path d='M3 3 L18 12.5 L3 22 Z' fill='%23171717' stroke='%23171717' stroke-width='4' stroke-linejoin='round'/></svg>") center / contain no-repeat;
 }
-/* 바늘 : 중심에서 위로 뻗는 반지름 선 · data-cat 별로 시계방향 회전 */
-.wk-cat__arrow::before {
-  content: "";
-  position: absolute;
-  left: 50%; bottom: 50%;
-  width: 2px; height: 50%;         /* 중심 → 바깥(반지름) */
-  background: #fff;
-  transform-origin: bottom center; /* 회전축 = 원 중심 */
+.wk-studio__ko {
+  font-weight: 800; font-size: 26px; line-height: 34px;   /* D-H4 */
+  letter-spacing: -0.02em; color: var(--g11); white-space: nowrap;
+  transition: color 0.15s ease;
+}
+.wk-studio__en {
+  font-weight: 700; font-size: 14px; line-height: 20px;
+  letter-spacing: -0.02em; color: var(--g11); white-space: nowrap;
+  transition: color 0.15s ease;
+}
+/* 다른 스튜디오 선택 시 비활성 스튜디오 흐리게 */
+.wk-cats.has-active .wk-studio:not(.is-active) .wk-studio__ko,
+.wk-cats.has-active .wk-studio:not(.is-active) .wk-studio__en { color: var(--g3); }
+
+/* 교수님 목록 : 활성 스튜디오에서만 펼침 */
+.wk-profs { display: none; flex-direction: column; gap: 14px; margin-top: 20px; }
+.wk-studio.is-active .wk-profs { display: flex; }
+.wk-prof {
+  display: flex; align-items: center; gap: 8px;
+  background: none; border: 0; padding: 0; cursor: pointer; text-align: left;
+  font-weight: 700; font-size: 20px; line-height: 28px;   /* 교수님 */
+  letter-spacing: -0.02em; color: #c1c1c1; white-space: nowrap;
+  transition: color 0.15s ease;
+}
+.wk-prof:hover,
+.wk-prof.is-active { color: var(--g11); }
+/* 교수님 클릭 시 이름 앞 마커 : 보라 원 안 흰 시계바늘 (교수별 각도) */
+.wk-prof__arrow {
+  display: none; flex: 0 0 auto; position: relative;
+  width: 26px; height: 26px; border-radius: 50%; background: #8845FF;
+}
+.wk-prof__arrow::before {
+  content: ""; position: absolute; left: 50%; bottom: 50%;
+  width: 2px; height: 50%; background: #fff;
+  transform-origin: bottom center;
   transform: translateX(-50%) rotate(var(--hand, 0deg));
 }
-.wk-cat.is-active .wk-cat__arrow { display: block; }
-/* 호버(비활성): 클릭 시 나올 아이콘을 미리 블랙으로 표시 · 클릭하면 보라색으로 */
-.wk-cat:not(.is-active):hover .wk-cat__arrow { display: block; background: #9dfc00; }
-/* 카테고리별 바늘 각도 (리듬0 · 하모니30 · 심포니60 · 클라이맥스90 · 피날레120) — 데스크탑·모바일 공통 */
-.wk-cat[data-cat="0"], .wk-chip[data-cat="0"] { --hand: 0deg; }
-.wk-cat[data-cat="1"], .wk-chip[data-cat="1"] { --hand: 30deg; }
-.wk-cat[data-cat="2"], .wk-chip[data-cat="2"] { --hand: 60deg; }
-.wk-cat[data-cat="3"], .wk-chip[data-cat="3"] { --hand: 90deg; }
-.wk-cat[data-cat="4"], .wk-chip[data-cat="4"] { --hand: 120deg; }
-.wk-cat__text { display: flex; flex-direction: column; }
-.wk-cat__ko {
-  font-weight: 800; font-size: 28px; line-height: 38px;   /* D-H4 */
-  letter-spacing: -0.02em; color: var(--g11);             /* 기본: 진함(클릭 가능) */
-  white-space: nowrap;
-  transition: color 0.15s ease;
-}
-.wk-cat__en {
-  font-weight: 700; font-size: 16px; line-height: 22px;   /* D-Small4 */
-  letter-spacing: -0.02em; color: var(--g11);
-  white-space: nowrap;
-  transition: color 0.15s ease;
-}
-/* 선택 전(has-active 없음): 전부 진함 · 선택 후: 활성 아닌 것만 연하게(호버 시 진함) */
-.wk-cats.has-active .wk-cat:not(.is-active):not(:hover) .wk-cat__ko,
-.wk-cats.has-active .wk-cat:not(.is-active):not(:hover) .wk-cat__en { color: var(--g3); }
+.wk-prof.is-active .wk-prof__arrow { display: block; }
+/* 교수별 바늘 각도는 버튼 인라인 --hand 로 지정 (행 그룹화와 무관) */
+.wk-profs__row { display: contents; }   /* 데스크탑: 행 그룹 무시 → 교수 1명씩 세로 */
 
 /* ---------- 우측 콘텐츠 ---------- */
 .wk-main { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 60px; }
-.wk-mhead { display: flex; flex-direction: column; }
-/* 첫 진입(관 미선택): 설명 영역 숨김 → 전체 작품만 · 관 선택 시 표시 */
-.wk-body:not(.cat-selected) .wk-mhead { display: none; }
+/* 스튜디오 소개글 (그리드 위) */
 .wk-desc {
-  font-weight: 500; font-size: 20px; line-height: 32px;   /* D-S2 */
+  font-weight: 500; font-size: 18px; line-height: 30px;   /* D-Body1 */
   letter-spacing: -0.02em; color: var(--g10);
-  max-width: 847px;
-  white-space: pre-line;   /* 문장 사이 \n 을 줄바꿈으로 */
 }
 
 /* ---------- 작품 그리드 (4열) ---------- */
@@ -119,69 +114,39 @@
 }
 
 /* ============================================================
-   ▍ < 880px  · Figma 5397:3737(카테고리 선택) · 5395:7584(작품 리스트)
-   Mode A(.is-cat) : 카테고리 선택 풀페이지 · Mode B : 칩 + 2열 그리드
+   ▍ < 880px  (모바일: 상단 스튜디오/교수님 블록 + 2열 그리드)
    ============================================================ */
 @media (max-width: 879.98px) {
-  .wk-body { flex-direction: column; align-items: stretch; gap: 60px; padding: 60px 20px; }
+  /* 전체를 한 플로우로 펼쳐 순서 재배치 :
+     [융합 | 혁신](좌우) → 설명 → 교수님 → 작품 그리드 */
+  .wk-body { display: flex; flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 28px 16px; padding: 60px 20px; }
+  .wk-cats, .wk-studio, .wk-main { display: contents; }
 
-  /* ---------- 모드 전환 ---------- */
-  .wk-body.is-cat .wk-cats { display: flex; }
-  .wk-body.is-cat .wk-main { display: none; }
-  .wk-body:not(.is-cat) .wk-cats { display: none; }
-
-  /* ---------- Mode A : 카테고리 선택 (센터 정렬) ---------- */
-  .wk-cats {
-    flex: none; width: 100%;
-    flex-direction: column; align-items: center; justify-content: flex-start;
-    gap: 40px; padding: 92px 0;
+  /* 융합/혁신 헤더 : 상하 스택 · 이름만 가운데 · 폴리곤은 왼쪽
+     (오른쪽에 동일 폭 투명 스페이서 ::after 를 둬서 이름이 정중앙) */
+  .wk-studio__head {
+    order: 1; width: 100%; flex: none;
+    flex-direction: row; align-items: flex-start; justify-content: center; gap: 9px; text-align: center;
   }
-  .wk-cat { flex-direction: column; align-items: center; gap: 0; text-align: center; }
-  .wk-cat__arrow { display: none !important; }
-  .wk-cat__text { align-items: center; text-align: center; }
-  .wk-cat__ko { font-weight: 700; font-size: 24px; line-height: 1.33; color: var(--g11); }  /* M-H4 */
-  .wk-cat__en { font-weight: 700; font-size: 16px; line-height: 1.5; color: #3d3d3d; }        /* M-B2 */
-  .wk-cat:hover .wk-cat__ko, .wk-cat:hover .wk-cat__en,
-  .wk-cat.is-active .wk-cat__ko, .wk-cat.is-active .wk-cat__en { color: var(--g11); }
-
-  /* ---------- Mode B : 작품 리스트 ---------- */
-  .wk-main { flex: none; width: 100%; gap: 60px; }
-  .wk-mhead { gap: 25px; align-items: flex-start; }
-
-  /* 카테고리 칩 : 활성 시 보라 원+회전 바늘(데스크탑과 동일) */
-  .wk-chips { display: flex; flex-wrap: wrap; gap: 14px 20px; width: 100%; }
-  .wk-chip {
-    flex: 0 0 auto;
-    display: flex; flex-direction: row; align-items: center; gap: 10px;
-    padding: 0; background: none; border: 0; cursor: pointer; text-align: left;
+  .wk-studio.is-active .wk-studio__head::before { width: 13px; height: 16px; margin-top: 6px; }
+  .wk-studio.is-active .wk-studio__head::after {
+    content: ""; flex: 0 0 auto; width: 13px; height: 16px;
   }
-  /* 활성 마커 : 보라 원 안 흰 시계바늘 (data-cat 별 각도) */
-  .wk-chip__arrow {
-    display: none;
-    flex: 0 0 auto; position: relative;
-    width: 34px; height: 34px; border-radius: 50%; background: #8845FF;
-  }
-  .wk-chip__arrow::before {
-    content: ""; position: absolute; left: 50%; bottom: 50%;
-    width: 2px; height: 50%; background: #fff;
-    transform-origin: bottom center;
-    transform: translateX(-50%) rotate(var(--hand, 0deg));
-  }
-  .wk-chip.is-active .wk-chip__arrow { display: block; }
-  .wk-chip__text { display: flex; flex-direction: column; }
-  .wk-chip__ko { font-weight: 700; font-size: 16px; line-height: 1.4; letter-spacing: -0.02em; color: var(--g3); }  /* 기본: 연함 */
-  .wk-chip__en { font-weight: 600; font-size: 12px; line-height: 1.33; letter-spacing: -0.02em; color: var(--g3); }
-  /* 색은 데스크탑(.wk-cat)과 동일: ko·en 모두 활성 g11 / 비활성 g3 */
-  .wk-chips.has-active .wk-chip.is-active .wk-chip__ko { color: var(--g11); }
-  .wk-chips.has-active .wk-chip.is-active .wk-chip__en { color: var(--g11); }
-  /* 선택 전(활성 없음): 전부 진하게 */
-  .wk-chips:not(.has-active) .wk-chip__ko { color: var(--g11); }
-  .wk-chips:not(.has-active) .wk-chip__en { color: var(--g11); }
+  .wk-studio__text { align-items: center; }
+  .wk-studio__ko { font-size: 22px; line-height: 1.3; }
+  .wk-studio__en { font-size: 13px; line-height: 1.4; }
 
-  .wk-desc { width: 100%; max-width: none; font-weight: 500; font-size: 16px; line-height: 1.5; color: var(--g10); white-space: normal; }  /* M-B1 · 모바일은 문장 줄바꿈 없이 이어서 */
+  /* 설명 (헤더 아래, 전체폭) */
+  .wk-desc { order: 2; width: 100%; font-size: 16px; line-height: 1.6; margin: 0; }
 
-  /* 2열 그리드 */
-  .wk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; row-gap: 40px; }
+  /* 교수님 (설명 아래, 전체폭 · 활성만) · 좌측정렬 · 지정 줄바꿈(행 그룹) */
+  .wk-profs { order: 3; width: 100%; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 0; }
+  .wk-profs__row { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: flex-start; gap: 10px 12px; }
+  .wk-prof { font-size: 16px; line-height: 1.4; text-align: left; }
+  .wk-prof__arrow { width: 18px; height: 18px; }   /* 모바일: 아이콘 작게(줄높이 내) */
+
+  /* 작품 그리드 (맨 아래, 전체폭 2열) */
+  .wk-grid { order: 4; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; row-gap: 40px; margin-top: 12px; }
   .wk-card { gap: 16px; }
   .wk-card__thumb { aspect-ratio: 1 / 1; border-radius: 10px; }
   .wk-card__title { font-size: 20px; line-height: 1.4; color: var(--g10); }        /* M-H2 */

@@ -12,16 +12,16 @@
   display: flex;
   align-items: flex-start;
   gap: clamp(48px, 13%, 167px);   /* 167/1280 ≈ 13% */
-  padding: 81px 80px;
+  padding: 81px clamp(24px, 5.5vw, 80px);
 }
 
 /* ---------- 초성 필터 ---------- */
-.dz-side { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; gap: 11px; }
+.dz-side { flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 11px; }
 .dz-side__title { display: none; }
-.dz-filter { display: flex; flex-direction: column; align-items: center; gap: 25px; }
+.dz-filter { display: flex; flex-direction: column; align-items: flex-start; gap: 25px; }
 .dz-chip {
-  background: none; border: 0; padding: 0; cursor: pointer; text-align: center;
-  font-weight: 800; font-size: 28px; line-height: 38px;   /* D-H4 */
+  background: none; border: 0; padding: 0; cursor: pointer; text-align: left;
+  font-weight: 800; font-size: 26px; line-height: 34px;   /* D-H4 */
   letter-spacing: -0.02em; color: #C1C1C1;
   transition: color 0.15s ease, background 0.15s ease;
 }

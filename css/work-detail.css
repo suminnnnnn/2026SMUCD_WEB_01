@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;      /* 상단(이미지+정보) → 관련작품 세로 스택 */
   gap: 56px;
-  padding: 81px 80px;
+  padding: 81px clamp(24px, 5.5vw, 80px);
 }
 /* 상단: 좌 이미지 + 우 정보 (정보는 이미지 끝까지 sticky) */
 .wd-top {

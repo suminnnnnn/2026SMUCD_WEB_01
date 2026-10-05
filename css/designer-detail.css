@@ -5,7 +5,7 @@
    Breakpoints: 기본=데스크탑(≥961) · ≤960=태블릿 · ≤390=모바일
    ============================================================ */
 
-.dd-body { display: flex; flex-direction: column; gap: 120px; padding: 81px 80px; }
+.dd-body { display: flex; flex-direction: column; gap: 120px; padding: 81px clamp(24px, 5.5vw, 80px); }
 
 /* ---------- 공통 이미지 채움 ---------- */
 .dd-photo, .dd-proj__thumb { position: relative; overflow: hidden; }

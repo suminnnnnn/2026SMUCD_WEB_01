@@ -171,7 +171,7 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   display: flex;
   align-items: flex-start;
   gap: clamp(40px, 8.5%, 109px);   /* 109/1280 ≈ 8.5% — 좁아지면 자연 축소 */
-  padding: 81px 80px;              /* 내비↔본문·본문↔푸터 간격 81 (Figma) */
+  padding: 81px clamp(24px, 5.5vw, 80px);              /* 내비↔본문·본문↔푸터 간격 81 (Figma) */
 }
 /* 포스터·콘텐츠는 433:740 비율로 유동 (고정 px 제거) */
 .hp-poster {
@@ -240,6 +240,8 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   color: var(--g6);
 }
 .hp-label--advisor { font-weight: 800; font-size: 22px; line-height: 32px; }
+/* 날짜 사이 가로선 글자(⏤) : stroke 로 두껍게 */
+.hp-dash { -webkit-text-stroke: 0.8px currentColor; }
 .hp-value {
   font-weight: 700;
   font-size: 24px;
@@ -368,7 +370,7 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   align-items: flex-start;
   gap: 40px;
   min-height: 260px;
-  padding: 32px 80px;
+  padding: 32px clamp(24px, 5.5vw, 80px);
 }
 .hp-footer__brand {
   font-weight: 700; font-size: 20px; line-height: 32px; color: var(--g1);
