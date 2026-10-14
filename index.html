@@ -5,8 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026 상명대학교 커뮤니케이션디자인전공 졸업전시 — Home</title>
   <link rel="stylesheet" href="css/home.css" />
+  <script>
+    /* 사이트에 처음 들어왔을 때만 인트로 재생 — 이미 봤거나 사이트 내부 페이지에서 Home 으로 온 경우 첫 렌더 전에 숨김 (깜빡임 방지) */
+    (function () {
+      var seen = false;
+      try { seen = !!sessionStorage.getItem('introSeen'); } catch (e) {}
+      try { if (document.referrer && new URL(document.referrer).host === location.host && location.host) seen = true; } catch (e) {}
+      /* 새로고침이면 다시 재생 */
+      try {
+        var nav = performance.getEntriesByType('navigation')[0];
+        if (nav ? nav.type === 'reload' : performance.navigation.type === 1) seen = false;
+      } catch (e) {}
+      document.documentElement.classList.add(seen ? 'intro-seen' : 'intro-lock');
+    })();
+  </script>
 </head>
 <body data-page="home">
+  <!-- ================= INTRO 영상 ================= -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <video class="intro__video" id="intro-video" src="assets/videos/intro.webm"
+           muted autoplay playsinline preload="auto"></video>
+  </div>
+
   <div class="hp">
 
     <!-- ================= HEADER ================= -->
@@ -104,7 +124,9 @@
         </section>
 
         <!-- 졸준위 사진 (데스크탑: 위원회 블록 위) -->
-        <figure class="hp-figure hp-figure--committee hide-t hide-m hp-ph"></figure>
+        <figure class="hp-figure hp-figure--committee hide-t hide-m">
+          <img src="assets/images/home/JJW.webp" alt="2026 졸업준비위원회 단체 사진" loading="lazy" />
+        </figure>
 
         <!-- 졸업(준비/전시)위원회 -->
         <section class="hp-block hp-row hp-committee-row">
@@ -113,7 +135,9 @@
             <span class="hide-d">졸업전시위원회</span>
           </h2>
           <!-- 졸준위 사진 (태블릿·모바일: 부제목과 명단 사이) -->
-          <figure class="hp-figure hp-figure--committee hp-figure--committee-inline hide-d hp-ph"></figure>
+          <figure class="hp-figure hp-figure--committee hp-figure--committee-inline hide-d">
+            <img src="assets/images/home/JJW.webp" alt="2026 졸업전시위원회 단체 사진" loading="lazy" />
+          </figure>
           <dl class="hp-row__body hp-committee">
             <div class="hp-com"><dt>위원장</dt><dd><span>구나영</span></dd></div>
             <div class="hp-com"><dt>부위원장</dt><dd><span>신지호</span><span>오다인</span></dd></div>
@@ -180,5 +204,31 @@
   </footer>
 
   <script src="js/nav.js"></script>
+  <script>
+    (function () {
+      var intro = document.getElementById('intro');
+      var video = document.getElementById('intro-video');
+      var root = document.documentElement;
+      if (!intro || root.classList.contains('intro-seen')) { if (intro) intro.remove(); return; }
+
+      var done = false;
+      function closeIntro() {
+        if (done) return;
+        done = true;
+        try { sessionStorage.setItem('introSeen', '1'); } catch (e) {}
+        root.classList.remove('intro-lock');
+        intro.classList.add('is-hide');                    // 페이드아웃
+        setTimeout(function () { intro.remove(); }, 900);  // transition(0.8s) 후 제거
+      }
+
+      video.muted = true;                       // iOS 등에서 자동재생 보장
+      video.addEventListener('ended', closeIntro);
+      video.addEventListener('error', closeIntro);
+      intro.addEventListener('click', closeIntro);   // 클릭하면 건너뛰기
+
+      var p = video.play();
+      if (p && p.catch) p.catch(closeIntro);    // 자동재생이 막히면 바로 사이트 표시
+    })();
+  </script>
 </body>
 </html>

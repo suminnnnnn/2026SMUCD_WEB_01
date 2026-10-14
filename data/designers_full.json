@@ -175,31 +175,6 @@
     "workIds": []
   },
   {
-    "id": "designer-008",
-    "studentId": "202220205",
-    "name": "김가연",
-    "nameRoman": "Kim Gayeon",
-    "initial": "ㄱ",
-    "studio": "both",
-    "profileImage": "",
-    "instagram": "@g__rin_",
-    "email": "kkytto44@gmail.com",
-    "intro": "새로운 걸 시도하는 걸 좋아하고, 마음에 들 때까지 계속 고치고 고민하는 편입니다.",
-    "convergence": {
-      "professor": "이원제 교수님",
-      "title": "RESET",
-      "description": "정돈’ 의 개념을 공간에서 개인의 일상으로 확장하여, 이동이 많은 현대인을 위한 휴대용 케어 키트를 제안한다. 제품의 사용감을 시각의 기본 요소인 점, 선, 면의 기하학적 그래픽으로 재해석하여 일관된 브랜드 아이덴티티를 구축하고자 했다."
-    },
-    "innovation": {
-      "professor": "안혜선 교수님",
-      "title": "FIORE",
-      "description": "FIORE는 시니어에 대한 고정관념을 새로운 시각으로 바라보기 위해 기획한 걸그룹 프로젝트이다. 젊음의 상징인 아이돌이라는 소재를 통해 나이와 꿈에는 한계가 없다는 메시지를 전달한다."
-    },
-    "interview1": "익숙한 시선에서 조금만 벗어나도 평범했던 대상이 전혀 다른 이야기가 될 수 있다는 걸 알게 되었다.",
-    "interview2": "예쁜 것에서 끝나지 않고, 왜 이렇게 디자인했는지 설명할 수 있는 디자인을 하고 싶습니다.",
-    "workIds": []
-  },
-  {
     "id": "designer-009",
     "studentId": "202220210",
     "name": "김경우",
