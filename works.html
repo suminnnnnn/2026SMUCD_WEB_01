@@ -115,25 +115,28 @@
       var catsWrap = document.getElementById("wk-cats");
       var studios = Array.prototype.slice.call(document.querySelectorAll(".wk-studio"));
 
+      function thumbImg(src) {
+        return src ? '<img src="' + h(src) + '" alt="" loading="lazy" onerror="this.remove()">' : "";
+      }
       function card(w) {
         return (
           '<a class="wk-card" href="work-detail.html?id=' + encodeURIComponent(w.id) + '">' +
-          '<span class="wk-card__thumb hp-ph"></span>' +
+          '<span class="wk-card__thumb hp-ph">' + thumbImg(w.thumbnail) + "</span>" +
           '<span class="wk-card__info">' +
           '<span class="wk-card__title">' + h(w.title) + "</span>" +
           '<span class="wk-card__designer">' + h(w.designer) + "</span>" +
           "</span></a>"
         );
       }
-      // 융합=`{studentId}-c` · 혁신=`{studentId}-i` · professor 포함
+      // 융합=`{studentId}-c` · 혁신=`{studentId}-i` · professor·thumbnail 포함
       function buildWorks(designers) {
         var out = [];
         designers.forEach(function (d) {
           var sid = d.studentId || d.id;
           if (d.convergence && d.convergence.title)
-            out.push({ id: sid + "-c", title: d.convergence.title, designer: d.name, studio: "c", professor: (d.convergence.professor || "").trim() });
+            out.push({ id: sid + "-c", title: d.convergence.title, designer: d.name, studio: "c", professor: (d.convergence.professor || "").trim(), thumbnail: d.convergence.thumbnail || "" });
           if (d.innovation && d.innovation.title)
-            out.push({ id: sid + "-i", title: d.innovation.title, designer: d.name, studio: "i", professor: (d.innovation.professor || "").trim() });
+            out.push({ id: sid + "-i", title: d.innovation.title, designer: d.name, studio: "i", professor: (d.innovation.professor || "").trim(), thumbnail: d.innovation.thumbnail || "" });
         });
         return out;
       }

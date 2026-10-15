@@ -35,10 +35,11 @@
       <div class="wd-top">
       <!-- 작품 이미지 (데스크탑: 좌측 대형 · 태블릿/모바일: 세로 스택) -->
       <div class="wd-gallery">
-        <span class="wd-shot hp-ph"></span>
-        <span class="wd-shot hp-ph"></span>
-        <span class="wd-shot hp-ph"></span>
-        <span class="wd-shot hp-ph"></span>
+        <!-- 작품 상세 이미지 (detailImages) · 없으면 placeholder -->
+        <div class="wd-shots" id="wd-shots">
+          <span class="wd-shot hp-ph"></span>
+          <span class="wd-shot hp-ph"></span>
+        </div>
         <!-- 유튜브 영상 임베드 (이미지 아래) -->
         <div class="wd-videos" id="wd-videos"></div>
       </div>
@@ -116,10 +117,13 @@
         return out;
       }
 
+      function thumbImg(src) {
+        return src ? '<img src="' + h(src) + '" alt="" loading="lazy" onerror="this.remove()">' : "";
+      }
       function relCard(w) {
         return (
           '<a class="wd-rel-card" href="work-detail.html?id=' + encodeURIComponent(w.id) + '">' +
-          '<span class="wd-rel-card__thumb hp-ph"></span>' +
+          '<span class="wd-rel-card__thumb hp-ph">' + thumbImg(w.work.thumbnail) + "</span>" +
           '<span class="wd-rel-card__info">' +
           '<span class="wd-rel-card__title">' + h(w.work.title) + "</span>" +
           '<span class="wd-rel-card__designer">' + h(w.designer.name) + "</span>" +
@@ -138,6 +142,14 @@
         // 작품 제목 · 설명
         qs("wd-title").textContent = w.title || "";
         qs("wd-desc").textContent = w.description || "";
+
+        // 작품 이미지 : detailImages → 없으면 thumbnail → 둘 다 없으면 placeholder 유지
+        var imgs = (w.detailImages && w.detailImages.length) ? w.detailImages : (w.thumbnail ? [w.thumbnail] : []);
+        if (imgs.length) {
+          qs("wd-shots").innerHTML = imgs.map(function (src) {
+            return '<img class="wd-shot" src="' + h(src) + '" alt="" loading="lazy" onerror="this.remove()">';
+          }).join("");
+        }
 
         // AI 사용 문구 : aiNotice 비어있지 않으면 표시
         var ai = (w.aiNotice || "").trim();

@@ -100,7 +100,9 @@
 
       function render(d) {
         // 사진 (아직 없음 → 회색 placeholder 유지)
-        qs("dd-photo").innerHTML = "";
+        qs("dd-photo").innerHTML = d.profileImage
+          ? '<img src="' + h(d.profileImage) + '" alt="' + esc(d.name || "") + '" loading="lazy" onerror="this.remove()">'
+          : "";
         // 이름
         qs("dd-name").innerHTML =
           '<span class="dd-name__ko">' + h(d.name) + "</span>" +
@@ -140,7 +142,9 @@
           if (!w || !w.title) return "";
           return (
             '<a class="dd-proj" href="work-detail.html?id=' + encodeURIComponent(workId) + '">' +
-            '<span class="dd-proj__thumb hp-ph" aria-hidden="true"></span>' +
+            '<span class="dd-proj__thumb hp-ph" aria-hidden="true">' +
+            (w.thumbnail ? '<img src="' + h(w.thumbnail) + '" alt="" loading="lazy" onerror="this.remove()">' : "") +
+            "</span>" +
             '<span class="dd-proj__info">' +
             '<span class="dd-proj__title">' + h(w.title) + "</span>" +
             '<span class="dd-proj__studio">' + h(studioName) + "</span>" +

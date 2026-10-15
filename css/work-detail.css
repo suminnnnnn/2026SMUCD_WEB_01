@@ -26,13 +26,16 @@
 .wd-gallery {
   order: 0;
   flex: 682 1 0; min-width: 0;
-  display: flex; flex-direction: column; gap: 16px;
+  display: flex; flex-direction: column; gap: 1px;       /* 이미지↔영상 간격 1px */
 }
-.wd-shot { display: block; width: 100%; aspect-ratio: 16 / 9; }
+.wd-shots { display: flex; flex-direction: column; gap: 1px; }   /* 이미지 간 간격 1px */
+.wd-shot { display: block; width: 100%; }              /* 라운딩 없음 */
+img.wd-shot { height: auto; }                          /* 실제 이미지: 원본 비율(세로 길이 자유) */
+span.wd-shot { aspect-ratio: 16 / 9; }                 /* placeholder: 비율 고정 */
 /* 유튜브 임베드 (이미지 아래) */
-.wd-videos { display: flex; flex-direction: column; gap: 16px; }
+.wd-videos { display: flex; flex-direction: column; gap: 1px; }
 .wd-videos:empty { display: none; }
-.wd-video { width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; }
+.wd-video { width: 100%; aspect-ratio: 16 / 9; overflow: hidden; }   /* 라운딩 없음 */
 .wd-video--short { max-width: 320px; aspect-ratio: 9 / 16; }   /* 쇼츠(세로) */
 .wd-video iframe { width: 100%; height: 100%; border: 0; display: block; }
 
@@ -101,7 +104,8 @@
 }
 .wd-related__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
 .wd-rel-card { display: flex; flex-direction: column; gap: 14px; cursor: pointer; }
-.wd-rel-card__thumb { display: block; width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; }
+.wd-rel-card__thumb { display: block; width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; position: relative; overflow: hidden; }
+.wd-rel-card__thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .wd-rel-card:hover .wd-rel-card__thumb { opacity: 0.86; }
 .wd-rel-card__info { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .wd-rel-card__title {
@@ -119,7 +123,7 @@
   /* 상단 래퍼: 세로 스택(정보 → 이미지), sticky 해제 */
   .wd-top { flex-direction: column; align-items: stretch; gap: 60px; }
   .wd-info { order: 0; flex: none; width: 100%; gap: 35px; position: static; top: auto; }
-  .wd-gallery { order: 1; flex: none; width: 100%; gap: 12px; }
+  .wd-gallery { order: 1; flex: none; width: 100%; gap: 1px; }
   .wd-related { order: 2; display: flex; flex-direction: column; gap: 16px; }
 
   .wd-head { gap: 54px; }                          /* 뒤로가기 → 이름 */
@@ -135,7 +139,7 @@
   .wd-ai { font-weight: 500; font-size: 14px; line-height: 1.43; color: #8b8b8b; } /* M-Sm3 */
   .wd-link { padding: 8px 16px; font-size: 14px; }
 
-  .wd-shot { aspect-ratio: 1440 / 810; }
+  span.wd-shot { aspect-ratio: 1440 / 810; }
 
   /* 다른 작품 둘러보기 : 3열 */
   .wd-related__title { font-weight: 700; font-size: 24px; line-height: 1.33; color: var(--g12); } /* M-H4 */
