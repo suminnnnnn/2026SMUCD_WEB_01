@@ -55,8 +55,18 @@ try { sessionStorage.setItem('introSeen', '1'); } catch (e) {}
   function hide() { dot.style.opacity = "0"; }
 
   // 마우스: 이동하면 따라오고, 화면 밖으로 나가면 숨김
-  window.addEventListener("mousemove", function (e) { place(e.clientX, e.clientY); }, { passive: true });
+  // 부모 mousemove 가 오면 포인터는 iframe 밖(부모 위)이라는 뜻 → 다시 표시
+  window.addEventListener("mousemove", function (e) { overIframe = false; place(e.clientX, e.clientY); }, { passive: true });
   document.addEventListener("mouseleave", hide);
+
+  // iframe(유튜브 영상 등) 위에선 커스텀 커서 숨김 → 그 위에선 일반 커서, iframe 안 추적 멈춤에도 안 박힘
+  var overIframe = false;
+  document.addEventListener("mouseover", function (e) {
+    if (e.target && e.target.tagName === "IFRAME") { overIframe = true; hide(); }
+  }, true);
+  document.addEventListener("mouseout", function (e) {
+    if (e.target && e.target.tagName === "IFRAME") overIframe = false;
+  }, true);
   window.addEventListener("mousedown", function () { dot.classList.add("is-down"); });
   window.addEventListener("mouseup", function () { dot.classList.remove("is-down"); });
 
