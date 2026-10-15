@@ -133,8 +133,10 @@
 
       function render(cur, works) {
         var d = cur.designer, w = cur.work;
-        // 디자이너 이름 (한글 + 영문)
-        qs("wd-name").innerHTML = h(d.name) + " <span>" + h(d.nameRoman || "") + "</span>";
+        // 디자이너 이름 (한글 + 영문) → 해당 디자이너 상세로 링크
+        qs("wd-name").innerHTML =
+          '<a class="wd-name__link" href="designer-detail.html?id=' + encodeURIComponent(d.id) + '">' +
+          h(d.name) + " <span>" + h(d.nameRoman || "") + "</span></a>";
         // 융합/혁신 스튜디오 | 담당 교수님
         qs("wd-meta").innerHTML =
           h(cur.studio) +

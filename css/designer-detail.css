@@ -29,7 +29,6 @@
   font-weight: 500; font-size: 18px; line-height: 28.8px; letter-spacing: -0.02em; color: var(--g12); /* D-Body1 */
 }
 .dd-contact__value { min-width: 0; }
-.dd-contact__value:hover { text-decoration: underline; }
 .dd-intro {
   font-weight: 500; font-size: 20px; line-height: 32px; letter-spacing: -0.02em; color: #333333; /* D-S1 */
 }
@@ -55,8 +54,9 @@
 /* 정사각 유지 · 고정 폭으로 작게 · 좌측정렬(폭 채우지 않음) */
 .dd-proj-list { display: grid; grid-template-columns: repeat(2, 300px); justify-content: start; gap: 30px; }
 .dd-proj { display: flex; flex-direction: column; gap: 25px; cursor: pointer; }
-.dd-proj__thumb { width: 100%; aspect-ratio: 1 / 1; border-radius: 15px; transition: opacity 0.2s ease; }
-.dd-proj:hover .dd-proj__thumb { opacity: 0.86; }
+.dd-proj__thumb { width: 100%; aspect-ratio: 1 / 1; border-radius: 15px; }
+.dd-proj__thumb img { transition: transform 0.35s ease; }
+.dd-proj:hover .dd-proj__thumb img { transform: scale(1.06); }   /* 호버: 틀 안에서 살짝 확대 */
 .dd-proj__info { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
 .dd-proj__title {
   font-weight: 700; font-size: 24px; line-height: 34px; letter-spacing: -0.02em; color: #3d3d3d; /* D-H2 */
