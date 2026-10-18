@@ -145,9 +145,9 @@
   .wk-prof__arrow { width: 18px; height: 18px; }   /* 모바일: 아이콘 작게(줄높이 내) */
 
   /* 작품 그리드 (맨 아래, 전체폭 2열) */
-  .wk-grid { order: 4; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; row-gap: 40px; margin-top: 12px; }
-  .wk-card { gap: 16px; }
+  .wk-grid { order: 4; width: 100%; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; row-gap: 22px; margin-top: 12px; }
+  .wk-card { gap: 14px; }
   .wk-card__thumb { aspect-ratio: 1 / 1; border-radius: 10px; }
-  .wk-card__title { font-size: 20px; line-height: 1.4; color: var(--g10); }        /* M-H2 */
-  .wk-card__designer { font-weight: 500; font-size: 16px; line-height: 1.5; color: var(--g6); } /* M-B1 */
+  .wk-card__title { font-size: 18px; line-height: 1.25; color: var(--g10); }
+  .wk-card__designer { font-weight: 500; font-size: 14px; line-height: 1.5; color: var(--g6); }
 }

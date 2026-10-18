@@ -82,10 +82,10 @@
   .dz-chip.is-active { background: #734efc; color: #fff; }   /* KeyColor-2 */
 
   /* 그리드 : 2열 */
-  .dz-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-  .dz-card { max-width: 411px; gap: 16px; }
+  .dz-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 18px; row-gap: 22px; }
+  .dz-card { max-width: 411px; gap: 14px; }
   .dz-empty { grid-column: 1 / -1; }
   .dz-card__thumb { aspect-ratio: 170 / 208; }
-  .dz-card__name { font-size: 20px; line-height: 1.4; color: var(--g11); }   /* M-H2 */
+  .dz-card__name { font-size: 18px; line-height: 1.25; color: var(--g11); }
   .dz-card__roman { font-weight: 500; font-size: 14px; line-height: 1.43; color: #555; } /* M-Sm3 */
 }
