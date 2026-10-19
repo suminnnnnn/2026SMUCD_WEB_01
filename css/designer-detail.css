@@ -88,6 +88,7 @@
   .dd-contact__value { overflow-wrap: anywhere; word-break: break-word; }
   /* 자기소개 : 박스는 전체 폭(중앙 레이아웃 유지) · 글은 왼쪽정렬 */
   .dd-intro { order: 4; width: 100%; font-size: 16px; line-height: 1.5; color: var(--g10); max-width: 411px; text-align: left; }  /* 사진과 동일 폭(411) 유지 */
+  .dd-intro .dd-br { display: none; }   /* 모바일: 줄바꿈 숨김 → 공백으로 자연스럽게 흐름 */
 
   /* 섹션 제목 */
   .dd-sec-title { font-size: 24px; line-height: 1.33; color: #000; }  /* M-H4 */

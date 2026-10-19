@@ -121,8 +121,8 @@
             '<a class="dd-contact__value" href="mailto:' + esc(d.email) + '">' + h(d.email) + "</a>";
         }
         qs("dd-contact").innerHTML = rows;
-        // 소개
-        qs("dd-intro").textContent = d.intro || "";
+        // 소개 : 줄바꿈(\n)은 데스크탑 전용 <br>(모바일에선 숨겨 공백으로 이어짐)
+        qs("dd-intro").innerHTML = h(d.intro || "").replace(/\n+/g, '<br class="dd-br"> ');
 
         // Interview (고정 질문 + interview1/2)
         var answers = [d.interview1 || "", d.interview2 || ""];
@@ -131,7 +131,7 @@
             '<div class="dd-iv">' +
             '<div class="dd-iv__q"><p class="dd-iv__num">(' + (i + 1) + ")</p>" +
             '<p class="dd-iv__question">' + h(q) + "</p></div>" +
-            '<p class="dd-iv__answer">' + h(answers[i]) + "</p></div>"
+            '<p class="dd-iv__answer">' + h(answers[i]).replace(/\n/g, "<br>") + "</p></div>"
           );
         }).join("");
 
