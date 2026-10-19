@@ -33,6 +33,7 @@
     <div class="gd-body">
       <!-- 좌측 카테고리 (전시 전경 / 웨이브) -->
       <aside class="gd-cats" id="gd-cats">
+        <!-- 전시 전경 : 전시 사진 촬영 후 추가 예정 (잠시 숨김)
         <button class="gd-cat" type="button" data-desc="off">
           <span class="gd-cat__arrow" aria-hidden="true"></span>
           <span class="gd-cat__text">
@@ -40,6 +41,7 @@
             <span class="gd-cat__en">Exhibition view</span>
           </span>
         </button>
+        -->
         <button class="gd-cat" type="button" data-desc="on">
           <span class="gd-cat__arrow" aria-hidden="true"></span>
           <span class="gd-cat__text">
@@ -49,15 +51,10 @@
         </button>
       </aside>
 
-      <!-- 우측 본문 : 설명(웨이브만) + 이미지 스택 -->
+      <!-- 우측 본문 : 설명(굿즈만) + 이미지 스택 -->
       <div class="gd-main">
         <p class="gd-desc" id="gd-desc"></p>
-        <div class="gd-gallery">
-          <span class="gd-shot hp-ph"></span>
-          <span class="gd-shot hp-ph"></span>
-          <span class="gd-shot hp-ph"></span>
-          <span class="gd-shot hp-ph"></span>
-        </div>
+        <div class="gd-gallery" id="gd-gallery"></div>
       </div>
     </div>
 
@@ -67,6 +64,35 @@
     (function () {
       var cats = Array.prototype.slice.call(document.querySelectorAll(".gd-cat"));
       var descEl = document.getElementById("gd-desc");
+      var gallery = document.getElementById("gd-gallery");
+
+      // 굿즈 사진 콜라주 (Figma 11535:3870) · 좌우 번갈아 · 크기 제각각 스캐터 배열
+      // 좌표계 : 콘텐츠 영역 1960 × 10768 (Figma 기준) → 비율(%)로 변환해 반응형 재현
+      var BASE = "assets/images/archive/";
+      // 간격(가로·세로)을 40으로 통일해 재배치 · 이미지 크기/좌우정렬/세로 스태거 유지
+      var CW = 1964, CH = 10100;
+      // [x, y, w, h, 파일]  (x,y = 콘텐츠 영역 기준 좌상단)
+      var SHOTS = [
+        [   0,    0,  934, 1401, "pst_1.webp"],
+        [ 974,  744,  986,  657, "pb_2.webp"],
+        [ 458, 1441, 1506, 1004, "pb_1.webp"],
+        [   0, 2485, 1200,  800, "sticker_2.webp"],
+        [1240, 2485,  720, 1081, "mt_1.webp"],
+        [1022, 3606,  942, 1413, "pb_3.webp"],
+        [   0, 5059, 1507, 1005, "sticker_3.webp"],
+        [ 859, 6104, 1105, 1657, "st_1.webp"],
+        [   0, 7801, 1324,  883, "st_3.webp"],
+        [1364, 7801,  598,  883, "st_2.webp"],
+        [   0, 8724, 1007,  671, "mt_2.webp"],
+        [1047, 8724,  917, 1376, "sticker_1.webp"]
+      ];
+      function pct(n, d) { return (n / d * 100) + "%"; }
+      gallery.innerHTML = SHOTS.map(function (s) {
+        return '<img class="gd-shot" src="' + BASE + s[4] + '" alt="" loading="lazy" ' +
+          'style="left:' + pct(s[0], CW) + ';top:' + pct(s[1], CH) + ';width:' + pct(s[2], CW) + ';height:' + pct(s[3], CH) + '" ' +
+          'onerror="this.remove()">';
+      }).join("");
+
       function select(i) {
         cats.forEach(function (b, j) { b.classList.toggle("is-active", j === i); });
         descEl.hidden = cats[i].getAttribute("data-desc") !== "on";  // 전시 전경 = 설명 없음
@@ -87,7 +113,7 @@
       <dl class="hp-footer__info">
         <div class="hp-footer__row">
           <dt><span class="hide-m">전시 일정</span><span class="hide-d hide-t">전시 일정</span></dt>
-          <dd>2026.10.21 (수)-(일) 10:30-18:30<br /><span class="hp-dash">⏤</span> 10.26 (월) 10:30-17:00</dd>
+          <dd>2026.10.21 (수)-(일) 10:30-18:30<br />10.26 (월) 10:30-17:00</dd>
         </div>
         <div class="hp-footer__row">
           <dt>전시장 위치</dt>

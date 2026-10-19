@@ -495,26 +495,5 @@ body.hp-menu-open { overflow: hidden; }         /* 메뉴 열림 중 배경 스�
   .hp-footer__prev { grid-column: 2; grid-row: 2; display: block; }
 }
 
-/* ================= INTRO 영상 (첫 진입 시 풀스크린) ================= */
-.intro {
-  position: fixed; inset: 0;
-  z-index: 2147483646;               /* 커스텀 커서 바로 아래, 모든 콘텐츠 위 */
-  background: #fff;
-  display: flex; align-items: center; justify-content: center;
-  opacity: 1;
-  transition: opacity 0.8s ease;
-}
-.intro__video { width: 100%; height: 100%; object-fit: contain; display: block; }   /* 포스터 전체 표시, 남는 여백은 배경색 */
-@media (min-width: 880px) {
-  .intro__video { width: 904px; height: 676px; flex: 0 0 auto; }   /* 데스크탑: 고정 크기, 중앙 정렬 · 나머지 배경색 */
-}
-@media (max-width: 879.98px) {
-  .intro { padding: 0 20px; }   /* 모바일: 인트로 영상 좌우 여백 20px */
-}
-.intro.is-hide { opacity: 0; pointer-events: none; }
-html.intro-lock, html.intro-lock body { overflow: hidden; }   /* 재생 중 스크롤 잠금 */
-html.intro-lock { scrollbar-gutter: stable; }                 /* 잠금 중에도 스크롤바 자리 유지 → 해제 시 페이지가 옆으로 밀리지 않게 */
-html.intro-seen .intro { display: none; }                     /* 같은 세션 재방문 시 생략 */
-
 /* 졸준위 사진: 원본(JJW.webp 3955×2495) 비율 그대로 — 잘림 없음 (모든 화면 공통) */
 .hp-figure.hp-figure--committee { aspect-ratio: 3955 / 2495; }

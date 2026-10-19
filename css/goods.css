@@ -42,12 +42,9 @@
   letter-spacing: -0.02em; color: var(--g10); max-width: 847px;
 }
 .gd-desc:empty { display: none; }   /* 설명 없으면 숨겨서 사진 위 여백 제거 */
-.gd-gallery { display: flex; flex-direction: column; gap: 38px; }
-.gd-shot {
-  display: block; width: 100%; aspect-ratio: 955 / 513; border-radius: 10px;
-  position: relative; overflow: hidden;
-}
-.gd-shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* 콜라주 : 콘텐츠 영역 1960×10768 비율 유지 · 사진은 절대 위치(%)로 스캐터 배열 */
+.gd-gallery { position: relative; width: 100%; aspect-ratio: 1964 / 10100; }
+.gd-shot { position: absolute; display: block; object-fit: cover; }
 
 /* ============================================================
    ▍ < 880px  (모바일: 카테고리 가로 → 설명 → 이미지 세로 스택)
@@ -77,5 +74,4 @@
   .gd-cat.is-active .gd-cat__en { color: var(--g11); }
   .gd-main { gap: 30px; }
   .gd-desc { font-weight: 500; font-size: 16px; line-height: 1.5; max-width: none; }
-  .gd-gallery { gap: 16px; }
 }

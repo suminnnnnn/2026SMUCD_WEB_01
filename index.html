@@ -5,28 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>2026 상명대학교 커뮤니케이션디자인전공 졸업전시 — Home</title>
   <link rel="stylesheet" href="css/home.css" />
-  <script>
-    /* 사이트에 처음 들어왔을 때만 인트로 재생 — 이미 봤거나 사이트 내부 페이지에서 Home 으로 온 경우 첫 렌더 전에 숨김 (깜빡임 방지) */
-    (function () {
-      var seen = false;
-      try { seen = !!sessionStorage.getItem('introSeen'); } catch (e) {}
-      try { if (document.referrer && new URL(document.referrer).host === location.host && location.host) seen = true; } catch (e) {}
-      /* 새로고침이면 다시 재생 */
-      try {
-        var nav = performance.getEntriesByType('navigation')[0];
-        if (nav ? nav.type === 'reload' : performance.navigation.type === 1) seen = false;
-      } catch (e) {}
-      document.documentElement.classList.add(seen ? 'intro-seen' : 'intro-lock');
-    })();
-  </script>
 </head>
 <body data-page="home">
-  <!-- ================= INTRO 영상 ================= -->
-  <div class="intro" id="intro" aria-hidden="true">
-    <video class="intro__video" id="intro-video" src="assets/videos/intro.webm"
-           muted autoplay playsinline preload="auto"></video>
-  </div>
-
   <div class="hp">
 
     <!-- ================= HEADER ================= -->
@@ -76,7 +56,7 @@
         <section class="hp-block hp-row hp-schedule">
           <h2 class="hp-label">전시 일정</h2>
           <div class="hp-row__body">
-            <p class="hp-value hp-date"><span class="hp-nb">2026.10.21 (수)-(일)</span> <span class="hp-nb">10:30-18:30</span><br /><span class="hp-nb"><span class="hp-dash">⏤</span> 10.26 (월)</span> <span class="hp-nb">10:30-17:00</span></p>
+            <p class="hp-value hp-date"><span class="hp-nb">2026.10.21 (수)-(일)</span> <span class="hp-nb">10:30-18:30</span><br /><span class="hp-nb">10.26 (월)</span> <span class="hp-nb">10:30-17:00</span></p>
           </div>
         </section>
 
@@ -189,7 +169,7 @@
         <dl class="hp-footer__info">
           <div class="hp-footer__row">
             <dt><span class="hide-m">전시 일정</span><span class="hide-d hide-t">전시 일정</span></dt>
-            <dd>2026.10.21 (수)-(일) 10:30-18:30<br /><span class="hp-dash">⏤</span> 10.26 (월) 10:30-17:00</dd>
+            <dd>2026.10.21 (수)-(일) 10:30-18:30<br />10.26 (월) 10:30-17:00</dd>
           </div>
           <div class="hp-footer__row">
             <dt>전시장 위치</dt>
@@ -204,31 +184,5 @@
   </footer>
 
   <script src="js/nav.js"></script>
-  <script>
-    (function () {
-      var intro = document.getElementById('intro');
-      var video = document.getElementById('intro-video');
-      var root = document.documentElement;
-      if (!intro || root.classList.contains('intro-seen')) { if (intro) intro.remove(); return; }
-
-      var done = false;
-      function closeIntro() {
-        if (done) return;
-        done = true;
-        try { sessionStorage.setItem('introSeen', '1'); } catch (e) {}
-        root.classList.remove('intro-lock');
-        intro.classList.add('is-hide');                    // 페이드아웃
-        setTimeout(function () { intro.remove(); }, 900);  // transition(0.8s) 후 제거
-      }
-
-      video.muted = true;                       // iOS 등에서 자동재생 보장
-      video.addEventListener('ended', closeIntro);
-      video.addEventListener('error', closeIntro);
-      intro.addEventListener('click', closeIntro);   // 클릭하면 건너뛰기
-
-      var p = video.play();
-      if (p && p.catch) p.catch(closeIntro);    // 자동재생이 막히면 바로 사이트 표시
-    })();
-  </script>
 </body>
 </html>
