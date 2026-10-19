@@ -137,10 +137,11 @@
         qs("wd-name").innerHTML =
           '<a class="wd-name__link" href="designer-detail.html?id=' + encodeURIComponent(d.id) + '">' +
           h(d.name) + " <span>" + h(d.nameRoman || "") + "</span></a>";
-        // 융합/혁신 스튜디오 | 담당 교수님
+        // 융합/혁신 스튜디오 | 담당 교수님 (김석진 분반은 공동지도 이석연 함께 표기)
+        var prof = w.professor === "김석진 교수님" ? "김석진 • 이석연 교수님" : w.professor;
         qs("wd-meta").innerHTML =
           h(cur.studio) +
-          (w.professor ? ' <span class="wd-meta__bar">|</span> ' + h(w.professor) : "");
+          (prof ? ' <span class="wd-meta__bar">|</span> ' + h(prof) : "");
         // 작품 제목 · 설명
         qs("wd-title").textContent = w.title || "";
         qs("wd-desc").textContent = w.description || "";
