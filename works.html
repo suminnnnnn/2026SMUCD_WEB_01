@@ -132,6 +132,7 @@
       function buildWorks(designers) {
         var out = [];
         designers.forEach(function (d) {
+          if (d.hidden) return;   // 숨김 디자이너 작품 임시 제외
           var sid = d.studentId || d.id;
           if (d.convergence && d.convergence.title)
             out.push({ id: sid + "-c", title: d.convergence.title, designer: d.name, studio: "c", professor: (d.convergence.professor || "").trim(), thumbnail: d.convergence.thumbnail || "" });

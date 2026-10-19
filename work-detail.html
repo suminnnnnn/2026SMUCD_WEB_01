@@ -108,6 +108,7 @@
       function buildWorks(designers) {
         var out = [];
         designers.forEach(function (d) {
+          if (d.hidden) return;   // 숨김 디자이너 작품 임시 제외(상세·관련작품)
           var sid = d.studentId || d.id;
           if (d.convergence && d.convergence.title)
             out.push({ id: sid + "-c", type: "convergence", studio: "융합디자인스튜디오", work: d.convergence, designer: d });

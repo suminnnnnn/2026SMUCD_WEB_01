@@ -116,7 +116,7 @@
 
       fetch("data/designers_full.json")
         .then(function (r) { return r.json(); })
-        .then(function (data) { all = data; render(); })
+        .then(function (data) { all = data.filter(function (d) { return !d.hidden; }); render(); })   // hidden 디자이너 임시 제외
         .catch(function () { grid.innerHTML = '<p class="dz-empty">데이터를 불러오지 못했습니다.</p>'; });
 
       chips.forEach(function (btn) {
