@@ -2272,7 +2272,9 @@
         "https://d3vrrctpt3yrtn.cloudfront.net/de_i/de_i_202220299_4%20-%20%EC%84%9C%EB%A5%98.webp"
       ],
       "videos": [],
-      "prototypes": [],
+      "prototypes": [
+        "https://yangseoyoon.github.io/armcandyprogram.official"
+      ],
       "aiUsed": true,
       "aiNotice": "이 작업은 AI를 사용했습니다."
     },
