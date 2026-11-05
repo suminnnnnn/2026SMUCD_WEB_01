@@ -49,7 +49,6 @@
     <div class="gd-body">
       <!-- 좌측 카테고리 (전시 전경 / 웨이브) -->
       <aside class="gd-cats" id="gd-cats">
-        <!-- 전시 전경 : 전시 사진 촬영 후 추가 예정 (잠시 숨김)
         <button class="gd-cat" type="button" data-desc="off">
           <span class="gd-cat__arrow" aria-hidden="true"></span>
           <span class="gd-cat__text">
@@ -57,7 +56,6 @@
             <span class="gd-cat__en">Exhibition view</span>
           </span>
         </button>
-        -->
         <button class="gd-cat" type="button" data-desc="on">
           <span class="gd-cat__arrow" aria-hidden="true"></span>
           <span class="gd-cat__text">
@@ -82,13 +80,33 @@
       var descEl = document.getElementById("gd-desc");
       var gallery = document.getElementById("gd-gallery");
 
-      // 굿즈 사진 콜라주 (Figma 11535:3870) · 좌우 번갈아 · 크기 제각각 스캐터 배열
-      // 좌표계 : 콘텐츠 영역 1960 × 10768 (Figma 기준) → 비율(%)로 변환해 반응형 재현
-      var BASE = "assets/images/archive/";
-      // 간격(가로·세로)을 40으로 통일해 재배치 · 이미지 크기/좌우정렬/세로 스태거 유지
-      var CW = 1964, CH = 10100;
-      // [x, y, w, h, 파일]  (x,y = 콘텐츠 영역 기준 좌상단)
-      var SHOTS = [
+      // 전시 전경 콜라주 (Figma 44:16) · 14장 · 좌우 스태거 스캐터 배열
+      // 크기·좌우정렬은 Figma 유지 · 상하 간격만 42로 통일(= 굿즈 40 / 1964 와 동일 비율)
+      // 좌표계 : 콘텐츠 영역 2040 × 12237 → 비율(%)로 변환해 반응형 재현
+      // rc_3·rc_4 는 좌우 한 쌍 · Figma 스태거 유지(rc_4 가 rc_3 보다 359 아래)
+      // [x, y, w, h, 파일]  (x,y = 좌상단)
+      var SCENE_CW = 2040, SCENE_CH = 12237;
+      var SCENE = [
+        [   2,     0, 1300,  871, "rc_5.webp"],
+        [1031,   913, 1000,  667, "pf.webp"],
+        [   2,  1622, 1200,  800, "wk_2.webp"],
+        [ 421,  2464, 1200,  800, "wk_1.webp"],
+        [ 840,  3306, 1200,  800, "wk_3.webp"],
+        [   2,  4148, 1438,  958, "wk_4.webp"],
+        [1070,  5148,  970,  647, "rc_1.webp"],
+        [   0,  5837, 2029, 1353, "op_1.webp"],
+        [ 592,  7232, 1437,  958, "op_2.webp"],
+        [ 592,  8232, 1439,  959, "rc_2.webp"],
+        [   0,  9233,  970,  646, "rc_3.webp"],
+        [1059,  9592,  970,  647, "rc_4.webp"],
+        [   0, 10281, 1435,  957, "op_3.webp"],
+        [   0, 11280, 1435,  957, "r.webp"]
+      ];
+
+      // 굿즈 콜라주 (Figma 11535:3870) · 좌우 번갈아 · 크기 제각각 스캐터 배열
+      // 좌표계 : 콘텐츠 영역 1964 × 10100 · 간격 40 통일
+      var GOODS_CW = 1964, GOODS_CH = 10100;
+      var GOODS = [
         [   0,    0,  934, 1401, "pst_1.webp"],
         [ 974,  744,  986,  657, "pb_2.webp"],
         [ 458, 1441, 1506, 1004, "pb_1.webp"],
@@ -102,16 +120,28 @@
         [   0, 8724, 1007,  671, "mt_2.webp"],
         [1047, 8724,  917, 1376, "sticker_1.webp"]
       ];
+
+      // 카테고리별 콜라주 (버튼 순서와 동일 : 0=전시 전경 · 1=굿즈)
+      // 전시 전경 = archive/exhibition_view/ · 굿즈 = archive/merchandise/
+      var COLLAGES = [
+        { cw: SCENE_CW, ch: SCENE_CH, shots: SCENE, base: "assets/images/archive/exhibition_view/" },
+        { cw: GOODS_CW, ch: GOODS_CH, shots: GOODS, base: "assets/images/archive/merchandise/" }
+      ];
+
       function pct(n, d) { return (n / d * 100) + "%"; }
-      gallery.innerHTML = SHOTS.map(function (s) {
-        return '<img class="gd-shot" src="' + BASE + s[4] + '" alt="" loading="lazy" ' +
-          'style="left:' + pct(s[0], CW) + ';top:' + pct(s[1], CH) + ';width:' + pct(s[2], CW) + ';height:' + pct(s[3], CH) + '" ' +
-          'onerror="this.remove()">';
-      }).join("");
+      function renderCollage(c) {
+        gallery.style.aspectRatio = c.cw + " / " + c.ch;
+        gallery.innerHTML = c.shots.map(function (s) {
+          return '<img class="gd-shot" src="' + c.base + s[4] + '" alt="" loading="lazy" ' +
+            'style="left:' + pct(s[0], c.cw) + ';top:' + pct(s[1], c.ch) + ';width:' + pct(s[2], c.cw) + ';height:' + pct(s[3], c.ch) + '" ' +
+            'onerror="this.remove()">';
+        }).join("");
+      }
 
       function select(i) {
         cats.forEach(function (b, j) { b.classList.toggle("is-active", j === i); });
         descEl.hidden = cats[i].getAttribute("data-desc") !== "on";  // 전시 전경 = 설명 없음
+        renderCollage(COLLAGES[i]);
       }
       cats.forEach(function (b, i) { b.addEventListener("click", function () { select(i); }); });
       select(0);   // 기본: 전시 전경(설명 없음)

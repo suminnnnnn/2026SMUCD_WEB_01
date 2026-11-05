@@ -23,6 +23,9 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+  position: sticky;         /* 스크롤 시 좌측 스튜디오/교수 목록 따라오게 */
+  top: 119px;               /* 처음 위치(헤더 104 + 본문 패딩 15)에서 바로 고정 → 이동 없음 */
+  align-self: flex-start;
 }
 .wk-studio { display: flex; flex-direction: column; align-items: flex-start; }
 .wk-studio__head {

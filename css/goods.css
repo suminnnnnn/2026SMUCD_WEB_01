@@ -16,8 +16,8 @@
   padding: 81px clamp(24px, 5.5vw, 80px);
 }
 
-/* 좌측 카테고리 (데스크탑: 텍스트만 · 아이콘 숨김) */
-.gd-cats { display: flex; flex-direction: column; gap: 28px; }
+/* 좌측 카테고리 (데스크탑: 텍스트만 · 아이콘 숨김) · 스크롤 시 따라오게 스티키 */
+.gd-cats { display: flex; flex-direction: column; gap: 28px; position: sticky; top: 119px; align-self: start; }
 .gd-cat {
   display: flex; align-items: flex-start;
   background: none; border: 0; padding: 0; cursor: pointer; text-align: left;
@@ -25,7 +25,7 @@
 .gd-cat__arrow { display: none; }
 .gd-cat__text { display: flex; flex-direction: column; gap: 6px; }
 .gd-cat__ko {
-  font-weight: 800; font-size: 28px; line-height: 38px;   /* D-H4 */
+  font-weight: 800; font-size: 26px; line-height: 34px;   /* works .wk-studio__ko 와 동일 */
   letter-spacing: -0.02em; color: #C1C1C1; transition: color 0.15s ease;
 }
 .gd-cat__en {
@@ -51,8 +51,8 @@
    ============================================================ */
 @media (max-width: 879.98px) {
   .gd-body { display: flex; flex-direction: column; align-items: stretch; gap: 30px; padding: 60px 20px; }
-  /* 모바일 카테고리 = works 칩과 동일(크기·굵기·색·활성 원형 아이콘) */
-  .gd-cats { flex-direction: row; flex-wrap: wrap; gap: 14px 20px; }
+  /* 모바일 카테고리 = works 칩과 동일(크기·굵기·색·활성 원형 아이콘) · 스티키 해제 */
+  .gd-cats { flex-direction: row; flex-wrap: wrap; gap: 14px 20px; position: static; }
   .gd-cat { flex-direction: row; align-items: center; gap: 10px; }
   .gd-cat__arrow {
     flex: 0 0 auto; position: relative;
