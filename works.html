@@ -217,7 +217,7 @@
         Array.prototype.slice.call(st.querySelectorAll(".wk-prof")).forEach(function (p) {
           p.addEventListener("click", function () {
             state.studio = key; state.prof = p;
-            updateUI(); render();
+            updateUI(); render(); window.scrollTo(0, 0);
           });
         });
       });

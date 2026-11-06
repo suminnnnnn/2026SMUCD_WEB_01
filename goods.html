@@ -143,7 +143,7 @@
         descEl.hidden = cats[i].getAttribute("data-desc") !== "on";  // 전시 전경 = 설명 없음
         renderCollage(COLLAGES[i]);
       }
-      cats.forEach(function (b, i) { b.addEventListener("click", function () { select(i); }); });
+      cats.forEach(function (b, i) { b.addEventListener("click", function () { select(i); window.scrollTo(0, 0); }); });
       select(0);   // 기본: 전시 전경(설명 없음)
     })();
   </script>
